@@ -138,7 +138,7 @@ function Layout() {
     <div css={layoutStyles}>
       <header className="top-navbar">
         <div className="app-name">
-          Nashville Software School: Introduction to the Cloud 
+          Nashville Software School: Data Structures and Algorithms 
         </div>
       </header>
       <div className="content-area">

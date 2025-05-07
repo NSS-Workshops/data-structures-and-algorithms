@@ -42,12 +42,12 @@ function IntroRedirect() {
 
   console.log('Redirecting to main content')
   // If hasSeenIntroParam is true, preserve it when redirecting
-  return <Navigate to={hasSeenIntroParam ? "/aws-account?hasSeenIntro=true" : "/aws-account"} replace />
+  return <Navigate to={hasSeenIntroParam ? "/what-is-algorithm?hasSeenIntro=true" : "/what-is-algorithm"} replace />
 }
 
 function App() {
   return (
-    <Router basename="/intro-to-cloud-student-facing/">
+    <Router basename="/data-structures-and-algorithms">
       <AuthProvider>
         <LearnerProgressProvider>
           <ChapterProvider>

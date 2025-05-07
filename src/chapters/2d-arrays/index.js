@@ -1,11 +1,11 @@
-import { whatIsCloudChapter } from './what-is-cloud';
-import { whyUseCloudChapter } from './why-use-cloud';
-import { awsAccountSetupChapter } from './aws-account-setup';
+import { twoDArraysIntroChapter } from './2d-arrays-intro';
+import { indexingAndBoundsChapter } from './indexing-and-bounds';
+import { findingNeighborsChapter } from './finding-neighbors';
 
-export const cloudFundamentalsChapters = [
-  whatIsCloudChapter,
-  whyUseCloudChapter,
-  awsAccountSetupChapter
+export const twoDArraysChapters = [
+  twoDArraysIntroChapter,
+  indexingAndBoundsChapter,
+  findingNeighborsChapter
 ];
 
 /**
@@ -14,15 +14,15 @@ export const cloudFundamentalsChapters = [
  * @returns {Object|undefined} The chapter object if found, undefined otherwise
  */
 export const getChapterById = (id) => {
-  return cloudFundamentalsChapters.find(chapter => chapter.id === id);
+  return twoDArraysChapters.find(chapter => chapter.id === id);
 };
 
 /**
- * Get all chapter IDs for the cloud fundamentals section
+ * Get all chapter IDs for the 2D arrays section
  * @returns {string[]} Array of chapter IDs
  */
 export const getChapterIds = () => {
-  return cloudFundamentalsChapters.map(chapter => chapter.id);
+  return twoDArraysChapters.map(chapter => chapter.id);
 };
 
 /**
@@ -31,8 +31,8 @@ export const getChapterIds = () => {
  * @returns {Object|undefined} The next chapter object if found, undefined otherwise
  */
 export const getNextChapter = (currentChapterId) => {
-  const currentIndex = cloudFundamentalsChapters.findIndex(chapter => chapter.id === currentChapterId);
-  return cloudFundamentalsChapters[currentIndex + 1];
+  const currentIndex = twoDArraysChapters.findIndex(chapter => chapter.id === currentChapterId);
+  return twoDArraysChapters[currentIndex + 1];
 };
 
 /**
@@ -41,6 +41,6 @@ export const getNextChapter = (currentChapterId) => {
  * @returns {Object|undefined} The previous chapter object if found, undefined otherwise
  */
 export const getPreviousChapter = (currentChapterId) => {
-  const currentIndex = cloudFundamentalsChapters.findIndex(chapter => chapter.id === currentChapterId);
-  return currentIndex > 0 ? cloudFundamentalsChapters[currentIndex - 1] : undefined;
+  const currentIndex = twoDArraysChapters.findIndex(chapter => chapter.id === currentChapterId);
+  return currentIndex > 0 ? twoDArraysChapters[currentIndex - 1] : undefined;
 };

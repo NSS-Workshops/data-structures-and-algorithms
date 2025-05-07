@@ -356,7 +356,7 @@ function Navigation() {
     <nav css={navStyles}>
       {/* Required Sections */}
       <div className="required-work-header">
-        <h3>Workshop 1</h3>
+        {/* <h3>Workshop 1</h3> */}
       <div className="section-group required-sections">
         {requiredSections.map(renderSection)}
       </div>

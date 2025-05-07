@@ -1,6 +1,6 @@
-# JavaScript Cloud Course
+# DSA Course
 
-A comprehensive, interactive learning platform for JavaScript fundamentals, designed with a progressive chapter-based structure to build skills from the ground up.
+A comprehensive, interactive learning platform for algo fundamentals, designed with a progressive chapter-based structure to build skills from the ground up.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ A comprehensive, interactive learning platform for JavaScript fundamentals, desi
 
 ## Purpose and Overview
 
-The Cloud Course is an interactive learning platform designed to teach Cloud fundamentals through structured, hands-on exercises. This application provides:
+The DSA Course is an interactive learning platform designed to teach DSA fundamentals through structured, hands-on exercises. This application provides:
 
 - **Organized Learning Path**: A progressive curriculum that builds skills step-by-step
 - **Interactive Exercises**: Code exercises with real-time feedback
@@ -329,14 +329,14 @@ This architecture separates sensitive credentials from the client-side code whil
 3. Follow the instruction in that README to set up the local `.env` file with the Github OAuth app info and port number _(e.g. 3003)_. Allow origin will be the local domain of the client app.
 4. Run `npm run start` to start the simple CORS Proxy.
 
-### Cloud Course
+### DSA Course
 
 To set up the project for local development:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/nashville-software-school/intro-to-cloud-student-facing/
-   cd intro-to-cloud-student-facing/
+   git clone https://github.com/nashville-software-school/data-structures-and-algorithms/
+   cd data-structures-and-algorithms
    ```
 
 2. **Install dependencies**:
@@ -363,7 +363,7 @@ To set up the project for local development:
    npm start
    ```
 
-The application will be available at http://localhost:5173/intro-to-cloud-student-facing/
+The application will be available at http://localhost:5173/data-structures-and-algorithms/
 
 ### Adding or Modifying Chapters
 

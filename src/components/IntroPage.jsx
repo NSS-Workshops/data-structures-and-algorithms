@@ -74,7 +74,7 @@ function IntroPage() {
     console.log('After markIntroAsSeen call');
 
     // Add a URL parameter to indicate the user has seen the intro
-    navigate('/aws-account?hasSeenIntro=true');
+    navigate('/what-is-algorithm?hasSeenIntro=true');
   }
 
   const handlePlayVideo = () => {
@@ -85,7 +85,7 @@ function IntroPage() {
     <div className="intro-page">
       <div className={`intro-content-container ${isLoaded ? 'animate-in' : ''}`}>
         <div className="intro-header animate-item" style={{ animationDelay: '0.3s' }}>
-          <h1 className="intro-title">Nashville Software School Cloud Course</h1>
+          <h1 className="intro-title">Nashville Software School Data Structures and Algorithms Course</h1>
         </div>
 
         <button

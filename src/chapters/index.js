@@ -1,12 +1,25 @@
-import { cloudFundamentalsChapters } from './cloud-fundamentals';
-import { awsS3HostingChapters } from './aws-s3-hosting';
-import { introToCicdChapters } from './intro-to-cicd';
-
+import { algorithmicThinkingChapters } from './algorithmic-thinking';
+import { arraysAndTwoPointersChapters } from './arrays-and-two-pointers';
+import { twoDArraysChapters } from './2d-arrays';
+import { linkedListsChapters } from './linked-lists';
+import { stacksQueuesChapters } from './stacks-queues';
+import { mapsAndSetsChapters } from './maps-and-sets';
+import { slidingWindowChapters } from './sliding-window';
+import { sortingAndBinarySearchChapters } from './sorting-and-binary-search';
+import { combiningPatternsChapters } from './combining-patterns';
+import { interviewReadinessChapters } from './interview-readiness';
 
 export const chapters = [
-  ...cloudFundamentalsChapters,
-  ...awsS3HostingChapters,
-  ...introToCicdChapters
+  ...algorithmicThinkingChapters,
+  ...arraysAndTwoPointersChapters,
+  ...twoDArraysChapters,
+  ...linkedListsChapters,
+  ...stacksQueuesChapters,
+  ...mapsAndSetsChapters,
+  ...slidingWindowChapters,
+  ...sortingAndBinarySearchChapters,
+  ...combiningPatternsChapters,
+  ...interviewReadinessChapters
 ]
 
 /**

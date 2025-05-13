@@ -3,13 +3,15 @@ import { whatIsDataStructureChapter } from './what-is-data-structure';
 import { problemSolvingProcessChapter } from './problem-solving-process';
 import { bigONotationChapter } from './big-o-notation';
 import { comparingComplexitiesChapter } from './comparing-complexities';
+import { glossaryChapter } from './glossary';
 
 export const algorithmicThinkingChapters = [
   whatIsAlgorithmChapter,
   whatIsDataStructureChapter,
   problemSolvingProcessChapter,
   bigONotationChapter,
-  comparingComplexitiesChapter
+  comparingComplexitiesChapter,
+  glossaryChapter
 ];
 
 /**

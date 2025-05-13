@@ -3,13 +3,15 @@ import { linkedListTypesChapter } from './linked-list-types';
 import { linkedListTradeoffsChapter } from './linked-list-tradeoffs';
 import { nodeBasedTraversalChapter } from './node-based-traversal';
 import { implementLinkedListChapter } from './implement-linked-list';
+import { glossaryChapter } from './glossary';
 
 export const linkedListsChapters = [
   linkedListsIntroChapter,
   linkedListTypesChapter,
   linkedListTradeoffsChapter,
   nodeBasedTraversalChapter,
-  implementLinkedListChapter
+  implementLinkedListChapter,
+  glossaryChapter
 ];
 
 /**

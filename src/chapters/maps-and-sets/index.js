@@ -3,13 +3,15 @@ import { setsIntroChapter } from './sets-intro';
 import { useCasesChapter } from './use-cases';
 import { implementMapChapter } from './implement-map';
 import { implementSetChapter } from './implement-set';
+import { glossaryChapter } from './glossary';
 
 export const mapsAndSetsChapters = [
   mapsIntroChapter,
   setsIntroChapter,
   useCasesChapter,
   implementMapChapter,
-  implementSetChapter
+  implementSetChapter,
+  glossaryChapter
 ];
 
 /**

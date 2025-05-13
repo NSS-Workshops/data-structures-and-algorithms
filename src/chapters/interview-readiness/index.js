@@ -38,7 +38,16 @@ export const interviewReadinessChapters = [
     sectionId: "interview-readiness",
     description: "Writing code that is clean, testable, and optimized for performance",
     previousChapterId: "thinking-aloud",
-    nextChapterId: null,
+    nextChapterId: "interview-readiness-glossary",
     content: () => import("./clean-solutions.js"),
+  },
+  {
+    id: "interview-readiness-glossary",
+    title: "Glossary: Interview Readiness",
+    sectionId: "interview-readiness",
+    description: "Key terms and concepts for technical interviews",
+    previousChapterId: "clean-solutions",
+    nextChapterId: null,
+    content: () => import("./glossary.js"),
   }
 ];

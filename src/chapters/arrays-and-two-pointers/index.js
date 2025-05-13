@@ -3,13 +3,15 @@ import { arrayCoreOperationsChapter } from './array-core-operations';
 import { arrayTradeoffsChapter } from './array-tradeoffs';
 import { arrayMethodsChapter } from './array-methods';
 import { twoPointersChapter } from './two-pointers';
+import { glossaryChapter } from './glossary';
 
 export const arraysAndTwoPointersChapters = [
   arraysIntroChapter,
   arrayCoreOperationsChapter,
   arrayTradeoffsChapter,
   arrayMethodsChapter,
-  twoPointersChapter
+  twoPointersChapter,
+  glossaryChapter
 ];
 
 /**

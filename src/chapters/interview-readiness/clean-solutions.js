@@ -1,10 +1,10 @@
-/**
- * Chapter: Clean, Testable, Efficient Solutions
- * This chapter focuses on writing code that is clean, testable, and optimized for performance
- * during technical interviews.
- */
-
-export const content = `
+export const cleanSolutionsChapter = {
+  id: 'clean-solutions',
+  title: 'Clean, Testable, Efficient Solutions',
+  sectionId: 'interview-readiness',
+  previousChapterId: 'thinking-aloud',
+  nextChapterId: 'interview-readiness-glossary',
+  content: `
 # Clean, Testable, Efficient Solutions
 
 In technical interviews, the quality of your code matters just as much as getting the correct answer. This chapter will help you develop skills for writing solutions that are clean, testable, and efficient—qualities that demonstrate your professionalism as a software engineer.
@@ -294,9 +294,8 @@ This final solution:
 - Demonstrates correctness with test cases
 - Has optimal time complexity (O(n))
 - Is clean and readable
-`;
-
-export const exercise = {
+`,
+  exercise: {
   question: `
 # Exercise: Clean, Testable, Efficient Solutions
 
@@ -325,12 +324,12 @@ Your task is to:
 4. Include test cases that cover normal cases and edge cases
 5. Explain the improvements you made and why they matter
   `,
-  starter_code: `
+  starterCode: `
 /**
- * Your improved anagram function here
- */
+* Your improved anagram function here
+*/
 function areAnagrams(s1, s2) {
-  // Your improved implementation
+// Your improved implementation
 }
 
 // Your test cases here
@@ -340,42 +339,42 @@ function areAnagrams(s1, s2) {
 
 */
   `,
-  solution_code: `
+  solution: `
 /**
- * Determines if two strings are anagrams of each other.
- * An anagram is a word formed by rearranging the letters of another word,
- * using all the original letters exactly once.
- * 
- * @param {string} s1 - The first string
- * @param {string} s2 - The second string
- * @returns {boolean} True if the strings are anagrams, false otherwise
- */
+* Determines if two strings are anagrams of each other.
+* An anagram is a word formed by rearranging the letters of another word,
+* using all the original letters exactly once.
+*
+* @param {string} s1 - The first string
+* @param {string} s2 - The second string
+* @returns {boolean} True if the strings are anagrams, false otherwise
+*/
 function areAnagrams(s1, s2) {
-  // Handle edge cases
-  if (s1 === s2) return true; // Same string is an anagram of itself
-  if (!s1 || !s2) return false; // Handle null or undefined inputs
-  if (s1.length !== s2.length) return false; // Anagrams must have the same length
+// Handle edge cases
+if (s1 === s2) return true; // Same string is an anagram of itself
+if (!s1 || !s2) return false; // Handle null or undefined inputs
+if (s1.length !== s2.length) return false; // Anagrams must have the same length
+
+// Use a character frequency counter approach
+const charCount = new Map();
+
+// Count occurrences of each character in the first string
+for (let char of s1) {
+  charCount.set(char, (charCount.get(char) || 0) + 1);
+}
+
+// Decrement counts for each character in the second string
+for (let char of s2) {
+  const count = charCount.get(char);
   
-  // Use a character frequency counter approach
-  const charCount = new Map();
+  // If character doesn't exist in first string or count is already 0, not an anagram
+  if (!count) return false;
   
-  // Count occurrences of each character in the first string
-  for (let char of s1) {
-    charCount.set(char, (charCount.get(char) || 0) + 1);
-  }
-  
-  // Decrement counts for each character in the second string
-  for (let char of s2) {
-    const count = charCount.get(char);
-    
-    // If character doesn't exist in first string or count is already 0, not an anagram
-    if (!count) return false;
-    
-    charCount.set(char, count - 1);
-  }
-  
-  // All characters should have a count of 0 if strings are anagrams
-  return true;
+  charCount.set(char, count - 1);
+}
+
+// All characters should have a count of 0 if strings are anagrams
+return true;
 }
 
 // Test cases
@@ -399,26 +398,26 @@ Analysis of the original solution:
 Improvements in my solution:
 
 1. Time Complexity: Improved to O(n) by using a character frequency counter approach
-   instead of sorting, which eliminates the log n factor
+ instead of sorting, which eliminates the log n factor
 
 2. Space Complexity: Still O(n) in the worst case, but potentially better for strings
-   with limited character sets as we only store unique characters
+ with limited character sets as we only store unique characters
 
 3. Readability and Maintainability:
-   - Added comprehensive documentation with JSDoc comments
-   - Used meaningful variable names
-   - Structured the code with clear logical sections
-   - Added explicit edge case handling
+ - Added comprehensive documentation with JSDoc comments
+ - Used meaningful variable names
+ - Structured the code with clear logical sections
+ - Added explicit edge case handling
 
 4. Testability:
-   - Included a variety of test cases covering normal usage and edge cases
-   - Added early returns for common edge cases to improve efficiency
+ - Included a variety of test cases covering normal usage and edge cases
+ - Added early returns for common edge cases to improve efficiency
 
 5. Efficiency Optimizations:
-   - Added an early return for identical strings
-   - Added an early return when we find a character mismatch
-   - Used Map instead of Object for potentially better performance with
-     non-string keys (though not relevant for this specific case)
+ - Added an early return for identical strings
+ - Added an early return when we find a character mismatch
+ - Used Map instead of Object for potentially better performance with
+   non-string keys (though not relevant for this specific case)
 
 The character frequency approach is more efficient because:
 - It avoids the O(n log n) cost of sorting
@@ -429,6 +428,143 @@ This solution balances correctness, efficiency, readability, and robustness,
 making it more suitable for a production environment.
 */
   `,
+  tests: [
+    {
+      name: "Implementation Correctness",
+      test: function(code) {
+        try {
+          // Extract the implementation
+          const functionStart = code.indexOf("function areAnagrams");
+          const functionEnd = code.indexOf("// Test cases", functionStart);
+          
+          if (functionStart === -1) {
+            return {
+              passed: false,
+              messages: ["Could not find areAnagrams function"]
+            };
+          }
+          
+          const functionCode = code.substring(
+            functionStart,
+            functionEnd !== -1 ? functionEnd : undefined
+          );
+          
+          const areAnagrams = new Function(
+            functionCode + '; return areAnagrams;'
+          )();
+          
+          // Test cases
+          const testCases = [
+            { s1: "listen", s2: "silent", expected: true },
+            { s1: "hello", s2: "world", expected: false },
+            { s1: "anagram", s2: "nagaram", expected: true },
+            { s1: "rat", s2: "car", expected: false },
+            { s1: "", s2: "", expected: true },
+            { s1: "a", s2: "a", expected: true },
+            { s1: "aab", s2: "aba", expected: true },
+            { s1: null, s2: "abc", expected: false },
+            { s1: "abc", s2: "abcd", expected: false }
+          ];
+          
+          const results = testCases.map(tc => {
+            const result = areAnagrams(tc.s1, tc.s2);
+            return {
+              passed: result === tc.expected,
+              message: `Input: "${tc.s1}" and "${tc.s2}" - Expected: ${tc.expected}, Got: ${result}`
+            };
+          });
+          
+          const allPassed = results.every(r => r.passed);
+          
+          return {
+            passed: allPassed,
+            messages: results.map(r => r.message)
+          };
+        } catch (error) {
+          return {
+            passed: false,
+            messages: [`Error testing implementation: ${error.message}`]
+          };
+        }
+      },
+      message: "Your implementation should correctly determine if two strings are anagrams of each other."
+    },
+    {
+      name: "Code Quality",
+      test: function(code) {
+        try {
+          // Check for documentation
+          const hasJSDoc = code.includes("/**") && code.includes("@param") && code.includes("@returns");
+          
+          // Check for edge case handling
+          const handlesNullOrUndefined = code.includes("!s1") || code.includes("s1 === null") || code.includes("s1 === undefined");
+          const handlesLengthCheck = code.includes("length !==");
+          const handlesSameString = code.includes("s1 === s2");
+          
+          // Check for efficiency improvements
+          const usesMap = code.includes("new Map()") || code.includes("Map(");
+          const hasEarlyReturn = (code.match(/return false/g) || []).length > 1;
+          
+          // Check for explanation
+          const hasTimeComplexity = code.includes("Time Complexity");
+          const hasSpaceComplexity = code.includes("Space Complexity");
+          const hasReadability = code.includes("Readability");
+          const hasEfficiency = code.includes("Efficiency");
+          
+          return {
+            passed: hasJSDoc && handlesNullOrUndefined && handlesLengthCheck &&
+                    (usesMap || code.includes("{}")) && hasTimeComplexity && hasSpaceComplexity,
+            messages: [
+              hasJSDoc ? "Includes proper documentation" : "Missing proper documentation",
+              handlesNullOrUndefined ? "Handles null/undefined inputs" : "Does not handle null/undefined inputs",
+              handlesLengthCheck ? "Checks string lengths" : "Does not check string lengths",
+              handlesSameString ? "Optimizes for identical strings" : "Does not optimize for identical strings",
+              usesMap ? "Uses efficient data structure" : "Could use more efficient data structure",
+              hasEarlyReturn ? "Uses early returns for efficiency" : "Could use early returns for better efficiency",
+              hasTimeComplexity && hasSpaceComplexity ? "Analyzes complexity" : "Missing complexity analysis",
+              hasReadability && hasEfficiency ? "Discusses code quality aspects" : "Missing discussion of code quality"
+            ]
+          };
+        } catch (error) {
+          return {
+            passed: false,
+            messages: [`Error analyzing code quality: ${error.message}`]
+          };
+        }
+      },
+      message: "Your solution should demonstrate clean, efficient, and well-documented code with proper edge case handling."
+    },
+    {
+      name: "Efficiency Improvement",
+      test: function(code) {
+        try {
+          // Check if the solution mentions O(n) time complexity
+          const mentionsLinearTime = code.includes("O(n)") && !code.includes("O(n log n)");
+          
+          // Check if the solution avoids sorting
+          const avoidsSorting = !code.includes(".sort(") || (code.includes(".sort(") && code.includes("original solution"));
+          
+          // Check if the solution uses a frequency counter approach
+          const usesFrequencyCounter = code.includes("Map") || code.includes("{}") || code.includes("Object") || code.includes("count");
+          
+          return {
+            passed: mentionsLinearTime && avoidsSorting && usesFrequencyCounter,
+            messages: [
+              mentionsLinearTime ? "Achieves O(n) time complexity" : "Does not achieve O(n) time complexity",
+              avoidsSorting ? "Avoids inefficient sorting" : "Uses inefficient sorting",
+              usesFrequencyCounter ? "Uses frequency counter approach" : "Does not use frequency counter approach"
+            ]
+          };
+        } catch (error) {
+          return {
+            passed: false,
+            messages: [`Error analyzing efficiency: ${error.message}`]
+          };
+        }
+      },
+      message: "Your solution should be more efficient than the original O(n log n) solution, ideally achieving O(n) time complexity."
+    }
+  ],
   hints: [
     "Consider using a character frequency counter instead of sorting",
     "Think about edge cases like empty strings, identical strings, or strings with special characters",
@@ -459,4 +595,5 @@ The key insight is that anagrams must have exactly the same characters with the 
 
 This approach demonstrates the balance between correctness, efficiency, readability, and robustness that interviewers look for in technical interviews.
   `
+  }
 };

@@ -1,11 +1,10 @@
-/**
- * Chapter: Thinking Aloud and Clarifying Requirements
- * This chapter focuses on strategies for verbalizing your thought process
- * and asking clarifying questions during technical interviews.
- */
-
-export const content = `
-# Thinking Aloud and Clarifying Requirements
+export const thinkingAloudChapter = {
+  id: 'thinking-aloud',
+  title: 'Thinking Aloud and Clarifying Requirements',
+  sectionId: 'interview-readiness',
+  previousChapterId: 'explaining-code-tradeoffs',
+  nextChapterId: 'clean-solutions',
+  content: `# Thinking Aloud and Clarifying Requirements
 
 One of the most valuable skills in technical interviews is the ability to think aloud and ask clarifying questions. This chapter will help you develop techniques for effectively communicating your thought process and ensuring you fully understand the problem before diving into a solution.
 
@@ -131,11 +130,9 @@ While thinking aloud is valuable, it's important to balance it with making progr
 - If you're stuck, verbalize what you're stuck on specifically
 - Be concise but informative
 
-Remember, the goal is to demonstrate your problem-solving process while efficiently working toward a solution.
-`;
-
-export const exercise = {
-  question: `
+Remember, the goal is to demonstrate your problem-solving process while efficiently working toward a solution.`,
+  exercise: {
+    question: `
 # Exercise: Thinking Aloud and Clarifying Requirements
 
 You are given the following problem in an interview:
@@ -154,15 +151,15 @@ For this exercise, assume the following answers to your clarifying questions:
 - The arrays can be of different lengths
 - The arrays might be empty
 - There might be duplicate values in the arrays
-  `,
-  starter_code: `
+    `,
+    starterCode: `
 // Your clarifying questions (as comments):
 /*
-1. 
-2. 
-3. 
-4. 
-5. 
+1.
+2.
+3.
+4.
+5.
 */
 
 // Your "thinking aloud" script (as comments):
@@ -179,8 +176,8 @@ function mergeSortedArrays(arr1, arr2) {
 console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6]));
 console.log(mergeSortedArrays([], [1, 2, 3]));
 console.log(mergeSortedArrays([1, 1, 3, 5], [1, 2, 3, 4]));
-  `,
-  solution_code: `
+    `,
+    solution: `
 // Your clarifying questions (as comments):
 /*
 1. Are the input arrays already sorted? If so, in what order (ascending or descending)?
@@ -241,13 +238,171 @@ function mergeSortedArrays(arr1, arr2) {
 console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6]));
 console.log(mergeSortedArrays([], [1, 2, 3]));
 console.log(mergeSortedArrays([1, 1, 3, 5], [1, 2, 3, 4]));
-  `,
-  hints: [
-    "Think about what information you would need to know to implement the solution correctly",
-    "Consider edge cases like empty arrays or arrays with duplicate values",
-    "The most efficient solution takes advantage of the fact that the input arrays are already sorted"
-  ],
-  solution_explanation: `
+    `,
+    tests: [
+      {
+        name: "Clarifying Questions",
+        test: function(code) {
+          try {
+            // Check if the code contains at least 5 clarifying questions
+            const commentStart = code.indexOf("/*", code.indexOf("Your clarifying questions"));
+            const commentEnd = code.indexOf("*/", commentStart);
+            
+            if (commentStart === -1 || commentEnd === -1) {
+              return {
+                passed: false,
+                messages: ["Could not find clarifying questions section"]
+              };
+            }
+            
+            const questionsComment = code.substring(commentStart + 2, commentEnd);
+            const questionLines = questionsComment.split('\n')
+              .filter(line => line.trim().match(/^\d+\./)); // Lines starting with a number and period
+            
+            return {
+              passed: questionLines.length >= 5,
+              messages: [
+                `Found ${questionLines.length} clarifying questions`,
+                questionLines.length >= 5 ?
+                  "Good job asking sufficient clarifying questions!" :
+                  "You need to ask at least 5 clarifying questions"
+              ]
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error analyzing clarifying questions: ${error.message}`]
+            };
+          }
+        },
+        message: "You should include at least 5 relevant clarifying questions about the problem."
+      },
+      {
+        name: "Thinking Aloud Script",
+        test: function(code) {
+          try {
+            // Check if the code contains a thinking aloud script
+            const commentStart = code.indexOf("/*", code.indexOf("Your \"thinking aloud\" script"));
+            const commentEnd = code.indexOf("*/", commentStart);
+            
+            if (commentStart === -1 || commentEnd === -1) {
+              return {
+                passed: false,
+                messages: ["Could not find thinking aloud script section"]
+              };
+            }
+            
+            const thinkingScript = code.substring(commentStart + 2, commentEnd);
+            const wordCount = thinkingScript.split(/\s+/).filter(word => word.trim().length > 0).length;
+            
+            // Check for key elements in the thinking process
+            const mentionsApproach = thinkingScript.includes("approach");
+            const mentionsComplexity = thinkingScript.includes("complexity") ||
+                                      thinkingScript.includes("O(") ||
+                                      thinkingScript.includes("time") && thinkingScript.includes("space");
+            const mentionsAlgorithm = thinkingScript.includes("algorithm") ||
+                                     thinkingScript.includes("pointer") ||
+                                     thinkingScript.includes("merge");
+            
+            return {
+              passed: wordCount >= 50 && mentionsApproach && (mentionsComplexity || mentionsAlgorithm),
+              messages: [
+                `Thinking aloud script has ${wordCount} words`,
+                mentionsApproach ? "Discusses approach" : "Does not discuss approach",
+                mentionsComplexity ? "Discusses complexity" : "Does not discuss complexity",
+                mentionsAlgorithm ? "Discusses algorithm details" : "Does not discuss algorithm details"
+              ]
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error analyzing thinking aloud script: ${error.message}`]
+            };
+          }
+        },
+        message: "Your thinking aloud script should demonstrate your problem-solving process, including approach consideration, complexity analysis, and algorithm details."
+      },
+      {
+        name: "Implementation Correctness",
+        test: function(code) {
+          try {
+            // Extract the implementation
+            const functionStart = code.indexOf("function mergeSortedArrays");
+            const functionEnd = code.indexOf("// Test cases", functionStart);
+            
+            if (functionStart === -1) {
+              return {
+                passed: false,
+                messages: ["Could not find mergeSortedArrays function"]
+              };
+            }
+            
+            const functionCode = code.substring(
+              functionStart,
+              functionEnd !== -1 ? functionEnd : undefined
+            );
+            
+            const mergeSortedArrays = new Function(
+              functionCode + '; return mergeSortedArrays;'
+            )();
+            
+            // Test cases
+            const testCases = [
+              {
+                arr1: [1, 3, 5],
+                arr2: [2, 4, 6],
+                expected: [1, 2, 3, 4, 5, 6]
+              },
+              {
+                arr1: [],
+                arr2: [1, 2, 3],
+                expected: [1, 2, 3]
+              },
+              {
+                arr1: [1, 1, 3, 5],
+                arr2: [1, 2, 3, 4],
+                expected: [1, 1, 1, 2, 3, 3, 4, 5]
+              },
+              {
+                arr1: [],
+                arr2: [],
+                expected: []
+              }
+            ];
+            
+            const results = testCases.map(tc => {
+              const result = mergeSortedArrays(tc.arr1, tc.arr2);
+              const isCorrect = JSON.stringify(result) === JSON.stringify(tc.expected);
+              return {
+                passed: isCorrect,
+                message: isCorrect ?
+                  `Correctly merged ${JSON.stringify(tc.arr1)} and ${JSON.stringify(tc.arr2)}` :
+                  `Failed to merge ${JSON.stringify(tc.arr1)} and ${JSON.stringify(tc.arr2)}. Expected ${JSON.stringify(tc.expected)}, got ${JSON.stringify(result)}`
+              };
+            });
+            
+            const allPassed = results.every(r => r.passed);
+            
+            return {
+              passed: allPassed,
+              messages: results.map(r => r.message)
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error testing implementation: ${error.message}`]
+            };
+          }
+        },
+        message: "Your implementation should correctly merge two sorted arrays into one sorted array."
+      }
+    ],
+    hints: [
+      "Think about what information you would need to know to implement the solution correctly",
+      "Consider edge cases like empty arrays or arrays with duplicate values",
+      "The most efficient solution takes advantage of the fact that the input arrays are already sorted"
+    ],
+    solution_explanation: `
 This exercise demonstrates how to approach a problem by first clarifying requirements and then thinking aloud through your solution process.
 
 The clarifying questions cover important aspects:
@@ -270,5 +425,6 @@ The implementation uses the two-pointer technique, which is optimal for this pro
 - The solution correctly handles all the test cases, including empty arrays and duplicates
 
 This approach demonstrates both technical competence and strong communication skills, which are equally important in interview settings.
-  `
+    `
+  }
 };

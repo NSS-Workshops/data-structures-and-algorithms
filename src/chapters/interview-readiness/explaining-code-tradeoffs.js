@@ -1,11 +1,10 @@
-/**
- * Chapter: Explaining Code and Tradeoffs
- * This chapter focuses on techniques for clearly communicating your solution
- * and its tradeoffs during technical interviews.
- */
-
-export const content = `
-# Explaining Code and Tradeoffs
+export const explainingCodeTradeoffsChapter = {
+  id: 'explaining-code-tradeoffs',
+  title: 'Explaining Code and Tradeoffs',
+  sectionId: 'interview-readiness',
+  previousChapterId: 'solving-problems-end-to-end',
+  nextChapterId: 'thinking-aloud',
+  content: `# Explaining Code and Tradeoffs
 
 One of the most important skills in technical interviews is the ability to clearly explain your code and articulate the tradeoffs of your chosen approach. This chapter will help you develop effective communication strategies for discussing your solutions.
 
@@ -96,11 +95,9 @@ The main tradeoff is that we're using additional space to gain better time compl
 1. **Record yourself** explaining solutions to practice problems
 2. **Ask for feedback** from peers or mentors on your explanations
 3. **Study how others** explain their code (in technical blogs, videos, etc.)
-4. **Create a tradeoff cheat sheet** for common algorithms and data structures
-`;
-
-export const exercise = {
-  question: `
+4. **Create a tradeoff cheat sheet** for common algorithms and data structures`,
+  exercise: {
+    question: `
 # Exercise: Explaining Code and Tradeoffs
 
 Below is a solution to the following problem:
@@ -125,8 +122,8 @@ Your task is to:
 4. Justify which approach you would choose in different scenarios
 
 Write your explanation in a clear, structured manner that demonstrates your ability to communicate technical concepts effectively.
-  `,
-  starter_code: `
+    `,
+    starterCode: `
 // You can use this space to implement alternative approaches
 // to the palindrome problem if you'd like to demonstrate them
 
@@ -154,8 +151,8 @@ Tradeoffs:
 
 My recommendation:
 */
-  `,
-  solution_code: `
+    `,
+    solution: `
 // Alternative Approach 1: Two-pointer technique
 function isPalindromeAlt1(s) {
   // Remove non-alphanumeric characters and convert to lowercase
@@ -262,13 +259,104 @@ However, if memory efficiency is a critical concern (e.g., for very large string
 
 For production code in a modern application, I might actually use the original approach if readability and maintainability are prioritized over minor performance optimizations, as the difference would be negligible for typical string lengths.
 */
-  `,
-  hints: [
-    "Consider how the solution handles edge cases like empty strings or strings with only non-alphanumeric characters",
-    "Think about the time and space complexity tradeoffs in the current implementation",
-    "Consider approaches that might avoid creating new strings or that could return early"
-  ],
-  solution_explanation: `
+    `,
+    tests: [
+      {
+        name: "Explanation Completeness",
+        test: function(code) {
+          try {
+            // Check if the code contains an explanation with key sections
+            const hasExplanation = code.includes("Explanation of the original solution");
+            const hasAlternatives = code.includes("Alternative approaches");
+            const hasTradeoffs = code.includes("Tradeoffs");
+            const hasRecommendation = code.includes("My recommendation");
+            
+            // Check if there's at least one alternative implementation
+            const hasAltImplementation = code.includes("function isPalindromeAlt");
+            
+            return {
+              passed: hasExplanation && hasAlternatives && hasTradeoffs &&
+                      hasRecommendation && hasAltImplementation,
+              messages: [
+                hasExplanation ? "Includes explanation of original solution" : "Missing explanation of original solution",
+                hasAlternatives ? "Includes alternative approaches" : "Missing alternative approaches",
+                hasTradeoffs ? "Includes tradeoffs analysis" : "Missing tradeoffs analysis",
+                hasRecommendation ? "Includes recommendation" : "Missing recommendation",
+                hasAltImplementation ? "Includes alternative implementation" : "Missing alternative implementation"
+              ]
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error analyzing explanation: ${error.message}`]
+            };
+          }
+        },
+        message: "Your explanation should cover the original solution, alternative approaches, tradeoffs, and include a recommendation."
+      },
+      {
+        name: "Alternative Implementation Correctness",
+        test: function(code) {
+          try {
+            // Extract the alternative implementation if it exists
+            let altFunction = null;
+            if (code.includes("function isPalindromeAlt1")) {
+              // Create a function from the code
+              const functionCode = code.substring(
+                code.indexOf("function isPalindromeAlt1"),
+                code.indexOf("function isPalindromeAlt2") || code.indexOf("/*")
+              );
+              
+              altFunction = new Function(
+                functionCode + '; return isPalindromeAlt1;'
+              )();
+            }
+            
+            if (!altFunction) {
+              return {
+                passed: false,
+                messages: ["Could not find or extract isPalindromeAlt1 function"]
+              };
+            }
+            
+            // Test the function with various inputs
+            const testCases = [
+              { input: "A man, a plan, a canal: Panama", expected: true },
+              { input: "race a car", expected: false },
+              { input: " ", expected: true },
+              { input: "No 'x' in Nixon", expected: true }
+            ];
+            
+            const results = testCases.map(tc => {
+              const result = altFunction(tc.input);
+              return {
+                passed: result === tc.expected,
+                message: `Input: "${tc.input}" - Expected: ${tc.expected}, Got: ${result}`
+              };
+            });
+            
+            const allPassed = results.every(r => r.passed);
+            
+            return {
+              passed: allPassed,
+              messages: results.map(r => r.message)
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error testing alternative implementation: ${error.message}`]
+            };
+          }
+        },
+        message: "Your alternative implementation should correctly determine if a string is a palindrome."
+      }
+    ],
+    hints: [
+      "Consider how the solution handles edge cases like empty strings or strings with only non-alphanumeric characters",
+      "Think about the time and space complexity tradeoffs in the current implementation",
+      "Consider approaches that might avoid creating new strings or that could return early"
+    ],
+    solution_explanation: `
 The exercise demonstrates three different approaches to solving the palindrome problem, each with different tradeoffs:
 
 1. **Original solution**: Uses string manipulation and built-in methods for a clean, readable solution but creates multiple new strings.
@@ -284,5 +372,6 @@ The key learning points are:
 - The importance of considering both technical efficiency and code readability
 
 A strong response demonstrates not just technical knowledge but the ability to communicate complex ideas clearly and make reasoned engineering decisions.
-  `
+    `
+  }
 };

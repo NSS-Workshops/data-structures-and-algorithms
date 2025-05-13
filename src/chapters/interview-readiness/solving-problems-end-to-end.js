@@ -1,11 +1,10 @@
-/**
- * Chapter: Solving Problems End-to-End
- * This chapter focuses on techniques for approaching and solving technical problems
- * under constraints during interviews.
- */
-
-export const content = `
-# Solving Problems End-to-End Under Constraints
+export const solvingProblemsEndToEndChapter = {
+  id: 'solving-problems-end-to-end',
+  title: 'Solving Problems End-to-End',
+  sectionId: 'interview-readiness',
+  previousChapterId: null,
+  nextChapterId: 'explaining-code-tradeoffs',
+  content: `# Solving Problems End-to-End Under Constraints
 
 In technical interviews, you'll often be asked to solve problems with specific constraints, such as time limits, space complexity requirements, or restricted use of certain data structures or algorithms. This chapter will help you develop strategies for tackling these challenges effectively.
 
@@ -61,11 +60,9 @@ In technical interviews, you'll often be asked to solve problems with specific c
 3. **Simulate constraints**: Practice with artificial constraints (e.g., no hash maps, O(1) space)
 4. **Review and reflect**: After solving a problem, consider alternative approaches
 
-Remember, the goal is not just to solve the problem, but to demonstrate your problem-solving process and ability to work effectively under constraints.
-`;
-
-export const exercise = {
-  question: `
+Remember, the goal is not just to solve the problem, but to demonstrate your problem-solving process and ability to work effectively under constraints.`,
+  exercise: {
+    question: `
 # Exercise: Solving a Problem End-to-End
 
 You are given an array of integers and a target sum. Write a function that finds all unique pairs of integers in the array that sum up to the target value.
@@ -82,8 +79,8 @@ Follow the end-to-end problem-solving process:
 2. Develop a plan, considering the constraints
 3. Implement your solution
 4. Test your solution with various test cases
-  `,
-  starter_code: `
+    `,
+    starterCode: `
 function findPairsWithSum(arr, targetSum) {
   // Your solution here
 }
@@ -93,8 +90,8 @@ console.log(findPairsWithSum([1, 5, 3, 7, 2, 4, 9], 10));
 console.log(findPairsWithSum([1, 1, 2, 3, 4, 5], 6));
 console.log(findPairsWithSum([], 10));
 console.log(findPairsWithSum([5, 5, 5, 5], 10));
-  `,
-  solution_code: `
+    `,
+    solution: `
 function findPairsWithSum(arr, targetSum) {
   const seen = new Set();
   const result = [];
@@ -127,13 +124,95 @@ console.log(findPairsWithSum([1, 5, 3, 7, 2, 4, 9], 10));
 console.log(findPairsWithSum([1, 1, 2, 3, 4, 5], 6));
 console.log(findPairsWithSum([], 10));
 console.log(findPairsWithSum([5, 5, 5, 5], 10));
-  `,
-  hints: [
-    "Consider using a hash set to keep track of numbers you've seen so far",
-    "Think about how to handle duplicate pairs in your result",
-    "Remember to check if (target - current number) exists in your set"
-  ],
-  solution_explanation: `
+    `,
+    tests: [
+      {
+        name: "Finds pairs that sum to target",
+        test: function(code) {
+          try {
+            // Create a function from the code
+            const findPairsWithSum = new Function(
+              code + '; return findPairsWithSum;'
+            )();
+            
+            // Test with a standard case
+            const result = findPairsWithSum([1, 5, 3, 7, 2, 4, 9], 10);
+            
+            // Check if result contains all expected pairs
+            const expectedPairs = [[1, 9], [3, 7], [5, 5]];
+            const hasAllPairs = expectedPairs.every(pair =>
+              result.some(resPair =>
+                (resPair[0] === pair[0] && resPair[1] === pair[1]) ||
+                (resPair[0] === pair[1] && resPair[1] === pair[0])
+              )
+            );
+            
+            return {
+              passed: hasAllPairs && result.length === 3,
+              messages: hasAllPairs ? ["Found all expected pairs"] : ["Missing some expected pairs"]
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error executing code: ${error.message}`]
+            };
+          }
+        },
+        message: "Your function should find all pairs that sum to the target value."
+      },
+      {
+        name: "Handles empty arrays",
+        test: function(code) {
+          try {
+            const findPairsWithSum = new Function(
+              code + '; return findPairsWithSum;'
+            )();
+            
+            const result = findPairsWithSum([], 10);
+            
+            return {
+              passed: Array.isArray(result) && result.length === 0,
+              messages: ["Correctly returns empty array for empty input"]
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error executing code: ${error.message}`]
+            };
+          }
+        },
+        message: "Your function should return an empty array when the input array is empty."
+      },
+      {
+        name: "Handles duplicate values",
+        test: function(code) {
+          try {
+            const findPairsWithSum = new Function(
+              code + '; return findPairsWithSum;'
+            )();
+            
+            const result = findPairsWithSum([5, 5, 5, 5], 10);
+            
+            return {
+              passed: Array.isArray(result) && result.length === 1,
+              messages: ["Correctly handles duplicate values"]
+            };
+          } catch (error) {
+            return {
+              passed: false,
+              messages: [`Error executing code: ${error.message}`]
+            };
+          }
+        },
+        message: "Your function should handle duplicate values appropriately."
+      }
+    ],
+    hints: [
+      "Consider using a hash set to keep track of numbers you've seen so far",
+      "Think about how to handle duplicate pairs in your result",
+      "Remember to check if (target - current number) exists in your set"
+    ],
+    solution_explanation: `
 This solution uses a hash set approach to achieve O(n) time complexity:
 
 1. We iterate through the array once, which gives us O(n) time complexity
@@ -143,5 +222,6 @@ This solution uses a hash set approach to achieve O(n) time complexity:
 5. The space complexity is O(n) for storing the sets and result array
 
 This approach efficiently finds all unique pairs that sum to the target value while meeting the constraints.
-  `
+    `
+  }
 };

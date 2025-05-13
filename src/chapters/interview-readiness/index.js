@@ -1,53 +1,50 @@
-/**
- * Interview Readiness chapters
- * This section focuses on preparing for technical interviews with practice problems,
- * mock interviews, and strategies for effective communication.
- */
+import { solvingProblemsEndToEndChapter } from './solving-problems-end-to-end';
+import { explainingCodeTradeoffsChapter } from './explaining-code-tradeoffs';
+import { thinkingAloudChapter } from './thinking-aloud';
+import { cleanSolutionsChapter } from './clean-solutions';
+import { glossaryChapter } from './glossary';
 
 export const interviewReadinessChapters = [
-  {
-    id: "solving-problems-end-to-end",
-    title: "Solving Problems End-to-End",
-    sectionId: "interview-readiness",
-    description: "Learn how to approach and solve technical problems under constraints",
-    previousChapterId: null,
-    nextChapterId: "explaining-code-tradeoffs",
-    content: () => import("./solving-problems-end-to-end.js"),
-  },
-  {
-    id: "explaining-code-tradeoffs",
-    title: "Explaining Code and Tradeoffs",
-    sectionId: "interview-readiness",
-    description: "Techniques for clearly communicating your solution and its tradeoffs",
-    previousChapterId: "solving-problems-end-to-end",
-    nextChapterId: "thinking-aloud",
-    content: () => import("./explaining-code-tradeoffs.js"),
-  },
-  {
-    id: "thinking-aloud",
-    title: "Thinking Aloud and Clarifying Requirements",
-    sectionId: "interview-readiness",
-    description: "Strategies for verbalizing your thought process and asking clarifying questions",
-    previousChapterId: "explaining-code-tradeoffs",
-    nextChapterId: "clean-solutions",
-    content: () => import("./thinking-aloud.js"),
-  },
-  {
-    id: "clean-solutions",
-    title: "Clean, Testable, Efficient Solutions",
-    sectionId: "interview-readiness",
-    description: "Writing code that is clean, testable, and optimized for performance",
-    previousChapterId: "thinking-aloud",
-    nextChapterId: "interview-readiness-glossary",
-    content: () => import("./clean-solutions.js"),
-  },
-  {
-    id: "interview-readiness-glossary",
-    title: "Glossary: Interview Readiness",
-    sectionId: "interview-readiness",
-    description: "Key terms and concepts for technical interviews",
-    previousChapterId: "clean-solutions",
-    nextChapterId: null,
-    content: () => import("./glossary.js"),
-  }
+  solvingProblemsEndToEndChapter,
+  explainingCodeTradeoffsChapter,
+  thinkingAloudChapter,
+  cleanSolutionsChapter,
+  glossaryChapter
 ];
+
+/**
+ * Get a chapter by its ID
+ * @param {string} id - The chapter ID to find
+ * @returns {Object|undefined} The chapter object if found, undefined otherwise
+ */
+export const getChapterById = (id) => {
+  return interviewReadinessChapters.find(chapter => chapter.id === id);
+};
+
+/**
+ * Get all chapter IDs for the interview readiness section
+ * @returns {string[]} Array of chapter IDs
+ */
+export const getChapterIds = () => {
+  return interviewReadinessChapters.map(chapter => chapter.id);
+};
+
+/**
+ * Get the next chapter after the given chapter ID
+ * @param {string} currentChapterId - The current chapter ID
+ * @returns {Object|undefined} The next chapter object if found, undefined otherwise
+ */
+export const getNextChapter = (currentChapterId) => {
+  const currentIndex = interviewReadinessChapters.findIndex(chapter => chapter.id === currentChapterId);
+  return interviewReadinessChapters[currentIndex + 1];
+};
+
+/**
+ * Get the previous chapter before the given chapter ID
+ * @param {string} currentChapterId - The current chapter ID
+ * @returns {Object|undefined} The previous chapter object if found, undefined otherwise
+ */
+export const getPreviousChapter = (currentChapterId) => {
+  const currentIndex = interviewReadinessChapters.findIndex(chapter => chapter.id === currentChapterId);
+  return currentIndex > 0 ? interviewReadinessChapters[currentIndex - 1] : undefined;
+};

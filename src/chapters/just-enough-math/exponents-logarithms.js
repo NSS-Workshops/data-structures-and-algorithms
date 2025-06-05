@@ -4,7 +4,6 @@ import image3 from "./images/logarithms/image3.png";
 import image4 from "./images/logarithms/image4.png";
 import image5 from "./images/logarithms/image5.png";
 
-
 export const exponentsLogarithmsChapter = {
   id: 'exponents-logarithms',
   title: 'Exponents and Logarithms',

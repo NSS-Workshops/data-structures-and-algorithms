@@ -222,22 +222,6 @@ Because GitHub Pages only serves static files, the application uses:
 3. A custom 404.html page to handle direct navigation to routes
 4. Environment variables injected at build time
 
-## OAuth Authentication
-
-This application uses GitHub OAuth for authentication, allowing users to sign in with their GitHub accounts. This provides a seamless authentication experience and enables tracking progress across sessions.
-
-### OAuth Flow Overview
-
-The GitHub OAuth flow works as follows:
-
-1. **User initiates login**: Clicks the "Sign in with GitHub" button
-2. **Redirect to GitHub**: User is redirected to GitHub's authorization page
-3. **User authorizes the app**: Grants permission to the application
-4. **GitHub redirects back**: Returns to the application with an authorization code
-5. **Code exchange**: The application exchanges the code for an access token via proxy server
-6. **Fetch user data**: The token is used to retrieve the user's GitHub profile
-7. **Session created**: User is authenticated in the application
-
 ### Implementation Components
 
 #### 1. Client-Side Authentication Context
@@ -322,13 +306,6 @@ This architecture separates sensitive credentials from the client-side code whil
 
 ## Local Development
 
-### Local OAuth CORS Proxy
-
-1. Clone the [auth-proxy](https://github.com/stevebrownlee/authproxy) repo into its own directory.
-2. Run `npm install`.
-3. Follow the instruction in that README to set up the local `.env` file with the Github OAuth app info and port number _(e.g. 3003)_. Allow origin will be the local domain of the client app.
-4. Run `npm run start` to start the simple CORS Proxy.
-
 ### DSA Course
 
 To set up the project for local development:
@@ -356,12 +333,6 @@ To set up the project for local development:
    npm run dev
    ```
 
-5. **Start the auth proxy server** (in a separate terminal):
-   ```bash
-   cd path/to/auth-proxy
-   npm install
-   npm start
-   ```
 
 The application will be available at http://localhost:5173/data-structures-and-algorithms/
 

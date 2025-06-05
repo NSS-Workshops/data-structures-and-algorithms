@@ -4,70 +4,77 @@
  */
 
 export const sections = [
-  // Section 1: Algorithmic Thinking
+  // Section 1: Just Enough Math
+  {
+    id: "just-enough-math",
+    title: "Just Enough Math",
+    description: "Essential mathematical concepts for understanding algorithms and data structures",
+    required: true
+  },
+  // Section 2: Algorithmic Thinking
   {
     id: "algorithmic-thinking",
     title: "Algorithmic Thinking",
     description: "Understanding algorithms, data structures, and problem-solving approaches",
     required: true
   },
-  // Section 2: Arrays and Two Pointers
+  // Section 3: Arrays and Two Pointers
   {
     id: "arrays-and-two-pointers",
     title: "Arrays and Two Pointers",
     description: "Learn about array operations, methods, and the two-pointer technique",
     required: true
   },
-  // Section 3: 2D Arrays
+  // Section 4: 2D Arrays
   {
     id: "2d-arrays",
     title: "2D Arrays",
     description: "Working with multi-dimensional arrays and grid-based problems",
     required: true
   },
-  // Section 4: Linked Lists
+  // Section 5: Linked Lists
   {
     id: "linked-lists",
     title: "Linked Lists",
     description: "Understanding node-based data structures and traversal techniques",
     required: true
   },
-  // Section 5: Stacks and Queues
+  // Section 6: Stacks and Queues
   {
     id: "stacks-queues",
     title: "Stacks and Queues",
     description: "Implementing and using LIFO and FIFO data structures",
     required: true
   },
-  // Section 6: Maps and Sets
+  // Section 7: Maps and Sets
   {
     id: "maps-and-sets",
     title: "Maps and Sets",
     description: "Using key-value pairs and unique collections for efficient lookups",
     required: true
   },
-  // Section 7: Sliding Window
+  // Section 8: Sliding Window
   {
     id: "sliding-window",
     title: "Sliding Window",
     description: "Optimizing operations on subarrays and substrings",
     required: true
   },
-  // Section 8: Sorting and Binary Search
+  // Section 9: Sorting and Binary Search
   {
     id: "sorting-and-binary-search",
     title: "Sorting and Binary Search",
     description: "Efficient searching and sorting algorithms and techniques",
     required: true
   },
-  // Section 9: Combining Patterns
+  // Section 10: Combining Patterns
   {
     id: "combining-patterns",
     title: "Combining Patterns",
     description: "Recognizing and applying multiple algorithmic patterns to solve complex problems",
     required: true
   },
-  // Section 10: Interview Readiness
+  // Section 11: Interview Readiness
   {
     id: "interview-readiness",
     title: "Interview Readiness a Recap",

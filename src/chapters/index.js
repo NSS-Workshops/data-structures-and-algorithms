@@ -1,3 +1,4 @@
+import { justEnoughMathChapters } from './just-enough-math';
 import { algorithmicThinkingChapters } from './algorithmic-thinking';
 import { arraysAndTwoPointersChapters } from './arrays-and-two-pointers';
 import { twoDArraysChapters } from './2d-arrays';
@@ -10,6 +11,7 @@ import { combiningPatternsChapters } from './combining-patterns';
 import { interviewReadinessChapters } from './interview-readiness';
 
 export const chapters = [
+  ...justEnoughMathChapters,
   ...algorithmicThinkingChapters,
   ...arraysAndTwoPointersChapters,
   ...twoDArraysChapters,

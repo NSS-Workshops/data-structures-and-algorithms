@@ -1,9 +1,8 @@
-import image1 from "./images/logs/image1.png";
-import image2 from "./images/logs/image2.png";
-import image3 from "./images/logs/image3.png";
-import image4 from "./images/logs/image4.png";
-import image5 from "./images/logs/image5.png";
-
+import image1 from "./images/logarithms/image1.png";
+import image2 from "./images/logarithms/image2.png";
+import image3 from "./images/logarithms/image3.png";
+import image4 from "./images/logarithms/image4.png";
+import image5 from "./images/logarithms/image5.png";
 
 export const exponentsLogarithmsChapter = {
   id: 'exponents-logarithms',

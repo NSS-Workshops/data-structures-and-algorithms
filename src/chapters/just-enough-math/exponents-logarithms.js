@@ -61,10 +61,10 @@ Exponents work according to a similar rule. Instead of adding a number repeatedl
 **exponent** - a number written over another one indicating how many times the second number is multiplied by itself.  
 *Example: 2² = 2 x 2 = 4*
 
-In Java, we often use variables to stand in for values that can change. For example:
+In JavaScript, we often use variables to stand in for values that can change. For example:
 
-\`\`\`java
-System.out.println(x + y - z);
+\`\`\`javascript
+console.log(x + y - z);
 \`\`\`
 
 We also use variables in math. Consider:

@@ -1,12 +1,12 @@
 import { polynomialsChapter } from './polynomials';
 import { exponentsLogarithmsChapter } from './exponents-logarithms';
-import { mathematicalFoundationsChapter } from './mathematical-foundations';
+import { combinationsPermutationsChapter } from './combinations-permutations';
 import { glossaryChapter } from './glossary';
 
 export const justEnoughMathChapters = [
   polynomialsChapter,
   exponentsLogarithmsChapter,
-  mathematicalFoundationsChapter,
+  combinationsPermutationsChapter,
   glossaryChapter
 ];
 

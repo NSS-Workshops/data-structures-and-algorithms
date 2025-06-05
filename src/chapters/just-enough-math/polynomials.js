@@ -66,10 +66,10 @@ Let's look at another polynomial and identify its key parts:
 
 In this example, the variable is x. We call x a variable because it varies, meaning its value is not a specific number but, instead, we use it to represent some numeric value. Any letter can represent a variable, though the most common are x, y, and z. Next, the plus sign + is an operator; it operates on 2x and 5 by adding them together. Don't forget your order of operations: multiplication comes first in expressions, so 2x + 5 tells us to multiply 2 by x first, and then add 5 to the result. If x is equal to 5, the polynomial evaluates to 2 × 5 + 5 = 10 + 5 = 15.
 
-If the terms variable and operator seem familiar, it may be because Java also has variables and operations. For example, the following Java code prints the result of an expression containing one variable (y) and one operation (subtraction):
+If the terms variable and operator seem familiar, it may be because JavaScript also has variables and operations. For example, the following JavaScript code prints the result of an expression containing one variable (y) and one operation (subtraction):
 
-\`\`\`java
-System.out.println(y - 20);
+\`\`\`javascript
+console.log(y - 20);
 \`\`\`
 
 The other two components of 2x + 5 are the numbers 2 and 5. We call these numbers coefficients when they are a part of a polynomial. The combination of a coefficient and a variable is called a term. A coefficient without a variable attached to it is also a term. In the polynomial above, there are two terms: 2x and 5.
@@ -98,7 +98,9 @@ If we return to our carpet example, we see that the polynomial to describe the n
 c = 4r
 \`\`\`
 
-A polynomial equation provides a concise way to write how values change in relation to one another. In software engineering, the most common relationship we describe is the relationship between an input size and the number of steps it takes to complete a task.
+A polynomial equation provides a concise way to write how values change in relation to one another. 
+
+**In software engineering, the most common relationship we describe is the relationship between an input size and the number of steps it takes to complete a task.**
 
 For example, imagine you are writing a program that displays the name, address, and userID for each account in an array. So, there are three pieces of information that you'll need to output for every user: name, address, and userID. If you have five users, you must output15 pieces of information in total (three pieces of information for each user). This takes 15 steps. If we let s represent the number of steps, the polynomial equation that describes this relationship is:
 

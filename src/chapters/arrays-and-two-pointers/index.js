@@ -1,3 +1,4 @@
+import { arraysAndTwoPointersLearningObjectivesChapter } from './learning-objectives';
 import { arraysIntroChapter } from './arrays-intro';
 import { arrayCoreOperationsChapter } from './array-core-operations';
 import { arrayTradeoffsChapter } from './array-tradeoffs';
@@ -6,6 +7,7 @@ import { twoPointersChapter } from './two-pointers';
 import { glossaryChapter } from './glossary';
 
 export const arraysAndTwoPointersChapters = [
+  arraysAndTwoPointersLearningObjectivesChapter,
   arraysIntroChapter,
   arrayCoreOperationsChapter,
   arrayTradeoffsChapter,

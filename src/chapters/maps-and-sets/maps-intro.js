@@ -2,7 +2,7 @@ export const mapsIntroChapter = {
   id: 'maps-intro',
   title: 'Introduction to Maps',
   sectionId: 'maps-and-sets',
-  previousChapterId: null,
+  previousChapterId: 'maps-sets-learning-objectives',
   content: `## Introduction to Maps
 
 A Map is a collection of key-value pairs where each key is unique. Maps provide an efficient way to store and retrieve data based on keys, making them essential for many programming tasks.

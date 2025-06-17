@@ -4,6 +4,13 @@
  */
 
 export const sections = [
+  // Section 0: Introduction
+  {
+    id: "introduction",
+    title: "Introduction",
+    description: "Introduction to the course on algorithms and data structures",
+    required: true
+  },
   // Section 1: Just Enough Math
   {
     id: "just-enough-math",
@@ -79,6 +86,13 @@ export const sections = [
     id: "interview-readiness",
     title: "Interview Readiness a Recap",
     description: "Preparing for technical interviews with mock interviews, problem-solving under constraints, and effective communication of solutions and tradeoffs",
+    required: true
+  },
+  // Section 12: Conclusion
+  {
+    id: "conclusion",
+    title: "Conclusion",
+    description: "Further study resources and a summary of all we learned.",
     required: true
   }
 ];

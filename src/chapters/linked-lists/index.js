@@ -1,3 +1,4 @@
+import { linkedListsLearningObjectivesChapter } from './learning-objectives';
 import { linkedListsIntroChapter } from './linked-lists-intro';
 import { linkedListTypesChapter } from './linked-list-types';
 import { linkedListTradeoffsChapter } from './linked-list-tradeoffs';
@@ -6,6 +7,7 @@ import { implementLinkedListChapter } from './implement-linked-list';
 import { glossaryChapter } from './glossary';
 
 export const linkedListsChapters = [
+  linkedListsLearningObjectivesChapter,
   linkedListsIntroChapter,
   linkedListTypesChapter,
   linkedListTradeoffsChapter,

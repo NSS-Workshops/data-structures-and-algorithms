@@ -1,3 +1,4 @@
+import { algorithmicThinkingLearningObjectivesChapter } from './learning-objectives';
 import { whatIsAlgorithmChapter } from './what-is-algorithm';
 import { whatIsDataStructureChapter } from './what-is-data-structure';
 import { problemSolvingProcessChapter } from './problem-solving-process';
@@ -6,6 +7,7 @@ import { comparingComplexitiesChapter } from './comparing-complexities';
 import { glossaryChapter } from './glossary';
 
 export const algorithmicThinkingChapters = [
+  algorithmicThinkingLearningObjectivesChapter,
   whatIsAlgorithmChapter,
   whatIsDataStructureChapter,
   problemSolvingProcessChapter,

@@ -1,3 +1,4 @@
+import { slidingWindowLearningObjectivesChapter } from './learning-objectives';
 import { slidingWindowIntroChapter } from './sliding-window-intro';
 import { optimizingNestedLoopsChapter } from './optimizing-nested-loops';
 import { maintainingWindowStateChapter } from './maintaining-window-state';
@@ -5,6 +6,7 @@ import { subarraysSubstringsChapter } from './subarrays-substrings';
 import { glossaryChapter } from './glossary';
 
 export const slidingWindowChapters = [
+  slidingWindowLearningObjectivesChapter,
   slidingWindowIntroChapter,
   optimizingNestedLoopsChapter,
   maintainingWindowStateChapter,

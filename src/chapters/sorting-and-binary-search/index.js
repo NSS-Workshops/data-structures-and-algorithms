@@ -1,3 +1,4 @@
+import { sortingAndBinarySearchLearningObjectivesChapter } from './learning-objectives';
 import { sortingApproachesChapter } from './sorting-approaches';
 import { sortMethodChapter } from './sort-method';
 import { binarySearchFundamentalsChapter } from './binary-search-fundamentals';
@@ -5,6 +6,7 @@ import { binarySearchVariantsChapter } from './binary-search-variants';
 import { glossaryChapter } from './glossary';
 
 export const sortingAndBinarySearchChapters = [
+  sortingAndBinarySearchLearningObjectivesChapter,
   sortingApproachesChapter,
   sortMethodChapter,
   binarySearchFundamentalsChapter,

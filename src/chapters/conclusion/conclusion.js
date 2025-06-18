@@ -65,7 +65,6 @@ Now that you have a strong foundation, consider diving deeper into:
 - **Heaps and Priority Queues** for efficient min/max operations
 - **Graphs and Graph Algorithms** (BFS, DFS, Dijkstra's, A*)
 - **Tries** for string processing and autocomplete features
-- **Segment Trees and Fenwick Trees** for range queries
 
 #### Advanced Algorithms
 - **Dynamic Programming** for optimization problems
@@ -74,27 +73,15 @@ Now that you have a strong foundation, consider diving deeper into:
 - **Divide and Conquer** strategies
 - **String Algorithms** (KMP, Rabin-Karp, suffix arrays)
 
-#### Specialized Areas
-- **Computational Geometry** for spatial problems
-- **Number Theory** for mathematical programming challenges
-- **Game Theory** for competitive programming
-- **Parallel and Distributed Algorithms**
-- **Machine Learning Algorithms**
-
 ## 📚 Recommended Resources
 
 ### Books
-- **"Introduction to Algorithms" by Cormen, Leiserson, Rivest, and Stein** - The definitive algorithms textbook
-- **"Algorithm Design Manual" by Steven Skiena** - Practical approach with real-world examples
 - **"Cracking the Coding Interview" by Gayle McDowell** - Interview-focused practice
-- **"Elements of Programming Interviews" by Aziz, Lee, and Prakash** - Advanced interview preparation
 
 ### Online Platforms
+- **BigFrontend**- A platform to practice your Front-End development skills, prepare your Front-End job interviews. 
 - **LeetCode** - Extensive problem collection with company-specific questions
 - **HackerRank** - Structured learning paths and competitions
-- **CodeSignal** - Interview practice and skill assessment
-- **AtCoder** - High-quality competitive programming problems
-- **Codeforces** - Advanced competitive programming platform
 
 ### Video Resources
 - **MIT OpenCourseWare** - Introduction to Algorithms course
@@ -105,43 +92,8 @@ Now that you have a strong foundation, consider diving deeper into:
 - **Daily Coding Problem** - One problem delivered to your inbox daily
 - **Advent of Code** - Annual programming challenge in December
 - **Google Code Jam** - Annual programming competition
-- **TopCoder** - Competitive programming platform
 
 ## 🎯 Maintaining Your Skills
-
-### Weekly Practice Schedule
-- **Monday**: Review a previous concept (15-20 minutes)
-- **Wednesday**: Solve 1-2 medium difficulty problems (30-45 minutes)
-- **Friday**: Tackle 1 challenging problem or learn something new (45-60 minutes)
-- **Weekend**: Work on a small project or explore advanced topics (1-2 hours)
-
-### Monthly Goals
-- **Week 1**: Focus on a specific data structure
-- **Week 2**: Practice a particular algorithmic pattern
-- **Week 3**: Solve problems from a specific company or domain
-- **Week 4**: Review and reinforce weaker areas
-
-## 💡 Key Principles to Remember
-
-As you continue your journey, keep these fundamental principles in mind:
-
-1. **Understand Before Memorizing** - Focus on the "why" behind each concept
-2. **Practice Consistently** - Regular practice is more valuable than intensive cramming
-3. **Learn from Mistakes** - Each wrong answer is a learning opportunity
-4. **Think in Patterns** - Look for similarities between different problems
-5. **Optimize Gradually** - Get a working solution first, then optimize
-6. **Communicate Clearly** - Practice explaining your thought process
-7. **Stay Curious** - Always ask "What if?" and "Why does this work?"
-
-## 🌟 Final Thoughts
-
-Data structures and algorithms are not just academic concepts—they're powerful tools that will make you a better programmer and problem solver. The patterns you've learned will help you:
-
-- **Write more efficient code** in your daily work
-- **Debug problems faster** by understanding underlying structures
-- **Design better systems** by choosing appropriate data structures
-- **Communicate technical concepts** more effectively
-- **Approach new challenges** with confidence
 
 Remember that mastery comes through consistent practice and application. The concepts you've learned here will serve as building blocks for everything else you encounter in computer science and software development.
 

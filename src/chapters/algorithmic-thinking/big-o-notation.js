@@ -328,10 +328,10 @@ In the above example, we're creating an array the size of \`n\`, setting the val
 
 Let's consider one last example:
 
-\`\`\`java
-public int getLargetsItem(int[] items) {
-    int largest = Integer.MIN_VALUE;
-    for (int item : items) {
+\`\`\`javascript
+function getLargestItem(items) {
+    let largest = Number.MIN_SAFE_INTEGER;
+    for (let item of items) {
         if (item > largest) {
             largest = item;
         }
@@ -358,196 +358,178 @@ It's also **very important** to understand that sometimes we'll never (or it's e
 In this reading, we analyzed several different pieces of code to determine their time and space complexities.  We went over some general rules for determining complexity, such as arithmetic operations and variable assignment being constant. We then discussed trade-offs that are important to consider when determining whether to optimize our code. Big O is an important concept to understand for code analysis, but not every piece of code needs to be optimized.
 
 ---
-Introduction to Lists
+Introduction to Arrays
 ---
 
-## Java Lists
+## JavaScript Arrays
 
 At this point, we feel pretty familiar with arrays. They're useful ways of storing information in one variable. They provide quick and efficient access to elements with indexes.
 
-Let's say we work in a coffee shop and we want to keep track of the orders in an array. Unfortunately, we need to know the size of an
-array when we initialize it. We have a few options. We can delete orders we've already completed to make room for new ones. However, doing so requires keeping track of which indexes are free and which aren't. We also could create a ridiculously large array so that we always have room, but that's a waste of memory. It seems like there's no great way to store coffee orders in an array. So, we can use a list instead!
+Let's say we work in a coffee shop and we want to keep track of the orders in an array. In JavaScript, arrays are dynamic by default, meaning they can grow and shrink as needed. This makes them perfect for storing coffee orders without worrying about predefined sizes.
 
-The \`List\` interface allows us to keep track of elements, access elements by index, *and* has a flexible length.  The \`List\` interface is denoted like the following:
+JavaScript arrays allow us to keep track of elements, access elements by index, *and* have a flexible length. We can create an array for our coffee orders like this:
 
-\`\`\`java
-public interface List<E>
-\`\`\`
-
-Where \`E\` indicates the type of elements used in the list. For our coffee orders, we can create the following list:
-
-\`\`\`java
-List<String> coffeeOrders;
+\`\`\`javascript
+let coffeeOrders = [];
 \`\`\`
 
 And store orders like "large Frappuccino".
 
-### Java ArrayList
+### JavaScript Array Methods
 
-\`ArrayList\` is an implementation of the \`List\` interface that uses an array to store the elements. If a new element is added and there's no space left, a new array with double the capacity is created. All the elements from the original array are then copied into the newer, larger array. This ensures we always have enough space for new elements, but we're also not wasting too much space.
+JavaScript arrays come with many built-in methods that make working with them convenient. If a new element is added, the array automatically grows to accommodate it. This ensures we always have enough space for new elements without wasting memory.
 
-To initialize an \`ArrayList\`, we use the following notation:
+To initialize an array, we can use several approaches:
 
-\`\`\`java
-ArrayList<__SOME_CLASS__> variableName = new ArrayList<__SOME_CLASS__>();
+\`\`\`javascript
+let coffeeOrders = []; // Empty array
+let coffeeOrders = new Array(); // Alternative syntax
+let coffeeOrders = ["order1", "order2"]; // With initial values
 \`\`\`
 
-Where \`__SOME_CLASS__\` indicates the type of elements used in the list and \`variableName\` is
-the name we give our list.
+We will review some commonly used array methods below. You can find more information in the [MDN Array documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
 
-We can do the following for our coffee order example:
+### push() method
 
-\`\`\`java
-ArrayList<String> coffeeOrders = new ArrayList<String>();
-\`\`\`
-
-We will review some commonly used ArrayList methods below, but here is the official [ArrayList documentation](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html) you can use as a reference (and to see its other methods, if you're curious).
-
-### add() method
-
-We can add new elements to our \`ArrayList\` using the \`add()\` method. We can use \`add(E e)\` to add an element of the type of our list to the end of the list, or we can use \`add(int index, E element)\` to add the element to the given index.
+We can add new elements to our array using the \`push()\` method. The \`push()\` method adds an element to the end of the array.
 
 For our coffee orders example, it makes the most sense to add orders to the end of the list:
 
-\`\`\`java
-coffeeOrders.add("small coffee");
+\`\`\`javascript
+coffeeOrders.push("small coffee");
 \`\`\`
 
-Let's say a customer comes up to our counter. She says she's waited for 10 minutes and her order hasn't come out yet (oh no!). We want to add her order higher up in the list to ensure she gets it sooner:
+### splice() method for insertion
 
-\`\`\`java
-coffeeOrders.add(5, "large latte");
+Let's say a customer comes up to our counter. She says she's waited for 10 minutes and her order hasn't come out yet (oh no!). We want to add her order higher up in the list to ensure she gets it sooner. We can use the \`splice()\` method:
+
+\`\`\`javascript
+coffeeOrders.splice(5, 0, "large latte");
 \`\`\`
 
-This adds her order, large latte, into index 5.
+This adds her order, large latte, at index 5. The first parameter is the index, the second is how many elements to remove (0 in this case), and the third is the element to insert.
 
-When we insert a value by index, the elements in the list have to move around a bit. For example, if we insert a value at index 5, the elements that are currently at index 5 and above are shifted to the right to make space for the new value we're inserting. This means the value that was at index 5 is moved to index 6, and the value that was at index 6 is moved to index 7, and so on... The new value is then inserted at index 5. Adding an element at a given index therefore has a runtime of \`O(n)\` because the worst case is we insert a value at index 0 and have to shift all \`n\` elements.
+When we insert a value by index, the elements in the array have to move around a bit. For example, if we insert a value at index 5, the elements that are currently at index 5 and above are shifted to the right to make space for the new value we're inserting. This means the value that was at index 5 is moved to index 6, and the value that was at index 6 is moved to index 7, and so on... The new value is then inserted at index 5. Adding an element at a given index therefore has a runtime of \`O(n)\` because the worst case is we insert a value at index 0 and have to shift all \`n\` elements.
 
-### get() method
+### Accessing elements by index
 
-We can access elements in our \`ArrayList\` using the \`get()\` method. This method functions very similarly to retrieving an element from an array using \`array[i]\`. To use the \`get()\` method, we give the method an index, and it returns the element stored in that index:
+We can access elements in our array using bracket notation. This method functions by giving an index and returning the element stored at that index:
 
-\`\`\`java
-coffeeOrders.get(5);
+\`\`\`javascript
+coffeeOrders[5];
 \`\`\`
 
 This returns the element stored in index 5, which we know is "large latte".
 
-> **NOTE:** Lists start at index \`0\` just like arrays do.
+> **NOTE:** Arrays start at index \`0\` just like in other programming languages.
 
-When we get a value, we're giving the index, which tells the code exactly where to look in memory. Just like accessing an \`Array\` element by index, this has a runtime of \`O(1)\`. It doesn't matter how many elements are in the list, it always takes a constant time to retrieve the value.
+When we get a value, we're giving the index, which tells the code exactly where to look in memory. Just like accessing any array element by index, this has a runtime of \`O(1)\`. It doesn't matter how many elements are in the array, it always takes a constant time to retrieve the value.
 
-### remove() method
+### splice() method for removal
 
-We can remove elements in our \`ArrayList\` using the \`remove()\` method. To remove an element, we give the method an index. It removes the element stored in that index and returns the removed element. Let's say we made a mistake on someone's order and want to remove the order from our list:
+We can remove elements from our array using the \`splice()\` method. To remove an element, we give the method an index and specify how many elements to remove. Let's say we made a mistake on someone's order and want to remove the order from our list:
 
-\`\`\`java
-coffeeOrders.remove(10);
+\`\`\`javascript
+coffeeOrders.splice(10, 1);
 \`\`\`
 
-This removes the element at index 10 from the list and returns whatever that order was.
+This removes 1 element at index 10 from the array and returns an array containing the removed element(s).
 
-When we remove a value by index, there are a few steps we need to take. If we remove the value at index 10, that value is first removed. Then, all the values at index 11 and beyond (12, 13, etc.) are shifted to the left to fill in the gap left by the removed index. This means that the indexes for these values also changes.  The value that previously had an index of 11 has an index of 10... etc. Just like adding an element by index, removing an element has a runtime of \`O(n)\`. At worst, we delete the value at index 0 and have to shift all \`n\` elements to the left to fill in the gap.
+When we remove a value by index, there are a few steps we need to take. If we remove the value at index 10, that value is first removed. Then, all the values at index 11 and beyond (12, 13, etc.) are shifted to the left to fill in the gap left by the removed index. This means that the indexes for these values also changes. The value that previously had an index of 11 has an index of 10... etc. Just like adding an element by index, removing an element has a runtime of \`O(n)\`. At worst, we delete the value at index 0 and have to shift all \`n\` elements to the left to fill in the gap.
 
-### Iterating over the ArrayList
+### Iterating over the Array
 
-You can also iterate over all the elements in an \`ArrayList\` and perform an operation on each element, just like you can with an \`Array\`. To do this, it's useful to know the \`size()\` method. The \`size()\` method doesn't return the actual *size* of the array, but instead the current number of elements in the method. It's very useful when iterating over an \`ArrayList\`.
+You can iterate over all the elements in an array and perform an operation on each element. To do this, it's useful to know the \`length\` property. The \`length\` property returns the current number of elements in the array. It's very useful when iterating over an array.
 
-Let's say we want to print all the orders currently in our \`ArrayList\`. We can do this like the following:
+Let's say we want to print all the orders currently in our array. We can do this like the following:
 
-\`\`\`java
-for (int i = 0; i < coffeeOrders.size(); i++) {
-    System.out.println(coffeeOrders.get(i));
+\`\`\`javascript
+for (let i = 0; i < coffeeOrders.length; i++) {
+    console.log(coffeeOrders[i]);
 }
 \`\`\`
 
-The above code functions the same as iterating through and printing out all the elements in an \`Array\` but uses the \`get()\` method to do so.
+The above code iterates through and prints out all the elements in the array.
 
-We can also use Java's "for each" style loop:
+We can also use JavaScript's "for...of" loop:
 
-\`\`\`java
-for (String order : coffeeOrders) {
-    System.out.println(order);
+\`\`\`javascript
+for (let order of coffeeOrders) {
+    console.log(order);
 }
 \`\`\`
 
 ## Conclusion
 
-In this lesson, we introduced the \`List\` interface, which is a data structure that keeps track of elements, accesses elements by index, *and* has a flexible length. We specifically discussed the \`ArrayList\` class, which is an implementation of \`List\` that stores elements using an \`Array\`. We learned about the \`add()\`, \`get()\`, and \`remove()\` methods. We also saw how to iterate over an \`ArrayList\`. Using our newfound knowledge about Big O, we also discussed the runtime complexity for these methods.
+In this lesson, we discussed JavaScript arrays, which are data structures that keep track of elements, access elements by index, *and* have a flexible length. We learned about the \`push()\`, \`splice()\`, and bracket notation for accessing elements. We also saw how to iterate over arrays. Using our newfound knowledge about Big O, we also discussed the runtime complexity for these methods.
 
 
 ---
-Using ArrayList to Maintain an Ordered Collection of Objects
+Using Arrays to Maintain an Ordered Collection of Objects
 ---
 
-In this example we will look into a coffee shop example, where the orders for different type of coffee are coming in a specific sequence.  We will see how we can use lists to maintain the sequence of orders and make sure that the order that came in first is also the one that gets processed first.
+In this example we will look into a coffee shop example, where the orders for different type of coffee are coming in a specific sequence. We will see how we can use arrays to maintain the sequence of orders and make sure that the order that came in first is also the one that gets processed first.
 
 To build the solution we will use two classes:
 
 - An \`Order\` class, which will keep the information on the type of the coffee and table number
-- A \`CoffeeShop\` class, which will keep the list of all orders, the methods to add a new order, and a method to process all the pending orders in the order that they were received.
+- A \`CoffeeShop\` class, which will keep the array of all orders, the methods to add a new order, and a method to process all the pending orders in the order that they were received.
 
-\`\`\`java
-public class Order {
-  private final int table;
-  private final String type;
-
-  public Order(String type, int table) {
+\`\`\`javascript
+class Order {
+  constructor(type, table) {
     this.table = table;
     this.type = type;
   }
 
-  public void serve() {
-    System.out.println("Serving " + type + " to table " + table);
+  serve() {
+    console.log(\`Serving \${this.type} to table \${this.table}\`);
   }
 }
 \`\`\`
 
-\`\`\`java
-public class CoffeeShop {
-  // Create new ArrayList, but use the List interface. This allows us to
-  // easily swap classes (e.g. use LinkedList instead of ArrayList) without
-  // changing the rest of the code and it is considered the best practice.
-  private List<Order> orders = new ArrayList<>();
-
-  public void takeOrder(String type, int table) {
-    Order order = new Order(type, table);
-    orders.add(order);
+\`\`\`javascript
+class CoffeeShop {
+  constructor() {
+    // Create new array to store orders
+    this.orders = [];
   }
 
-  public void processOrders() {
-    for (int i = 0; i < orders.size(); i++) {
-      orders.get(i).serve();
+  takeOrder(type, table) {
+    const order = new Order(type, table);
+    this.orders.push(order);
+  }
+
+  processOrders() {
+    for (let i = 0; i < this.orders.length; i++) {
+      this.orders[i].serve();
     }
-    // Now that we've served them, remove all Orders from the list.
-    orders.clear();
+    // Now that we've served them, remove all Orders from the array.
+    this.orders = [];
   }
 }
 \`\`\`
 
 The important things to notice here are:
 
-- When we take an order, it gets added to the end of the list: \`add(E element)\` always adds the element to the end, as if we called \`orders.add(orders.size(), order);\`
+- When we take an order, it gets added to the end of the array: \`push()\` always adds the element to the end of the array
 - When orders are processed, they are processed from the first received order to the last, keeping the original sequence unchanged.
 
 Let's now see the \`CoffeeShop\` in action!
 
-\`\`\`java
-public class CoffeeShopTest {
-  public static void main(String[] args) {
-    CoffeeShop shop = new CoffeeShop();
+\`\`\`javascript
+// Create a new coffee shop
+const shop = new CoffeeShop();
 
-    shop.takeOrder("Cappuccino", 2);
-    shop.takeOrder("Frappe", 1);
-    shop.takeOrder("Espresso", 1);
-    shop.takeOrder("Frappe", 5);
-    shop.takeOrder("Cappuccino", 6);
-    shop.takeOrder("Frappe", 3);
-    shop.takeOrder("Espresso", 3);
+shop.takeOrder("Cappuccino", 2);
+shop.takeOrder("Frappe", 1);
+shop.takeOrder("Espresso", 1);
+shop.takeOrder("Frappe", 5);
+shop.takeOrder("Cappuccino", 6);
+shop.takeOrder("Frappe", 3);
+shop.takeOrder("Espresso", 3);
 
-    shop.processOrders();
-  }
-}
+shop.processOrders();
 \`\`\`
 
 The output produced by running the code:
@@ -565,35 +547,33 @@ Serving Espresso to table 3
 As we can see, the output produced matches what we wanted. The orders are processed in the sequence of arrival.
 
 ---
-ArrayList Runtime Complexity
+Array Runtime Complexity
 ---
 
-In this section we're going to explore the runtime complexity of the most important \`ArrayList\` operations in relation to number of elements present in the list. So the number of elements in the list will be our "N" in our Big-O notation.
+In this section we're going to explore the runtime complexity of the most important JavaScript array operations in relation to number of elements present in the array. So the number of elements in the array will be our "N" in our Big-O notation.
 
 ## Accessing values by index
 
-- As we mentioned in the introduction, \`ArrayList\` is using the array primitive type to store its elements (an \`ArrayList<String>\` will contain a \`String[]\` under the covers).
-- The property of array primitives in Java is that accessing its element by index runs in constant time O(1) regardless of the number of elements "N" By providing the index, you are telling the code exactly where to look in memory.
-- Since \`ArrayList\` is backed up by an array, accessing the value by index is also achieved in constant time O(1), regardless of the number of elements "N" in the list.
+- JavaScript arrays are implemented as objects with numeric keys, but modern JavaScript engines optimize them to behave like traditional arrays for performance.
+- The property of JavaScript arrays is that accessing an element by index runs in constant time O(1) regardless of the number of elements "N". By providing the index, you are telling the code exactly where to look in memory.
+- Since JavaScript arrays are optimized for index-based access, accessing the value by index is achieved in constant time O(1), regardless of the number of elements "N" in the array.
 
 ## Insert or remove value by index
 
-Both insertion and removal of a value by its index in Java's \`ArrayList\` run in linear time O(N), where N is the number of elements in the list.  Let's see why!
+Both insertion and removal of a value by its index in JavaScript arrays run in linear time O(N), where N is the number of elements in the array. Let's see why!
 
 ### Insert value by index
 
-Let's start with the following \`ArrayList\` (you will notice we use the \`Arrays.asList()\` method here so we don't need to use \`add()\` method multiple times - for more information, check out the [Arrays.asList() documentation](https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html#asList(T...))):
+Let's start with the following array:
 
-\`\`\`java
-List<Integer> list = new ArrayList<>(
-    Arrays.asList(11, 99, 0, 5, 14, 89, 23, 7, 1, 10)
-);
+\`\`\`javascript
+let list = [11, 99, 0, 5, 14, 89, 23, 7, 1, 10];
 \`\`\`
 
 What happens if we now decide to insert the value of 55 at index 3?
 
-\`\`\`java
-list.add(3, 55);
+\`\`\`javascript
+list.splice(3, 0, 55);
 \`\`\`
 
 Two things will need to happen:
@@ -604,24 +584,22 @@ Two things will need to happen:
 Here's how that is going to look:
 
 <img width=700 src="${picture1}"/>
-[Inserting an element into an ArrayList]
+[Inserting an element into an Array]
 
 This shifting of values is exactly the reason why insertion of a value at a specific index runs in linear time O(N). In worst case we'll need to shift N values (inserting the value at the start), in best case we won't need to shift any value (insert the value at the end). On average we will still need to do N/2 shifts per insertion operation, and as we learned in previous lesson, N/2 operations = O(N), since we drop the constant scaling factor.
 
 ### Remove value by index
 
-Starting from the same \`ArrayList\` as we did for insertion:
+Starting from the same array as we did for insertion:
 
-\`\`\`java
-List<Integer> list = new ArrayList<>(
-    Arrays.asList(11, 99, 0, 5, 14, 89, 23, 7, 1, 10)
-);
+\`\`\`javascript
+let list = [11, 99, 0, 5, 14, 89, 23, 7, 1, 10];
 \`\`\`
 
 But this time we'll remove the value 23 at index 6:
 
-\`\`\`java
-list.remove(6);
+\`\`\`javascript
+list.splice(6, 1);
 \`\`\`
 
 The result of this change is going to be similar to what we observed for insertion:
@@ -632,9 +610,9 @@ The result of this change is going to be similar to what we observed for inserti
 Here's how the removal is going to look:
 
 <img width=700 src="${picture2}"/>
-[Removing an element from an ArrayList]
+[Removing an element from an Array]
 
-Similar to the insertion, the shifting of elements to the left is the reason why deletion runs in linear time. In the worst case, we will need to shift N-1 elements to the left (when we remove the first element from the list). In the best case we won't need to shift any elements (removing the last element from the list). On average we will still need to shift the same number of elements as we did for insertion (N/2). This means that the deletion is also going to run in linear time in relation to number of elements N, O(N).
+Similar to the insertion, the shifting of elements to the left is the reason why deletion runs in linear time. In the worst case, we will need to shift N-1 elements to the left (when we remove the first element from the array). In the best case we won't need to shift any elements (removing the last element from the array). On average we will still need to shift the same number of elements as we did for insertion (N/2). This means that the deletion is also going to run in linear time in relation to number of elements N, O(N).
   `,
   exercise: null
 };

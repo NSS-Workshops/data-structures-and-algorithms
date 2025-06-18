@@ -3,6 +3,7 @@ import { slidingWindowIntroChapter } from './sliding-window-intro';
 import { optimizingNestedLoopsChapter } from './optimizing-nested-loops';
 import { maintainingWindowStateChapter } from './maintaining-window-state';
 import { subarraysSubstringsChapter } from './subarrays-substrings';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const slidingWindowChapters = [
@@ -11,6 +12,7 @@ export const slidingWindowChapters = [
   optimizingNestedLoopsChapter,
   maintainingWindowStateChapter,
   subarraysSubstringsChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

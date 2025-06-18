@@ -3,6 +3,7 @@ import { sortingApproachesChapter } from './sorting-approaches';
 import { sortMethodChapter } from './sort-method';
 import { binarySearchFundamentalsChapter } from './binary-search-fundamentals';
 import { binarySearchVariantsChapter } from './binary-search-variants';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const sortingAndBinarySearchChapters = [
@@ -11,6 +12,7 @@ export const sortingAndBinarySearchChapters = [
   sortMethodChapter,
   binarySearchFundamentalsChapter,
   binarySearchVariantsChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

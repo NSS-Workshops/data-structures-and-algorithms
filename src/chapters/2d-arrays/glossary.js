@@ -2,7 +2,7 @@ export const glossaryChapter = {
   id: '2d-arrays-glossary',
   title: 'Glossary: 2D Arrays',
   sectionId: '2d-arrays',
-  previousChapterId: "finding-neighbors",
+  previousChapterId: "2d-arrays-supplemental-materials",
   content: `## Glossary: 2D Arrays
 
 This glossary contains important terms and concepts related to 2D arrays. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

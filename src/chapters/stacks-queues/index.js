@@ -4,6 +4,7 @@ import { queuesIntroChapter } from './queues-intro';
 import { implementationTradeoffsChapter } from './implementation-tradeoffs';
 import { implementStackChapter } from './implement-stack';
 import { implementQueueChapter } from './implement-queue';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const stacksQueuesChapters = [
@@ -13,6 +14,7 @@ export const stacksQueuesChapters = [
   implementationTradeoffsChapter,
   implementStackChapter,
   implementQueueChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

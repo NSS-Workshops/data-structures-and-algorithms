@@ -4,6 +4,7 @@ import { arrayCoreOperationsChapter } from './array-core-operations';
 import { arrayTradeoffsChapter } from './array-tradeoffs';
 import { arrayMethodsChapter } from './array-methods';
 import { twoPointersChapter } from './two-pointers';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const arraysAndTwoPointersChapters = [
@@ -13,6 +14,7 @@ export const arraysAndTwoPointersChapters = [
   arrayTradeoffsChapter,
   arrayMethodsChapter,
   twoPointersChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

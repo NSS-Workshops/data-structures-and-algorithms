@@ -1,15 +1,21 @@
+import { interviewReadinessLearningObjectivesChapter } from './learning-objectives';
 import { solvingProblemsEndToEndChapter } from './solving-problems-end-to-end';
 import { explainingCodeTradeoffsChapter } from './explaining-code-tradeoffs';
 import { thinkingAloudChapter } from './thinking-aloud';
 import { cleanSolutionsChapter } from './clean-solutions';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { interviewReadinessCheckpointChapter } from './checkpoint';
 
 export const interviewReadinessChapters = [
+  interviewReadinessLearningObjectivesChapter,
   solvingProblemsEndToEndChapter,
   explainingCodeTradeoffsChapter,
   thinkingAloudChapter,
   cleanSolutionsChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  interviewReadinessCheckpointChapter
 ];
 
 /**

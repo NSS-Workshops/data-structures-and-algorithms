@@ -1,17 +1,23 @@
+import { algorithmicThinkingLearningObjectivesChapter } from './learning-objectives';
 import { whatIsAlgorithmChapter } from './what-is-algorithm';
 import { whatIsDataStructureChapter } from './what-is-data-structure';
 import { problemSolvingProcessChapter } from './problem-solving-process';
 import { bigONotationChapter } from './big-o-notation';
 import { comparingComplexitiesChapter } from './comparing-complexities';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { algorithmicThinkingCheckpointChapter } from './checkpoint';
 
 export const algorithmicThinkingChapters = [
+  algorithmicThinkingLearningObjectivesChapter,
   whatIsAlgorithmChapter,
   whatIsDataStructureChapter,
   problemSolvingProcessChapter,
   bigONotationChapter,
   comparingComplexitiesChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  algorithmicThinkingCheckpointChapter
 ];
 
 /**

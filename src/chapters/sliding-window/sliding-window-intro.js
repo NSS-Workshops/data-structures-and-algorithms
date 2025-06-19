@@ -2,7 +2,7 @@ export const slidingWindowIntroChapter = {
   id: 'sliding-window-intro',
   title: 'Introduction to Sliding Window Technique',
   sectionId: 'sliding-window',
-  previousChapterId: null,
+  previousChapterId: 'sliding-window-learning-objectives',
   content: `## Introduction to Sliding Window Technique
 
 The sliding window technique is a powerful algorithmic pattern used to solve array or string problems with contiguous subarrays or substrings. It efficiently processes these data structures by maintaining a "window" that slides through the data.

@@ -1,13 +1,19 @@
+import { twoDArraysLearningObjectivesChapter } from './learning-objectives';
 import { twoDArraysIntroChapter } from './2d-arrays-intro';
 import { indexingAndBoundsChapter } from './indexing-and-bounds';
 import { findingNeighborsChapter } from './finding-neighbors';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { twoDArraysCheckpointChapter } from './checkpoint';
 
 export const twoDArraysChapters = [
+  twoDArraysLearningObjectivesChapter,
   twoDArraysIntroChapter,
   indexingAndBoundsChapter,
   findingNeighborsChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  twoDArraysCheckpointChapter
 ];
 
 /**

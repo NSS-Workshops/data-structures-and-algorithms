@@ -1,17 +1,23 @@
+import { arraysAndTwoPointersLearningObjectivesChapter } from './learning-objectives';
 import { arraysIntroChapter } from './arrays-intro';
 import { arrayCoreOperationsChapter } from './array-core-operations';
 import { arrayTradeoffsChapter } from './array-tradeoffs';
 import { arrayMethodsChapter } from './array-methods';
 import { twoPointersChapter } from './two-pointers';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { arraysAndTwoPointersCheckpointChapter } from './checkpoint';
 
 export const arraysAndTwoPointersChapters = [
+  arraysAndTwoPointersLearningObjectivesChapter,
   arraysIntroChapter,
   arrayCoreOperationsChapter,
   arrayTradeoffsChapter,
   arrayMethodsChapter,
   twoPointersChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  arraysAndTwoPointersCheckpointChapter
 ];
 
 /**

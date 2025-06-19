@@ -2,7 +2,7 @@ export const glossaryChapter = {
   id: 'maps-and-sets-glossary',
   title: 'Glossary: Maps and Sets',
   sectionId: 'maps-and-sets',
-  previousChapterId: 'implement-set',
+  previousChapterId: 'maps-and-sets-supplemental-materials',
   content: `## Glossary: Maps and Sets
 
 This glossary contains important terms and concepts related to maps and sets. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

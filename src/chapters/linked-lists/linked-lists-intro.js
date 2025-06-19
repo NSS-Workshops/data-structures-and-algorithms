@@ -2,12 +2,19 @@ export const linkedListsIntroChapter = {
   id: 'linked-lists-intro',
   title: 'Introduction to Linked Lists',
   sectionId: 'linked-lists',
-  previousChapterId: null,
+  previousChapterId: 'linked-lists-learning-objectives',
   content: `## Introduction to Linked Lists
 
 A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node in the sequence. Unlike arrays, linked lists don't require contiguous memory allocation, offering more flexibility for dynamic data.
 
-TBD
+## Before We Dive Into Linked Lists: A Quick Detour
+Before we can build or manipulate linked lists in JavaScript, we need to take a quick detour to understand how references work. Unlike primitive values (like numbers or strings), objects in JavaScript are assigned and passed by reference. This means when you assign one object to another variable, both variables point to the same underlying data. Grasping this behavior is essential for safely navigating and modifying linked structures, where each node "points" to the next via a reference. Without this foundation, linked list logic can seem confusing or error-prone.
+
+Understanding references in JavaScript is crucial for working with linked lists and the algorithms that operate on them. In a linked list, each node holds a value and a reference to the next node, forming a chain. When we assign one reference variable to another—like let b = a—both variables point to the same object in memory. This means changes made through one variable affect the other. This behavior is especially important in linked list operations, where caching a reference (like let current = head) allows us to safely traverse or update the list without losing our place. Mastering this concept is key to building and debugging linked data structures.
+
+The foundation course has a workshop on this topic. Please review these concept and be sure to complete the coding exercises:
+
+[Primitive vs. Reference Values – Foundations Course](https://nashville-software-school.github.io/foundations-course/primitive-vs-reference)
 
 ## Basic Structure of a Linked List
 

@@ -1,17 +1,23 @@
+import { linkedListsLearningObjectivesChapter } from './learning-objectives';
 import { linkedListsIntroChapter } from './linked-lists-intro';
 import { linkedListTypesChapter } from './linked-list-types';
 import { linkedListTradeoffsChapter } from './linked-list-tradeoffs';
 import { nodeBasedTraversalChapter } from './node-based-traversal';
 import { implementLinkedListChapter } from './implement-linked-list';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { linkedListsCheckpointChapter } from './checkpoint';
 
 export const linkedListsChapters = [
+  linkedListsLearningObjectivesChapter,
   linkedListsIntroChapter,
   linkedListTypesChapter,
   linkedListTradeoffsChapter,
   nodeBasedTraversalChapter,
   implementLinkedListChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  linkedListsCheckpointChapter
 ];
 
 /**

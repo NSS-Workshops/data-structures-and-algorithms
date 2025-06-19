@@ -3,12 +3,11 @@ export const whatIsDataStructureChapter = {
   title: 'What is a Data Structure?',
   sectionId: 'algorithmic-thinking',
   previousChapterId: 'what-is-algorithm',
-  content: `## What is a Data Structure?
-
+  content: `
 A data structure is a specialized format for organizing, processing, retrieving, and storing data. It represents the logical relationship between individual data elements to enable efficient access and modification.
 
-TBD
 
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/bum_19loj9A?si=BlTwgHEzBror-utl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ## Why Data Structures Matter
 
 Data structures are fundamental to computer science and software development because:
@@ -19,8 +18,6 @@ Data structures are fundamental to computer science and software development bec
 - They are essential for implementing efficient algorithms
 - They directly impact the performance and scalability of applications
 
-TBD
-
 ## Types of Data Structures
 
 ### Primitive Data Structures
@@ -29,23 +26,17 @@ TBD
 - Characters
 - Boolean values
 
-TBD
-
 ### Linear Data Structures
 - Arrays
 - Linked Lists
 - Stacks
 - Queues
 
-TBD
-
 ### Non-Linear Data Structures
 - Trees
 - Graphs
 - Hash Tables
 - Heaps
-
-TBD
 
 ## Choosing the Right Data Structure
 
@@ -57,12 +48,9 @@ Selecting the appropriate data structure depends on several factors:
 - Performance requirements
 - The nature of the data being stored
 
-TBD
-
 ## Data Structures and Algorithms: A Symbiotic Relationship
 
 Data structures and algorithms work together to solve computational problems efficiently. The choice of data structure affects the efficiency of algorithms, and many algorithms are designed specifically for certain data structures.
-
-TBD`,
+`,
   exercise: null
 };

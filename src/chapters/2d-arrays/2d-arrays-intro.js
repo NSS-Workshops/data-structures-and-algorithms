@@ -2,7 +2,7 @@ export const twoDArraysIntroChapter = {
   id: '2d-arrays-intro',
   title: 'Introduction to 2D Arrays',
   sectionId: '2d-arrays',
-  previousChapterId: null,
+  previousChapterId: '2d-arrays-learning-objectives',
   content: `## Introduction to 2D Arrays
 
 Two-dimensional (2D) arrays, also known as matrices, are arrays of arrays. They represent data in a grid-like structure with rows and columns, making them ideal for representing tabular data, game boards, images, and other grid-based structures.

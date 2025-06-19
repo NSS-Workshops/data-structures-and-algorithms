@@ -1,15 +1,21 @@
+import { combiningPatternsLearningObjectivesChapter } from './learning-objectives';
 import { recognizingPatternsChapter } from './recognizing-patterns';
 import { choosingDataStructuresChapter } from './choosing-data-structures';
 import { analyzingTradeoffsChapter } from './analyzing-tradeoffs';
 import { solvingComplexProblemsChapter } from './solving-complex-problems';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { combiningPatternsCheckpointChapter } from './checkpoint';
 
 export const combiningPatternsChapters = [
+  combiningPatternsLearningObjectivesChapter,
   recognizingPatternsChapter,
   choosingDataStructuresChapter,
   analyzingTradeoffsChapter,
   solvingComplexProblemsChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  combiningPatternsCheckpointChapter
 ];
 
 /**

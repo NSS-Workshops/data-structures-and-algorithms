@@ -2,7 +2,7 @@ export const sortingApproachesChapter = {
   id: 'sorting-approaches',
   title: 'Common Sorting Approaches: Bubble, Selection, Merge',
   sectionId: 'sorting-and-binary-search',
-  previousChapterId: null,
+  previousChapterId: 'sorting-binary-search-learning-objectives',
   content: `## Common Sorting Approaches
 
 Sorting is a fundamental operation in computer science that arranges elements in a specific order. This chapter provides an overview of common sorting algorithms, focusing on bubble sort, selection sort, and merge sort.

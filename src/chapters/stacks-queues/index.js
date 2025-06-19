@@ -1,17 +1,23 @@
+import { stacksQueuesLearningObjectivesChapter } from './learning-objectives';
 import { stacksIntroChapter } from './stacks-intro';
 import { queuesIntroChapter } from './queues-intro';
 import { implementationTradeoffsChapter } from './implementation-tradeoffs';
 import { implementStackChapter } from './implement-stack';
 import { implementQueueChapter } from './implement-queue';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { stacksQueuesCheckpointChapter } from './checkpoint';
 
 export const stacksQueuesChapters = [
+  stacksQueuesLearningObjectivesChapter,
   stacksIntroChapter,
   queuesIntroChapter,
   implementationTradeoffsChapter,
   implementStackChapter,
   implementQueueChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  stacksQueuesCheckpointChapter
 ];
 
 /**

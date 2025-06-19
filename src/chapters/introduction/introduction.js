@@ -74,6 +74,13 @@ By the end, you won’t just be picking solutions that feel right, you’ll be a
 **Course Duration:** 10 weeks
 **Total Course Hours:** ~100 hours
 
+## Attendance 
+Practice pairing sessions will take place during the second class of each week, giving us time in the first session to solidify concepts you’ve reviewed asynchronously through group activities and discussion.
+After the second class session each week, we’ll send out the pairings for the following week. 
+
+We’ll exclude students from the pairings if we know ahead of time they’ll be absent. 
+To help us plan accurately, please let us know at least one week in advance if you’ll be out, so we can adjust the pairings accordingly and ensure your partner isn’t left without someone to work with.
+
 ## 🗓️ Course Structure
 - Live Zoom Sessions: 2 sessions per week, each 2 hours long 
 (the zoom link is pinned at the top of your cohorts slack channel)

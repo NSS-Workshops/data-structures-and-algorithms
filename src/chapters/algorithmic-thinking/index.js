@@ -6,6 +6,7 @@ import { bigONotationChapter } from './big-o-notation';
 import { comparingComplexitiesChapter } from './comparing-complexities';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { algorithmicThinkingCheckpointChapter } from './checkpoint';
 
 export const algorithmicThinkingChapters = [
   algorithmicThinkingLearningObjectivesChapter,
@@ -15,7 +16,8 @@ export const algorithmicThinkingChapters = [
   bigONotationChapter,
   comparingComplexitiesChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  algorithmicThinkingCheckpointChapter
 ];
 
 /**

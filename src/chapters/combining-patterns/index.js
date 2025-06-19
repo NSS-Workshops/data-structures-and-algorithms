@@ -5,6 +5,7 @@ import { analyzingTradeoffsChapter } from './analyzing-tradeoffs';
 import { solvingComplexProblemsChapter } from './solving-complex-problems';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { combiningPatternsCheckpointChapter } from './checkpoint';
 
 export const combiningPatternsChapters = [
   combiningPatternsLearningObjectivesChapter,
@@ -13,7 +14,8 @@ export const combiningPatternsChapters = [
   analyzingTradeoffsChapter,
   solvingComplexProblemsChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  combiningPatternsCheckpointChapter
 ];
 
 /**

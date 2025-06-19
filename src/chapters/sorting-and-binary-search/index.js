@@ -5,6 +5,7 @@ import { binarySearchFundamentalsChapter } from './binary-search-fundamentals';
 import { binarySearchVariantsChapter } from './binary-search-variants';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { sortingAndBinarySearchCheckpointChapter } from './checkpoint';
 
 export const sortingAndBinarySearchChapters = [
   sortingAndBinarySearchLearningObjectivesChapter,
@@ -13,7 +14,8 @@ export const sortingAndBinarySearchChapters = [
   binarySearchFundamentalsChapter,
   binarySearchVariantsChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  sortingAndBinarySearchCheckpointChapter
 ];
 
 /**

@@ -6,6 +6,7 @@ import { arrayMethodsChapter } from './array-methods';
 import { twoPointersChapter } from './two-pointers';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { arraysAndTwoPointersCheckpointChapter } from './checkpoint';
 
 export const arraysAndTwoPointersChapters = [
   arraysAndTwoPointersLearningObjectivesChapter,
@@ -15,7 +16,8 @@ export const arraysAndTwoPointersChapters = [
   arrayMethodsChapter,
   twoPointersChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  arraysAndTwoPointersCheckpointChapter
 ];
 
 /**

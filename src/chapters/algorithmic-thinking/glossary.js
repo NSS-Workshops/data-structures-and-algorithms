@@ -1,8 +1,11 @@
+import { getNextChapter } from ".";
+
 export const glossaryChapter = {
   id: 'algorithmic-thinking-glossary',
   title: 'Glossary: Algorithmic Thinking',
   sectionId: 'algorithmic-thinking',
   previousChapterId: 'algorithmic-thinking-supplemental-materials',
+  getNextChapterId: 'algorithmic-thinking-checkpoint',
   content: `## Glossary: Algorithmic Thinking
 
 This glossary contains important terms and concepts related to algorithmic thinking. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

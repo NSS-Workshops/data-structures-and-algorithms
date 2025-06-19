@@ -12,6 +12,10 @@ export const supplementalMaterialsChapter = {
 ### Visualization Tool
 **N/A**
 
+### Supplemental Reading
+**[introduction to algorithms](https://www.geeksforgeeks.org/introduction-to-algorithms/)**
+**[introduction to data structures](https://www.geeksforgeeks.org/dsa/data-structure-meaning/)**
+
 `,
   exercise: null
 };

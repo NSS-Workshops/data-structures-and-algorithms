@@ -3,6 +3,7 @@ export const glossaryChapter = {
   title: 'Just Enough Math - Glossary',
   sectionId: 'just-enough-math',
   previousChapterId: 'combinations-permutations',
+  nextChapterId:'just-enough-math-checkpoint',
   content: `
 | Term | Definition |
 |------|------------|

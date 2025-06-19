@@ -1,7 +1,9 @@
 import { introductionChapter } from './introduction';
+import { introductionCheckpointChapter } from './checkpoint';
 
 export const introductionChapters = [
-  introductionChapter
+  introductionChapter,
+  introductionCheckpointChapter
 ];
 
 /**

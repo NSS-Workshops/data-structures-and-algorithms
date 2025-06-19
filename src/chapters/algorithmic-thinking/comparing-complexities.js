@@ -3,11 +3,11 @@ export const comparingComplexitiesChapter = {
   title: 'Comparing Common Complexities',
   sectionId: 'algorithmic-thinking',
   previousChapterId: 'big-o-notation',
-  content: `## Comparing Common Complexities
+  content: `
 
 Understanding how different time and space complexities compare is essential for algorithm analysis and optimization. This chapter explores the most common complexity classes and their practical implications.
 
-TBD
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/O9v10jQkm5c?si=jwgXTPDZkO0us58_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## O(1) - Constant Time
 
@@ -18,8 +18,6 @@ Constant time algorithms perform the same number of operations regardless of inp
 - **When it's good**: Ideal for operations that need to be extremely fast
 - **Real-world analogy**: Finding a book on your desk when you know exactly where it is
 
-TBD
-
 ## O(log n) - Logarithmic Time
 
 Logarithmic time algorithms reduce the problem size by a factor (usually 2) with each step.
@@ -28,8 +26,6 @@ Logarithmic time algorithms reduce the problem size by a factor (usually 2) with
 - **Examples**: Binary search, balanced binary tree operations
 - **When it's good**: Excellent for large datasets where linear search would be too slow
 - **Real-world analogy**: Finding a word in a dictionary using divide-and-conquer approach
-
-TBD
 
 ## O(n) - Linear Time
 
@@ -40,8 +36,6 @@ Linear time algorithms process each input element exactly once.
 - **When it's good**: Efficient for processing all elements once
 - **Real-world analogy**: Reading every page in a book from start to finish
 
-TBD
-
 ## O(n log n) - Linearithmic Time
 
 Linearithmic algorithms combine linear and logarithmic behaviors.
@@ -51,8 +45,6 @@ Linearithmic algorithms combine linear and logarithmic behaviors.
 - **When it's good**: Often the best possible time complexity for sorting-related problems
 - **Real-world analogy**: Sorting a deck of cards using an efficient strategy
 
-TBD
-
 ## O(n²) - Quadratic Time
 
 Quadratic time algorithms process each element in relation to every other element.
@@ -61,8 +53,6 @@ Quadratic time algorithms process each element in relation to every other elemen
 - **Examples**: Nested loops, bubble sort, insertion sort
 - **When it's good**: Acceptable for small inputs, but problematic for large datasets
 - **Real-world analogy**: Checking every possible pair in a group of people
-
-TBD
 
 ## Complexity Comparison Chart
 
@@ -74,8 +64,6 @@ TBD
 | O(n log n) | ~30         | ~700         | ~10,000       |
 | O(n²)      | 100         | 10,000       | 1,000,000     |
 
-TBD
-
 ## Practical Considerations
 
 When analyzing algorithm complexity:
@@ -86,6 +74,6 @@ When analyzing algorithm complexity:
 - Space complexity is increasingly important in memory-constrained environments
 - The specific use case should guide algorithm selection
 
-TBD`,
+`,
   exercise: null
 };

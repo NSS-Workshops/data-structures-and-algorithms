@@ -6,6 +6,7 @@ import { nodeBasedTraversalChapter } from './node-based-traversal';
 import { implementLinkedListChapter } from './implement-linked-list';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { linkedListsCheckpointChapter } from './checkpoint';
 
 export const linkedListsChapters = [
   linkedListsLearningObjectivesChapter,
@@ -15,7 +16,8 @@ export const linkedListsChapters = [
   nodeBasedTraversalChapter,
   implementLinkedListChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  linkedListsCheckpointChapter
 ];
 
 /**

@@ -6,6 +6,7 @@ import { implementMapChapter } from './implement-map';
 import { implementSetChapter } from './implement-set';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { mapsAndSetsCheckpointChapter } from './checkpoint';
 
 export const mapsAndSetsChapters = [
   mapsAndSetsLearningObjectivesChapter,
@@ -15,7 +16,8 @@ export const mapsAndSetsChapters = [
   implementMapChapter,
   implementSetChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  mapsAndSetsCheckpointChapter
 ];
 
 /**

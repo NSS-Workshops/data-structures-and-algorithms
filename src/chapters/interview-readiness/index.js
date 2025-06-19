@@ -5,6 +5,7 @@ import { thinkingAloudChapter } from './thinking-aloud';
 import { cleanSolutionsChapter } from './clean-solutions';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { interviewReadinessCheckpointChapter } from './checkpoint';
 
 export const interviewReadinessChapters = [
   interviewReadinessLearningObjectivesChapter,
@@ -13,7 +14,8 @@ export const interviewReadinessChapters = [
   thinkingAloudChapter,
   cleanSolutionsChapter,
   supplementalMaterialsChapter,
-  glossaryChapter
+  glossaryChapter,
+  interviewReadinessCheckpointChapter
 ];
 
 /**

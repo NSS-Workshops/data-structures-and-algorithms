@@ -1,3 +1,4 @@
+import { interviewReadinessLearningObjectivesChapter } from './learning-objectives';
 import { solvingProblemsEndToEndChapter } from './solving-problems-end-to-end';
 import { explainingCodeTradeoffsChapter } from './explaining-code-tradeoffs';
 import { thinkingAloudChapter } from './thinking-aloud';
@@ -5,6 +6,7 @@ import { cleanSolutionsChapter } from './clean-solutions';
 import { glossaryChapter } from './glossary';
 
 export const interviewReadinessChapters = [
+  interviewReadinessLearningObjectivesChapter,
   solvingProblemsEndToEndChapter,
   explainingCodeTradeoffsChapter,
   thinkingAloudChapter,

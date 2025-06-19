@@ -1,3 +1,4 @@
+import { stacksQueuesLearningObjectivesChapter } from './learning-objectives';
 import { stacksIntroChapter } from './stacks-intro';
 import { queuesIntroChapter } from './queues-intro';
 import { implementationTradeoffsChapter } from './implementation-tradeoffs';
@@ -6,6 +7,7 @@ import { implementQueueChapter } from './implement-queue';
 import { glossaryChapter } from './glossary';
 
 export const stacksQueuesChapters = [
+  stacksQueuesLearningObjectivesChapter,
   stacksIntroChapter,
   queuesIntroChapter,
   implementationTradeoffsChapter,

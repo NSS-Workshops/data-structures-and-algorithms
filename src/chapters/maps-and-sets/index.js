@@ -1,3 +1,4 @@
+import { mapsAndSetsLearningObjectivesChapter } from './learning-objectives';
 import { mapsIntroChapter } from './maps-intro';
 import { setsIntroChapter } from './sets-intro';
 import { useCasesChapter } from './use-cases';
@@ -6,6 +7,7 @@ import { implementSetChapter } from './implement-set';
 import { glossaryChapter } from './glossary';
 
 export const mapsAndSetsChapters = [
+  mapsAndSetsLearningObjectivesChapter,
   mapsIntroChapter,
   setsIntroChapter,
   useCasesChapter,

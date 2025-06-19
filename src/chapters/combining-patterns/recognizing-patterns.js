@@ -2,7 +2,7 @@ export const recognizingPatternsChapter = {
   id: 'recognizing-patterns',
   title: 'Recognizing Patterns in Problem Statements',
   sectionId: 'combining-patterns',
-  previousChapterId: null,
+  previousChapterId: 'combining-patterns-learning-objectives',
   content: `## Recognizing Patterns in Problem Statements
 
 One of the most valuable skills in algorithmic problem-solving is the ability to recognize common patterns in problem statements. This chapter explores how to identify these patterns and map them to appropriate solution strategies.

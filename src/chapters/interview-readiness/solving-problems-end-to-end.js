@@ -2,7 +2,7 @@ export const solvingProblemsEndToEndChapter = {
   id: 'solving-problems-end-to-end',
   title: 'Solving Problems End-to-End',
   sectionId: 'interview-readiness',
-  previousChapterId: null,
+  previousChapterId: 'interview-readiness-learning-objectives',
   nextChapterId: 'explaining-code-tradeoffs',
   content: `# Solving Problems End-to-End Under Constraints
 

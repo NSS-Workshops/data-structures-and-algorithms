@@ -2,7 +2,7 @@ export const whatIsAlgorithmChapter = {
   id: 'what-is-algorithm',
   title: 'What is an Algorithm?',
   sectionId: 'algorithmic-thinking',
-  previousChapterId: null,
+  previousChapterId: 'algorithmic-thinking-learning-objectives',
   content: `## What is an Algorithm?
 
 An algorithm is a step-by-step procedure or a set of rules designed to perform a specific task or solve a particular problem. Algorithms are the foundation of computer science and programming, providing structured approaches to problem-solving.

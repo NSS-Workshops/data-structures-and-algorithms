@@ -2,7 +2,7 @@ export const linkedListsIntroChapter = {
   id: 'linked-lists-intro',
   title: 'Introduction to Linked Lists',
   sectionId: 'linked-lists',
-  previousChapterId: null,
+  previousChapterId: 'linked-lists-learning-objectives',
   content: `## Introduction to Linked Lists
 
 A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node in the sequence. Unlike arrays, linked lists don't require contiguous memory allocation, offering more flexibility for dynamic data.

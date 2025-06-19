@@ -1,17 +1,23 @@
+import { mapsAndSetsLearningObjectivesChapter } from './learning-objectives';
 import { mapsIntroChapter } from './maps-intro';
 import { setsIntroChapter } from './sets-intro';
 import { useCasesChapter } from './use-cases';
 import { implementMapChapter } from './implement-map';
 import { implementSetChapter } from './implement-set';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { mapsAndSetsCheckpointChapter } from './checkpoint';
 
 export const mapsAndSetsChapters = [
+  mapsAndSetsLearningObjectivesChapter,
   mapsIntroChapter,
   setsIntroChapter,
   useCasesChapter,
   implementMapChapter,
   implementSetChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  mapsAndSetsCheckpointChapter
 ];
 
 /**

@@ -2,7 +2,7 @@ export const glossaryChapter = {
   id: 'sliding-window-glossary',
   title: 'Glossary: Sliding Window',
   sectionId: 'sliding-window',
-  previousChapterId: 'subarrays-substrings',
+  previousChapterId: 'sliding-window-supplemental-materials',
   content: `## Glossary: Sliding Window
 
 This glossary contains important terms and concepts related to the sliding window technique. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

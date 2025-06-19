@@ -2,7 +2,7 @@ export const glossaryChapter = {
   id: 'combining-patterns-glossary',
   title: 'Glossary: Combining Patterns',
   sectionId: 'combining-patterns',
-  previousChapterId: 'solving-complex-problems',
+  previousChapterId: 'combining-patterns-supplemental-materials',
   content: `## Glossary: Combining Patterns
 
 This glossary contains important terms and concepts related to combining algorithmic patterns. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

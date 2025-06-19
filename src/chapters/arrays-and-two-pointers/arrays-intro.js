@@ -5,7 +5,7 @@ export const arraysIntroChapter = {
   id: 'arrays-intro',
   title: 'Introduction to Arrays',
   sectionId: 'arrays-and-two-pointers',
-  previousChapterId: null,
+  previousChapterId: 'arrays-two-pointers-learning-objectives',
   content: `## Introduction to Arrays
 
 Arrays are one of the most fundamental data structures in computer science. They store elements of the same type in contiguous memory locations, allowing for efficient access and manipulation of data.

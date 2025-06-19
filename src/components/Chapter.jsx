@@ -426,6 +426,7 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
               }
             }}
           />
+          {currentChapter?.quiz?.component()}
         </div>
 
         <div className="button-container">
@@ -575,7 +576,7 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
               </button>
             )}
 
-            {chapterContent?.exercise?.tests.length > 0 &&
+            {chapterContent?.exercise?.tests?.length > 0 &&
             <button className="code-button test-button" onClick={runTests}>
               Run Tests
             </button>}

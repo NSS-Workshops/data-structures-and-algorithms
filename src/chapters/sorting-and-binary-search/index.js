@@ -1,15 +1,21 @@
+import { sortingAndBinarySearchLearningObjectivesChapter } from './learning-objectives';
 import { sortingApproachesChapter } from './sorting-approaches';
 import { sortMethodChapter } from './sort-method';
 import { binarySearchFundamentalsChapter } from './binary-search-fundamentals';
 import { binarySearchVariantsChapter } from './binary-search-variants';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { sortingAndBinarySearchCheckpointChapter } from './checkpoint';
 
 export const sortingAndBinarySearchChapters = [
+  sortingAndBinarySearchLearningObjectivesChapter,
   sortingApproachesChapter,
   sortMethodChapter,
   binarySearchFundamentalsChapter,
   binarySearchVariantsChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  sortingAndBinarySearchCheckpointChapter
 ];
 
 /**

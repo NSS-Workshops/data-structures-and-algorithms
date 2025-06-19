@@ -19,6 +19,8 @@ In this lesson, we'll discuss what makes one code implementation better than ano
 
 ## Analyzing with Big O
 
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/itn09C2ZB9Y?si=4KFSGFsEsmV31njH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 When comparing algorithms that produce the same outcome, there are a few qualities that make one algorithm better than the other. If it's faster, less memory-intensive, and more readable, then it's better.  Readability is **always** an important consideration, but it can be a bit subjective. However, speed and memory usage are definitive measurements. 
 
 To determine the speed and memory usage of an algorithm, we use Big O notation, which is a way to analyze and compare code.

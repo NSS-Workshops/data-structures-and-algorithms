@@ -3,7 +3,7 @@ export const glossaryChapter = {
   title: "Glossary: Interview Readiness",
   sectionId: "interview-readiness",
   description: "Key terms and concepts for technical interviews",
-  previousChapterId: "clean-solutions",
+  previousChapterId: "interview-readiness-supplemental-materials",
   nextChapterId: null,
   content: `## Glossary: Interview Readiness
 

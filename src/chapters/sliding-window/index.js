@@ -1,15 +1,21 @@
+import { slidingWindowLearningObjectivesChapter } from './learning-objectives';
 import { slidingWindowIntroChapter } from './sliding-window-intro';
 import { optimizingNestedLoopsChapter } from './optimizing-nested-loops';
 import { maintainingWindowStateChapter } from './maintaining-window-state';
 import { subarraysSubstringsChapter } from './subarrays-substrings';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
+import { slidingWindowCheckpointChapter } from './checkpoint';
 
 export const slidingWindowChapters = [
+  slidingWindowLearningObjectivesChapter,
   slidingWindowIntroChapter,
   optimizingNestedLoopsChapter,
   maintainingWindowStateChapter,
   subarraysSubstringsChapter,
-  glossaryChapter
+  supplementalMaterialsChapter,
+  glossaryChapter,
+  slidingWindowCheckpointChapter
 ];
 
 /**

@@ -3,6 +3,7 @@ import { recognizingPatternsChapter } from './recognizing-patterns';
 import { choosingDataStructuresChapter } from './choosing-data-structures';
 import { analyzingTradeoffsChapter } from './analyzing-tradeoffs';
 import { solvingComplexProblemsChapter } from './solving-complex-problems';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const combiningPatternsChapters = [
@@ -11,6 +12,7 @@ export const combiningPatternsChapters = [
   choosingDataStructuresChapter,
   analyzingTradeoffsChapter,
   solvingComplexProblemsChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

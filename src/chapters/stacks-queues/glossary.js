@@ -2,7 +2,7 @@ export const glossaryChapter = {
   id: 'stacks-queues-glossary',
   title: 'Glossary: Stacks and Queues',
   sectionId: 'stacks-queues',
-  previousChapterId: 'implement-queue',
+  previousChapterId: 'stacks-queues-supplemental-materials',
   content: `## Glossary: Stacks and Queues
 
 This glossary contains important terms and concepts related to stacks and queues. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

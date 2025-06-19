@@ -3,6 +3,7 @@ import { solvingProblemsEndToEndChapter } from './solving-problems-end-to-end';
 import { explainingCodeTradeoffsChapter } from './explaining-code-tradeoffs';
 import { thinkingAloudChapter } from './thinking-aloud';
 import { cleanSolutionsChapter } from './clean-solutions';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const interviewReadinessChapters = [
@@ -11,6 +12,7 @@ export const interviewReadinessChapters = [
   explainingCodeTradeoffsChapter,
   thinkingAloudChapter,
   cleanSolutionsChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

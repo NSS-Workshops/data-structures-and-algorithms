@@ -4,6 +4,7 @@ import { whatIsDataStructureChapter } from './what-is-data-structure';
 import { problemSolvingProcessChapter } from './problem-solving-process';
 import { bigONotationChapter } from './big-o-notation';
 import { comparingComplexitiesChapter } from './comparing-complexities';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const algorithmicThinkingChapters = [
@@ -13,6 +14,7 @@ export const algorithmicThinkingChapters = [
   problemSolvingProcessChapter,
   bigONotationChapter,
   comparingComplexitiesChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

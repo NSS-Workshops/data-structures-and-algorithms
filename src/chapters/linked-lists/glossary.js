@@ -2,7 +2,7 @@ export const glossaryChapter = {
   id: 'linked-lists-glossary',
   title: 'Glossary: Linked Lists',
   sectionId: 'linked-lists',
-  previousChapterId: 'implement-linked-list',
+  previousChapterId: 'linked-lists-supplemental-materials',
   content: `## Glossary: Linked Lists
 
 This glossary contains important terms and concepts related to linked lists. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

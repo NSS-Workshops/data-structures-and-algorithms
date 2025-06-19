@@ -4,6 +4,7 @@ import { setsIntroChapter } from './sets-intro';
 import { useCasesChapter } from './use-cases';
 import { implementMapChapter } from './implement-map';
 import { implementSetChapter } from './implement-set';
+import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 
 export const mapsAndSetsChapters = [
@@ -13,6 +14,7 @@ export const mapsAndSetsChapters = [
   useCasesChapter,
   implementMapChapter,
   implementSetChapter,
+  supplementalMaterialsChapter,
   glossaryChapter
 ];
 

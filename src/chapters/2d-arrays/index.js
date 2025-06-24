@@ -5,6 +5,8 @@ import { findingNeighborsChapter } from './finding-neighbors';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { twoDArraysCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './9e31c844';
+import { codeExcerciseTwoChapter } from './5e6361db';
 
 export const twoDArraysChapters = [
   twoDArraysLearningObjectivesChapter,
@@ -13,7 +15,9 @@ export const twoDArraysChapters = [
   findingNeighborsChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  twoDArraysCheckpointChapter
+  twoDArraysCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

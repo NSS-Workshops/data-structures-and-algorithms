@@ -6,6 +6,8 @@ import { cleanSolutionsChapter } from './clean-solutions';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { interviewReadinessCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './ecd7c83d';
+import { codeExcerciseTwoChapter } from './a2a37823';
 
 export const interviewReadinessChapters = [
   interviewReadinessLearningObjectivesChapter,
@@ -15,7 +17,9 @@ export const interviewReadinessChapters = [
   cleanSolutionsChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  interviewReadinessCheckpointChapter
+  interviewReadinessCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

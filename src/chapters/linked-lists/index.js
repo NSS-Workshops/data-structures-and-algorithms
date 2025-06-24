@@ -7,6 +7,8 @@ import { implementLinkedListChapter } from './implement-linked-list';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { linkedListsCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './a719142c';
+import { codeExcerciseTwoChapter } from './1c8056a9';
 
 export const linkedListsChapters = [
   linkedListsLearningObjectivesChapter,
@@ -17,7 +19,9 @@ export const linkedListsChapters = [
   implementLinkedListChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  linkedListsCheckpointChapter
+  linkedListsCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

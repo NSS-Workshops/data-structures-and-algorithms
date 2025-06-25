@@ -7,6 +7,8 @@ import { implementSetChapter } from './implement-set';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { mapsAndSetsCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './9dacc692';
+import { codeExcerciseTwoChapter } from './cc07fff4';
 
 export const mapsAndSetsChapters = [
   mapsAndSetsLearningObjectivesChapter,
@@ -17,7 +19,9 @@ export const mapsAndSetsChapters = [
   implementSetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  mapsAndSetsCheckpointChapter
+  mapsAndSetsCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

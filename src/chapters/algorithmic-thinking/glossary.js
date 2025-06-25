@@ -8,12 +8,12 @@ export const glossaryChapter = {
   getNextChapterId: 'algorithmic-thinking-checkpoint',
   content: `## Glossary: Algorithmic Thinking
 
-This glossary contains important terms and concepts related to algorithmic thinking. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.
+This glossary contains essential terms from Module 1 that form the foundation of algorithmic thinking. These concepts will be the building blocks of modules to come and understanding them is important for gaining competency in the core principles of this course. These terms will also help you communicate effectively about algorithms and data structures in interviews and technical discussions.
 
 | Term | Definition | Week |
 |------|------------|------|
-| Algorithm | A step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem. | 1 |
-| Data Structure | A specialized format for organizing, processing, retrieving and storing data to suit a specific purpose. | 1 |
+| Algorithm | A step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem. Think of it as a recipe for solving computational problems. | 1 |
+| Data Structure | A specialized format for organizing, processing, retrieving and storing data efficiently. Different structures (like arrays, lists, trees) are optimized for different types of operations.| 1 |
 | Time Complexity | A measure of the amount of time an algorithm takes to complete as a function of the length of the input. | 1 |
 | Space Complexity | A measure of the amount of memory an algorithm uses as a function of the length of the input. | 1 |
 | Big O Notation | A mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. Used to classify algorithms according to their growth rates. | 1 |

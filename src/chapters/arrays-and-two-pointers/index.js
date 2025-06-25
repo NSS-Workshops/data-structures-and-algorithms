@@ -7,6 +7,8 @@ import { twoPointersChapter } from './two-pointers';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { arraysAndTwoPointersCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './7a106b96';
+import { codeExcerciseTwoChapter } from './a62881e6';
 
 export const arraysAndTwoPointersChapters = [
   arraysAndTwoPointersLearningObjectivesChapter,
@@ -17,7 +19,9 @@ export const arraysAndTwoPointersChapters = [
   twoPointersChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  arraysAndTwoPointersCheckpointChapter
+  arraysAndTwoPointersCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

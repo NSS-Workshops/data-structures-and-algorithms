@@ -6,6 +6,8 @@ import { solvingComplexProblemsChapter } from './solving-complex-problems';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { combiningPatternsCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './9b8a8427';
+import { codeExcerciseTwoChapter } from './d796e8a8';
 
 export const combiningPatternsChapters = [
   combiningPatternsLearningObjectivesChapter,
@@ -15,7 +17,9 @@ export const combiningPatternsChapters = [
   solvingComplexProblemsChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  combiningPatternsCheckpointChapter
+  combiningPatternsCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

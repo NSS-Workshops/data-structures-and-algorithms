@@ -116,20 +116,19 @@ function removeDuplicates(nums) {
   // Space Complexity: O(1) - only using constant extra space
 }`,
     tests:[
-      {
+        {
         name: "Basic functionality",
         test: (code) => {
           try {
-            eval(code);
+            const removeDuplicates = new Function(`${code}; return removeDuplicates;`)();
             const nums1 = [1, 1, 2];
             const length1 = removeDuplicates(nums1);
             const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
             const length2 = removeDuplicates(nums2);
-            
-            // Check length and first few elements
+
             const test1 = length1 === 2 && nums1[0] === 1 && nums1[1] === 2;
             const test2 = length2 === 5 && nums2[0] === 0 && nums2[1] === 1 && nums2[2] === 2 && nums2[3] === 3 && nums2[4] === 4;
-            
+
             if (test1 && test2) {
               return new TestResult({ passed: true });
             } else {
@@ -151,10 +150,10 @@ function removeDuplicates(nums) {
         name: "Edge case: empty array",
         test: (code) => {
           try {
-            eval(code);
+            const removeDuplicates = new Function(`${code}; return removeDuplicates;`)();
             const nums = [];
             const length = removeDuplicates(nums);
-            
+
             if (length === 0) {
               return new TestResult({ passed: true });
             } else {
@@ -176,10 +175,10 @@ function removeDuplicates(nums) {
         name: "Edge case: single element",
         test: (code) => {
           try {
-            eval(code);
+            const removeDuplicates = new Function(`${code}; return removeDuplicates;`)();
             const nums = [1];
             const length = removeDuplicates(nums);
-            
+
             if (length === 1 && nums[0] === 1) {
               return new TestResult({ passed: true });
             } else {
@@ -201,11 +200,11 @@ function removeDuplicates(nums) {
         name: "No duplicates case",
         test: (code) => {
           try {
-            eval(code);
+            const removeDuplicates = new Function(`${code}; return removeDuplicates;`)();
             const nums = [1, 2, 3, 4, 5];
             const originalLength = nums.length;
             const length = removeDuplicates(nums);
-            
+
             if (length === originalLength && nums[0] === 1 && nums[4] === 5) {
               return new TestResult({ passed: true });
             } else {

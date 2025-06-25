@@ -7,6 +7,8 @@ import { implementQueueChapter } from './implement-queue';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { stacksQueuesCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './a5ef04f0';
+import { codeExcerciseTwoChapter } from './a90586a1';
 
 export const stacksQueuesChapters = [
   stacksQueuesLearningObjectivesChapter,
@@ -17,7 +19,9 @@ export const stacksQueuesChapters = [
   implementQueueChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  stacksQueuesCheckpointChapter
+  stacksQueuesCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

@@ -7,6 +7,8 @@ import { comparingComplexitiesChapter } from './comparing-complexities';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { algorithmicThinkingCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './b032e981';
+import { codeExcerciseTwoChapter } from './b892f062';
 
 export const algorithmicThinkingChapters = [
   algorithmicThinkingLearningObjectivesChapter,
@@ -17,7 +19,9 @@ export const algorithmicThinkingChapters = [
   comparingComplexitiesChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  algorithmicThinkingCheckpointChapter
+  algorithmicThinkingCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

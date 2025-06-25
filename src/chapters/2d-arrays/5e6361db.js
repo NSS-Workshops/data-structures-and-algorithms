@@ -2,7 +2,7 @@ import { TestResult } from "../../utils/test_utils";
 
 export const codeExcerciseTwoChapter = {
   id: '5e6361db',
-  title: 'Module 8 - Code Excercise 2',
+  title: 'Module 3 - Code Excercise 2',
   sectionId: '2d-arrays',
   previousChapterId: null,
   content: `
@@ -34,23 +34,87 @@ Take time to study the problem. During the session, you'll have 90 minutes in yo
 🪞 **After the first interview:**  
 Leave 10–15 minutes to reflect, share feedback, and then switch roles.
 
-Best of luck, and enjoy the practice! 🚀`,
+Best of luck, and enjoy the practice! 🚀
+## Problem: Return Neighbor Values
+
+Write a function \`getNeighbors\` that returns an array of the values of all valid neighbors (top, bottom, left, right) of a given cell \`(row, col)\` in a 2D array. Do not modify the original grid.
+
+### Follow-up Questions:
+- What edge cases need to be considered?
+- How would this change if diagonal neighbors were allowed?
+`,
   exercise: {
-    starterCode:``,
-    solution:``,
+    starterCode:`
+    /*
+Problem: Increment All Neighbors
+*/
+function getNeighbors(grid, row, col) {
+  // Return an array of top, bottom, left, right neighbor values
+}`,
+    solution:`
+    /*
+Problem: Increment All Neighbors
+*/
+    function getNeighbors(grid, row, col) {
+  const result = [];
+  const directions = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+  ];
+  for (let [dr, dc] of directions) {
+    let r = row + dr;
+    let c = col + dc;
+    if (r >= 0 && r < grid.length && c >= 0 && c < grid[0].length) {
+      result.push(grid[r][c]);
+    }
+  }
+  return result;
+}`,
     tests:[
-    {
-        name: "Correct Syntax",
+      {
+        name: "Get Neighbors top-left corner",
         test: (code) => {
           try {
-            new Function(code)(); // Just check that it executes
-            return new TestResult({ passed: true })
-          } catch {
-            return new TestResult({ passed: false });
+            const getNeighbors = new Function(`${code}; return getNeighbors;`)();
+            const grid = [
+              [5, 2, 3],
+              [4, 6, 7],
+              [8, 9, 1]
+            ];
+            const result = getNeighbors(grid, 0, 0);
+            const expected = [4, 2];
+            return JSON.stringify(result) === JSON.stringify(expected)
+              ? new TestResult({ passed: true })
+              : new TestResult({ passed: false, message: `Expected ${JSON.stringify(expected)}, got ${JSON.stringify(result)}` });
+          } catch (e) {
+            return new TestResult({ passed: false, message: e.message });
           }
         },
-        message: "Make sure your code runs without syntax or runtime errors."
+        message: "Should return only valid top-left corner neighbors"
       },
+      {
+        name: "Get Neighbors center cell",
+        test: (code) => {
+          try {
+            const getNeighbors = new Function(`${code}; return getNeighbors;`)();
+            const grid = [
+              [1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]
+            ];
+            const result = getNeighbors(grid, 1, 1);
+            const expected = [2, 8, 4, 6];
+            return JSON.stringify(result) === JSON.stringify(expected)
+              ? new TestResult({ passed: true })
+              : new TestResult({ passed: false, message: `Expected ${JSON.stringify(expected)}, got ${JSON.stringify(result)}` });
+          } catch (e) {
+            return new TestResult({ passed: false, message: e.message });
+          }
+        },
+        message: "Should return neighbors of center cell"
+      }
     ]
   }
 };

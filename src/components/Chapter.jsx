@@ -426,7 +426,6 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
               }
             }}
           />
-          {currentChapter?.quiz?.component()}
         </div>
 
         <div className="button-container">
@@ -586,6 +585,10 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
             </button>
           </div>
         </section>
+      }
+      {
+        currentChapter?.quiz &&
+          <section className="quiz-section"><div className="content-container">{currentChapter?.quiz?.component()}</div></section>
       }
     </div>
   )

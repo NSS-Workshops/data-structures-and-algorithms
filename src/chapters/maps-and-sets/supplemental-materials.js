@@ -2,7 +2,7 @@ export const supplementalMaterialsChapter = {
   id: 'maps-and-sets-supplemental-materials',
   title: 'Supplemental Materials: Maps & Sets',
   sectionId: 'maps-and-sets',
-  previousChapterId: 'implement-set',
+  previousChapterId: 'maps-sets-info-sheet',
   nextChapterId: 'maps-and-sets-glossary',
   content: `
 ### Recommended Podcast Episode

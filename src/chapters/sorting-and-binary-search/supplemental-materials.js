@@ -2,7 +2,7 @@ export const supplementalMaterialsChapter = {
   id: 'sorting-and-binary-search-supplemental-materials',
   title: 'Supplemental Materials: Sorting & Binary Search',
   sectionId: 'sorting-and-binary-search',
-  previousChapterId: 'binary-search-variants',
+  previousChapterId: 'sorting-binary-search-info-sheet',
   nextChapterId: 'sorting-and-binary-search-glossary',
   content: `
 ### Recommended Podcast Episodes

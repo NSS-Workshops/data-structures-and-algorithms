@@ -1,13 +1,13 @@
 import picture1 from "./images/Picture1.png";
 import picture2 from "./images/Picture2.png";
+import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
 
 export const arraysIntroChapter = {
   id: 'arrays-intro',
   title: 'Introduction to Arrays',
   sectionId: 'arrays-and-two-pointers',
   previousChapterId: 'arrays-two-pointers-learning-objectives',
-  content: `## Introduction to Arrays
-
+  content: `
 Arrays are one of the most fundamental data structures in computer science. They store elements of the same type in contiguous memory locations, allowing for efficient access and manipulation of data.
 
 ## Array Characteristics
@@ -73,7 +73,25 @@ And store orders like "large Frappuccino".
 
 JavaScript arrays come with many built-in methods that make working with them convenient. If a new element is added, the array automatically grows to accommodate it. This ensures we always have enough space for new elements without wasting memory.
 
-To initialize an array, we can use several approaches:
+---
+## ⏱️ **Your Time to Practice!** 
+ - 🔓 Uncomment the block shown below:
+\`\`\`js
+// ==============================
+// Exercise 1: Add Multiple Orders Dynamically
+// ============================== 
+\`\`\`
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
+
+---
+
+
+
+
+### To initialize an array, we can use several approaches:
 
 \`\`\`javascript
 let coffeeOrders = []; // Empty array
@@ -105,6 +123,23 @@ This adds her order, large latte, at index 5. The first parameter is the index, 
 
 When we insert a value by index, the elements in the array have to move around a bit. For example, if we insert a value at index 5, the elements that are currently at index 5 and above are shifted to the right to make space for the new value we're inserting. This means the value that was at index 5 is moved to index 6, and the value that was at index 6 is moved to index 7, and so on... The new value is then inserted at index 5. Adding an element at a given index therefore has a runtime of \`O(n)\` because the worst case is we insert a value at index 0 and have to shift all \`n\` elements.
 
+
+---
+## ⏱️ **Your Time to Practice!** 
+ - 🔓 Uncomment the block shown below:
+\`\`\`js
+// ==============================
+// Exercise 2: Insert and Shift Priority Orders
+// ============================== 
+\`\`\`
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
+
+---
+
+
 ### Accessing elements by index
 
 We can access elements in our array using bracket notation. This method functions by giving an index and returning the element stored at that index:
@@ -131,6 +166,21 @@ This removes 1 element at index 10 from the array and returns an array containin
 
 When we remove a value by index, there are a few steps we need to take. If we remove the value at index 10, that value is first removed. Then, all the values at index 11 and beyond (12, 13, etc.) are shifted to the left to fill in the gap left by the removed index. This means that the indexes for these values also changes. The value that previously had an index of 11 has an index of 10... etc. Just like adding an element by index, removing an element has a runtime of \`O(n)\`. At worst, we delete the value at index 0 and have to shift all \`n\` elements to the left to fill in the gap.
 
+---
+## ⏱️ **Your Time to Practice!** 
+ - 🔓 Uncomment the block shown below:
+\`\`\`js
+// ==============================
+// Exercise 3: Remove and Log Multiple Canceled Orders
+// ============================== 
+\`\`\`
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
+
+---
+
 ### Iterating over the Array
 
 You can iterate over all the elements in an array and perform an operation on each element. To do this, it's useful to know the \`length\` property. The \`length\` property returns the current number of elements in the array. It's very useful when iterating over an array.
@@ -152,6 +202,21 @@ for (let order of coffeeOrders) {
     console.log(order);
 }
 \`\`\`
+
+---
+## ⏱️ **Your Time to Practice!** 
+ - 🔓 Uncomment the block shown below:
+\`\`\`js
+// ==============================
+// Exercise 4: Capitalize All Orders Using Loop
+// ============================== 
+\`\`\`
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
+
+---
 
 ## Conclusion
 
@@ -278,6 +343,7 @@ Two things will need to happen:
 Here's how that is going to look:
 
 <img width=700 src="${picture1}"/>
+
 [Inserting an element into an Array]
 
 This shifting of values is exactly the reason why insertion of a value at a specific index runs in linear time O(N). In worst case we'll need to shift N values (inserting the value at the start), in best case we won't need to shift any value (insert the value at the end). On average we will still need to do N/2 shifts per insertion operation, and as we learned in previous lesson, N/2 operations = O(N), since we drop the constant scaling factor.
@@ -304,10 +370,66 @@ The result of this change is going to be similar to what we observed for inserti
 Here's how the removal is going to look:
 
 <img width=700 src="${picture2}"/>
+
 [Removing an element from an Array]
 
 Similar to the insertion, the shifting of elements to the left is the reason why deletion runs in linear time. In the worst case, we will need to shift N-1 elements to the left (when we remove the first element from the array). In the best case we won't need to shift any elements (removing the last element from the array). On average we will still need to shift the same number of elements as we did for insertion (N/2). This means that the deletion is also going to run in linear time in relation to number of elements N, O(N).
   
 `,
-  exercise: null
+    exercise: {
+  starterCode: `
+// ==============================
+// Exercise 1: Add Multiple Orders Dynamically
+// ==============================
+// Uncomment this block and click "Run Code" to complete the exercise
+// Task: Create a function \`addOrders\` that accepts an array and adds 3 new coffee types
+// to the end using push(). Then return the updated array.
+
+// function addOrders(orderList) {
+//   // Add: "Flat White", "Cold Brew", "Double Espresso"
+//   // Return the updated array
+// }
+
+// let orders = ["Latte", "Cappuccino"];
+// orders = addOrders(orders);
+// console.log(orders); // Should print all 5 orders
+
+// ==============================
+// Exercise 2: Insert and Shift Priority Orders
+// ==============================
+// Uncomment this block and click "Run Code" to complete the exercise
+// Task: Insert two orders at index 1: "VIP Order: Affogato", "VIP Order: Cortado"
+// Use splice to do this in one line
+
+// let queue = ["Americano", "Latte", "Mocha", "Espresso"];
+// // Insert both VIP orders right after the first element
+
+// console.log(queue); // Check if the VIP orders are now at index 1 and 2
+
+// ==============================
+// Exercise 3: Remove and Log Multiple Canceled Orders
+// ==============================
+// Uncomment this block and click "Run Code" to complete the exercise
+// Task: Remove two incorrect orders starting at index 2
+// Log both the updated order list and the removed orders array
+
+// let orders = ["Latte", "Flat White", "Wrong1", "Wrong2", "Espresso", "Cold Brew"];
+// // Use splice to remove the 2 wrong orders
+
+// console.log("Updated Orders:", orders);
+// console.log("Removed Orders:", removed);
+
+// ==============================
+// Exercise 4: Capitalize All Orders Using Loop
+// ==============================
+// Uncomment this block and click "Run Code" to complete the exercise
+// Task: Use a for...of loop to print each order in all caps
+// Example: "LATTE", "CORTADO", etc.
+
+// const orders = ["latte", "cortado", "flat white", "espresso"];
+// for (let order of orders) {
+//   // Print each in uppercase
+// }
+  `
+}
 };

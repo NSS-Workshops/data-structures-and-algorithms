@@ -2,6 +2,7 @@ import { twoDArraysLearningObjectivesChapter } from './learning-objectives';
 import { twoDArraysIntroChapter } from './2d-arrays-intro';
 import { indexingAndBoundsChapter } from './indexing-and-bounds';
 import { findingNeighborsChapter } from './finding-neighbors';
+import { twoDArraysInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { twoDArraysCheckpointChapter } from './checkpoint';
@@ -13,6 +14,7 @@ export const twoDArraysChapters = [
   twoDArraysIntroChapter,
   indexingAndBoundsChapter,
   findingNeighborsChapter,
+  twoDArraysInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
   twoDArraysCheckpointChapter,

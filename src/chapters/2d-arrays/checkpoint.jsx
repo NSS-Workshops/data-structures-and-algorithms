@@ -4,13 +4,13 @@ export const twoDArraysCheckpointChapter = {
   id: '2d-arrays-checkpoint',
   title: 'Checkpoint: 2D Arrays',
   sectionId: '2d-arrays',
-  previousChapterId: 'glossary',
+  previousChapterId: '2d-arrays-glossary',
   content: `
 ## Quiz: 2D Arrays
 
 Test your understanding of 2D arrays and matrix operations.
 `,
-  exercise: {
+  quiz: {
     component: () => {
       const CheckpointComponent = () => {
         useAutoGradeQuiz();

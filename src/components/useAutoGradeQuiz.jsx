@@ -20,6 +20,7 @@ export function useAutoGradeQuiz(formSelector = "form.auto-graded-quiz") {
         const questions = form.querySelectorAll(".question");
         let correct = 0;
 
+        console.log("grade", questions);
         questions.forEach((q) => {
           const feedback = q.querySelector(".feedback");
           const expected = q.dataset.answer;
@@ -35,7 +36,7 @@ export function useAutoGradeQuiz(formSelector = "form.auto-graded-quiz") {
                 "input[type=radio]:checked, input[type=checkbox]:checked, input:not([type=radio]):not([type=checkbox]), select, textarea"
               );
             const userValue = selectedControl?.value?.trim() ?? "";
-            const isCorrect = userValue === expected;
+            const isCorrect = userValue == expected;
             if (isCorrect) correct += 1;
 
             if (feedback) {
@@ -55,7 +56,7 @@ export function useAutoGradeQuiz(formSelector = "form.auto-graded-quiz") {
 
             const correctSet = expectedSet.sort().join(",");
             const userSet = selectedVals.sort().join(",");
-            const isCorrect = userSet === correctSet;
+            const isCorrect = userSet == correctSet;
             if (isCorrect) correct += 1;
 
             if (feedback) {

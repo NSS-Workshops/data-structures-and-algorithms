@@ -78,6 +78,25 @@ public int addUpToSecond(int n) {
           <label><input type="radio" name="q2" value="O(n*m)" /> O(n*m)</label>
           <div className="feedback"></div>
         </div>
+
+<div className="question" data-answer="B">
+  <p>What is the space complexity of the following function?</p>
+  <pre>{`function doubleValues(arr) {
+  let result = [];
+
+  for (let num of arr) {
+    result.push(num * 2);
+  }
+
+  return result;
+}`}</pre>
+  <label><input type="radio" name="q2" value="A" /> A. O(1)</label><br />
+  <label><input type="radio" name="q2" value="B" /> B. O(n)</label><br />
+  <label><input type="radio" name="q2" value="C" /> C. O(2n)</label><br />
+  <label><input type="radio" name="q2" value="D" /> D. O(n²)</label>
+  <div className="feedback"></div>
+</div>
+
               <button  className="code-button test-button" type="submit">Submit</button>
             </form>
           </main>

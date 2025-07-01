@@ -21,6 +21,13 @@ We’ll strip things down to the essentials—no frameworks, no extras—just th
 
 As an adult learner, you stay engaged when content feels relevant. That’s why every topic in this course connects directly to real-world coding and interview situations. Research shows that relevance, hands-on learning, and self-direction are key to lasting understanding. You’ll learn by doing, reviewing, and reflecting—because experience-based learning sticks.
 
+
+The coding exercises in this course are intentionally challenging. They’re meant to stretch your brain and create the kind of struggle that actually makes things stick. That discomfort you feel when you’re stuck? That’s your brain learning.
+
+Resist the urge to short-circuit the process by immediately turning to an AI tool or searching for the solution. These are well-known problems — yes, models have seen them before — but you haven’t fully worked through them yet. Don’t cheat yourself out of the learning that comes from wrestling with a tough problem.
+
+You are not looking for perfection. You are looking for progress. The next 10 weeks are your chance to level up, one challenge at a time. Lean into it. You've got this.
+
 And if something ever feels unclear or disconnected, speak up. We’re here to help you see the value, not just the challenge. This is your journey. Let’s make it purposeful, practical, and—yes—even enjoyable. 😊
 
 ## 🧪 A Quick Example of what you will learn
@@ -70,16 +77,27 @@ By the end, you won’t just be picking solutions that feel right, you’ll be a
 **Expected Weekly Commitment:** ~10 hours per week
 **Expected Weekly async Commitment:** ~6 hours per week async self study / prep
 **Expected Weekly in class  Commitment:** ~4 hours per week two time 2 hours on zoom
-
 **Course Duration:** 10 weeks
 **Total Course Hours:** ~100 hours
 
-## Attendance 
+**Class times on zoom Mondays 2-4pm and Wednesdays 2-4pm**
+
+**First class on zoom starts on July 14th Monday 2pm**
+**Last class will be Sept 17th Wednesday 2pm**
+
+**(Sept 1 Labor Day class will move to Sept 2 Tuesday, 2-4pm)**
+
+## Attendance
+
+We will be taking attendance in this class. 
+
 Practice pairing sessions will take place during the second class of each week, giving us time in the first session to solidify concepts you’ve reviewed asynchronously through group activities and discussion.
-After the second class session each week, we’ll send out the pairings for the following week. 
+After the second class session each week, we’ll email the pairings for the following week. 
 
 We’ll exclude students from the pairings if we know ahead of time they’ll be absent. 
-To help us plan accurately, please let us know at least one week in advance if you’ll be out, so we can adjust the pairings accordingly and ensure your partner isn’t left without someone to work with.
+To help us plan accurately, please let us know at **least one week in advance** if you’ll be out, so we can adjust the pairings accordingly and ensure your partner isn’t left without someone to work with.
+
+Let us know in the cohorts channel if and when you are going to be out. The slack channel has your instructors pinned so please @ all instructors listed there.
 
 ## 🗓️ Course Structure
 - Live Zoom Sessions: 2 sessions per week, each 2 hours long 
@@ -94,8 +112,15 @@ Look for: #dsa-{your cohort number} — for example, Cohort One = #dsa-01
 - **Full 2 hours** Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work.
 
 #### Day 2
-- **First 30 minutes:** Instructor-led walkthroughs, mini-quizzes, concept reviews, and Q&A.
-- **Next 90 minutes:** Pair programming practice in breakout rooms (mock interviews, problem-solving, role-switching, and reflection).
+- **45 minutes:** Weekly Pair programming practice in breakout rooms (pair coding / mock interview).
+- **5 minutes:** Break
+- **45 minutes:** Weekly Pair programming practice in breakout rooms (switch interviewer / interviewee role).
+- **5 minutes:** Break
+- **20 minutes:** Review/discuss the problems as a group
+
+In addition to our synchronous Zoom sessions, this course includes an asynchronous component, which we estimate will take about 6 hours per week.
+Each Monday, we’ll review the week’s material together — with the expectation that you’ve already worked through it and are ready to ask questions, share insights, and dig deeper into anything that felt unclear.
+A key part of your asynchronous time should be spent reading, working the coding exercises and reflecting on the core concepts. The other part should be dedicated to preparing for the weekly pair coding assignment, which will be sent to you by email. As the interviewer, your preparation is essential — it ensures a more productive and realistic practice experience for both you and your partner.
 
 ###  How to reach us
 Got a question? The \`#help\` channel on Slack is the perfect place to ask!
@@ -176,37 +201,62 @@ Integrating multiple techniques for complex problems
 ### Module 10: Interview Readiness & Recap
 Putting it all together for technical interviews
 
-## 🚀 How to Approach This Course
+## 🚀 How to Approach the Course
 
-### 1. Sequential Learning
+### Sequential Learning
 Work through the modules in order. Each chapter builds on concepts from previous ones, so skipping ahead or moving ahead 
 may leave gaps in your understanding. If you finish the prescribed material look for the supplemental material provided to more deeply engage 
 with the content. Find practice problem on the internet let your favorite LLM quiz you or give you extra practice problems 
 for the given module theme. 
 
-### 2. Active Engagement
-- **Take notes** as you read through each chapter
-- **Work through examples** step by step
-- **Complete all exercises** before moving forward
-- **Experiment with code** to deepen your understanding
+### Active Engagement
+To get the most out of this course, don’t just passively read, actively engage with the material. Take notes as you go to process and retain key ideas. Work through each example step by step, making sure you understand not just what the code does, but why it works. Complete every exercise before moving on, even if it feels tough, that’s where the learning happens. And don’t be afraid to experiment with the code. Tweak it, break it, fix it. The more you interact with it, the deeper your understanding will grow.
 
-### 3. Glossary Review
-Each chapter includes a glossary of important terms. Make it a habit to:
-- **Review glossary terms** from the current chapter
-- **Revisit terms** from previous chapters regularly
-- **Use flashcards** or other memory techniques for key concepts
+### Anatomy of Each Module
 
-### 4. Supplemental Materials
-Each chapter comes with additional resources to help deepen your understanding, including audio clips/podcasts, readings, visual guides, and challenges.
+Each module follows a consistent structure designed to help you build understanding step-by-step. Below is an overview of the key components you'll find in every module, along with suggestions for how to make the most of each part.
 
-* **Listen to the audio** and jot down key takeaways.
-* **Read the extra material** to reinforce and expand on what you’ve learned.
-* **Review the visual guides** to support your intuition and strengthen your grasp of the concepts through visual learning.
+#### 1. Learning Objectives
 
-### 5. Practice and Repetition
-- **Solve additional problems** beyond the provided exercises
-- **Implement algorithms** from scratch multiple times
-- **Explain concepts** to others (or to yourself out loud)
+These outline the core skills and concepts you'll be expected to understand and apply by the end of the module. Refer to them as a guide to focus your study and self-assess your progress.
+
+#### 2. Concept and Exercise Pages
+
+These are the heart of the module. Each concept is introduced with brief explanations, code examples, and short exercises to test your understanding as you go. We recommend:
+
+* Actively working through the examples
+* Attempting each exercise before checking the solution
+
+#### 3. Info Sheet
+Included in the Data Structures modules, the Info Sheet serves as a quick-reference guide or cheat sheet. It typically contains a table of common operations and their associated Big O time complexities. Use it to:
+
+- Get a high-level overview of how different operations perform
+- Compare the efficiency of different data structures
+- Refresh your memory before pair programming or interviews
+
+#### 4. Supplemental Materials
+
+Each module includes additional resources to deepen your understanding, such as podcasts, readings, visual diagrams. To get the most out of them:
+
+* **Listen to the podcast(s)** and jot down your takeaways
+* **Read the supplemental materials** to reinforce and expand on your core learning
+* **Engage with the visual guides** they’re here to help you build a solid mental model of each concept. Don’t just watch the animations passively; take the time to connect each step of the animation to the corresponding line in the algorithm. The more actively you map the motion to the logic, the more deeply it will stick.
+
+#### 5. Glossary
+
+Each module has a glossary of important terms. Build your vocabulary and fluency by:
+
+* Reviewing terms from the current module
+* Revisiting earlier terms periodically to keep them fresh
+* Using flashcards or memory techniques to master essential concepts
+
+#### 6. Checkpoints
+
+These are short quizzes or reflection activities to help you evaluate your understanding before moving on. They’re not graded, but they are important. Use them to:
+
+* Check for gaps in your knowledge
+* Confirm you’re ready to tackle the next set of challenges
+* Identify topics to revisit in your async or pair prep time
 
 ## 💾 Saving Your Work
 

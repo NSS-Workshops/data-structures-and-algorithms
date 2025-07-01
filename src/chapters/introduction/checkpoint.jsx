@@ -88,7 +88,7 @@ Test your understanding of the introduction concepts.
                     name="q2"
                     value="During the second class of the week; give at least one week's notice in Slack"
                   />{" "}
-                  During the second class of the week; give at least one week's
+                  During the second class of the week; give at least one weeks
                   notice in Slack
                 </label>
                 <br />
@@ -227,7 +227,7 @@ Test your understanding of the introduction concepts.
                     name="q8"
                     value="You’ll automatically fail the week's module"
                   />{" "}
-                  You’ll automatically fail the week's module
+                  You’ll automatically fail the weeks module
                 </label>
                 <br />
                 <label>

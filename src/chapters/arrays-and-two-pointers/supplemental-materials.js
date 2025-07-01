@@ -2,7 +2,7 @@ export const supplementalMaterialsChapter = {
   id: 'arrays-and-two-pointers-supplemental-materials',
   title: 'Supplemental Materials: Arrays & Two Pointers',
   sectionId: 'arrays-and-two-pointers',
-  previousChapterId: 'two-pointers',
+  previousChapterId: 'arrays-info-sheet',
   nextChapterId: 'arrays-and-two-pointers-glossary',
   content: `
 ### Recommended Podcast Episode

@@ -2,7 +2,7 @@ export const supplementalMaterialsChapter = {
   id: 'stacks-queues-supplemental-materials',
   title: 'Supplemental Materials: Stacks & Queues',
   sectionId: 'stacks-queues',
-  previousChapterId: 'implement-queue',
+  previousChapterId: 'stacks-queues-info-sheet',
   nextChapterId: 'stacks-queues-glossary',
   content: `
 ### Recommended Podcast Episode

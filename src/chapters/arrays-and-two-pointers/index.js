@@ -3,7 +3,9 @@ import { arraysIntroChapter } from './arrays-intro';
 import { arrayCoreOperationsChapter } from './array-core-operations';
 import { arrayTradeoffsChapter } from './array-tradeoffs';
 import { arrayMethodsChapter } from './array-methods';
+import { implementArrayListChapter } from './implement-arraylist';
 import { twoPointersChapter } from './two-pointers';
+import { arraysInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { arraysAndTwoPointersCheckpointChapter } from './checkpoint';
@@ -16,7 +18,9 @@ export const arraysAndTwoPointersChapters = [
   arrayCoreOperationsChapter,
   arrayTradeoffsChapter,
   arrayMethodsChapter,
+  implementArrayListChapter,
   twoPointersChapter,
+  arraysInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
   arraysAndTwoPointersCheckpointChapter,

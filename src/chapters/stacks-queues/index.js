@@ -4,6 +4,7 @@ import { queuesIntroChapter } from './queues-intro';
 import { implementationTradeoffsChapter } from './implementation-tradeoffs';
 import { implementStackChapter } from './implement-stack';
 import { implementQueueChapter } from './implement-queue';
+import { stacksQueuesInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { stacksQueuesCheckpointChapter } from './checkpoint';
@@ -17,6 +18,7 @@ export const stacksQueuesChapters = [
   implementationTradeoffsChapter,
   implementStackChapter,
   implementQueueChapter,
+  stacksQueuesInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
   stacksQueuesCheckpointChapter,

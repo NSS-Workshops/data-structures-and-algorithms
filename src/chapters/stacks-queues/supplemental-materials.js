@@ -8,6 +8,7 @@ export const supplementalMaterialsChapter = {
 ### Recommended Podcast Episode
 
 **[Cue the Queues](https://www.codenewbie.org/basecs/11)**
+**[Stacks and Overflows](https://www.codenewbie.org/basecs/9)**
 
 ### Visualization Tools
 

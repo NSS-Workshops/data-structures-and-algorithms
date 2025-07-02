@@ -91,11 +91,11 @@ Look for: #dsa-{your cohort number} — for example, Cohort One = #dsa-01
 
 ### Class Session Format (Repeats weekly):
 #### Day 1
-  Hour 0.5: Instructor-led walkthroughs, quizzes, discussions, demonstrations, reviews
-  Hour 1.5: Pair coding programming practice
+- **Full 2 hours** Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work.
 
 #### Day 2
-  Hour 2: Instructor-led walkthroughs, quizzes, discussions, demonstrations, reviews 
+- **First 30 minutes:** Instructor-led walkthroughs, mini-quizzes, concept reviews, and Q&A.
+- **Next 90 minutes:** Pair programming practice in breakout rooms (mock interviews, problem-solving, role-switching, and reflection).
 
 ###  How to reach us
 Got a question? The \`#help\` channel on Slack is the perfect place to ask!

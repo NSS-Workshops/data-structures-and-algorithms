@@ -221,11 +221,6 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
       clearTimeout(hideConsoleTimeout)
     }
 
-    const timeout = setTimeout(() => {
-      setShowConsoleOutput(false)
-    }, 8000)
-    setHideConsoleTimeout(timeout)
-
     // Store original console.log
     const originalConsoleLog = console.log;
 
@@ -426,7 +421,10 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
               }
             }}
           />
-          {currentChapter?.quiz?.component()}
+          {
+          currentChapter?.quiz &&
+           <section className="quiz-section"><div className="content-container">{currentChapter?.quiz?.component()}</div></section>
+          }
         </div>
 
         <div className="button-container">

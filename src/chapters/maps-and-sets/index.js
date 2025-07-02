@@ -4,6 +4,7 @@ import { setsIntroChapter } from './sets-intro';
 import { useCasesChapter } from './use-cases';
 import { implementMapChapter } from './implement-map';
 import { implementSetChapter } from './implement-set';
+import { mapsAndSetsInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { mapsAndSetsCheckpointChapter } from './checkpoint';
@@ -17,6 +18,7 @@ export const mapsAndSetsChapters = [
   useCasesChapter,
   implementMapChapter,
   implementSetChapter,
+  mapsAndSetsInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
   mapsAndSetsCheckpointChapter,

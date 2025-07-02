@@ -55,6 +55,8 @@ This glossary contains important terms and concepts related to sorting algorithm
 | Lower Bound | The smallest index in a sorted array where a value greater than or equal to the target appears. | 7 |
 | Upper Bound | The smallest index in a sorted array where a value greater than the target appears. | 7 |
 | Rotated Sorted Array | A sorted array that has been rotated around a pivot point, often used in binary search variants. | 7 |
+| Stable Sorting Algorithm| If two items are the same, they stay in the same order they were in before sorting.|7|
+| Unstable Sorting Algorithm| If two items are the same, their order might change after sorting.|7|
 `,
   exercise: null
 };

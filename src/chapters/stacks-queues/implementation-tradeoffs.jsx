@@ -673,7 +673,7 @@ Alex felt a sense of accomplishment. In just one week, they'd gone from understa
 "Maya," Alex said, "I never thought I'd be able to contribute to a board meeting about technical architecture."
 
 Maya smiled warmly. "That's the power of understanding fundamentals. Once you grasp the core concepts and trade-offs, you can apply them anywhere. You're well on your way to becoming a thoughtful software engineer."`,
-  exercise: {},
+  exercise: null,
   quiz: {
     component: () => {
       const CheckpointComponent = () => {
@@ -759,51 +759,72 @@ Maya smiled warmly. "That's the power of understanding fundamentals. Once you gr
                 </div>
               </div>
 
-              <div className="question" data-answer="37.5">
+              <div className="question" data-answer="O(n)">
                 <p>
-                  According to the performance comparison chart, how many
-                  seconds would it take to process 5000 requests using a simple
-                  array queue implementation?
-                </p>
-                <input type="number" step="0.1" required />
-                <span className="feedback" />
-                <div className="explanation">
-                  Based on the performance chart, simple array queue processing
-                  time grows quadratically. For 5000 requests, it would take
-                  37.5 seconds, while optimized implementations take only 8ms.
-                </div>
-              </div>
-
-              <div className="question" data-answer="Circular Array Queue">
-                <p>
-                  Which queue implementation was recommended by Maya for the new
-                  library branch?
+                  What is the Big O time complexity of the dequeue operation in a simple array queue implementation that uses <code>shift()</code> to remove elements from the front?
                 </p>
                 <label>
-                  <input type="radio" name="q2" value="Simple Array Queue" />{" "}
-                  Simple Array Queue
+                  <input type="radio" name="q2" value="O(1)" />{" "}
+                  O(1) - Constant time
                 </label>
                 <br />
                 <label>
-                  <input type="radio" name="q2" value="Circular Array Queue" />{" "}
-                  Circular Array Queue
+                  <input type="radio" name="q2" value="O(log n)" />{" "}
+                  O(log n) - Logarithmic time
                 </label>
                 <br />
                 <label>
-                  <input type="radio" name="q2" value="Linked List Queue" />{" "}
-                  Linked List Queue
+                  <input type="radio" name="q2" value="O(n)" />{" "}
+                  O(n) - Linear time
                 </label>
                 <br />
                 <label>
-                  <input type="radio" name="q2" value="Database Queue" />{" "}
-                  Database Queue
+                  <input type="radio" name="q2" value="O(n²)" />{" "}
+                  O(n²) - Quadratic time
                 </label>
                 <div className="feedback"></div>
                 <div className="explanation">
-                  Maya recommended the <strong>Circular Array Queue</strong> as
-                  it provides the optimal balance of performance (O(1)
-                  operations), moderate complexity, and manageable maintenance
-                  requirements for the librarys needs.
+                  The <code>shift()</code> operation in a simple array queue is <strong>O(n)</strong> because it must move all remaining elements one position forward to fill the gap left by the removed element. This is why simple array queues become inefficient with larger datasets, while circular array and linked list queues maintain O(1) dequeue operations.
+                </div>
+              </div>
+
+              <div className="question" data-answers="Circular array queue maintains O(1) operations,Linked list queue maintains O(1) operations">
+                <p>
+                  Why do circular array queues and linked list queues both maintain O(1) time complexity for enqueue and dequeue operations, while simple array queues have O(n) dequeue operations?
+                </p>
+                <label>
+                  <input type="checkbox" value="Circular array queue maintains O(1) operations" />{" "}
+                  🔄 Circular array queues use front/rear pointers and modular arithmetic to avoid shifting elements
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" value="Simple arrays are faster for small datasets" />{" "}
+                  📊 Simple arrays are inherently faster for small datasets
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" value="Linked list queue maintains O(1) operations" />{" "}
+                  🔗 Linked list queues update pointers without moving existing elements
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" value="Memory allocation is the main factor" />{" "}
+                  💾 Memory allocation patterns determine the time complexity
+                </label>
+                <br />
+                <label>
+                  <input type="checkbox" value="Programming language determines complexity" />{" "}
+                  💻 The programming language determines the time complexity
+                </label>
+                <div className="feedback"></div>
+                <div className="explanation">
+                  <ul>
+                    <li><strong>Circular array queues:</strong> ✅ Correct — Use front and rear pointers with modular arithmetic to wrap around the array, avoiding the need to shift elements when dequeuing.</li>
+                    <li><strong>Simple arrays faster:</strong> ❌ Incorrect — Simple arrays become slower as size increases due to O(n) shift operations.</li>
+                    <li><strong>Linked list queues:</strong> ✅ Correct — Simply update the front pointer to the next node without moving any existing elements, maintaining O(1) complexity.</li>
+                    <li><strong>Memory allocation:</strong> ❌ Incorrect — While memory patterns matter for cache performance, they don&apos;t change the fundamental time complexity.</li>
+                    <li><strong>Programming language:</strong> ❌ Incorrect — Time complexity is determined by the algorithm design, not the language implementation.</li>
+                  </ul>
                 </div>
               </div>
 

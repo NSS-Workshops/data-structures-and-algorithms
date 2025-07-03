@@ -1,4 +1,5 @@
 import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { TestResult } from "../../utils/test_utils";
 
 export const implementQueueChapter = {
   id: "implement-queue",
@@ -669,6 +670,34 @@ Sam grinned. "And I'll finally have a bulletproof hold request system!"
 
 "That's the goal," Maya said with a smile. "Good data structures don't just make programs faster - they make them more reliable and help prevent the kind of mistakes that frustrated patrons."
 
+## 💻 Alex's Queue Implementation Challenge!
+
+"Alright Alex," Maya said, opening a fresh code editor window. "Yesterday you built a stack from scratch, and today you've learned all about queues. Now it's time for the ultimate test - implementing your own Queue class!"
+
+Alex leaned forward eagerly. "This is going to be more challenging than the stack, isn't it?"
+
+"Absolutely," Maya nodded. "Queues are trickier because you need to efficiently handle both ends - adding at the back and removing from the front. But I know you can do it!"
+
+Sam looked over with interest. "And if Alex gets this right, we'll have a proper hold request system that can't be messed up?"
+
+"Exactly, Sam. A bulletproof queue implementation will ensure fairness every time."
+
+Maya pulled up the exercise template. "Alex, I've given you the basic structure and the HoldRequest class. Your mission is to implement the five core queue methods that will power our entire hold request system."
+
+🔓 **Your mission: Complete the Queue implementation below 👇**
+- Implement the missing \`enqueue()\`, \`dequeue()\`, \`peek()\`, \`isEmpty()\`, and \`size()\` methods
+- Make sure your implementation follows FIFO (First In, First Out) behavior
+- Handle edge cases gracefully (return null for empty queue operations)
+- **Click Run Code** to test your implementation
+- **Check the test results** to see if your queue maintains fairness!
+
+"Remember," Maya emphasized, "this isn't just an academic exercise. The queue you're building will be the foundation for fair, reliable library systems. Every patron who uses our hold request system will depend on your code working correctly."
+
+Alex cracked their knuckles. "Let's build a queue that would make Mrs. Patterson proud!"
+
+"That's the spirit!" Maya laughed. "Let's see what you can create!"
+
+
 ## Key Takeaways
 
 By the end of the day, Alex had learned:
@@ -682,7 +711,249 @@ By the end of the day, Alex had learned:
 - **Proper error handling and edge cases** are crucial for robust queue implementations
 
 The journey from understanding queues conceptually to implementing efficient, production-ready queue classes had been challenging but rewarding. Alex now had the skills to build fair, efficient systems that could handle real-world library operations at scale.`,
-  exercise: {},
+  exercise: {
+    starterCode: `// Complete the Queue implementation below
+// You need to implement the missing methods to make the tests pass
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+  
+  // TODO: Implement enqueue method
+  // Add an item to the back of the queue
+  enqueue(item) {
+    // Your code here
+  }
+  
+  // TODO: Implement dequeue method
+  // Remove and return the front item from the queue
+  // Return null if queue is empty
+  dequeue() {
+    // Your code here
+  }
+  
+  // TODO: Implement peek method
+  // Return the front item without removing it
+  // Return null if queue is empty
+  peek() {
+    // Your code here
+  }
+  
+  // TODO: Implement isEmpty method
+  // Return true if queue is empty, false otherwise
+  isEmpty() {
+    // Your code here
+  }
+  
+  // TODO: Implement size method
+  // Return the number of items in the queue
+  size() {
+    // Your code here
+  }
+}`,
+    solution: `// Complete Queue implementation
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+  
+  // Add an item to the back of the queue
+  enqueue(item) {
+    this.items.push(item);
+  }
+  
+  // Remove and return the front item from the queue
+  // Return null if queue is empty
+  dequeue() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.items.shift();
+  }
+  
+  // Return the front item without removing it
+  // Return null if queue is empty
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.items[0];
+  }
+  
+  // Return true if queue is empty, false otherwise
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  
+  // Return the number of items in the queue
+  size() {
+    return this.items.length;
+  }
+}`,
+    tests: [
+      {
+        name: "Test Queue basic operations",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test Queue basic operations
+            const queue = new Queue();
+            
+            // Test isEmpty on new queue
+            const emptyResult = queue.isEmpty();
+            const sizeResult = queue.size();
+            
+            // Test enqueue operation
+            queue.enqueue("Request A");
+            const notEmptyResult = queue.isEmpty();
+            const sizeAfterEnqueue = queue.size();
+            
+            // Test peek operation
+            const peekResult = queue.peek();
+            const sizeAfterPeek = queue.size();
+            
+            // Test multiple enqueues
+            queue.enqueue("Request B");
+            queue.enqueue("Request C");
+            const finalSize = queue.size();
+            const finalPeek = queue.peek();
+            
+            return ({ emptyResult, sizeResult, notEmptyResult, sizeAfterEnqueue, peekResult, sizeAfterPeek, finalSize, finalPeek });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (testResult.emptyResult !== true) {
+              return new TestResult({ passed: false, message: "New queue should be empty" });
+            }
+            
+            if (testResult.sizeResult !== 0) {
+              return new TestResult({ passed: false, message: "New queue should have size 0" });
+            }
+            
+            if (testResult.notEmptyResult !== false) {
+              return new TestResult({ passed: false, message: "Queue should not be empty after enqueue" });
+            }
+            
+            if (testResult.sizeAfterEnqueue !== 1) {
+              return new TestResult({ passed: false, message: "Queue should have size 1 after one enqueue" });
+            }
+            
+            if (testResult.peekResult !== "Request A") {
+              return new TestResult({ passed: false, message: "Peek should return the front item" });
+            }
+            
+            if (testResult.sizeAfterPeek !== 1) {
+              return new TestResult({ passed: false, message: "Peek should not change queue size" });
+            }
+            
+            if (testResult.finalSize !== 3) {
+              return new TestResult({ passed: false, message: "Queue should have size 3 after three enqueues" });
+            }
+            
+            if (testResult.finalPeek !== "Request A") {
+              return new TestResult({ passed: false, message: "Peek should still return the first item" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "Queue should handle basic operations correctly (enqueue, dequeue, peek, isEmpty, size)."
+      },
+      {
+        name: "Test Queue FIFO behavior",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test FIFO behavior
+            const queue = new Queue();
+            queue.enqueue("First");
+            queue.enqueue("Second");
+            queue.enqueue("Third");
+            
+            const dequeue1 = queue.dequeue();
+            const dequeue2 = queue.dequeue();
+            const sizeAfterDequeues = queue.size();
+            const dequeue3 = queue.dequeue();
+            const finalEmpty = queue.isEmpty();
+            
+            return ({ dequeue1, dequeue2, sizeAfterDequeues, dequeue3, finalEmpty });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (testResult.dequeue1 !== "First") {
+              return new TestResult({ passed: false, message: "Dequeue should return first enqueued item (First)" });
+            }
+            
+            if (testResult.dequeue2 !== "Second") {
+              return new TestResult({ passed: false, message: "Dequeue should return second enqueued item (Second)" });
+            }
+            
+            if (testResult.sizeAfterDequeues !== 1) {
+              return new TestResult({ passed: false, message: "Queue should have size 1 after two dequeues" });
+            }
+            
+            if (testResult.dequeue3 !== "Third") {
+              return new TestResult({ passed: false, message: "Dequeue should return last enqueued item (Third)" });
+            }
+            
+            if (testResult.finalEmpty !== true) {
+              return new TestResult({ passed: false, message: "Queue should be empty after dequeuing all items" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "Queue should follow FIFO (First In, First Out) behavior."
+      },
+      {
+        name: "Test Queue empty handling",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test empty queue handling
+            const queue = new Queue();
+            
+            const dequeueResult = queue.dequeue();
+            const peekResult = queue.peek();
+            const isEmptyResult = queue.isEmpty();
+            const sizeResult = queue.size();
+            
+            return ({ dequeueResult, peekResult, isEmptyResult, sizeResult });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (testResult.dequeueResult !== null) {
+              return new TestResult({ passed: false, message: "Dequeue on empty queue should return null" });
+            }
+            
+            if (testResult.peekResult !== null) {
+              return new TestResult({ passed: false, message: "Peek on empty queue should return null" });
+            }
+            
+            if (testResult.isEmptyResult !== true) {
+              return new TestResult({ passed: false, message: "Empty queue should return true for isEmpty" });
+            }
+            
+            if (testResult.sizeResult !== 0) {
+              return new TestResult({ passed: false, message: "Empty queue should have size 0" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "Queue should handle empty queue operations gracefully."
+      },
+    ],
+  },
   quiz: {
     component: () => {
       const CheckpointComponent = () => {

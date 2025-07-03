@@ -1,4 +1,5 @@
 import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { TestResult } from "../../utils/test_utils";
 
 export const implementStackChapter = {
   id: "implement-stack",
@@ -448,6 +449,29 @@ Sam grinned. "I can't wait to build a system that'll make sure I never mess up h
 
 "That's exactly the right attitude," Maya said. "Good data structures don't just make programs faster - they make them more reliable and help prevent mistakes."
 
+## 💻 Alex's Implementation Challenge!
+
+"Now comes the exciting part," Maya said, pulling out her laptop. "Alex, you've seen how stacks work conceptually and you've used them to solve problems. But now I want you to build your own Stack class from scratch!"
+
+Alex's eyes widened with excitement. "Really? I get to implement the actual data structure?"
+
+"Absolutely! You understand the theory, you've seen the applications, and now it's time to write the code that makes it all work. This is where computer science theory meets practical programming."
+
+Maya opened a code editor and showed Alex a skeleton of the Stack class. "I've given you the basic structure and clear instructions. Your job is to implement the five core methods that make a stack work."
+
+🔓 **Your mission: Complete the Stack implementation below 👇**
+- Implement the missing \`push()\`, \`pop()\`, \`peek()\`, \`isEmpty()\`, and \`size()\` methods
+- Make sure your implementation follows LIFO (Last In, First Out) behavior
+- Handle edge cases properly (like popping from an empty stack)
+- **Click Run Code** to test your implementation
+- **Check the test results** to see if your stack works correctly!
+
+"Remember," Maya added, "you're not just writing code - you're building the foundation that will power real library systems. Every method you implement will be used by the book cart functions we've been working with."
+
+Sam looked over Alex's shoulder. "And if you get it right, we'll have a bulletproof system for managing book returns!"
+
+"Exactly," Maya smiled. "Let's see what you can build, Alex!"
+
 ## Key Takeaways
 
 By the end of the day, Alex had learned:
@@ -461,7 +485,252 @@ By the end of the day, Alex had learned:
 - **JavaScript arrays are perfect for stacks** due to built-in push/pop methods
 
 The journey from understanding stacks conceptually to implementing them in code had been seamless. Alex now had both the theoretical knowledge and practical skills to build stack-based systems, setting the foundation for tackling the more complex queue implementation ahead.`,
-  exercise: {},
+  exercise: {
+    starterCode: `// Complete the Stack implementation below
+// You need to implement the missing methods to make the tests pass
+
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+  
+  // TODO: Implement push method
+  // Add an item to the top of the stack
+  push(item) {
+    // Your code here
+  }
+  
+  // TODO: Implement pop method
+  // Remove and return the top item from the stack
+  // Throw an error if stack is empty
+  pop() {
+    // Your code here
+  }
+  
+  // TODO: Implement peek method
+  // Return the top item without removing it
+  // Throw an error if stack is empty
+  peek() {
+    // Your code here
+  }
+  
+  // TODO: Implement isEmpty method
+  // Return true if stack is empty, false otherwise
+  isEmpty() {
+    // Your code here
+  }
+  
+  // TODO: Implement size method
+  // Return the number of items in the stack
+  size() {
+    // Your code here
+  }
+}`,
+    solution: `// Complete Stack implementation
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+  
+  // Add an item to the top of the stack
+  push(item) {
+    this.items.push(item);
+  }
+  
+  // Remove and return the top item from the stack
+  // Throw an error if stack is empty
+  pop() {
+    if (this.isEmpty()) {
+      throw new Error('Stack is empty - cannot pop');
+    }
+    return this.items.pop();
+  }
+  
+  // Return the top item without removing it
+  // Throw an error if stack is empty
+  peek() {
+    if (this.isEmpty()) {
+      throw new Error('Stack is empty - cannot peek');
+    }
+    return this.items[this.items.length - 1];
+  }
+  
+  // Return true if stack is empty, false otherwise
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  
+  // Return the number of items in the stack
+  size() {
+    return this.items.length;
+  }
+}`,
+    tests: [
+      {
+        name: "Test Stack basic operations",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test Stack basic operations
+            const stack = new Stack();
+            
+            // Test isEmpty on new stack
+            const emptyResult = stack.isEmpty();
+            const sizeResult = stack.size();
+            
+            // Test push operation
+            stack.push("Book A");
+            const notEmptyResult = stack.isEmpty();
+            const sizeAfterPush = stack.size();
+            
+            // Test peek operation
+            const peekResult = stack.peek();
+            const sizeAfterPeek = stack.size();
+            
+            // Test multiple pushes
+            stack.push("Book B");
+            stack.push("Book C");
+            const finalSize = stack.size();
+            const finalPeek = stack.peek();
+            
+            return ({ emptyResult, sizeResult, notEmptyResult, sizeAfterPush, peekResult, sizeAfterPeek, finalSize, finalPeek });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (testResult.emptyResult !== true) {
+              return new TestResult({ passed: false, message: "New stack should be empty" });
+            }
+            
+            if (testResult.sizeResult !== 0) {
+              return new TestResult({ passed: false, message: "New stack should have size 0" });
+            }
+            
+            if (testResult.notEmptyResult !== false) {
+              return new TestResult({ passed: false, message: "Stack should not be empty after push" });
+            }
+            
+            if (testResult.sizeAfterPush !== 1) {
+              return new TestResult({ passed: false, message: "Stack should have size 1 after one push" });
+            }
+            
+            if (testResult.peekResult !== "Book A") {
+              return new TestResult({ passed: false, message: "Peek should return the top item" });
+            }
+            
+            if (testResult.sizeAfterPeek !== 1) {
+              return new TestResult({ passed: false, message: "Peek should not change stack size" });
+            }
+            
+            if (testResult.finalSize !== 3) {
+              return new TestResult({ passed: false, message: "Stack should have size 3 after three pushes" });
+            }
+            
+            if (testResult.finalPeek !== "Book C") {
+              return new TestResult({ passed: false, message: "Peek should return the last pushed item" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "Stack should handle basic operations correctly (push, pop, peek, isEmpty, size)."
+      },
+      {
+        name: "Test Stack LIFO behavior",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test LIFO behavior
+            const stack = new Stack();
+            stack.push("First");
+            stack.push("Second");
+            stack.push("Third");
+            
+            const pop1 = stack.pop();
+            const pop2 = stack.pop();
+            const sizeAfterPops = stack.size();
+            const pop3 = stack.pop();
+            const finalEmpty = stack.isEmpty();
+            
+            return ({ pop1, pop2, sizeAfterPops, pop3, finalEmpty });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (testResult.pop1 !== "Third") {
+              return new TestResult({ passed: false, message: "Pop should return last pushed item (Third)" });
+            }
+            
+            if (testResult.pop2 !== "Second") {
+              return new TestResult({ passed: false, message: "Pop should return second-to-last pushed item (Second)" });
+            }
+            
+            if (testResult.sizeAfterPops !== 1) {
+              return new TestResult({ passed: false, message: "Stack should have size 1 after two pops" });
+            }
+            
+            if (testResult.pop3 !== "First") {
+              return new TestResult({ passed: false, message: "Pop should return first pushed item (First)" });
+            }
+            
+            if (testResult.finalEmpty !== true) {
+              return new TestResult({ passed: false, message: "Stack should be empty after popping all items" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "Stack should follow LIFO (Last In, First Out) behavior."
+      },
+      {
+        name: "Test Stack error handling",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test error handling
+            const stack = new Stack();
+            
+            let popError = null;
+            let peekError = null;
+            
+            try {
+              stack.pop();
+            } catch (error) {
+              popError = error.message;
+            }
+            
+            try {
+              stack.peek();
+            } catch (error) {
+              peekError = error.message;
+            }
+            
+            return ({ popError, peekError });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (!testResult.popError || !testResult.popError.includes("empty")) {
+              return new TestResult({ passed: false, message: "Pop on empty stack should throw error mentioning 'empty'" });
+            }
+            
+            if (!testResult.peekError || !testResult.peekError.includes("empty")) {
+              return new TestResult({ passed: false, message: "Peek on empty stack should throw error mentioning 'empty'" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "Stack should throw appropriate errors when operations are performed on empty stack."
+      },
+    ],
+  },
   quiz: {
     component: () => {
       const CheckpointComponent = () => {

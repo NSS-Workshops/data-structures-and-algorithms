@@ -1,4 +1,5 @@
 import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { TestResult } from "../../utils/test_utils";
 
 export const stacksIntroChapter = {
   id: "stacks-intro",
@@ -84,9 +85,25 @@ Halfway through processing, Maya paused and pointed to the current top book with
 
 "Great question! Sometimes you need to know what's next without actually processing it yet. Maybe I want to check if we have any overdue books in the stack, or see if there are any books that need special handling. Peek lets me look ahead without disturbing the stack's order."
 
+## ⏱️ Alex's First Challenge!
+
+Maya pulled out a tablet and opened a coding environment. "Alex, I want you to try something. I've created a digital version of our book return system using a stack. Let's see if you can use the stack operations we just learned about."
+
+"You mean... I get to actually code with stacks?" Alex's eyes lit up.
+
+"Exactly! But here's the thing - you don't need to build the stack from scratch. I've already created one for you. Your job is to **use** the stack operations to solve real library problems."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement \`processAllReturns()\` to process all books in a return cart
+- Use \`stack.pop()\` and \`stack.isEmpty()\` operations
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This first challenge simulates what we just did manually," Maya explained. "You need to process all the books in the return cart, one by one, until it's empty."
+
 ## The Power of LIFO
 
-As they finished processing the morning returns, Maya sat down with Alex to reflect on what they'd learned.
+After Alex completed the first challenge, Maya smiled approvingly. "Great work! Now you've experienced firsthand how stack operations work. Let's reflect on what you've learned."
 
 "So Alex, why do you think our book return system works so well as a stack?" Maya asked.
 
@@ -97,6 +114,34 @@ Alex thought for a moment. "Well, it's natural - books pile up, and the top one 
 "Oh no!" Alex laughed. "The person who just arrived would get helped first, while the person who'd been waiting longest would be last. That wouldn't be fair at all."
 
 "Exactly. That's why we use different data structures for different problems. Stacks are perfect when the order doesn't matter or when you specifically want LIFO behavior."
+
+## ⏱️ Alex's Second Challenge!
+
+"Now let's try something more complex," Maya said, pulling up another coding challenge. "Sometimes we need to search through our return cart to see if a specific book is there, but we can't just dump all the books out."
+
+"How do we do that?" Alex asked, intrigued.
+
+"Great question! We need to temporarily move books to another stack while we search, then put them all back. This preserves the original order while letting us peek at every book."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement \`findSpecialBook()\` to search for a book without permanently removing books
+- Use \`stack.pop()\`, \`stack.push()\`, and a temporary stack
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This challenge teaches you that sometimes you need to use multiple stacks together to solve a problem," Maya explained.
+
+## ⏱️ Alex's Third Challenge!
+
+"One more challenge," Maya said with a smile. "Sometimes we only want to process books until we find a specific one. Maybe there's a book with special handling instructions, and we want to stop when we reach it."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement \`processUntilTarget()\` to process books until finding a target book
+- Use \`stack.pop()\` and \`stack.isEmpty()\` with conditional logic
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"Excellent work, Alex!" Maya said as Alex completed the challenges. "You've now experienced how to use stacks to solve real-world problems."
 
 ## Real-World Stack Applications
 
@@ -179,343 +224,403 @@ By the end of their first day, Alex had learned that:
 
 - **Stacks follow LIFO (Last In, First Out)** - like books piling up in a return cart
 - **Stack operations are all O(1)** - fast and efficient regardless of size
-- **Push adds to the top** - like placing returned books on the cart
-- **Pop removes from the top** - like taking books to process them
-- **Peek looks at the top without removing** - like checking what's next
+- **Using stacks effectively** requires understanding when to apply push, pop, peek, isEmpty, and size operations
+- **Multiple stacks can work together** - like using a temporary stack to search without destroying the original
+- **Conditional processing** with stacks allows you to stop when certain conditions are met
 - **Stacks are perfect when order doesn't matter** or when you specifically want LIFO behavior
 - **Real-world applications include** undo systems, function calls in programming, and browser history
+- **You don't always need to implement stacks from scratch** - focus on using them to solve problems
 
-The simple act of processing returned books had revealed one of computer science's most fundamental and useful data structures. And this was just the beginning of Alex's journey into the organized, logical world of library systems and the data structures that power them.`,
+Through hands-on coding challenges, Alex discovered that understanding how to **use** data structures is just as important as knowing how they work internally. The simple act of processing returned books had revealed one of computer science's most fundamental and useful data structures. And this was just the beginning of Alex's journey into the organized, logical world of library systems and the data structures that power them.`,
   exercise: {
-    starterCode: `/*
-Problem: Implement Basic Stack Operations
+    starterCode: `// ✅ Prebuilt Stack class - intentionally compressed to a single line — all methods (push, pop, peek, isEmpty, size) are implemented correctly.
+// 🔒 You can trust it works. Focus on how to use it, not how it’s built in this exercise.
+class Stack{constructor(){this.items=[]}push(item){this.items.push(item)}pop(){if(this.isEmpty())throw new Error("Stack is empty - cannot pop");return this.items.pop()}peek(){if(this.isEmpty())throw new Error("Stack is empty - cannot peek");return this.items[this.items.length-1]}isEmpty(){return this.items.length===0}size(){return this.items.length}}
+    /*
+Problem: Using Stack Operations to Process Library Returns
 
-You need to implement a Stack class with the following operations:
-- push(item): Add an item to the top of the stack
-- pop(): Remove and return the top item from the stack
-- peek(): Return the top item without removing it
-- isEmpty(): Check if the stack is empty
-- size(): Return the number of items in the stack
+Maya has provided you with a Stack class to help process returned books.
+Your job is to USE the stack operations to solve real library problems!
 
-The stack should follow LIFO (Last In, First Out) principle.
+Available Stack Operations:
+- stack.push(item): Add a book to the top of the return cart
+- stack.pop(): Remove and return the top book from the cart
+- stack.peek(): Look at the top book without removing it
+- stack.isEmpty(): Check if the cart is empty
+- stack.size(): Get the number of books in the cart
 
-Examples:
-const stack = new Stack();
-stack.push(1);
-stack.push(2);
-stack.push(3);
-console.log(stack.peek()); // 3
-console.log(stack.pop());  // 3
-console.log(stack.size()); // 2
-console.log(stack.isEmpty()); // false
-
-Requirements:
-- All operations should be O(1) time complexity
-- Handle edge cases (empty stack operations)
-- Use an array as the underlying data structure
+Complete the functions below to help Alex process library returns!
 */
 
-class Stack {
-  constructor() {
-    // Initialize your stack here
-    // Your code here
-  }
-  
-  push(item) {
-    // Add item to the top of the stack
-    // Your code here
-  }
-  
-  pop() {
-    // Remove and return the top item
-    // Handle empty stack case
-    // Your code here
-  }
-  
-  peek() {
-    // Return the top item without removing it
-    // Handle empty stack case
-    // Your code here
-  }
-  
-  isEmpty() {
-    // Check if the stack is empty
-    // Your code here
-  }
-  
-  size() {
-    // Return the number of items in the stack
-    // Your code here
-  }
-}`,
-    solution: `/*
-Problem: Implement Basic Stack Operations
+// The Stack class is (already implemented for you!)
 
-Complete implementation of a Stack class with all core operations.
+// ⏱️ Alex's First Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
+/*
+function processAllReturns(returnCart) {
+  // Process all books in the return cart (stack)
+  // Return an array of processed books in the order they were processed
+  const processedBooks = [];
+  
+  // TODO: Use stack operations to process all books
+  // Hint: Keep popping books until the cart is empty
+  
+  return processedBooks;
+}
 */
 
-class Stack {
-  constructor() {
-    // Use an array to store stack elements
-    this.items = [];
+// ⏱️ Alex's Second Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
+/*
+function findSpecialBook(returnCart, targetTitle) {
+  // Look through the return cart to see if a specific book is there
+  // WITHOUT permanently removing books from the cart
+  // Return true if found, false if not found
+  
+  const tempStack = new Stack();
+  let found = false;
+  
+  // TODO: Use stack operations to search through books
+  // Hint: You'll need to temporarily move books to search, then put them back
+  
+  return found;
+}
+*/
+
+// ⏱️ Alex's Third Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
+/*
+function processUntilTarget(returnCart, targetTitle) {
+  // Process books from the cart until you find the target book
+  // Return an array of all processed books (including the target)
+  // If target not found, process all books
+  
+  const processedBooks = [];
+  
+  // TODO: Use stack operations to process books until target is found
+  // Hint: Keep popping and checking each book
+  
+  return processedBooks;
+}
+*/`,
+solution: `
+// ✅ Prebuilt Stack class - intentionally compressed to a single line — all methods (push, pop, peek, isEmpty, size) are implemented correctly.
+// 🔒 You can trust it works. Focus on how to use it, not how it’s built in this exercise.
+class Stack{constructor(){this.items=[]}push(item){this.items.push(item)}pop(){if(this.isEmpty())throw new Error("Stack is empty - cannot pop");return this.items.pop()}peek(){if(this.isEmpty())throw new Error("Stack is empty - cannot peek");return this.items[this.items.length-1]}isEmpty(){return this.items.length===0}size(){return this.items.length}}
+/*
+Problem: Using Stack Operations to Process Library Returns
+
+Complete solution showing how to use stack operations effectively.
+*/
+
+function processAllReturns(returnCart) {
+  // Process all books in the return cart (stack)
+  // Return an array of processed books in the order they were processed
+  const processedBooks = [];
+  
+  // Keep processing until cart is empty
+  while (!returnCart.isEmpty()) {
+    const book = returnCart.pop();
+    processedBooks.push(book);
+    console.log("Processed:", book);
   }
   
-  push(item) {
-    // Add item to the end of array (top of stack)
-    this.items.push(item);
-  }
+  return processedBooks;
+}
+
+function findSpecialBook(returnCart, targetTitle) {
+  // Look through the return cart to see if a specific book is there
+  // WITHOUT permanently removing books from the cart
+  const tempStack = new Stack();
+  let found = false;
   
-  pop() {
-    // Check if stack is empty
-    if (this.isEmpty()) {
-      throw new Error("Stack is empty - cannot pop");
+  // Move books to temp stack while searching
+  while (!returnCart.isEmpty()) {
+    const book = returnCart.pop();
+    tempStack.push(book);
+    
+    if (book === targetTitle) {
+      found = true;
     }
-    // Remove and return the last item (top of stack)
-    return this.items.pop();
   }
   
-  peek() {
-    // Return the last item without removing it
-    if (this.isEmpty()) {
-      throw new Error("Stack is empty - cannot peek");
+  // Put all books back in original order
+  while (!tempStack.isEmpty()) {
+    returnCart.push(tempStack.pop());
+  }
+  
+  return found;
+}
+
+function processUntilTarget(returnCart, targetTitle) {
+  // Process books from the cart until you find the target book
+  // Return an array of all processed books (including the target)
+  const processedBooks = [];
+  
+  while (!returnCart.isEmpty()) {
+    const book = returnCart.pop();
+    processedBooks.push(book);
+    console.log("Processed:", book);
+    
+    // Stop if we found our target
+    if (book === targetTitle) {
+      break;
     }
-    return this.items[this.items.length - 1];
   }
   
-  isEmpty() {
-    // Stack is empty if array has no elements
-    return this.items.length === 0;
-  }
-  
-  size() {
-    // Return the length of the array
-    return this.items.length;
-  }
-  
-  // Time Complexities:
-  // push(): O(1) - adding to end of array
-  // pop(): O(1) - removing from end of array
-  // peek(): O(1) - accessing array element by index
-  // isEmpty(): O(1) - checking array length
-  // size(): O(1) - returning array length
-  
-  // Space Complexity: O(n) where n is the number of elements
-}`,
-    tests: [
-      {
-        name: "Basic push and peek operations",
-        test: (code) => {
-          try {
-            const Stack = new Function(`${code}; return Stack;`)();
-            const stack = new Stack();
-            
-            // Test empty stack
-            if (!stack.isEmpty()) {
-              return { passed: false, message: "New stack should be empty" };
-            }
-            
-            if (stack.size() !== 0) {
-              return { passed: false, message: "New stack should have size 0" };
-            }
-            
-            // Test push and peek
-            stack.push(1);
-            stack.push(2);
-            stack.push(3);
-            
-            if (stack.peek() !== 3) {
-              return { passed: false, message: "peek() should return the last pushed item (3)" };
-            }
-            
-            if (stack.size() !== 3) {
-              return { passed: false, message: "Stack should have size 3 after pushing 3 items" };
-            }
-            
-            if (stack.isEmpty()) {
-              return { passed: false, message: "Stack with items should not be empty" };
-            }
-            
-            return { passed: true };
-          } catch (error) {
-            return { passed: false, message: `Error: ${error.message}` };
+  return processedBooks;
+  }`,
+  tests: [
+    {
+      name: "Test Stack class implementation & functionality",
+      test: (code) => {
+        try {
+          
+          const testCode = code + `
+          // Test the provided Stack class
+          const stack = new Stack();
+          
+          // Test basic operations
+          stack.push("test1");
+          stack.push("test2");
+          
+          const peekResult = stack.peek();
+          const popResult = stack.pop();
+          const sizeResult = stack.size();
+          const isEmptyResult = stack.isEmpty();
+          
+          return ({ peekResult, popResult, sizeResult, isEmptyResult });
+          `;
+          
+          const testResult = new Function(testCode)();
+          
+          if (testResult.peekResult !== "test2") {
+            return new TestResult({ passed: false, message: "Stack peek() not working correctly" });
           }
-        },
-        message: "Stack should handle push, peek, isEmpty, and size operations correctly."
-      },
-      {
-        name: "LIFO behavior with pop operations",
-        test: (code) => {
-          try {
-            const Stack = new Function(code + "; return Stack;")();
-            const stack = new Stack();
-            
-            // Push items in order
-            stack.push("first");
-            stack.push("second");
-            stack.push("third");
-            
-            // Pop should return items in reverse order (LIFO)
-            const third = stack.pop();
-            const second = stack.pop();
-            const first = stack.pop();
-            
-            if (third !== "third" || second !== "second" || first !== "first") {
-              return {
-                passed: false,
-                message: "LIFO order incorrect. Expected: third, second, first. Got: " + third + ", " + second + ", " + first
-              };
-            }
-            
-            if (!stack.isEmpty()) {
-              return { passed: false, message: "Stack should be empty after popping all items" };
-            }
-            
-            if (stack.size() !== 0) {
-              return { passed: false, message: "Empty stack should have size 0" };
-            }
-            
-            return { passed: true };
-          } catch (error) {
-            return { passed: false, message: `Error: ${error.message}` };
+          
+          if (testResult.popResult !== "test2") {
+            return new TestResult({ passed: false, message: "Stack pop() not working correctly" });
           }
-        },
-        message: "Stack should follow LIFO (Last In, First Out) principle."
-      },
-      {
-        name: "Edge cases and error handling",
-        test: (code) => {
-          try {
-            const Stack = new Function(code + "; return Stack;")();
-            const stack = new Stack();
-            
-            // Test pop on empty stack
-            try {
-              stack.pop();
-              return { passed: false, message: "pop() on empty stack should throw an error" };
-            } catch {
-              // Expected behavior
-            }
-            
-            // Test peek on empty stack
-            try {
-              stack.peek();
-              return { passed: false, message: "peek() on empty stack should throw an error" };
-            } catch {
-              // Expected behavior
-            }
-            
-            // Test mixed operations
-            stack.push(42);
-            if (stack.peek() !== 42) {
-              return { passed: false, message: "peek() should return 42" };
-            }
-            
-            const popped = stack.pop();
-            if (popped !== 42) {
-              return { passed: false, message: "pop() should return 42" };
-            }
-            
-            if (!stack.isEmpty()) {
-              return { passed: false, message: "Stack should be empty after popping the only item" };
-            }
-            
-            return { passed: true };
-          } catch (error) {
-            return { passed: false, message: `Error: ${error.message}` };
+          
+          if (testResult.sizeResult !== 1) {
+            return new TestResult({ passed: false, message: "Stack size() not working correctly" });
           }
-        },
-        message: "Stack should handle edge cases and throw appropriate errors for invalid operations."
+          
+          if (testResult.isEmptyResult !== false) {
+            return new TestResult({ passed: false, message: "Stack isEmpty() not working correctly" });
+          }
+          
+          return new TestResult({ passed: true });
+        } catch (error) {
+          return new TestResult({ passed: false, message: error.message });
+        }
       },
-      {
-        name: "Performance and data types",
+      message: "The provided Stack class should work correctly for all basic operations."
+    },
+    {
+      name: "Test processAllReturns function",
         test: (code) => {
           try {
-            const Stack = new Function(code + "; return Stack;")();
-            const stack = new Stack();
+            // Execute the code to get the functions
+            const testCode = code + `
+            // Test processAllReturns
+            const testCart = new Stack();
+            testCart.push("Book A");
+            testCart.push("Book B");
+            testCart.push("Book C");
             
-            // Test with different data types
-            stack.push(1);
-            stack.push("string");
-            stack.push([1, 2, 3]);
-            stack.push({ key: "value" });
-            stack.push(null);
-            stack.push(undefined);
-            
-            if (stack.size() !== 6) {
-              return { passed: false, message: "Stack should handle 6 different data types" };
+            let result = [];
+            if (typeof processAllReturns === 'function') {
+              result = processAllReturns(testCart);
+            }
+            return ({ result, cartEmpty: testCart.isEmpty() });
+            `;
+            const testResult = new Function(testCode)();
+            if (typeof testResult.result === 'undefined') {
+              return new TestResult({ passed: false, message: "processAllReturns function not found. Make sure to uncomment and implement it." });
             }
             
-            // Test order preservation
-            const items = [];
-            while (!stack.isEmpty()) {
-              items.push(stack.pop());
+            if (!Array.isArray(testResult.result)) {
+              return new TestResult({ passed: false, message: "processAllReturns should return an array" });
             }
             
-            const expected = [undefined, null, { key: "value" }, [1, 2, 3], "string", 1];
+            if (testResult.result.length !== 3) {
+              return new TestResult({ passed: false, message: "processAllReturns should return all 3 books" });
+            }
             
-            // Compare items (simplified comparison for objects and arrays)
+            if (!testResult.cartEmpty) {
+              return new TestResult({ passed: false, message: "Cart should be empty after processing all returns" });
+            }
+            
+            // Check LIFO order
+            const expected = ["Book C", "Book B", "Book A"];
             for (let i = 0; i < expected.length; i++) {
-              if (JSON.stringify(items[i]) !== JSON.stringify(expected[i])) {
-                return {
-                  passed: false,
-                  message: "Order incorrect at position " + i + ". Expected: " + JSON.stringify(expected[i]) + ", Got: " + JSON.stringify(items[i])
-                };
+              if (testResult.result[i] !== expected[i]) {
+                return new TestResult({ passed: false, message: `Expected ${expected[i]} at position ${i}, got ${testResult.result[i]}` });
               }
             }
             
-            return { passed: true };
+            return new TestResult({ passed: true });
           } catch (error) {
-            return { passed: false, message: `Error: ${error.message}` };
+            return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Stack should work with different data types and maintain correct order."
+        message: "processAllReturns should process all books in LIFO order and empty the cart."
       },
       {
-        name: "Large scale operations",
+        name: "Test findSpecialBook function",
         test: (code) => {
           try {
-            const Stack = new Function(code + "; return Stack;")();
-            const stack = new Stack();
+            // Inject Stack class and execute the code
+            const testCode = code + `
+            // Test findSpecialBook
+            const testCart = new Stack();
+            testCart.push("Mystery Novel");
+            testCart.push("Cookbook");
+            testCart.push("History Book");
             
-            // Test with larger number of operations
-            const testSize = 1000;
+            let foundResult = false;
+            let notFoundResult = false;
+            let cartSizeAfter = 0;
             
-            // Push many items
-            for (let i = 0; i < testSize; i++) {
-              stack.push(i);
+            if (typeof findSpecialBook === 'function') {
+              foundResult = findSpecialBook(testCart, "Cookbook");
+              notFoundResult = findSpecialBook(testCart, "Science Book");
+              cartSizeAfter = testCart.size();
             }
             
-            if (stack.size() !== testSize) {
-              return { passed: false, message: "Stack should have size " + testSize };
+            return ({ foundResult, notFoundResult, cartSizeAfter });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (typeof testResult.foundResult === 'undefined') {
+              return new TestResult({ passed: false, message: "findSpecialBook function not found. Make sure to uncomment and implement it." });
             }
             
-            if (stack.peek() !== testSize - 1) {
-              return { passed: false, message: "peek() should return " + (testSize - 1) };
+            if (testResult.foundResult !== true) {
+              return new TestResult({ passed: false, message: "findSpecialBook should return true when book is found" });
             }
             
-            // Pop half the items
-            for (let i = 0; i < testSize / 2; i++) {
-              const expected = testSize - 1 - i;
-              const actual = stack.pop();
-              if (actual !== expected) {
-                return {
-                  passed: false,
-                  message: "pop() returned " + actual + ", expected " + expected
-                };
+            if (testResult.notFoundResult !== false) {
+              return new TestResult({ passed: false, message: "findSpecialBook should return false when book is not found" });
+            }
+            
+            if (testResult.cartSizeAfter !== 3) {
+              return new TestResult({ passed: false, message: "Cart should still have all 3 books after searching (non-destructive search)" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "findSpecialBook should search without permanently removing books from the cart."
+      },
+      {
+        name: "Test processUntilTarget function",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test processUntilTarget
+            const testCart = new Stack();
+            testCart.push("Book A");
+            testCart.push("Book B");
+            testCart.push("Book C");
+            testCart.push("Book D");
+            
+            let result = [];
+            let remainingSize = 0;
+            
+            if (typeof processUntilTarget === 'function') {
+              result = processUntilTarget(testCart, "Book B");
+              remainingSize = testCart.size();
+            }
+            
+            return ({ result, remainingSize });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (typeof testResult.result === 'undefined') {
+              return new TestResult({ passed: false, message: "processUntilTarget function not found. Make sure to uncomment and implement it." });
+            }
+            
+            if (!Array.isArray(testResult.result)) {
+              return new TestResult({ passed: false, message: "processUntilTarget should return an array" });
+            }
+            
+            // Should process Book D, Book C, Book B (in that order due to LIFO)
+            const expected = ["Book D", "Book C", "Book B"];
+            if (testResult.result.length !== expected.length) {
+              return new TestResult({ passed: false, message: `Expected ${expected.length} processed books, got ${testResult.result.length}` });
+            }
+            
+            for (let i = 0; i < expected.length; i++) {
+              if (testResult.result[i] !== expected[i]) {
+                return new TestResult({ passed: false, message: `Expected ${expected[i]} at position ${i}, got ${testResult.result[i]}` });
               }
             }
             
-            if (stack.size() !== testSize / 2) {
-              return { passed: false, message: "Stack should have size " + (testSize / 2) };
+            if (testResult.remainingSize !== 1) {
+              return new TestResult({ passed: false, message: "Should have 1 book remaining in cart (Book A)" });
             }
             
-            return { passed: true };
+            return new TestResult({ passed: true });
           } catch (error) {
-            return { passed: false, message: `Error: ${error.message}` };
+            return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Stack should handle large numbers of operations efficiently."
-      }
+        message: "processUntilTarget should process books until target is found and stop."
+      },
+      {
+        name: "Test processUntilTarget with missing target",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test processUntilTarget with missing target
+            const testCart = new Stack();
+            testCart.push("Book A");
+            testCart.push("Book B");
+            testCart.push("Book C");
+            
+            let result = [];
+            let remainingSize = 0;
+            
+            if (typeof processUntilTarget === 'function') {
+              result = processUntilTarget(testCart, "Book X");
+              remainingSize = testCart.size();
+            }
+            
+            return ({ result, remainingSize });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (typeof testResult.result === 'undefined') {
+              return new TestResult({ passed: false, message: "processUntilTarget function not found" });
+            }
+            
+            // Should process all books when target not found
+            const expected = ["Book C", "Book B", "Book A"];
+            if (testResult.result.length !== expected.length) {
+              return new TestResult({ passed: false, message: `When target not found, should process all books. Expected ${expected.length}, got ${testResult.result.length}` });
+            }
+            
+            if (testResult.remainingSize !== 0) {
+              return new TestResult({ passed: false, message: "Cart should be empty when target not found and all books processed" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "processUntilTarget should process all books when target is not found."
+      },
     ]
   },
   quiz: {

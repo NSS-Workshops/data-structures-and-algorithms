@@ -1,4 +1,5 @@
 import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { TestResult } from "../../utils/test_utils";
 
 export const queuesIntroChapter = {
   id: "queues-intro",
@@ -147,6 +148,22 @@ Print Queue:
 
 "Right! That's why printers use queues. First job in, first job out. It's fair and predictable."
 
+## ⏱️ Alex's First Challenge!
+
+Maya pulled out a tablet and opened a coding environment. "Alex, I want you to try something. I've created a digital version of our hold request system using a queue. Let's see if you can use the queue operations we just learned about."
+
+"You mean... I get to actually code with queues?" Alex's eyes lit up.
+
+"Exactly! But here's the thing - you don't need to build the queue from scratch. I've already created one for you. Your job is to **use** the queue operations to solve real library problems."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement \`processAllHoldRequests()\` to process all patrons in a hold queue
+- Use \`queue.dequeue()\` and \`queue.isEmpty()\` operations
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This first challenge simulates what we just did manually," Maya explained. "You need to process all the hold requests in the queue, one by one, until it's empty. Remember - first in, first out!"
+
 ## Queue Operations Summary
 
 Maya pulled out her notepad again and sketched the key operations:
@@ -212,6 +229,22 @@ Alex nodded. "So the choice of implementation affects performance, just like wit
 
 "Exactly. Tomorrow we'll explore different ways to implement both stacks and queues, and you'll see the trade-offs."
 
+## ⏱️ Alex's Second Challenge!
+
+"Now let's try something more complex," Maya said, pulling up another coding challenge. "Sometimes we need to search through our hold queue to see if a specific patron is waiting, but we can't just remove everyone from the line."
+
+"How do we do that?" Alex asked, intrigued.
+
+"Great question! We need to temporarily move patrons to another queue while we search, then put them all back in the same order. This preserves the original queue while letting us check every patron."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement \`findPatronInQueue()\` to search for a patron without permanently removing patrons
+- Use \`queue.dequeue()\`, \`queue.enqueue()\`, and a temporary queue
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This challenge teaches you that sometimes you need to use multiple queues together to solve a problem," Maya explained.
+
 ## Real-World Queue Applications
 
 As the morning rush began to pick up, Maya pointed out other queues in action around the library:
@@ -227,6 +260,18 @@ As the morning rush began to pick up, Maya pointed out other queues in action ar
 
 ### 4. Interlibrary Loan Requests
 "When we request books from other libraries, those requests go into a queue at the lending library. They process requests in the order received."
+
+## ⏱️ Alex's Third Challenge!
+
+"One more challenge," Maya said with a smile. "Sometimes we only want to process hold requests until we find a specific patron. Maybe there's a patron with special handling instructions, and we want to stop when we reach them."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement \`processUntilTargetPatron()\` to process patrons until finding a target patron
+- Use \`queue.dequeue()\` and \`queue.isEmpty()\` with conditional logic
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"Excellent work, Alex!" Maya said as Alex completed the challenges. "You've now experienced how to use queues to solve real-world problems while maintaining fairness."
 
 ## Comparing Stacks and Queues
 
@@ -276,21 +321,415 @@ By the end of their second day, Alex had learned that:
 - **Queues follow FIFO (First In, First Out)** - like people waiting in line
 - **Queue operations work at both ends** - enqueue at back, dequeue from front
 - **Fairness is the key principle** - first to request, first to receive
+- **Using queues effectively** requires understanding when to apply enqueue, dequeue, peek, isEmpty, and size operations
+- **Multiple queues can work together** - like using a temporary queue to search without destroying the original
+- **Conditional processing** with queues allows you to stop when certain conditions are met
 - **Enqueue adds to the back** - like joining the end of a line
 - **Dequeue removes from the front** - like being served first in line
 - **Peek looks at the front without removing** - like seeing who's next
 - **Implementation affects performance** - simple arrays can be slow for dequeue
 - **Real-world applications include** hold systems, print queues, service lines
 - **Choose the right structure** - stacks for LIFO, queues for fairness
+- **You don't always need to implement queues from scratch** - focus on using them to solve problems
 
-The hold request system had revealed the power and importance of queues. What started as a simple question about book fairness had opened up a whole new way of thinking about organizing and processing information.
+Through hands-on coding challenges, Alex discovered that understanding how to **use** data structures is just as important as knowing how they work internally. The hold request system had revealed the power and importance of queues. What started as a simple question about book fairness had opened up a whole new way of thinking about organizing and processing information.
 
 "Maya," Alex said as they prepared for the lunch break, "I never realized how much computer science was involved in running a library."
 
 Maya's smile was warm and knowing. "That's the beautiful thing about this work, Alex. Every system we use, every process we follow, has been carefully designed to be fair, efficient, and reliable. Tomorrow, you'll learn how to build these systems yourself."
 
 As Alex headed to lunch, they couldn't help but notice the queue forming at the café counter, and smiled, understanding now why everyone waited patiently in line instead of crowding around the register. The principles of computer science were everywhere, making life more organized and fair for everyone.`,
-  exercise: {},
+  exercise: {
+    starterCode: `// ✅ Prebuilt Queue class - intentionally compressed to a single line — all methods (enqueue, dequeue, peek, isEmpty, size) are implemented correctly.
+// 🔒 You can trust it works. Focus on how to use it, not how it's built in this exercise.
+class Queue{constructor(){this.items=[]}enqueue(item){this.items.push(item)}dequeue(){if(this.isEmpty())throw new Error("Queue is empty - cannot dequeue");return this.items.shift()}peek(){if(this.isEmpty())throw new Error("Queue is empty - cannot peek");return this.items[0]}isEmpty(){return this.items.length===0}size(){return this.items.length}}
+    /*
+Problem: Using Queue Operations to Manage Library Hold Requests
+
+Maya has provided you with a Queue class to help manage hold requests fairly.
+Your job is to USE the queue operations to solve real library problems!
+
+Available Queue Operations:
+- queue.enqueue(item): Add a patron to the back of the hold request line
+- queue.dequeue(): Remove and return the patron from the front of the line
+- queue.peek(): Look at who's next in line without removing them
+- queue.isEmpty(): Check if there are any pending hold requests
+- queue.size(): Get the number of patrons waiting
+
+Complete the functions below to help Alex manage hold requests fairly!
+*/
+
+// The Queue class is (already implemented for you!)
+
+// ⏱️ Alex's First Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
+/*
+function processAllHoldRequests(holdQueue) {
+  // Process all hold requests in the queue (FIFO order)
+  // Return an array of processed patrons in the order they were served
+  const servedPatrons = [];
+  
+  // TODO: Use queue operations to process all hold requests
+  // Hint: Keep dequeuing patrons until the queue is empty
+  
+  return servedPatrons;
+}
+*/
+
+// ⏱️ Alex's Second Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
+/*
+function findPatronInQueue(holdQueue, targetPatron) {
+  // Look through the hold queue to see if a specific patron is waiting
+  // WITHOUT permanently removing patrons from the queue
+  // Return true if found, false if not found
+  
+  const tempQueue = new Queue();
+  let found = false;
+  
+  // TODO: Use queue operations to search through patrons
+  // Hint: You'll need to temporarily move patrons to search, then put them back in order
+  
+  return found;
+}
+*/
+
+// ⏱️ Alex's Third Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
+/*
+function processUntilTargetPatron(holdQueue, targetPatron) {
+  // Process hold requests until you find the target patron
+  // Return an array of all served patrons (including the target)
+  // If target not found, process all patrons
+  
+  const servedPatrons = [];
+  
+  // TODO: Use queue operations to process patrons until target is found
+  // Hint: Keep dequeuing and checking each patron
+  
+  return servedPatrons;
+}
+*/`,
+solution: `
+// ✅ Prebuilt Queue class - intentionally compressed to a single line — all methods (enqueue, dequeue, peek, isEmpty, size) are implemented correctly.
+// 🔒 You can trust it works. Focus on how to use it, not how it's built in this exercise.
+class Queue{constructor(){this.items=[]}enqueue(item){this.items.push(item)}dequeue(){if(this.isEmpty())throw new Error("Queue is empty - cannot dequeue");return this.items.shift()}peek(){if(this.isEmpty())throw new Error("Queue is empty - cannot peek");return this.items[0]}isEmpty(){return this.items.length===0}size(){return this.items.length}}
+/*
+Problem: Using Queue Operations to Manage Library Hold Requests
+
+Complete solution showing how to use queue operations effectively.
+*/
+
+function processAllHoldRequests(holdQueue) {
+  // Process all hold requests in the queue (FIFO order)
+  // Return an array of processed patrons in the order they were served
+  const servedPatrons = [];
+  
+  // Keep processing until queue is empty
+  while (!holdQueue.isEmpty()) {
+    const patron = holdQueue.dequeue();
+    servedPatrons.push(patron);
+    console.log("Served:", patron);
+  }
+  
+  return servedPatrons;
+}
+
+function findPatronInQueue(holdQueue, targetPatron) {
+  // Look through the hold queue to see if a specific patron is waiting
+  // WITHOUT permanently removing patrons from the queue
+  const tempQueue = new Queue();
+  let found = false;
+  
+  // Move patrons to temp queue while searching
+  while (!holdQueue.isEmpty()) {
+    const patron = holdQueue.dequeue();
+    tempQueue.enqueue(patron);
+    
+    if (patron === targetPatron) {
+      found = true;
+    }
+  }
+  
+  // Put all patrons back in original order
+  while (!tempQueue.isEmpty()) {
+    holdQueue.enqueue(tempQueue.dequeue());
+  }
+  
+  return found;
+}
+
+function processUntilTargetPatron(holdQueue, targetPatron) {
+  // Process hold requests until you find the target patron
+  // Return an array of all served patrons (including the target)
+  const servedPatrons = [];
+  
+  while (!holdQueue.isEmpty()) {
+    const patron = holdQueue.dequeue();
+    servedPatrons.push(patron);
+    console.log("Served:", patron);
+    
+    // Stop if we found our target
+    if (patron === targetPatron) {
+      break;
+    }
+  }
+  
+  return servedPatrons;
+  }`,
+  tests: [
+    {
+      name: "Test Queue class implementation & functionality",
+      test: (code) => {
+        try {
+          
+          const testCode = code + `
+          // Test the provided Queue class
+          const queue = new Queue();
+          
+          // Test basic operations
+          queue.enqueue("test1");
+          queue.enqueue("test2");
+          
+          const peekResult = queue.peek();
+          const dequeueResult = queue.dequeue();
+          const sizeResult = queue.size();
+          const isEmptyResult = queue.isEmpty();
+          
+          return ({ peekResult, dequeueResult, sizeResult, isEmptyResult });
+          `;
+          
+          const testResult = new Function(testCode)();
+          
+          if (testResult.peekResult !== "test1") {
+            return new TestResult({ passed: false, message: "Queue peek() not working correctly - should return first item" });
+          }
+          
+          if (testResult.dequeueResult !== "test1") {
+            return new TestResult({ passed: false, message: "Queue dequeue() not working correctly - should return first item" });
+          }
+          
+          if (testResult.sizeResult !== 1) {
+            return new TestResult({ passed: false, message: "Queue size() not working correctly" });
+          }
+          
+          if (testResult.isEmptyResult !== false) {
+            return new TestResult({ passed: false, message: "Queue isEmpty() not working correctly" });
+          }
+          
+          return new TestResult({ passed: true });
+        } catch (error) {
+          return new TestResult({ passed: false, message: error.message });
+        }
+      },
+      message: "The provided Queue class should work correctly for all basic operations."
+    },
+    {
+      name: "Test processAllHoldRequests function",
+        test: (code) => {
+          try {
+            // Execute the code to get the functions
+            const testCode = code + `
+            // Test processAllHoldRequests
+            const testQueue = new Queue();
+            testQueue.enqueue("Mrs. Patterson");
+            testQueue.enqueue("Dr. Williams");
+            testQueue.enqueue("Sarah Kim");
+            
+            let result = [];
+            if (typeof processAllHoldRequests === 'function') {
+              result = processAllHoldRequests(testQueue);
+            }
+            return ({ result, queueEmpty: testQueue.isEmpty() });
+            `;
+            const testResult = new Function(testCode)();
+            if (typeof testResult.result === 'undefined') {
+              return new TestResult({ passed: false, message: "processAllHoldRequests function not found. Make sure to uncomment and implement it." });
+            }
+            
+            if (!Array.isArray(testResult.result)) {
+              return new TestResult({ passed: false, message: "processAllHoldRequests should return an array" });
+            }
+            
+            if (testResult.result.length !== 3) {
+              return new TestResult({ passed: false, message: "processAllHoldRequests should return all 3 patrons" });
+            }
+            
+            if (!testResult.queueEmpty) {
+              return new TestResult({ passed: false, message: "Queue should be empty after processing all hold requests" });
+            }
+            
+            // Check FIFO order
+            const expected = ["Mrs. Patterson", "Dr. Williams", "Sarah Kim"];
+            for (let i = 0; i < expected.length; i++) {
+              if (testResult.result[i] !== expected[i]) {
+                return new TestResult({ passed: false, message: `Expected ${expected[i]} at position ${i}, got ${testResult.result[i]}` });
+              }
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "processAllHoldRequests should process all patrons in FIFO order and empty the queue."
+      },
+      {
+        name: "Test findPatronInQueue function",
+        test: (code) => {
+          try {
+            // Inject Queue class and execute the code
+            const testCode = code + `
+            // Test findPatronInQueue
+            const testQueue = new Queue();
+            testQueue.enqueue("Mrs. Patterson");
+            testQueue.enqueue("Dr. Williams");
+            testQueue.enqueue("Sarah Kim");
+            
+            let foundResult = false;
+            let notFoundResult = false;
+            let queueSizeAfter = 0;
+            
+            if (typeof findPatronInQueue === 'function') {
+              foundResult = findPatronInQueue(testQueue, "Dr. Williams");
+              notFoundResult = findPatronInQueue(testQueue, "Mr. Johnson");
+              queueSizeAfter = testQueue.size();
+            }
+            
+            return ({ foundResult, notFoundResult, queueSizeAfter });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (typeof testResult.foundResult === 'undefined') {
+              return new TestResult({ passed: false, message: "findPatronInQueue function not found. Make sure to uncomment and implement it." });
+            }
+            
+            if (testResult.foundResult !== true) {
+              return new TestResult({ passed: false, message: "findPatronInQueue should return true when patron is found" });
+            }
+            
+            if (testResult.notFoundResult !== false) {
+              return new TestResult({ passed: false, message: "findPatronInQueue should return false when patron is not found" });
+            }
+            
+            if (testResult.queueSizeAfter !== 3) {
+              return new TestResult({ passed: false, message: "Queue should still have all 3 patrons after searching (non-destructive search)" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "findPatronInQueue should search without permanently removing patrons from the queue."
+      },
+      {
+        name: "Test processUntilTargetPatron function",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test processUntilTargetPatron
+            const testQueue = new Queue();
+            testQueue.enqueue("Mrs. Patterson");
+            testQueue.enqueue("Dr. Williams");
+            testQueue.enqueue("Sarah Kim");
+            testQueue.enqueue("Mr. Rodriguez");
+            
+            let result = [];
+            let remainingSize = 0;
+            
+            if (typeof processUntilTargetPatron === 'function') {
+              result = processUntilTargetPatron(testQueue, "Sarah Kim");
+              remainingSize = testQueue.size();
+            }
+            
+            return ({ result, remainingSize });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (typeof testResult.result === 'undefined') {
+              return new TestResult({ passed: false, message: "processUntilTargetPatron function not found. Make sure to uncomment and implement it." });
+            }
+            
+            if (!Array.isArray(testResult.result)) {
+              return new TestResult({ passed: false, message: "processUntilTargetPatron should return an array" });
+            }
+            
+            // Should process Mrs. Patterson, Dr. Williams, Sarah Kim (in that order due to FIFO)
+            const expected = ["Mrs. Patterson", "Dr. Williams", "Sarah Kim"];
+            if (testResult.result.length !== expected.length) {
+              return new TestResult({ passed: false, message: `Expected ${expected.length} processed patrons, got ${testResult.result.length}` });
+            }
+            
+            for (let i = 0; i < expected.length; i++) {
+              if (testResult.result[i] !== expected[i]) {
+                return new TestResult({ passed: false, message: `Expected ${expected[i]} at position ${i}, got ${testResult.result[i]}` });
+              }
+            }
+            
+            if (testResult.remainingSize !== 1) {
+              return new TestResult({ passed: false, message: "Should have 1 patron remaining in queue (Mr. Rodriguez)" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "processUntilTargetPatron should process patrons until target is found and stop."
+      },
+      {
+        name: "Test processUntilTargetPatron with missing target",
+        test: (code) => {
+          try {
+            const testCode = code + `
+            // Test processUntilTargetPatron with missing target
+            const testQueue = new Queue();
+            testQueue.enqueue("Mrs. Patterson");
+            testQueue.enqueue("Dr. Williams");
+            testQueue.enqueue("Sarah Kim");
+            
+            let result = [];
+            let remainingSize = 0;
+            
+            if (typeof processUntilTargetPatron === 'function') {
+              result = processUntilTargetPatron(testQueue, "Mr. Unknown");
+              remainingSize = testQueue.size();
+            }
+            
+            return ({ result, remainingSize });
+            `;
+            
+            const testResult = new Function(testCode)();
+            
+            if (typeof testResult.result === 'undefined') {
+              return new TestResult({ passed: false, message: "processUntilTargetPatron function not found" });
+            }
+            
+            // Should process all patrons when target not found
+            const expected = ["Mrs. Patterson", "Dr. Williams", "Sarah Kim"];
+            if (testResult.result.length !== expected.length) {
+              return new TestResult({ passed: false, message: `When target not found, should process all patrons. Expected ${expected.length}, got ${testResult.result.length}` });
+            }
+            
+            if (testResult.remainingSize !== 0) {
+              return new TestResult({ passed: false, message: "Queue should be empty when target not found and all patrons processed" });
+            }
+            
+            return new TestResult({ passed: true });
+          } catch (error) {
+            return new TestResult({ passed: false, message: error.message });
+          }
+        },
+        message: "processUntilTargetPatron should process all patrons when target is not found."
+      },
+    ]
+  },
   quiz: {
     component: () => {
       const CheckpointComponent = () => {
@@ -413,7 +852,7 @@ As Alex headed to lunch, they couldn't help but notice the queue forming at the 
                 <input type="text" required />
                 <span className="feedback" />
                 <div className="explanation">
-                  FIFO stands for "First In, First Out" - the fundamental
+                  FIFO stands for &quot;First In, First Out&quot; - the fundamental
                   principle of queue behavior where the first element added is
                   the first one to be removed, ensuring fairness.
                 </div>

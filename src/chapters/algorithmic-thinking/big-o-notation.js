@@ -95,6 +95,62 @@ Now let's go back to counting beans. When we finish counting the beans in a jar,
 
 Just as we discussed with time complexity, \`O(1)\` is overall better for \`O(n)\` for space complexity, too. If our space complexity is dependent on the size of our input, we can run out of memory if \`n\` becomes extremely large.  With a constant space complexity, we can ensure that we won't have memory issues if \`n\` becomes very large.
 
+### Space Complexity Explained, It’s About Peak Memory, Not Total Usage
+When we analyze space complexity, we’re talking about the maximum amount of additional memory an algorithm uses at any single point during its execution — not the total memory used over time.
+
+This means if your algorithm creates a temporary array of size n once, or uses a call stack of size n during recursion, the space complexity is O(n) — even if that happens multiple times or in different phases. It’s about the peak memory usage, not the cumulative memory used across all steps.
+
+#### The example below illustrates the difference between Peak Memory vs. Cumulative Memory
+
+\`\`\`javascript
+
+function processArray(arr, times) {
+  for (let i = 0; i < times; i++) {
+    // Create a temporary array the size of the input
+    let temp = arr.slice(); // O(n) space at this moment
+    // Do something trivial with it, like reverse
+    temp.reverse();
+    // Then we drop 'temp' and move to the next iteration
+  }
+  return true;
+}
+\`\`\`
+
+**🧠 Why the space complexity is O(n), not O(n × times)**
+On each iteration, the function allocates a temporary array temp of size n.
+However, as soon as one iteration finishes, temp goes out of scope and is freed up to be used by other programs.
+Memory is never used for more than one temporary array at the same time.
+Therefore, the peak temporary memory usage during execution is O(n) — no matter how many times the loop runs.
+This illustrates that space complexity measures the maximum additional memory used at any moment, not the total allocated over time.
+
+Also, it's important to know that space complexity excludes the input and output. For example, if a method takes an array and sorts it in place, without allocating extra memory, its space complexity is O(1) — constant space — because it's not using additional memory proportional to the input size.
+Here's a JavaScript example with an explanation that highlights how space complexity excludes input and output, and only considers additional memory used during execution:
+
+\`\`\`javascript
+function reverseInPlace(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    // Swap elements
+    [arr[left], arr[right]] = [arr[right], arr[left]];
+    left++;
+    right--;
+  }
+
+  return arr;
+}
+\`\`\`
+
+**Space Complexity: O(1)*** 
+Even though this function operates on an array of size n, the space complexity is O(1) — constant space. 
+**Why?**
+It doesn't create any new data structures that scale with the input size.
+It uses only two variables (left and right) regardless of the length of the array.
+The input array is modified in place, and no extra memory is allocated for output.
+
+**✅ Reminder: Space complexity does not count the input or output — only the additional memory used during execution.**
+
 ## Summary
 
 In this reading, we introduced Big O notation and its use for analyzing code. Big O notation provides us with the terminology to objectively discuss what makes algorithms better or worse than others. We also discussed the concepts of time and space complexity as well as how they can affect performance.
@@ -324,10 +380,10 @@ The previous examples were all about time complexity, but what about determining
 
 Let's look at an example:
 
-\`\`\`java
-public void sayHiNTimes(int n) {
-    for (int i = 0; i < n; i++) {
-        System.out.println("hi");
+\`\`\`javascript
+function sayHiNTimes(n) {
+    for (let i = 0; i < n; i++) {
+        console.log("hi");
     }
 }
 \`\`\`
@@ -338,13 +394,12 @@ Other times, the amount of space used is directly dependent on \`n\`.
 
 Let's look at the following example:
 
-\`\`\`java
-public String[] arrayOfHiNTimes(int n) {
-    String[] hiArray = new String[n];
-    for (int i = 0; i < n; i++) {
+\`\`\`javascript
+function arrayOfHiNTimes(n) {
+    let hiArray = new array[n];
+    for (let i = 0; i < n; i++) {
         hiArray[i] = "hi";
     }
-
     return hiArray;
 }
 \`\`\`

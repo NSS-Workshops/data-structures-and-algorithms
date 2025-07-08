@@ -22,6 +22,15 @@ const questionJsx4 = <><p>What is the <em>runtime</em> complexity of this algori
   return total;
 }`}</code></pre></>
 
+const questionJsx5 = <><p>What is the <em>space</em> complexity of this algorithm?</p>
+          <pre><code>{`public int example(int[] array) {
+  int total = 0;
+  for (int i = 0; i < array.length; i++) {
+    total += array[i];
+  }
+  return total;
+}`}</code></pre></>
+
 
 const questions = [
   {
@@ -35,14 +44,35 @@ const questions = [
       correctAnswer: 1000000
   },
   {
-      type: QUESTION_TYPES.TEXT,
+      type: QUESTION_TYPES.RADIO,
       questionJsx: questionJsx3,
+      answers: [
+        "addUpToFirst",
+        "addUpToSecond"
+      ],
       correctAnswer: "addUpToSecond"
   },
   {
-      type: QUESTION_TYPES.TEXT,
+      type: QUESTION_TYPES.RADIO,
       questionJsx:questionJsx4,
+      answers: [
+        "O(1)",
+        "O(n)",
+        "O(n^2)",
+        "O(n^m)"
+      ],
       correctAnswer: "O(n)"
+  },
+  {
+      type: QUESTION_TYPES.RADIO,
+      questionJsx:questionJsx5,
+      answers: [
+        "O(1)",
+        "O(n)",
+        "O(n^2)",
+        "O(n^m)"
+      ],
+      correctAnswer: "O(1)"
   }
 ];
 

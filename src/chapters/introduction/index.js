@@ -1,9 +1,11 @@
 import { introductionChapter } from './introduction';
 import { introductionCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './a1cc999d';
 
 export const introductionChapters = [
   introductionChapter,
-  introductionCheckpointChapter
+  introductionCheckpointChapter,
+  codeExcerciseOneChapter
 ];
 
 /**

@@ -6,6 +6,8 @@ import { subarraysSubstringsChapter } from './subarrays-substrings';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { slidingWindowCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './6fd72967';
+import { codeExcerciseTwoChapter } from './e49003dd';
 
 export const slidingWindowChapters = [
   slidingWindowLearningObjectivesChapter,
@@ -15,7 +17,9 @@ export const slidingWindowChapters = [
   subarraysSubstringsChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  slidingWindowCheckpointChapter
+  slidingWindowCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

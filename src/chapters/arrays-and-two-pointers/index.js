@@ -3,10 +3,14 @@ import { arraysIntroChapter } from './arrays-intro';
 import { arrayCoreOperationsChapter } from './array-core-operations';
 import { arrayTradeoffsChapter } from './array-tradeoffs';
 import { arrayMethodsChapter } from './array-methods';
+import { implementArrayListChapter } from './implement-arraylist';
 import { twoPointersChapter } from './two-pointers';
+import { arraysInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { arraysAndTwoPointersCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './7a106b96';
+import { codeExcerciseTwoChapter } from './a62881e6';
 
 export const arraysAndTwoPointersChapters = [
   arraysAndTwoPointersLearningObjectivesChapter,
@@ -14,10 +18,14 @@ export const arraysAndTwoPointersChapters = [
   arrayCoreOperationsChapter,
   arrayTradeoffsChapter,
   arrayMethodsChapter,
+  implementArrayListChapter,
   twoPointersChapter,
+  arraysInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  arraysAndTwoPointersCheckpointChapter
+  arraysAndTwoPointersCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

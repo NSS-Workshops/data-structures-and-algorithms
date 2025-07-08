@@ -3,9 +3,12 @@ import { sortingApproachesChapter } from './sorting-approaches';
 import { sortMethodChapter } from './sort-method';
 import { binarySearchFundamentalsChapter } from './binary-search-fundamentals';
 import { binarySearchVariantsChapter } from './binary-search-variants';
+import { sortingBinarySearchInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { sortingAndBinarySearchCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './9cb73255';
+import { codeExcerciseTwoChapter } from './72eee61a';
 
 export const sortingAndBinarySearchChapters = [
   sortingAndBinarySearchLearningObjectivesChapter,
@@ -13,9 +16,12 @@ export const sortingAndBinarySearchChapters = [
   sortMethodChapter,
   binarySearchFundamentalsChapter,
   binarySearchVariantsChapter,
+  sortingBinarySearchInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  sortingAndBinarySearchCheckpointChapter
+  sortingAndBinarySearchCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

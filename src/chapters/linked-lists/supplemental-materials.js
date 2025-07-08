@@ -2,7 +2,7 @@ export const supplementalMaterialsChapter = {
   id: 'linked-lists-supplemental-materials',
   title: 'Supplemental Materials: Linked Lists & Pointer Manipulation',
   sectionId: 'linked-lists',
-  previousChapterId: 'implement-linked-list',
+  previousChapterId: 'linked-lists-info-sheet',
   nextChapterId: 'linked-lists-glossary',
   content: `
 ### Recommended Podcast Episode

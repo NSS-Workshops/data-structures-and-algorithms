@@ -50,7 +50,7 @@ const questions = [
         "addUpToFirst",
         "addUpToSecond"
       ],
-      correctAnswer: "addUpToSecond"
+      correctAnswer: 1
   },
   {
       type: QUESTION_TYPES.RADIO,
@@ -61,7 +61,7 @@ const questions = [
         "O(n^2)",
         "O(n^m)"
       ],
-      correctAnswer: "O(n)"
+      correctAnswer: 1
   },
   {
       type: QUESTION_TYPES.RADIO,
@@ -72,7 +72,7 @@ const questions = [
         "O(n^2)",
         "O(n^m)"
       ],
-      correctAnswer: "O(1)"
+      correctAnswer: 0
   }
 ];
 

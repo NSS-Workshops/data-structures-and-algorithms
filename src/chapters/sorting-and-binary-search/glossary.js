@@ -1,5 +1,6 @@
 import { formatGlossary } from "../../utils/format_utils";
 
+
 const data = [
   { term: "Algorithm", definition: "A step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem.", week: 1 },
   { term: "Data Structure", definition: "A specialized format for organizing, processing, retrieving and storing data to suit a specific purpose.", week: 1 },
@@ -50,6 +51,7 @@ const data = [
   { term: "Stable Sorting Algorithm", definition: "If two items are the same, they stay in the same order they were in before sorting.", week: 7 },
   { term: "Unstable Sorting Algorithm", definition: "If two items are the same, their order might change after sorting.", week: 7 }
 ];
+
 
 export const glossaryChapter = {
   id: 'sorting-and-binary-search-glossary',

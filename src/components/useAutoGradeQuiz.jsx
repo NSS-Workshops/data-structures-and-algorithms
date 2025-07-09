@@ -44,6 +44,12 @@ export function useAutoGradeQuiz(formSelector = "form.auto-graded-quiz") {
                 : `✖ Incorrect (answer: ${expected})`;
               feedback.className = `feedback ${isCorrect ? "correct" : "incorrect"}`;
             }
+
+            // Show explanation if present
+            const explanation = q.querySelector(".explanation");
+            if (explanation) {
+              explanation.style.display = "block";
+            }
           }
           // --------------------
           // MULTI‑ANSWER LOGIC (checkbox set)
@@ -61,6 +67,12 @@ export function useAutoGradeQuiz(formSelector = "form.auto-graded-quiz") {
             if (feedback) {
               feedback.textContent = isCorrect ? "✔ Correct" : "✖ Incorrect";
               feedback.className = `feedback ${isCorrect ? "correct" : "incorrect"}`;
+            }
+
+            // Show explanation if present
+            const explanation = q.querySelector(".explanation");
+            if (explanation) {
+              explanation.style.display = "block";
             }
           }
         });

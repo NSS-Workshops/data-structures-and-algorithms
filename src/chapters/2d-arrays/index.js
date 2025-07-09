@@ -2,18 +2,24 @@ import { twoDArraysLearningObjectivesChapter } from './learning-objectives';
 import { twoDArraysIntroChapter } from './2d-arrays-intro';
 import { indexingAndBoundsChapter } from './indexing-and-bounds';
 import { findingNeighborsChapter } from './finding-neighbors';
+import { twoDArraysInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { twoDArraysCheckpointChapter } from './checkpoint';
+import { codeExcerciseOneChapter } from './9e31c844';
+import { codeExcerciseTwoChapter } from './5e6361db';
 
 export const twoDArraysChapters = [
   twoDArraysLearningObjectivesChapter,
   twoDArraysIntroChapter,
   indexingAndBoundsChapter,
   findingNeighborsChapter,
+  twoDArraysInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  twoDArraysCheckpointChapter
+  twoDArraysCheckpointChapter,
+  codeExcerciseOneChapter,
+  codeExcerciseTwoChapter
 ];
 
 /**

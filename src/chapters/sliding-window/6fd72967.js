@@ -2,7 +2,7 @@ import { TestResult } from "../../utils/test_utils";
 
 export const codeExcerciseOneChapter = {
   id: '6fd72967',
-  title: 'Module 7 - Code Excercise 1',
+  title: 'Module 8 - Code Excercise 1',
   sectionId: 'sliding-window',
   previousChapterId: null,
   content: `

@@ -30,19 +30,19 @@ Sarah looked at the screen, thinking. "That's impressive. But with thousands of 
 \`\`\`
 Patient ID (Key)    →    Patient Information (Value)
 ┌─────────────────┐      ┌─────────────────────────────────┐
-│   P-2024-001    │  →   │ Name: John Smith                │
-│                 │      │ Room: 302A                      │
-│                 │      │ DOB: 1985-03-15                │
-│                 │      │ Allergies: Penicillin          │
-│                 │      │ Current Meds: Lisinopril       │
+│   P-2024-001    │  →   │ name: John Smith                │
+│                 │      │ room: 302A                      │
+│                 │      │ age: 40                         │
+│                 │      │ allergies: Penicillin           │
+│                 │      │ current_meds: Lisinopril        │
 └─────────────────┘      └─────────────────────────────────┘
 
 ┌─────────────────┐      ┌─────────────────────────────────┐
-│   P-2024-002    │  →   │ Name: Maria Garcia              │
-│                 │      │ Room: 205B                      │
-│                 │      │ DOB: 1978-11-22                │
-│                 │      │ Allergies: None                 │
-│                 │      │ Current Meds: Metformin        │
+│   P-2024-002    │  →   │ name: Maria Garcia              │
+│                 │      │ room: 205B                      │
+│                 │      │ age: 55.                        │
+│                 │      │ allergies: None                 │
+│                 │      │ current_meds: Metformin         │
 └─────────────────┘      └─────────────────────────────────┘
 \`\`\`
 
@@ -54,7 +54,7 @@ Sarah nodded slowly. "So it's like having a direct phone line to each patient's 
 
 As the morning progressed, Marcus showed Sarah how their patient records system naturally demonstrated the core operations of a Map data structure.
 
-### Set: Adding New Patient Records
+### set(): Adding New Patient Records
 
 Around 10 AM, Lisa Thompson, an experienced nurse who had been working at the hospital for eight years, came to the station to register a new patient admission.
 
@@ -68,7 +68,7 @@ Sarah watched as Lisa entered the information:
 
 "Each time Lisa adds a new patient," Marcus explained, "that patient ID becomes a new 'key' in our Map, and all their medical information becomes the 'value' associated with that key. The set operation creates this relationship."
 
-### Get: Retrieving Patient Information
+### get(): Retrieving Patient Information
 
 "Now comes the magic part," Marcus said, pulling up the patient lookup interface. "Lisa, can you show Dr. Chen how we retrieve a patient's information?"
 
@@ -80,7 +80,7 @@ Sarah was impressed. "So the system doesn't have to search through every patient
 
 "Exactly! The Map structure allows **O(1)** lookup time - that means constant time, regardless of how many patients we have in the system."
 
-### Has: Checking Patient Existence
+### has(): Checking Patient Existence
 
 Halfway through their tour, Dr. James Wilson, a senior physician, approached the station looking concerned.
 
@@ -90,7 +90,7 @@ Lisa typed the ID into the system. "Let me check... Yes, we do have that patient
 
 "What Dr. Wilson just asked for," Marcus explained to Sarah, "is called the **has** operation - checking if a key exists in the Map without necessarily retrieving all the information."
 
-### Delete: Removing Patient Records
+### delete(): Removing Patient Records
 
 "Now, this is important," Marcus said, pulling up the administrative interface. "When a patient is discharged and their records are archived, we use the **delete** operation to remove them from the active patient Map."
 
@@ -110,9 +110,9 @@ Marcus pulled out a tablet and opened a coding environment. "Sarah, I want you t
 "Absolutely! But here's the thing - you don't need to build the Map from scratch. JavaScript provides a built-in Map class for you. Your job is to **use** the Map operations to solve real hospital problems."
 
 🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`addPatient()\` to register new patients in the system
+- Implement \`addPatient()\` and \`getPatientInfo()\`to insert/retrieve patients
 - Use \`patientMap.set()\` and \`patientMap.get()\` operations
-- **Click Run Code**
+- **Click Run Tests**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
 
 "This first challenge simulates what we just did manually," Marcus explained. "You need to add patients to our records system and then retrieve their information when needed."
@@ -354,10 +354,7 @@ By the end of their first day, Sarah had learned that:
 
 Through hands-on coding challenges, Sarah discovered that understanding how to **use** data structures is just as important as knowing how they work internally. The simple act of looking up patient records had revealed one of computer science's most fundamental and useful data structures. And this was just the beginning of Sarah's journey into the organized, efficient world of healthcare information systems and the data structures that power them.`,
   exercise: {
-    starterCode: `// ✅ JavaScript Map class - built-in and ready to use!
-// 🔒 You can trust it works. Focus on how to use it for healthcare applications.
-
-/*
+    starterCode: `/*
 Problem: Using Map Operations to Manage Patient Records
 
 Dr. Sarah has provided you with JavaScript's built-in Map class to help manage patient records.
@@ -387,7 +384,8 @@ function addPatient(patientMap, patientId, patientInfo) {
   
   console.log(\`Added patient \${patientId}: \${patientInfo.name}\`);
 }
-
+*/
+/*
 function getPatientInfo(patientMap, patientId) {
   // Retrieve a patient's information by their ID
   // Return the patient info if found, null if not found
@@ -431,7 +429,7 @@ function findPatientsByRoom(patientMap, roomPrefix) {
   return matchingPatients;
 }
 */`,
-    solution: `// ✅ JavaScript Map class - built-in and ready to use!
+    solution: `
 /*
 Problem: Using Map Operations to Manage Patient Records
 

@@ -108,6 +108,7 @@ Let us know in the cohorts channel if and when you are going to be out. The slac
 Look for: #dsa-{your cohort number} — for example, Cohort One = #dsa-01
 
 ### Class Session Format (Repeats weekly):
+(Please note that pair coding sessions will begin in Week 2 to give you plenty of time to prepare.)
 #### Day 1
 - **Full 2 hours** Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work.
 
@@ -126,7 +127,7 @@ A key part of your asynchronous time should be spent reading, working the coding
 Got a question? The \`#help\` channel on Slack is the perfect place to ask!
 
 ### 🧪 What to Expect from Pair Programming Practice
-Each week, you’ll team up with a classmate to practice a mock coding interview. You’ll take turns being the interviewer and the interviewee, working through a problem together in a breakout room. Don’t worry—this isn’t about getting everything right. It’s a safe space to mess up, try things, struggle a bit, and learn by doing. The key is to show up, stay engaged, and lean into the challenge. Even if you don’t solve the problem, just working through it will help you get more comfortable, build confidence, and make the eventual solution stick. This time is meant to help you grow, so use it well!
+Each week, starting with week two, you’ll team up with a classmate to practice a mock coding interview. You’ll take turns being the interviewer and the interviewee, working through a problem together in a breakout room. Don’t worry—this isn’t about getting everything right. It’s a safe space to mess up, try things, struggle a bit, and learn by doing. The key is to show up, stay engaged, and lean into the challenge. Even if you don’t solve the problem, just working through it will help you get more comfortable, build confidence, and make the eventual solution stick. This time is meant to help you grow, so use it well!
 - The goal is to practice thinking out loud and solving problems under pressure
 - Build confidence giving and receiving feedback
 - Get comfortable with the interview format
@@ -171,35 +172,35 @@ Each chapter begins with specific learning objectives that serve as your roadmap
 
 This course is organized into 10 progressive modules, each building upon the previous ones:
 
-### Module 0, 1: Just Enough Math, Algorithmic Thinking & Big-O
+### Module/Week 1: Just Enough Math
 Mathematical concepts and problem-solving fundamentals
 
-### Module 2: Arrays & Two Pointers
+### Module/Week 2: Algorithmic Thinking & Big-O
+Problem-solving fundamentals and Big(o) notation
+
+### Module/Week 3: Arrays & Two Pointers
 Linear data structures and optimization techniques
 
-### Module 3: 2D Arrays & Grid Navigation
+### Module/Week 4: 2D Arrays & Grid Navigation
 Working with matrices and spatial problems
 
-### Module 4: Linked Lists & Pointer Manipulation
+### Module/Week 5: Linked Lists & Pointer Manipulation
 Dynamic data structures and node-based operations
 
-### Module 5: Stacks & Queues
+### Module/Week 6: Stacks & Queues
 LIFO and FIFO data structures for sequence management
 
-### Module 6: Maps & Sets
+### Module/Week 7: Maps & Sets
 Hash-based data structures for fast lookups and uniqueness
 
-### Module 7: Sliding Window Technique
+### Module/Week 8: Sliding Window Technique
 Optimizing subarray and substring problems
 
-### Module 8: Sorting & Binary Search
+### Module/Week 9: Sorting & Binary Search
 Fundamental algorithms for ordered data
 
-### Module 9: Combining Patterns & Tradeoff Analysis
-Integrating multiple techniques for complex problems
-
-### Module 10: Interview Readiness & Recap
-Putting it all together for technical interviews
+### Module/Week 10: Combining Patterns & Interview Readiness
+Integrating multiple techniques and putting it all together for technical interviews
 
 ## 🚀 How to Approach the Course
 

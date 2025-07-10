@@ -18,7 +18,7 @@ export const polynomialsChapter = {
 ## Introduction
 
 ### Polynomials Explanatory Video
-<iframe width="1120" height="630" src="https://www.youtube.com/embed/aj2W3ablLVg?si=ocDmwCcgPQQfw4n2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe  width="1120" height="630" src="https://www.youtube.com/embed/gl5GAPA8XmQ?si=8C8f43MTgNPTiiuH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Reading
 
@@ -56,7 +56,7 @@ Remember that when we write out multiplication, we often omit the multiplication
 
 The expression 4r in the example above is a polynomial. Even simple polynomials like 4r are useful for capturing problems like our carpet example, since they give us a way to produce an output (in this case, the number of carpets) given some input (the number of rugs).
 
-As another example, consider the polynomial 2x. This polynomial always evaluates to twice the value of x. Think of it like a machine that converts any number into its double. Think of it like a machine that converts any number into its double. If x is equal to 9, then the value of 2x is 2 × 9 = 18.
+As another example, consider the polynomial 2x. This polynomial always evaluates to twice the value of x. Think of it like a machine that converts any number into its double. If x is equal to 9, then the value of 2x is 2 × 9 = 18.
 
 Let's look at another polynomial and identify its key parts:
 
@@ -280,7 +280,7 @@ Think back to our work with square footage. How did we calculate the area of a s
 Compare your solution against this video.
 
 ### Polynomials We Do Video
-<iframe  width="1120" height="630" src="https://www.youtube.com/embed/gl5GAPA8XmQ?si=8C8f43MTgNPTiiuH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/aj2W3ablLVg?si=ocDmwCcgPQQfw4n2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Conclusion
 

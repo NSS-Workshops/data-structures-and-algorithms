@@ -1,5 +1,6 @@
 import { formatGlossary } from "../../utils/format_utils";
 
+const data = [];
 
 export const glossaryChapter = {
   id: 'sorting-and-binary-search-glossary',

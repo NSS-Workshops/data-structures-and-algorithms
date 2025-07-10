@@ -47,7 +47,7 @@ Sarah nodded thoughtfully. "So it's like a yes-or-no checklist?"
 
 As the morning progressed, Marcus and Elena showed Sarah how their allergy tracking system demonstrated the core operations of a Set data structure.
 
-### Add: Recording New Allergies
+### Add(): Recording New Allergies
 
 Around 10 AM, Dr. James Wilson approached the pharmacy station with an urgent update.
 
@@ -62,7 +62,7 @@ Sarah watched as Elena entered the information:
 
 "Each time we add an allergy," Marcus explained, "the Set ensures it's only listed once. Even if someone accidentally tries to add 'Penicillin' again, the Set will ignore the duplicate."
 
-### Has: Checking for Specific Allergies
+### Has(): Checking for Specific Allergies
 
 "Now comes the critical safety check," Elena said, pulling up a new medication order. "Before I dispense any medication, I need to verify the patient doesn't have allergies to any of its components."
 
@@ -78,7 +78,7 @@ Sarah was impressed. "So the system can instantly prevent dangerous medication e
 
 "Exactly. That's why Sets are perfect for safety-critical applications like this."
 
-### Delete: Removing Outdated Allergies
+### Delete(): Removing Outdated Allergies
 
 "Sometimes," Elena continued, "we need to remove allergies from a patient's record. Maybe they underwent desensitization therapy, or a previous allergy was incorrectly recorded."
 
@@ -131,6 +131,7 @@ Sarah thought for a moment. "Well, each allergy should only be listed once - we 
 
 🔓 **Uncomment the below code section in the editor 👉:**
 - Implement \`findCommonAllergies()\` to find allergies shared between patients
+- The 2 arguments to findCommonAllergies are both sets!
 - Use Set iteration and comparison methods
 - Return a new Set containing only shared allergies
 - **Click Run Code**

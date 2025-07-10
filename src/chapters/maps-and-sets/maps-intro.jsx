@@ -139,6 +139,17 @@ Sarah thought for a moment. "Well, every patient has a unique ID, and we need to
 
 "Great question! The beautiful thing about Maps is that if you set a key that already exists, it updates the value instead of creating a duplicate. This makes updating patient records very straightforward."
 
+Structure of Patient Information:
+\`\`\`json
+{
+  name: String
+  room: String
+  age: Number
+  allergies: String
+  current_meds: String
+}
+  \`\`\`
+
 🔓 **Uncomment the below code section in the editor 👉:**
 - Implement \`updatePatientRoom()\` to change a patient's room assignment
 - Use \`patientMap.has()\` to check if patient exists before updating
@@ -384,8 +395,6 @@ function addPatient(patientMap, patientId, patientInfo) {
   
   console.log(\`Added patient \${patientId}: \${patientInfo.name}\`);
 }
-*/
-/*
 function getPatientInfo(patientMap, patientId) {
   // Retrieve a patient's information by their ID
   // Return the patient info if found, null if not found
@@ -439,7 +448,7 @@ Complete solution showing how to use Map operations effectively for healthcare.
 function addPatient(patientMap, patientId, patientInfo) {
   // Add a new patient to the records system
   patientMap.set(patientId, patientInfo);
-  console.log(\`Added patient \${patientId}: \${patientInfo.name}\`);
+  console.log("Added patient \${patientId}: \${patientInfo.name}");
 }
 
 function getPatientInfo(patientMap, patientId) {

@@ -1,5 +1,4 @@
 //For this exercise, you should write three functions that generate 2D arrays in different ways. 
-//Then complete a function that demonstrates the difference between row and column traversal
 
 const createPhoneLayout = () => {
     //TODO: Use literal notation to create a 3x3 matrix representing the placement of the numbers 1-9 on a telephone dialpad, then return that matrix
@@ -14,23 +13,6 @@ const createLoveArray = (width, height) => {
 const createCheckerboard = (width, height) => {
     //TODO: Using loops, create and return a checkerboard pattern of the specified size, with the values '⬛' and '⬜', alternating.
     return [];
-};
-
-// Demonstrating row-wise vs column-wise traversal performance by logging the time for each
-const measureTraversalPerformance = (matrix) => {
-    console.log('----- Performance Test: -----');
-    let placeholder = 0;
-
-    let startTime = Date.now();
-    //TODO: Traverse the specified matrix by rows, then by columns within each row. With each element, set placeholder to that element's value
-    let endTime = Date.now();
-    console.log(`Row-wise traversal: ${endTime - startTime}ms`);
-
-    // Column-wise traversal
-    startTime = Date.now();
-    //TODO: Traverse the specified matrix by columns, then by row within each column. With each element, set placeholder to that element's value
-    endTime = Date.now();
-    console.log(`Column-wise traversal: ${endTime - startTime}ms`);
 };
 
 // Utility function to print any 2D array. Note the use of the array functions .forEach and .join
@@ -51,7 +33,3 @@ print2DArray(checkerboard, 'Checkerboard Pattern');
 // Create and print a grid of hearts
 const loveArray = createLoveArray(12,6);
 print2DArray(loveArray, 'Love Array');
-
-// Demonstrate performance difference with a larger matrix
-const largeMatrix = Array.from({ length: 10000 }, () => Array(10000).fill(0));
-measureTraversalPerformance(largeMatrix);

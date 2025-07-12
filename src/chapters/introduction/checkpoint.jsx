@@ -300,7 +300,7 @@ Test your understanding of the introduction concepts.
 
               <div
                 className="question"
-                data-answer="Half an hour instructor-led session, half pair programming"
+                data-answer="Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work"
               >
                 <p>
                   During Day 1 of each weekly live session, how is class time
@@ -319,9 +319,9 @@ Test your understanding of the introduction concepts.
                   <input
                     type="radio"
                     name="q10"
-                    value="Half instructor-led session, half pair programming"
+                    value="Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work"
                   />{" "}
-                  Half instructor-led session, half pair programming
+                  Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work
                 </label>
                 <br />
                 <label>

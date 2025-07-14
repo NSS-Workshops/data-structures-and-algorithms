@@ -31,8 +31,39 @@ const questionJsx5 = <><p>What is the <em>space</em> complexity of this algorith
   return total;
 }`}</code></pre></>
 
-
 const questions = [
+  {
+    type: QUESTION_TYPES.RADIO,
+    questionJsx:<p>How do you write constant time complexity in Big O notation?</p>,
+    answers: [
+      "O(1)",
+      "O(n)",
+      "O(n^2)"
+    ],
+    correctAnswer: 0
+  },
+  {
+    type: QUESTION_TYPES.RADIO,
+    questionJsx:<p>How do you write linear time complexity in Big O notation?</p>,
+    answers: [
+      "O(1)",
+      "O(n)",
+      "O(n^2)"
+    ],
+    correctAnswer: 1
+  },
+  {
+    type: QUESTION_TYPES.CHECKBOX,
+    questionJsx:<p>Which of the following are polynomial functions?</p>,
+    answers: [
+      "O(1)",
+      "O(n)",
+      "O(n^2)",
+      "O(2^n)",
+      "O(n^k)"
+    ],
+    correctAnswers: [0,1,2,3,4]
+  },
   {
       type: QUESTION_TYPES.NUMBER,
       questionJsx:<p>If an O(1) task takes 10s for n = 10, how long for n = 1,000,000?</p>,

@@ -2,7 +2,6 @@ import { polynomialsChapter } from './polynomials';
 import { exponentsLogarithmsChapter } from './exponents-logarithms';
 import { combinationsPermutationsChapter } from './combinations-permutations';
 import { glossaryChapter } from './glossary';
-import { justEnoughMathCheckpointChapter } from './checkpoint';
 import { polynomialsQuizChapter } from './f7a9c2d4';
 import { exponentsLogarithmsQuizChapter } from './e8b4f1a7';
 import { combinationsPermutationsQuizChapter } from './c9d3a5b8';
@@ -12,7 +11,6 @@ export const justEnoughMathChapters = [
   exponentsLogarithmsChapter,
   combinationsPermutationsChapter,
   glossaryChapter,
-  justEnoughMathCheckpointChapter,
   polynomialsQuizChapter,
   exponentsLogarithmsQuizChapter,
   combinationsPermutationsQuizChapter

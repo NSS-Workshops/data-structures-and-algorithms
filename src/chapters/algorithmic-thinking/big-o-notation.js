@@ -98,7 +98,7 @@ Just as we discussed with time complexity, \`O(1)\` is overall better for \`O(n)
 ### Space Complexity Explained, It’s About Peak Memory, Not Total Usage
 When we analyze space complexity, we’re talking about the maximum amount of additional memory an algorithm uses at any single point during its execution — not the total memory used over time.
 
-This means if your algorithm creates a temporary array of size n once, or uses a call stack of size n during recursion, the space complexity is O(n) — even if that happens multiple times or in different phases. It’s about the peak memory usage, not the cumulative memory used across all steps.
+This means if your algorithm creates a temporary array of size n once, the space complexity is O(n) — even if that happens multiple times or in different phases. It’s about the peak memory usage, not the cumulative memory used across all steps.
 
 #### The example below illustrates the difference between Peak Memory vs. Cumulative Memory
 

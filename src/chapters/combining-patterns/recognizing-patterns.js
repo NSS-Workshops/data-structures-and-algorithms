@@ -87,12 +87,10 @@ TBD
 **Indicators in problem statements:**
 - "Find all paths..."
 - "Explore all possibilities..."
-- Problems involving trees, graphs, or recursive structures
+- Problems involving trees, graphs
 - Problems requiring backtracking
 
 **Example problem:** "Find all paths from the root to leaf nodes in a binary tree."
-
-**Solution approach:** Use recursive DFS to explore all paths.
 
 TBD
 
@@ -148,7 +146,7 @@ Different problem patterns often pair well with specific data structures:
 | Sliding Window | Arrays, Strings, Hash Maps |
 | Fast & Slow Pointers | Linked Lists, Arrays |
 | Merge Intervals | Arrays, Priority Queues |
-| DFS | Stacks, Recursion, Trees, Graphs |
+| DFS | Stacks, Trees, Graphs |
 | BFS | Queues, Trees, Graphs |
 | Binary Search | Sorted Arrays |
 | Dynamic Programming | Arrays, Matrices, Hash Maps |

@@ -21,7 +21,6 @@ Examples of time-space tradeoffs:
 
 | Algorithm | Time Complexity | Space Complexity | Notes |
 |-----------|-----------------|------------------|-------|
-| In-place sorting (e.g., quicksort) | O(n log n) | O(log n) | Uses recursion stack space |
 | Merge sort | O(n log n) | O(n) | Requires additional space for merging |
 | Dynamic programming (memoization) | Reduced from exponential to polynomial | O(n) to O(n²) | Trades space for time |
 | Hash table lookups | O(1) average | O(n) | Uses extra space for constant-time lookups |

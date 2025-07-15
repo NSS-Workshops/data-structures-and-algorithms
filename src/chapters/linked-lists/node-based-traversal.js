@@ -130,26 +130,6 @@ function findMiddle(linkedList) {
 
 TBD
 
-### Recursive Traversal
-Using recursion instead of iteration:
-
-\`\`\`javascript
-function printReverse(node) {
-  // Base case
-  if (node === null) {
-    return;
-  }
-  
-  // Recursive case: process the rest of the list first
-  printReverse(node.next);
-  
-  // Then process the current node (prints in reverse order)
-  console.log(node.data);
-}
-\`\`\`
-
-TBD
-
 ## Common Pitfalls and Solutions
 
 ### Losing the Head Reference

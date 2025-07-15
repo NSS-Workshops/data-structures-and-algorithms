@@ -34,7 +34,6 @@ export const stacksQueuesInfoSheetChapter = {
 ### Stack Characteristics
 - **LIFO**: Last element added is first to be removed
 - **Single Access Point**: Only top element is accessible
-- **Natural Recursion**: Mirrors function call stack
 
 ### Queue Characteristics  
 - **FIFO**: First element added is first to be removed

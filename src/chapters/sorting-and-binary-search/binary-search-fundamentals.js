@@ -61,42 +61,6 @@ console.log(binarySearch(sortedArray, 6));  // Output: -1
 
 TBD
 
-## Recursive Implementation
-
-Binary search can also be implemented recursively:
-
-\`\`\`javascript
-function binarySearchRecursive(arr, target, left = 0, right = arr.length - 1) {
-  // Base case: element not found
-  if (left > right) {
-    return -1;
-  }
-  
-  // Calculate middle index
-  const mid = Math.floor(left + (right - left) / 2);
-  
-  // Check if target is present at mid
-  if (arr[mid] === target) {
-    return mid;
-  }
-  
-  // If target is greater, search right half
-  if (arr[mid] < target) {
-    return binarySearchRecursive(arr, target, mid + 1, right);
-  }
-  
-  // If target is smaller, search left half
-  return binarySearchRecursive(arr, target, left, mid - 1);
-}
-
-// Example usage
-const sortedArray = [1, 3, 5, 7, 9, 11, 13, 15, 17];
-console.log(binarySearchRecursive(sortedArray, 11)); // Output: 5
-console.log(binarySearchRecursive(sortedArray, 4));  // Output: -1
-\`\`\`
-
-TBD
-
 ## Time and Space Complexity
 
 Binary search has excellent performance characteristics:
@@ -107,7 +71,6 @@ Binary search has excellent performance characteristics:
   
 - **Space Complexity**:
   - Iterative: O(1) - uses constant extra space
-  - Recursive: O(log n) - due to the call stack
 
 TBD
 

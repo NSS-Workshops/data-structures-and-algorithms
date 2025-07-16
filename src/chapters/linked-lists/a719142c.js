@@ -67,7 +67,6 @@ class ListNode {
 Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
-- How would you do this recursively? What are the tradeoffs?
 */
 
 function reverseList(head) {

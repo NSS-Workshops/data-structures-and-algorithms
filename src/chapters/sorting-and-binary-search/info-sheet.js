@@ -49,7 +49,7 @@ export const sortingBinarySearchInfoSheetChapter = {
 - **Adaptive**: Does algorithm perform better on partially sorted data?
 
 ## Space Complexity
-- **Binary Search**: O(1) iterative, O(log n) recursive
+- **Binary Search**: O(1)
 - **Sorting**: Varies by algorithm (see table above)
 
 ## When to Use Binary Search

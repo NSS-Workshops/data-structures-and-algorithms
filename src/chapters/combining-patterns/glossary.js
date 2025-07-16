@@ -36,7 +36,6 @@ const data = [
   { term: "Optimization", definition: "The process of improving an algorithm's efficiency or effectiveness.", week: "9"},
   { term: "Greedy Algorithm", definition: "An algorithmic paradigm that makes locally optimal choices at each step with the hope of finding a global optimum.", week: "9"},
   { term: "Dynamic Programming", definition: "A method for solving complex problems by breaking them down into simpler subproblems and storing the results to avoid redundant calculations.", week: "9"},
-  { term: "Divide and Conquer", definition: "A paradigm that solves a problem by recursively breaking it down into simpler subproblems, solving them independently, and combining their solutions.", week: "9"},
   { term: "Backtracking", definition: "An algorithmic technique that builds candidates to solutions incrementally and abandons a candidate as soon as it determines it cannot lead to a valid solution.", week: "9"},
   { term: "Graph Algorithm", definition: "An algorithm that operates on graph data structures, such as depth-first search, breadth-first search, or Dijkstra's algorithm.", week: "9"},
   { term: "Heuristic", definition: "A problem-solving approach that uses practical methods or various shortcuts to produce solutions that may not be optimal but are sufficient for immediate goals.", week: "9"},

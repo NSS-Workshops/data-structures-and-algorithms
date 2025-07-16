@@ -75,7 +75,6 @@ A file system needs to support:
 **Combined patterns and data structures**:
 - **Tree structure** for representing the directory hierarchy
 - **Hash maps** for fast file lookup within directories
-- **Depth-first search** for recursive operations (like delete, copy)
 - **Breadth-first search** for level-order operations (like listing)
 - **Linked lists** or **free lists** for managing free space
 

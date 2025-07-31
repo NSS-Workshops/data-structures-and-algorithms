@@ -79,7 +79,7 @@ function removeElement(nums, val) {
       k++;
     }
   }
-  nums.length = k
+  nums.length = k;
   return k;
 }
 `,
@@ -90,25 +90,44 @@ function removeElement(nums, val) {
           try {
             const removeElement = new Function(`${code}; return removeElement;`)();
 
+            // Test 1: [3, 2, 2, 3] remove 3
             const arr1 = [3, 2, 2, 3];
             const result1 = removeElement(arr1, 3);
-            const output1 = arr1.slice(0, result1).sort();
             const expected1 = [2, 2];
 
+            // Test 2: [0, 1, 2, 2, 3, 0, 4, 2] remove 2
             const arr2 = [0, 1, 2, 2, 3, 0, 4, 2];
             const result2 = removeElement(arr2, 2);
-            const output2 = arr2.slice(0, result2).sort();
             const expected2 = [0, 0, 1, 3, 4];
 
-            const test1 = JSON.stringify(output1) === JSON.stringify(expected1);
-            const test2 = JSON.stringify(output2) === JSON.stringify(expected2);
+            // Check that the returned length matches expected
+            const lengthTest1 = result1 === expected1.length;
+            const lengthTest2 = result2 === expected2.length;
 
-            if (test1 && test2) {
+            // Check that the array has been properly truncated to the returned length
+            const arrayLengthTest1 = arr1.length === result1;
+            const arrayLengthTest2 = arr2.length === result2;
+
+            // Check that the remaining elements are correct (since array is truncated, we can sort the whole array)
+            const output1 = [...arr1].sort();
+            const output2 = [...arr2].sort();
+            const contentTest1 = JSON.stringify(output1) === JSON.stringify(expected1);
+            const contentTest2 = JSON.stringify(output2) === JSON.stringify(expected2);
+
+            if (lengthTest1 && lengthTest2 && contentTest1 && contentTest2 && arrayLengthTest1 && arrayLengthTest2) {
               return new TestResult({ passed: true });
             } else {
+              let failureDetails = [];
+              if (!lengthTest1) failureDetails.push(`Test 1 length: expected ${expected1.length}, got ${result1}`);
+              if (!lengthTest2) failureDetails.push(`Test 2 length: expected ${expected2.length}, got ${result2}`);
+              if (!arrayLengthTest1) failureDetails.push(`Test 1 array length: expected ${result1}, got ${arr1.length} (array not properly truncated)`);
+              if (!arrayLengthTest2) failureDetails.push(`Test 2 array length: expected ${result2}, got ${arr2.length} (array not properly truncated)`);
+              if (!contentTest1) failureDetails.push(`Test 1 content: expected ${JSON.stringify(expected1)}, got ${JSON.stringify(output1)}`);
+              if (!contentTest2) failureDetails.push(`Test 2 content: expected ${JSON.stringify(expected2)}, got ${JSON.stringify(output2)}`);
+              
               return new TestResult({
                 passed: false,
-                message: `Failed: Output1 = ${JSON.stringify(output1)}, Output2 = ${JSON.stringify(output2)}`
+                message: `Failed: ${failureDetails.join('; ')}`
               });
             }
           } catch (error) {
@@ -118,7 +137,7 @@ function removeElement(nums, val) {
             });
           }
         },
-        message: "Function should remove all instances of val and return correct length."
+        message: "Function should remove all instances of val, return correct length, and properly modify the array length."
       },
       {
         name: "Handles empty array",

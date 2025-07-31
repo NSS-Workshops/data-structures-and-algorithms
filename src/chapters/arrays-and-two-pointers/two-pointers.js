@@ -211,7 +211,7 @@ Eleanor discovers another useful application: detecting if any book appears more
 
 \`\`\`javascript
 // Eleanor's unsorted collection where book IDs might repeat
-// (Using numbers 1-7 to represent book IDs, with one guaranteed duplicate)
+// (Using numbers 1-6 to represent book IDs, with one guaranteed duplicate)
 const bookIds = [3, 1, 4, 2, 5, 2, 6]; // Book ID 2 appears twice
 
 function findDuplicateBookId(bookIds) {

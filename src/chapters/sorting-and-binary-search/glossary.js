@@ -1,5 +1,6 @@
 import { formatGlossary } from "../../utils/format_utils";
 
+const data = [];
 
 const data = [
   { term: "Algorithm", definition: "A step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem.", week: 1 },

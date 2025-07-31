@@ -79,7 +79,7 @@ function removeElement(nums, val) {
       k++;
     }
   }
-  nums.length = k
+  nums.length = k;
   return k;
 }
 `,

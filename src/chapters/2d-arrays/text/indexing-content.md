@@ -26,6 +26,8 @@ Getting a good grasp on your grid's dimensions is crucial - it's like knowing th
 - **Number of rows**: Think of this as the height of your grid - how many layers or floors you have
 - **Number of columns**: This is like the width - how many elements you have in each row
 
+Note: When analyzing algorithms that work with 2D arrays, we often express complexity in terms of the total number of cells. If we have a grid with n rows and m columns, the total number of cells is n*m. For example, traversing every cell in the grid has O(n*m) time complexity, while accessing a single cell remains O(1).
+
 Here's a practical example:
 
 ```javascript

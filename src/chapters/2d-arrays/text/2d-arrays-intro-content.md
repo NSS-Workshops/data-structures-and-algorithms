@@ -96,6 +96,8 @@ for (let i = 0; i < rows; i++) {
 
 Here are some important concepts to keep in mind when working with 2D arrays:
 
+- **Access time complexity**: Accessing a single element in a 2D array has O(1) time complexity since we can directly jump to any row and column using array indices. However, operations that need to traverse the entire grid (like searching for a value) have O(n*m) time complexity, where n is the number of rows and m is the number of columns.
+
 - **Memory usage**: A large 2D array takes up significant memory. An array with 10,000 elements is very manageable. A 10,000x10,000 2D array has 100 million elements, which can be very unwieldy.
 
 - **Cache locality**: Accessing elements row by row is usually faster than column by column. It's like reading a book - going line by line is more efficient than reading all the first words, then all the second words, etc.

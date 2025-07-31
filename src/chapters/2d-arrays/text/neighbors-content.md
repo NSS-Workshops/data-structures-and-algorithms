@@ -38,9 +38,11 @@ function getCardinalNeighbors(grid, row, col) {
 
 This approach is really elegant. Instead of writing separate code for each direction, we use these direction arrays as a standard pattern for movement. The dr and dc tell you exactly how to move in each direction! Also, note that we're including a boundary check to be sure we only include neighbors that actually exist in the matrix.
 
+The time complexity for finding cardinal neighbors of a cell is linear, or O(1), since we always check exactly 4 directions, regardless of grid size. The space complexity is also O(1) as we store at most 4 neighboring positions. This is much more efficient than scanning the entire grid, which would be O(n*m).
+
 ## Diagonal Directions (8-Way)
 
-Sometimes four directions just aren't enough. Maybe you're making a chess game where pieces can move diagonally, or creating a pathfinding algorithm that needs to consider all possible directions. That's where 8-way movement comes in. It works the same way, just with more options.
+Sometimes four directions just aren't enough. Maybe you're making a chess game where pieces can move diagonally, or creating a pathfinding algorithm that needs to consider all possible directions. That's where 8-way movement comes in. It works the same way, just with more options:
 
 ```javascript
 // Direction arrays for all 8 directions (starting from top, going clockwise)
@@ -65,6 +67,8 @@ function getAllNeighbors(grid, row, col) {
   return neighbors;
 }
 ```
+
+Similar to cardinal neighbors, finding 8-way neighbors has O(1) time and space complexity since we're checking a fixed number of directions (8) regardless of the grid's size. This constant-time operation is crucial for efficient pathfinding and game algorithms that need to frequently check adjacent cells.
 
 ## Knight's Moves
 
@@ -150,41 +154,61 @@ function getSameValueNeighbors(grid, row, col) {
 }
 ```
 
-## Applications in Grid-Based Algorithms
 
-Let's look at a real-world application where finding neighbors is crucial. This example illustrates how we can put these concepts to practical use.
 
-### Flood Fill
-This is the algorithm that powers the "paint bucket" tool in drawing programs. It's like dropping paint that spreads to all connected cells of the same color:
+
+## Island Perimeter
+
+Here's a practical example where checking neighbors helps solve a common interview problem:
+- You are given a grid that represents a nautical map (where 1 represents land and 0 represents water)
+- That map contains a single island (a group of 1 values all connected horizontally or vertically)
+- Calculate the perimeter of the island (the total number of edges that border water or the grid boundary)
 
 ```javascript
-function floodFill(grid, row, col, newColor) {
-  const originalColor = grid[row][col];
-  if (originalColor === newColor) return grid;
-  
-  function fill(r, c) {
-    if (
-      r < 0 || r >= grid.length || 
-      c < 0 || c >= grid[0].length || 
-      grid[r][c] !== originalColor
-    ) {
-      return;
+function calculateIslandPerimeter(grid) {
+    const rows = grid.length;
+    const cols = grid[0].length;
+    let perimeter = 0;
+    
+    // Direction arrays for up, right, down, left
+    const dr = [-1, 0, 1, 0];
+    const dc = [0, 1, 0, -1];
+    
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            // Skip water cells
+            if (grid[row][col] === 0) continue;
+            
+            // For each land cell, count edges that face water or boundary
+            for (let i = 0; i < 4; i++) {
+                const newRow = row + dr[i];
+                const newCol = col + dc[i];
+                
+                //if this edge face water or a boundary, add it to the perimeter
+                if (
+                    newRow < 0 || newRow >= rows ||
+                    newCol < 0 || newCol >= cols ||
+                    grid[newRow][newCol] === 0
+                ) {
+                    perimeter++;
+                }
+            }
+        }
     }
     
-    grid[r][c] = newColor;
-    
-    // Visit all 4 neighbors
-    fill(r-1, c);  // Up
-    fill(r+1, c);  // Down
-    fill(r, c-1);  // Left
-    fill(r, c+1);  // Right
-  }
-  
-  fill(row, col);
-  return grid;
+    return perimeter;
 }
-```
 
+// Example usage:
+const islandGrid = [
+    [0, 1, 0, 0],
+    [1, 1, 1, 0],
+    [0, 1, 0, 0],
+    [1, 1, 0, 0]
+];
+const perimeter = calculateIslandPerimeter(islandGrid);
+console.log(perimeter); // Output: 16
+```
 
 Remember, finding neighbors is all about exploring relationships between cells in your grid. Whether you're making games, processing images, or solving puzzles, these patterns will come in handy time and time again. The key is to choose the right neighbor pattern for your specific problem and always remember to check those boundaries!
 

@@ -62,7 +62,7 @@ const questions = [
       "O(2^n)",
       "O(n^k)"
     ],
-    correctAnswers: [0,1,2,3,4]
+    correctAnswers: [0,1,2,4]
   },
   {
       type: QUESTION_TYPES.NUMBER,

@@ -277,12 +277,6 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
         clearTimeout(hideResultsTimeout)
       }
 
-      // Set a new timeout to hide test results after 8 seconds
-      const timeout = setTimeout(() => {
-        setShowResults(false)
-      }, 8000)
-      setHideResultsTimeout(timeout)
-
       // Get current code for hashing - only include user's code, not solution
       let currentCode;
       if (files['index.js']) {

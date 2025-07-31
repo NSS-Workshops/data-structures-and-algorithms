@@ -105,3 +105,8 @@ Here are some important concepts to keep in mind when working with 2D arrays:
 - **Passing by reference**: When you pass a 2D array to a function, you're giving it the keys to your apartment - any changes it makes affect the original array. This can be powerful but requires careful handling!
 
 2D arrays are fantastic for grid-based data, but they might not be the best choice for every situation. Consider your needs and constraints when deciding whether to use a 2D array in your project.
+
+
+# Practice Exercise
+
+Before moving on, look at the program code in the right pane and complete it so that it logs the correct information to the inline console.

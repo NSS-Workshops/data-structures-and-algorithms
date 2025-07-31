@@ -154,3 +154,8 @@ These sneaky bugs happen when your loop boundaries are slightly off:
 - **Remember**: Array indices start at 0 and go up to length - 1
 
 Good indexing and bounds checking habits might seem like extra work at first, but they'll save you tons of debugging time and prevent crashes in your applications. Keep practicing these patterns, and they'll become second nature!
+
+
+# Practice Exercise
+
+Before moving on, look at the program code in the right pane and complete it so that it logs the correct information to the inline console.

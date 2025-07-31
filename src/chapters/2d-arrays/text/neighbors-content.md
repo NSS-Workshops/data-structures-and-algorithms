@@ -187,3 +187,8 @@ function floodFill(grid, row, col, newColor) {
 
 
 Remember, finding neighbors is all about exploring relationships between cells in your grid. Whether you're making games, processing images, or solving puzzles, these patterns will come in handy time and time again. The key is to choose the right neighbor pattern for your specific problem and always remember to check those boundaries!
+
+
+# Practice Exercise
+
+Before moving on, look at the program code in the right pane and complete it so that it logs the correct information to the inline console.

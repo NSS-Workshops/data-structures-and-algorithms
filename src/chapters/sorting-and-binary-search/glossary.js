@@ -1,7 +1,5 @@
 import { formatGlossary } from "../../utils/format_utils";
 
-const data = [];
-
 const data = [
   { term: "Algorithm", definition: "A step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem.", week: 1 },
   { term: "Data Structure", definition: "A specialized format for organizing, processing, retrieving and storing data to suit a specific purpose.", week: 1 },

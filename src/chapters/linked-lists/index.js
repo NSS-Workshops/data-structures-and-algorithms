@@ -9,6 +9,8 @@ import { glossaryChapter } from './glossary';
 import { linkedListsCheckpointChapter } from './checkpoint';
 import { codeExcerciseOneChapter } from './a719142c';
 import { codeExcerciseTwoChapter } from './1c8056a9';
+import { linkedListQuizChapter } from './b4f7e9a2';
+import { linkedListFromScratchChapter } from './c7d9e4f1';
 
 export const linkedListsChapters = [
   linkedListsLearningObjectivesChapter,
@@ -21,7 +23,9 @@ export const linkedListsChapters = [
   glossaryChapter,
   linkedListsCheckpointChapter,
   codeExcerciseOneChapter,
-  codeExcerciseTwoChapter
+  codeExcerciseTwoChapter,
+  linkedListQuizChapter,
+  linkedListFromScratchChapter
 ];
 
 /**

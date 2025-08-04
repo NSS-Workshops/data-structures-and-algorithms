@@ -15,6 +15,11 @@ function CheckpointRadioQuestion({ data, index }) {
             data.answers.map( a => <div key={"radio"+index+"-"+a}><label><input type="radio" name={"q"+index} value={a} /> {a}</label></div> )
           }
           <div className="feedback"></div>
+          {data.explanation && (
+            <div className="explanation" style={{display: 'none'}}>
+              {data.explanation}
+            </div>
+          )}
         </div>
   )
 }
@@ -30,6 +35,11 @@ function CheckpointCheckboxQuestion({ data, index }) {
                 data.answers.map( a => <div key={"radio"+index+"-"+a}><label><input type="checkbox" value={a} /> {a}</label></div> )
             }
           <div className="feedback"></div>
+          {data.explanation && (
+            <div className="explanation" style={{display: 'none'}}>
+              {data.explanation}
+            </div>
+          )}
         </div>
   )
 }
@@ -41,6 +51,11 @@ function CheckpointTextQuestion({ data }) {
             {data.questionJsx}
             <input type="text" required />
             <div className="feedback"></div>
+            {data.explanation && (
+              <div className="explanation" style={{display: 'none'}}>
+                {data.explanation}
+              </div>
+            )}
         </div>
   )
 }
@@ -51,6 +66,11 @@ function CheckpointNumberQuestion({ data }) {
             {data.questionJsx}
             <input type="number" required />
             <div className="feedback"></div>
+            {data.explanation && (
+              <div className="explanation" style={{display: 'none'}}>
+                {data.explanation}
+              </div>
+            )}
         </div>
   )
 }

@@ -273,9 +273,134 @@ const availableDoctor = schedule.findAvailableDoctor(10);
 console.log('Available doctor at 10 AM:', availableDoctor);
 \`\`\`
 
+## Understanding Map Keys and Data Types
+
+"Before we talk about performance," Marcus said, "let's understand something crucial about Map keys. Sarah, what types of data can we use as keys in JavaScript Maps?"
+
+Sarah thought for a moment. "Well, we've been using strings like 'P-2024-001' for patient IDs..."
+
+"Good start! But Maps are much more flexible," Marcus explained, opening a demonstration:
+
+\`\`\`javascript
+// Maps can use ANY data type as keys!
+const hospitalMap = new Map();
+
+// String keys (most common)
+hospitalMap.set('P-2024-001', { name: 'John Doe', room: '302A' });
+
+// Number keys
+hospitalMap.set(12345, { name: 'Jane Smith', room: '205B' });
+
+// Object keys
+const doctorObj = { id: 'DR001', name: 'Dr. Wilson' };
+hospitalMap.set(doctorObj, { schedule: 'Monday-Friday', department: 'Cardiology' });
+
+// Even function keys!
+const emergencyProtocol = function() { return 'Code Blue'; };
+hospitalMap.set(emergencyProtocol, { priority: 'Critical', response: 'Immediate' });
+
+console.log('String key lookup:', hospitalMap.get('P-2024-001'));
+console.log('Number key lookup:', hospitalMap.get(12345));
+console.log('Object key lookup:', hospitalMap.get(doctorObj));
+\`\`\`
+
+"The key insight," Marcus continued, "is how JavaScript compares these different key types:"
+
+### Key Comparison Rules in Maps
+
+\`\`\`javascript
+const comparisonDemo = new Map();
+
+// Primitive values (strings, numbers, booleans) are compared by VALUE
+comparisonDemo.set('patient1', 'John');
+comparisonDemo.set('patient1', 'Jane'); // Overwrites John!
+console.log(comparisonDemo.get('patient1')); // 'Jane'
+
+// Objects are compared by REFERENCE, not content
+const room1 = { floor: 3, number: 'A' };
+const room2 = { floor: 3, number: 'A' }; // Same content, different object
+
+comparisonDemo.set(room1, 'Patient A');
+comparisonDemo.set(room2, 'Patient B'); // Different keys! Both stored
+
+console.log(comparisonDemo.size); // 3 total entries
+console.log(comparisonDemo.get(room1)); // 'Patient A'
+console.log(comparisonDemo.get(room2)); // 'Patient B'
+
+// Special case: NaN is treated as equal to itself in Maps
+comparisonDemo.set(NaN, 'Special case');
+comparisonDemo.set(NaN, 'Updated value'); // Overwrites!
+console.log(comparisonDemo.get(NaN)); // 'Updated value'
+\`\`\`
+
+## Map Key Override Behavior
+
+"This brings us to a critical concept," Marcus said seriously. "Maps enforce **unique keys** - you cannot have duplicate keys, but you can **override** values."
+
+\`\`\`javascript
+// Demonstrating override behavior in patient records
+const patientRecords = new Map();
+
+// Initial patient record
+patientRecords.set('P-2024-001', {
+  name: 'John Doe',
+  room: '302A',
+  condition: 'Stable',
+  admitted: '2024-01-15'
+});
+
+console.log('Initial record:', patientRecords.get('P-2024-001'));
+
+// Later update - OVERWRITES the entire record!
+patientRecords.set('P-2024-001', {
+  name: 'John Doe',
+  room: '305B', // Room changed
+  condition: 'Improving',
+  admitted: '2024-01-15',
+  lastUpdated: '2024-01-20'
+});
+
+console.log('Updated record:', patientRecords.get('P-2024-001'));
+console.log('Total patients:', patientRecords.size); // Still 1!
+\`\`\`
+
+"Notice something important," Marcus pointed out. "When we set the same key twice, we don't get two records - the second one **completely replaces** the first. This is both powerful and dangerous."
+
+### Safe Update Pattern
+
+"In healthcare, we need to be careful about overwrites. Here's a safer pattern:"
+
+\`\`\`javascript
+function updatePatientRoom(patientMap, patientId, newRoom) {
+  // Defensive programming - check inputs
+  if (!patientId || !newRoom) {
+    console.error('Invalid input: patientId and newRoom are required');
+    return false;
+  }
+  
+  // Check if patient exists
+  if (!patientMap.has(patientId)) {
+    console.error(\`Patient \${patientId} not found\`);
+    return false;
+  }
+  
+  // Get existing record and update only the room
+  const existingRecord = patientMap.get(patientId);
+  const updatedRecord = {
+    ...existingRecord, // Keep all existing data
+    room: newRoom,     // Update only the room
+    lastUpdated: new Date().toISOString()
+  };
+  
+  // Set the updated record
+  patientMap.set(patientId, updatedRecord);
+  return true;
+}
+\`\`\`
+
 ## Understanding Map Performance
 
-"Here's something important to understand," Marcus said, pulling up a performance chart. "All of these Map operations are **O(1)** - constant time. Do you know what that means?"
+"Now, here's something important to understand," Marcus said, pulling up a performance chart. "All of these Map operations are **O(1)** - constant time. Do you know what that means?"
 
 Sarah shook her head.
 
@@ -485,32 +610,62 @@ function findPatientsByRoom(patientMap, roomPrefix) {
 }`,
     tests: [
       {
-        name: "Test Map basic operations",
+        name: "Test Map basic operations and defensive coding",
         test: (code) => {
           try {
             const testCode = code + `
             // Test Map basic operations
             const patientMap = new Map();
             
-            // Test addPatient function
+            // Test addPatient function with valid inputs
+            let addResult1 = false;
+            let addResult2 = false;
+            let addResult3 = false;
+            let addResult4 = false;
+            
             if (typeof addPatient === 'function') {
-              addPatient(patientMap, 'P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
-              addPatient(patientMap, 'P-002', { name: 'Jane Smith', room: '302A', age: 32 });
+              // Valid inputs
+              try {
+                addPatient(patientMap, 'P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
+                addResult1 = true;
+              } catch (e) { addResult1 = false; }
+              
+              try {
+                addPatient(patientMap, 'P-002', { name: 'Jane Smith', room: '302A', age: 32 });
+                addResult2 = true;
+              } catch (e) { addResult2 = false; }
+              
+              // Test defensive coding - null/undefined inputs
+              try {
+                addPatient(patientMap, null, { name: 'Test' });
+                addResult3 = false; // Should not succeed
+              } catch (e) { addResult3 = true; } // Should throw or handle gracefully
+              
+              try {
+                addPatient(patientMap, 'P-003', null);
+                addResult4 = false; // Should not succeed
+              } catch (e) { addResult4 = true; } // Should throw or handle gracefully
             }
             
             // Test getPatientInfo function
             let patient1 = null;
             let patient2 = null;
+            let patient3 = null;
             if (typeof getPatientInfo === 'function') {
               patient1 = getPatientInfo(patientMap, 'P-001');
               patient2 = getPatientInfo(patientMap, 'P-999'); // Non-existent
+              patient3 = getPatientInfo(patientMap, null); // Null input
             }
             
-            return ({ 
+            return ({
               mapSize: patientMap.size,
               patient1: patient1,
               patient2: patient2,
-              hasP001: patientMap.has('P-001')
+              patient3: patient3,
+              hasP001: patientMap.has('P-001'),
+              addResult1: addResult1,
+              addResult2: addResult2,
+              nullInputHandled: addResult3 || addResult4 // At least one null input was handled
             });
             `;
             
@@ -521,7 +676,7 @@ function findPatientsByRoom(patientMap, roomPrefix) {
             }
             
             if (testResult.mapSize !== 2) {
-              return new TestResult({ passed: false, message: "addPatient should add patients to the map" });
+              return new TestResult({ passed: false, message: "addPatient should add valid patients to the map but reject invalid inputs" });
             }
             
             if (!testResult.patient1 || testResult.patient1.name !== 'John Doe') {
@@ -532,8 +687,16 @@ function findPatientsByRoom(patientMap, roomPrefix) {
               return new TestResult({ passed: false, message: "getPatientInfo should return null for non-existent patients" });
             }
             
+            if (testResult.patient3 !== null) {
+              return new TestResult({ passed: false, message: "getPatientInfo should handle null input gracefully and return null" });
+            }
+            
             if (!testResult.hasP001) {
               return new TestResult({ passed: false, message: "Patient should exist in map after being added" });
+            }
+            
+            if (!testResult.nullInputHandled) {
+              return new TestResult({ passed: false, message: "addPatient should implement defensive coding to handle null/undefined inputs properly" });
             }
             
             return new TestResult({ passed: true });
@@ -541,7 +704,7 @@ function findPatientsByRoom(patientMap, roomPrefix) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Map should handle basic patient operations correctly (add, get, has)."
+        message: "Map should handle basic patient operations correctly and implement defensive coding for null inputs."
       },
       {
         name: "Test updatePatientRoom function",

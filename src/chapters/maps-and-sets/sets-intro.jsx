@@ -291,9 +291,146 @@ const completion = tracker.getProcedureCompletion('P-001', requiredProcedures);
 console.log('Completion status:', completion);
 \`\`\`
 
+## Understanding Set Values and Data Types
+
+"Before we talk about performance," Elena said, "let's understand something crucial about Set values. Sarah, what types of data can we store in JavaScript Sets?"
+
+Sarah thought for a moment. "Well, we've been using strings like 'Penicillin' for allergies..."
+
+"Good start! But Sets are much more flexible," Elena explained, opening a demonstration:
+
+\`\`\`javascript
+// Sets can store ANY data type as values!
+const patientAllergies = new Set();
+
+// String values (most common for allergies)
+patientAllergies.add('Penicillin');
+patientAllergies.add('Latex');
+
+// Number values
+const vitalSigns = new Set();
+vitalSigns.add(120); // Systolic BP
+vitalSigns.add(80);  // Diastolic BP
+vitalSigns.add(72);  // Heart rate
+
+// Object values
+const procedureSet = new Set();
+const procedure1 = { name: 'Blood Test', completed: true, date: '2024-01-15' };
+const procedure2 = { name: 'X-Ray', completed: false, date: null };
+procedureSet.add(procedure1);
+procedureSet.add(procedure2);
+
+// Even function values!
+const alertFunctions = new Set();
+alertFunctions.add(function() { return 'Allergy Alert!'; });
+alertFunctions.add(() => 'Critical Patient!');
+
+console.log('Allergy count:', patientAllergies.size);
+console.log('Has Penicillin:', patientAllergies.has('Penicillin'));
+\`\`\`
+
+"The key insight," Elena continued, "is how JavaScript compares these different value types in Sets:"
+
+### Value Comparison Rules in Sets
+
+\`\`\`javascript
+const comparisonDemo = new Set();
+
+// Primitive values (strings, numbers, booleans) are compared by VALUE
+comparisonDemo.add('Penicillin');
+comparisonDemo.add('Penicillin'); // Duplicate - ignored!
+console.log(comparisonDemo.size); // 1
+
+// Objects are compared by REFERENCE, not content
+const allergy1 = { name: 'Penicillin', severity: 'High' };
+const allergy2 = { name: 'Penicillin', severity: 'High' }; // Same content, different object
+
+comparisonDemo.add(allergy1);
+comparisonDemo.add(allergy2); // Different references - both stored!
+
+console.log(comparisonDemo.size); // 3 total values
+console.log(comparisonDemo.has(allergy1)); // true
+console.log(comparisonDemo.has(allergy2)); // true
+
+// Special case: NaN is treated as equal to itself in Sets
+comparisonDemo.add(NaN);
+comparisonDemo.add(NaN); // Duplicate - ignored!
+console.log(comparisonDemo.has(NaN)); // true
+\`\`\`
+
+## Set Uniqueness and No Duplicates
+
+"This brings us to a critical concept," Elena said seriously. "Sets enforce **absolute uniqueness** - you cannot have duplicate values, period."
+
+\`\`\`javascript
+// Demonstrating uniqueness in allergy tracking
+const allergyTracking = new Set();
+
+// Adding allergies
+allergyTracking.add('Penicillin');
+allergyTracking.add('Latex');
+allergyTracking.add('Shellfish');
+
+console.log('Initial allergies:', [...allergyTracking]); // ['Penicillin', 'Latex', 'Shellfish']
+console.log('Count:', allergyTracking.size); // 3
+
+// Attempting to add duplicates
+allergyTracking.add('Penicillin'); // Ignored - already exists
+allergyTracking.add('PENICILLIN'); // Added - different case!
+allergyTracking.add('Latex');      // Ignored - already exists
+
+console.log('After duplicates:', [...allergyTracking]); // ['Penicillin', 'Latex', 'Shellfish', 'PENICILLIN']
+console.log('Count:', allergyTracking.size); // 4 (case-sensitive!)
+\`\`\`
+
+"Notice something important," Elena pointed out. "Sets are **case-sensitive** for strings. 'Penicillin' and 'PENICILLIN' are treated as different values."
+
+### Safe Allergy Management Pattern
+
+"In healthcare, we need to be careful about case sensitivity and data consistency. Here's a safer pattern:"
+
+\`\`\`javascript
+function addAllergyToPatient(allergySet, allergy) {
+  // Defensive programming - check inputs
+  if (!allergy || typeof allergy !== 'string') {
+    console.error('Invalid allergy: must be a non-empty string');
+    return false;
+  }
+  
+  // Normalize the allergy name (consistent casing and trimming)
+  const normalizedAllergy = allergy.trim().toLowerCase();
+  
+  if (normalizedAllergy === '') {
+    console.error('Invalid allergy: cannot be empty after trimming');
+    return false;
+  }
+  
+  // Add to set (duplicates automatically ignored)
+  const sizeBefore = allergySet.size;
+  allergySet.add(normalizedAllergy);
+  const sizeAfter = allergySet.size;
+  
+  if (sizeAfter > sizeBefore) {
+    console.log(\`Added new allergy: \${normalizedAllergy}\`);
+    return true;
+  } else {
+    console.log(\`Allergy already exists: \${normalizedAllergy}\`);
+    return false; // Was already present
+  }
+}
+
+// Usage example
+const patientAllergies = new Set();
+addAllergyToPatient(patientAllergies, 'Penicillin');   // Added
+addAllergyToPatient(patientAllergies, 'PENICILLIN');   // Already exists (normalized)
+addAllergyToPatient(patientAllergies, '  Latex  ');    // Added (trimmed)
+addAllergyToPatient(patientAllergies, '');             // Error - empty
+addAllergyToPatient(patientAllergies, null);           // Error - invalid type
+\`\`\`
+
 ## Understanding Set Performance
 
-"Here's something important to understand," Elena said, pulling up a performance chart. "All of these Set operations are **O(1)** - constant time. Do you know what that means for patient safety?"
+"Now, here's something important to understand," Elena said, pulling up a performance chart. "All of these Set operations are **O(1)** - constant time. Do you know what that means for patient safety?"
 
 Sarah thought about it. "It means that whether a patient has 5 allergies or 50 allergies, checking for a specific allergy takes the same amount of time?"
 
@@ -553,33 +690,63 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
 }`,
     tests: [
       {
-        name: "Test Set basic operations",
+        name: "Test Set basic operations and defensive coding",
         test: (code) => {
           try {
             const testCode = code + `
             // Test Set basic operations
             const allergySet = new Set();
             
-            // Test addAllergy function
+            // Test addAllergy function with valid and invalid inputs
+            let addResult1 = false;
+            let addResult2 = false;
+            let addResult3 = false;
+            let addResult4 = false;
+            
             if (typeof addAllergy === 'function') {
+              // Valid inputs
+              try {
+                addAllergy(allergySet, 'Penicillin');
+                addResult1 = true;
+              } catch (e) { addResult1 = false; }
+              
+              try {
+                addAllergy(allergySet, 'Latex');
+                addResult2 = true;
+              } catch (e) { addResult2 = false; }
+              
+              // Test defensive coding - null/undefined inputs
+              try {
+                addAllergy(allergySet, null);
+                addResult3 = false; // Should not succeed
+              } catch (e) { addResult3 = true; } // Should handle gracefully
+              
+              try {
+                addAllergy(allergySet, '');
+                addResult4 = false; // Should not succeed with empty string
+              } catch (e) { addResult4 = true; } // Should handle gracefully
+              
+              // Test duplicate (should be ignored)
               addAllergy(allergySet, 'Penicillin');
-              addAllergy(allergySet, 'Latex');
-              addAllergy(allergySet, 'Penicillin'); // Duplicate - should be ignored
             }
             
             // Test checkAllergy function
             let hasPenicillin = false;
             let hasIbuprofen = false;
+            let nullCheckResult = false;
             if (typeof checkAllergy === 'function') {
               hasPenicillin = checkAllergy(allergySet, 'Penicillin');
               hasIbuprofen = checkAllergy(allergySet, 'Ibuprofen'); // Not added
+              nullCheckResult = checkAllergy(allergySet, null); // Should return false
             }
             
-            return ({ 
+            return ({
               setSize: allergySet.size,
               hasPenicillin: hasPenicillin,
               hasIbuprofen: hasIbuprofen,
-              hasLatex: allergySet.has('Latex')
+              hasLatex: allergySet.has('Latex'),
+              nullCheckResult: nullCheckResult,
+              nullInputHandled: addResult3 || addResult4 // At least one invalid input was handled
             });
             `;
             
@@ -590,7 +757,7 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
             }
             
             if (testResult.setSize !== 2) {
-              return new TestResult({ passed: false, message: "Set should have 2 unique allergies (duplicates should be ignored)" });
+              return new TestResult({ passed: false, message: "Set should have 2 unique allergies (duplicates and invalid inputs should be ignored)" });
             }
             
             if (testResult.hasPenicillin !== true) {
@@ -605,12 +772,20 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
               return new TestResult({ passed: false, message: "Latex allergy should exist in set after being added" });
             }
             
+            if (testResult.nullCheckResult !== false) {
+              return new TestResult({ passed: false, message: "checkAllergy should return false for null input" });
+            }
+            
+            if (!testResult.nullInputHandled) {
+              return new TestResult({ passed: false, message: "addAllergy should implement defensive coding to handle null/empty inputs properly" });
+            }
+            
             return new TestResult({ passed: true });
           } catch (error) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Set should handle basic allergy operations correctly (add, has, uniqueness)."
+        message: "Set should handle basic allergy operations correctly and implement defensive coding for invalid inputs."
       },
       {
         name: "Test findCommonAllergies function",

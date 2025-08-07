@@ -77,7 +77,7 @@ They drew a simple diagram:
 1. Make "Hotel California" point to "Thunderstruck"
 2. Make "Thunderstruck" point to "Stairway to Heaven"
 
-"No shifting required!" Alex exclaimed. "It's like inserting a new book into our return cart - we just adjust the connections."
+"No shifting required!" Alex exclaimed. "“No shifting required!” Alex exclaimed. "It's like adding a new chain link, just unhook one link and snap the new one in between!"
 
 Maya smiled. "Jordan, you've just described a **linked list** - one of the most fundamental data structures in computer science. And Alex, you're right about the similarity to our book cart, but there's an important difference."
 
@@ -255,6 +255,95 @@ Alex thought for a moment. "I'd have to start at the first song and follow the c
 Jordan understood. "So linked lists are great for sequential access and dynamic changes, but arrays are better for random access."
 
 "Perfect understanding," Maya said. "Different data structures excel at different things. That's why we need to understand multiple approaches."
+
+## 📊 Big O Analysis: Linked Lists vs Arrays
+
+Maya pulled out her whiteboard. "Let's make this concrete with Big O notation. Understanding the time complexity of different operations will help you choose the right data structure."
+
+### Linked List Operations
+
+| Operation | Time Complexity | Explanation |
+|-----------|----------------|-------------|
+| **Traversal** | **O(n)** | Must visit each node sequentially from head to tail |
+| **Search** | **O(n)** | Must traverse from head until target is found |
+| **Insert at Beginning** | **O(1)** | Just update head pointer and new node's next |
+| **Insert at End** | **O(n)** | Must traverse to find the last node first |
+| **Insert at Position** | **O(n)** | Must traverse to the position, then O(1) to insert |
+| **Delete at Beginning** | **O(1)** | Just update head pointer to head.next |
+| **Delete at End** | **O(n)** | Must traverse to find the second-to-last node |
+| **Delete at Position** | **O(n)** | Must traverse to find the node, then O(1) to delete |
+| **Random Access** | **O(n)** | Must traverse from head to reach specific position |
+
+### Array Operations (for comparison)
+
+| Operation | Time Complexity | Explanation |
+|-----------|----------------|-------------|
+| **Traversal** | **O(n)** | Must visit each element from index 0 to n-1 |
+| **Search** | **O(n)** | Must check each element until target is found |
+| **Insert at Beginning** | **O(n)** | Must shift all existing elements to the right |
+| **Insert at End** | **O(1)** | Direct access to end position |
+| **Insert at Position** | **O(n)** | Must shift all elements after position to the right |
+| **Delete at Beginning** | **O(n)** | Must shift all remaining elements to the left |
+| **Delete at End** | **O(1)** | Direct access to end position |
+| **Delete at Position** | **O(n)** | Must shift all elements after position to the left |
+| **Random Access** | **O(1)** | Direct access using index calculation |
+
+### Key Insights from the Comparison
+
+Jordan studied the comparison chart. "So linked lists are better for insertions and deletions at the beginning, but arrays are better for random access and operations at the end?"
+
+"Exactly!" Maya confirmed. "Let's see this in action with some examples:"
+
+\`\`\`javascript
+// Linked List: Insert at beginning - O(1)
+function insertAtBeginning(head, newSong) {
+  const newNode = new SongNode(newSong.title, newSong.artist);
+  newNode.next = head;  // Just one pointer update!
+  return newNode;       // New head
+}
+
+// Array: Insert at beginning - O(n)
+function insertAtBeginningArray(playlist, newSong) {
+  playlist.unshift(newSong); // Must shift ALL elements!
+  return playlist;
+}
+
+// Linked List: Access 50th song - O(n)
+function getNodeAtPosition(head, position) {
+  let current = head;
+  for (let i = 0; i < position && current; i++) {
+    current = current.next; // Must traverse step by step
+  }
+  return current;
+}
+
+// Array: Access 50th song - O(1)
+function getElementAtPosition(playlist, position) {
+  return playlist[position]; // Direct memory access!
+}
+\`\`\`
+
+### When to Choose Each Structure
+
+"So when should I use linked lists versus arrays?" Jordan asked.
+
+Maya created a decision guide:
+
+**Choose Linked Lists When:**
+- ✅ Frequent insertions/deletions at the beginning
+- ✅ Unknown or highly variable data size
+- ✅ You rarely need random access to elements
+- ✅ Sequential processing is the primary use case
+- ✅ Memory is fragmented or you need dynamic allocation
+
+**Choose Arrays When:**
+- ✅ Frequent random access to elements by index
+- ✅ Mathematical operations or algorithms requiring indexing
+- ✅ Memory efficiency is critical
+- ✅ Cache performance matters for your application
+- ✅ You primarily add/remove elements at the end
+
+"For our playlist example," Jordan realized, "if users mostly play songs sequentially and frequently add songs at the beginning, linked lists make sense. But if they often jump to specific track numbers, arrays would be better."
 
 ## ⏱️ Alex's Third Playlist Challenge!
 

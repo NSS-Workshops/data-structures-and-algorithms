@@ -2,7 +2,7 @@ export const linkedListsInfoSheetChapter = {
   id: 'linked-lists-info-sheet',
   title: 'Linked Lists - Operations & Complexity Info Sheet',
   sectionId: 'linked-lists',
-  previousChapterId: 'implement-linked-list',
+  previousChapterId: 'node-based-traversal',
   nextChapterId: 'linked-lists-supplemental-materials',
   content: `
 

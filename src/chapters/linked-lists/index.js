@@ -3,13 +3,14 @@ import { linkedListsIntroChapter } from './linked-lists-intro';
 import { linkedListTypesChapter } from './linked-list-types';
 import { linkedListTradeoffsChapter } from './linked-list-tradeoffs';
 import { nodeBasedTraversalChapter } from './node-based-traversal';
-import { implementLinkedListChapter } from './implement-linked-list';
 import { linkedListsInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { linkedListsCheckpointChapter } from './checkpoint';
 import { codeExcerciseOneChapter } from './a719142c';
 import { codeExcerciseTwoChapter } from './1c8056a9';
+import { linkedListQuizChapter } from './b4f7e9a2';
+import { linkedListFromScratchChapter } from './c7d9e4f1';
 
 export const linkedListsChapters = [
   linkedListsLearningObjectivesChapter,
@@ -17,13 +18,14 @@ export const linkedListsChapters = [
   linkedListTypesChapter,
   linkedListTradeoffsChapter,
   nodeBasedTraversalChapter,
-  implementLinkedListChapter,
   linkedListsInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
   linkedListsCheckpointChapter,
   codeExcerciseOneChapter,
-  codeExcerciseTwoChapter
+  codeExcerciseTwoChapter,
+  linkedListQuizChapter,
+  linkedListFromScratchChapter
 ];
 
 /**

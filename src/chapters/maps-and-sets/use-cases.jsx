@@ -94,7 +94,7 @@ Elena opened a coding environment on Jake's computer. "Let's see if you can impl
 "Precisely! This will help us understand our workload patterns and staff appropriately."
 
 🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`recordEmergencyCall()\` to count different types of emergencies
+- Implement \`recordEmergencyCall()\` and \`getEmergencyStats()\` to count different types of emergencies
 - Use \`emergencyMap.set()\` and \`emergencyMap.get()\` operations
 - **Click Run Tests**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
@@ -246,7 +246,7 @@ Elena pulled up another coding challenge. "Now let's test your understanding of 
 "During major incidents, we need to find available hospital beds quickly. But we don't want to call the same hospital multiple times in a short period - that wastes precious time and annoys the hospital staff."
 
 🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`contactHospital()\` to track which hospitals have been contacted
+- Implement \`contactHospital()\` and \`getRecentContacts()\` to track which hospitals have been contacted
 - Use a Set to prevent duplicate contacts within a time window
 - **Click Run Tests**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
@@ -995,10 +995,26 @@ function getEquipmentUsageStats(equipmentUsage) {
                 </label>
                 <div className="feedback"></div>
                 <div className="explanation">
-                  Sets are perfect for maintaining uniqueness and preventing duplicates.
-                  They excel at equipment assignment tracking, location deduplication,
-                  and call filtering - all scenarios where we only care about whether
-                  something exists, not additional associated data.
+                  <ul>
+                    <li>
+                      <strong>Preventing duplicate equipment assignments:</strong> ✅ Correct — Sets ensure each equipment item is assigned only once.
+                    </li>
+                    <li>
+                      <strong>Unit ID to status mappings:</strong> ❌ Incorrect — This requires key-value pairs (Map), not just uniqueness.
+                    </li>
+                    <li>
+                      <strong>Tracking unique incident locations:</strong> ✅ Correct — Sets automatically deduplicate location entries.
+                    </li>
+                    <li>
+                      <strong>Counting frequency of emergency types:</strong> ❌ Incorrect — This needs counting (Map), not just uniqueness.
+                    </li>
+                    <li>
+                      <strong>Deduplicating emergency calls:</strong> ✅ Correct — Sets prevent processing the same incident multiple times.
+                    </li>
+                    <li>
+                      <strong>Caching route calculations:</strong> ❌ Incorrect — This requires storing computed values (Map), not just keys.
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -1010,10 +1026,17 @@ function getEquipmentUsageStats(equipmentUsage) {
                 <input type="text" required />
                 <span className="feedback" />
                 <div className="explanation">
-                  Map operations (get, set, has) are O(1) constant time on average,
-                  making them ideal for emergency systems where every second counts.
-                  This consistent performance regardless of data size is crucial for
-                  life-critical applications.
+                  <ul>
+                    <li>
+                      <strong>O(1) constant time:</strong> ✅ Correct — Map operations (get, set, has) are O(1) on average, making them ideal for emergency systems where every second counts.
+                    </li>
+                    <li>
+                      <strong>Performance consistency:</strong> This consistent performance regardless of data size is crucial for life-critical applications where response time cannot degrade as the system scales.
+                    </li>
+                    <li>
+                      <strong>Real-world impact:</strong> In emergency dispatch, O(1) lookups mean unit status checks, incident details retrieval, and route cache access all happen instantly, directly contributing to faster response times.
+                    </li>
+                  </ul>
                 </div>
               </div>
 

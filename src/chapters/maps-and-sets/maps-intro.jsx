@@ -273,13 +273,315 @@ const availableDoctor = schedule.findAvailableDoctor(10);
 console.log('Available doctor at 10 AM:', availableDoctor);
 \`\`\`
 
+## Maps vs Objects: What You Already Know
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z_2rpuPQmC0?si=EM73Rjfegtxu-m20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+"Before we dive deeper into Maps," Marcus said, "I want to address something important. Sarah, you mentioned you have experience with JavaScript programming. You probably already know about objects, right?"
+
+Sarah nodded. "Yes, I've used objects plenty of times. They're like containers that hold key-value pairs."
+
+"Exactly! And that might make you wonder - why do we need Maps when we already have objects?" Marcus pulled up a side-by-side comparison on his screen. "I actually have a great video resource that explains objects really well - it covers the fundamentals that most JavaScript developers already know. But here's the thing: understanding objects deeply actually makes it easier to appreciate why Maps exist and when to use them instead."
+
+Marcus opened his browser and showed Sarah a helpful video about JavaScript objects. "This video does an excellent job explaining object fundamentals - the syntax, property access, and basic usage patterns that you're probably already familiar with. But what it doesn't cover is the limitations of objects and when you should reach for Maps instead."
+
+"So Maps aren't replacing objects?" Sarah asked.
+
+"Not at all! Objects and Maps serve different purposes. Think of it this way: objects are perfect when you know your property names ahead of time - like a patient record template with fixed fields. But Maps shine when you're dealing with dynamic keys - like patient IDs that you won't know until runtime."
+
+### The Object Approach (What You Already Know)
+
+"If you've watched tutorials about JavaScript objects - like the one at https://www.youtube.com/embed/Z_2rpuPQmC0 - you'll recognize this pattern," Marcus said. "Let's see how we might handle patient records using regular JavaScript objects:"
+
+\`\`\`javascript
+// Using Objects for patient records (traditional approach)
+const patientRecords = {
+  'P-2024-001': {
+    name: 'John Smith',
+    room: '302A',
+    age: 40,
+    allergies: 'Penicillin'
+  },
+  'P-2024-002': {
+    name: 'Maria Garcia',
+    room: '205B',
+    age: 55,
+    allergies: 'None'
+  }
+};
+
+// Accessing patient data with objects
+console.log(patientRecords['P-2024-001']); // Works fine
+console.log(patientRecords['P-2024-001'].name); // "John Smith"
+
+// Adding new patients
+patientRecords['P-2024-003'] = {
+  name: 'David Lee',
+  room: '410C',
+  age: 32,
+  allergies: 'Shellfish'
+};
+\`\`\`
+
+"This looks familiar, doesn't it?" Marcus asked. "Objects can definitely handle key-value relationships. So why do we need Maps?"
+
+### The Critical Differences
+
+Marcus opened a new demonstration. "Here's where things get interesting. Let me show you some scenarios where objects fall short in healthcare systems."
+
+#### 1. Key Type Limitations
+
+\`\`\`javascript
+// Objects: Keys are ALWAYS strings (or Symbols)
+const objectRecords = {};
+
+// These all become string keys!
+objectRecords[123] = 'Patient A';        // Key becomes "123"
+objectRecords['123'] = 'Patient B';      // Overwrites Patient A!
+objectRecords[true] = 'Patient C';       // Key becomes "true"
+
+console.log(Object.keys(objectRecords)); // ["123", "true"]
+console.log(objectRecords[123]);         // "Patient B" (not "Patient A"!)
+
+// Maps: Keys can be ANY type
+const mapRecords = new Map();
+
+mapRecords.set(123, 'Patient A');        // Number key
+mapRecords.set('123', 'Patient B');      // String key (different!)
+mapRecords.set(true, 'Patient C');       // Boolean key
+
+console.log(mapRecords.get(123));        // "Patient A"
+console.log(mapRecords.get('123'));      // "Patient B"
+console.log(mapRecords.get(true));       // "Patient C"
+\`\`\`
+
+"In healthcare," Marcus explained, "this distinction is crucial. What if we want to use actual patient objects as keys, or numeric room numbers?"
+
+#### 2. Prototype Pollution and Inherited Properties
+
+\`\`\`javascript
+// Objects inherit properties from Object.prototype
+const patientObj = {};
+console.log(patientObj.toString);        // [Function: toString] - inherited!
+console.log(patientObj.hasOwnProperty);  // [Function: hasOwnProperty] - inherited!
+
+// This can cause unexpected behavior
+console.log('toString' in patientObj);   // true (even though we never set it!)
+
+// Maps are clean - no inherited properties
+const patientMap = new Map();
+console.log(patientMap.get('toString')); // undefined (as expected)
+\`\`\`
+
+#### 3. Size and Iteration Differences
+
+\`\`\`javascript
+// Objects: No direct size property
+const patientObj = {
+  'P-001': { name: 'John' },
+  'P-002': { name: 'Jane' }
+};
+
+// Getting size requires Object.keys()
+console.log(Object.keys(patientObj).length); // 2 (but includes inherited properties!)
+
+// Maps: Built-in size property
+const patientMap = new Map();
+patientMap.set('P-001', { name: 'John' });
+patientMap.set('P-002', { name: 'Jane' });
+
+console.log(patientMap.size); // 2 (exact count, no inherited properties)
+\`\`\`
+
+#### 4. Iteration Order Guarantees
+
+\`\`\`javascript
+// Objects: Iteration order is complex and can be unpredictable
+const patientObj = {};
+patientObj['P-003'] = 'Third';
+patientObj['P-001'] = 'First';
+patientObj['P-002'] = 'Second';
+patientObj[10] = 'Numeric';
+patientObj[5] = 'Another numeric';
+
+// Order might be: 5, 10, P-003, P-001, P-002 (numbers first, then insertion order)
+for (const key in patientObj) {
+  console.log(key, patientObj[key]);
+}
+
+// Maps: ALWAYS maintain insertion order
+const patientMap = new Map();
+patientMap.set('P-003', 'Third');
+patientMap.set('P-001', 'First');
+patientMap.set('P-002', 'Second');
+patientMap.set(10, 'Numeric');
+patientMap.set(5, 'Another numeric');
+
+// Order is guaranteed: P-003, P-001, P-002, 10, 5
+for (const [key, value] of patientMap) {
+  console.log(key, value);
+}
+\`\`\`
+
+### Real Healthcare Scenario: Why This Matters
+
+"Let me show you a real scenario where these differences matter," Marcus said, pulling up a complex example:
+
+\`\`\`javascript
+// Scenario: Multi-department patient tracking
+// We need to track patients across different departments using various ID types
+
+// Using Objects (problematic)
+const departmentRecords = {};
+
+// Different departments use different ID formats
+departmentRecords[12345] = { dept: 'Cardiology', patient: 'John Doe' };     // Numeric ID
+departmentRecords['12345'] = { dept: 'Radiology', patient: 'Jane Smith' };  // String ID (OVERWRITES!)
+departmentRecords['ER-001'] = { dept: 'Emergency', patient: 'Bob Johnson' };
+
+console.log('Object records:', Object.keys(departmentRecords));
+// Only ["12345", "ER-001"] - lost the Cardiology record!
+
+// Using Maps (correct)
+const departmentMap = new Map();
+
+departmentMap.set(12345, { dept: 'Cardiology', patient: 'John Doe' });      // Numeric ID
+departmentMap.set('12345', { dept: 'Radiology', patient: 'Jane Smith' });   // String ID (separate!)
+departmentMap.set('ER-001', { dept: 'Emergency', patient: 'Bob Johnson' });
+
+console.log('Map size:', departmentMap.size); // 3 - all records preserved!
+console.log('Cardiology patient:', departmentMap.get(12345));
+console.log('Radiology patient:', departmentMap.get('12345'));
+\`\`\`
+
+### When to Use Objects vs Maps
+
+Marcus created a comparison table on the whiteboard:
+
+| Scenario | Use Object | Use Map | Why |
+|----------|------------|---------|-----|
+| **Configuration/Settings** | ✅ | ❌ | Objects are perfect for known, fixed properties |
+| **JSON Data** | ✅ | ❌ | JSON naturally maps to objects |
+| **Record/Entity Storage** | ❌ | ✅ | Maps handle dynamic keys better |
+| **Frequent Additions/Deletions** | ❌ | ✅ | Maps are optimized for this |
+| **Non-string Keys** | ❌ | ✅ | Objects convert all keys to strings |
+| **Size Tracking** | ❌ | ✅ | Maps provide instant size |
+| **Guaranteed Iteration Order** | ❌ | ✅ | Maps maintain insertion order |
+| **Prototype-free Storage** | ❌ | ✅ | Maps don't inherit properties |
+
+### Performance Comparison
+
+"Now, here's something interesting about performance," Marcus said, opening a performance testing tool:
+
+\`\`\`javascript
+// Performance comparison: Objects vs Maps
+function performanceTest() {
+  const iterations = 100000;
+  
+  // Object performance
+  console.time('Object operations');
+  const obj = {};
+  
+  // Adding entries
+  for (let i = 0; i < iterations; i++) {
+    obj[\`patient-\${i}\`] = { id: i, name: \`Patient \${i}\` };
+  }
+  
+  // Reading entries
+  for (let i = 0; i < iterations; i++) {
+    const patient = obj[\`patient-\${i}\`];
+  }
+  
+  // Deleting entries
+  for (let i = 0; i < iterations; i++) {
+    delete obj[\`patient-\${i}\`];
+  }
+  
+  console.timeEnd('Object operations');
+  
+  // Map performance
+  console.time('Map operations');
+  const map = new Map();
+  
+  // Adding entries
+  for (let i = 0; i < iterations; i++) {
+    map.set(\`patient-\${i}\`, { id: i, name: \`Patient \${i}\` });
+  }
+  
+  // Reading entries
+  for (let i = 0; i < iterations; i++) {
+    const patient = map.get(\`patient-\${i}\`);
+  }
+  
+  // Deleting entries
+  for (let i = 0; i < iterations; i++) {
+    map.delete(\`patient-\${i}\`);
+  }
+  
+  console.timeEnd('Map operations');
+}
+
+// performanceTest();
+// Results vary, but Maps are often faster for frequent additions/deletions
+\`\`\`
+
+"The key insight," Marcus explained, "is that while objects are faster for property access when you know the keys at compile time, Maps are optimized for dynamic key-value operations - exactly what we need in healthcare systems."
+
+### Migration Strategy: Objects to Maps
+
+"If you're working with existing object-based code," Marcus said, "here's how you can migrate to Maps when appropriate:"
+
+\`\`\`javascript
+// Converting existing object-based patient records to Maps
+function migrateToMap(patientObject) {
+  const patientMap = new Map();
+  
+  // Convert object entries to Map entries
+  for (const [patientId, patientInfo] of Object.entries(patientObject)) {
+    patientMap.set(patientId, patientInfo);
+  }
+  
+  return patientMap;
+}
+
+// Example migration
+const legacyPatients = {
+  'P-001': { name: 'John', room: '302A' },
+  'P-002': { name: 'Jane', room: '205B' }
+};
+
+const modernPatients = migrateToMap(legacyPatients);
+console.log(modernPatients.get('P-001')); // { name: 'John', room: '302A' }
+\`\`\`
+
+### Key Takeaways: Objects vs Maps
+
+Marcus pulled up a summary slide. "Let's consolidate what we've learned about when to use objects versus Maps:"
+
+**Use Objects When:**
+- You have a fixed set of known properties (like a patient record template)
+- You're working with JSON data from APIs
+- You need the familiar dot notation syntax
+- You're defining configuration or settings
+- Performance for property access is critical
+
+**Use Maps When:**
+- You have dynamic keys that aren't known at compile time
+- You need non-string keys (numbers, objects, functions)
+- You frequently add/remove key-value pairs
+- You need guaranteed insertion order
+- You want to avoid prototype pollution
+- You need an accurate count of entries
+
+"The video I mentioned earlier covers objects beautifully," Marcus said, "but it doesn't address these nuanced differences. That's why understanding both is so valuable in healthcare systems where we deal with both structured data (objects) and dynamic lookups (Maps)."
+
 ## Understanding Map Keys and Data Types
 
-"Before we talk about performance," Marcus said, "let's understand something crucial about Map keys. Sarah, what types of data can we use as keys in JavaScript Maps?"
+"Now that you understand why Maps are often better than objects for dynamic data," Marcus continued, "let's explore the full flexibility of Map keys. Sarah, what types of data can we use as keys in JavaScript Maps?"
 
-Sarah thought for a moment. "Well, we've been using strings like 'P-2024-001' for patient IDs..."
+Sarah thought for a moment, now with a better understanding. "Well, we've seen that unlike objects, Maps can use any data type as keys, not just strings..."
 
-"Good start! But Maps are much more flexible," Marcus explained, opening a demonstration:
+"Exactly! Maps are much more flexible than objects," Marcus explained, opening a demonstration:
 
 \`\`\`javascript
 // Maps can use ANY data type as keys!
@@ -485,6 +787,8 @@ By the end of their first day, Sarah had learned that:
 - **Maps handle both creation and updates** - setting an existing key updates its value
 - **Map iteration allows complex searches** - finding patients by criteria across all records
 - **Maps are perfect for unique identification** - each key can only exist once
+- **Maps complement objects** - use objects for structured data, Maps for dynamic key-value storage
+- **Key type flexibility** - Maps accept any data type as keys, unlike objects which convert to strings
 - **Real-world applications include** patient records, medication databases, and doctor schedules
 - **Healthcare systems require instant access** - Maps provide the speed needed for emergency situations
 

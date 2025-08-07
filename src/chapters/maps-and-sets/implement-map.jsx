@@ -7,8 +7,12 @@ export const implementMapChapter = {
   sectionId: 'maps-and-sets',
   previousChapterId: 'use-cases',
   content: `
-## The Challenge: Building a Better System
 
+A look under the hood of the [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) data structure, <strong>watch until minute 3:20 only!</strong>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/t-vM3LJDfug?si=xUHZi4tAguRDz9ck" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+This is how the built-in javascript  Map() data structure works under the hood! This chapter gives you a peek behind the scenes.
+
+## The Challenge: Building a Better System
 Three weeks had passed since Dr. Sarah Chen's introduction to Maps at Mercy General Hospital, and she had become increasingly fascinated with how these data structures powered their patient records system. This morning, she found herself in the hospital's IT department, sitting across from David Kim, the lead software architect who had been with the hospital for over eight years.
 
 "Dr. Chen," David said, adjusting his glasses as he pulled up several code windows on his monitor, "I'm glad you're here. We've been using JavaScript's built-in Map for our patient records, but we're running into some limitations. We need a custom implementation that can handle our specific requirements."

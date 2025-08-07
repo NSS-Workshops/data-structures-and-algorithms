@@ -7,6 +7,14 @@ export const linkedListsIntroChapter = {
   sectionId: 'linked-lists',
   previousChapterId: 'linked-lists-learning-objectives',
   content: `
+##  Before We Dive Into Linked Lists: A Quick Detour
+Before we build or manipulate linked lists in JavaScript, we need to take a quick detour to understand how references work. 
+
+Unlike primitive values (like numbers or strings), objects in JavaScript are assigned and passed by reference. This means when you assign one object to another variable, both variables point to the same underlying data. Grasping this behavior is essential for safely navigating and modifying linked structures, where each node "points" to the next via a reference. Without this foundation, linked list logic can seem confusing or error-prone.
+
+The foundation course has a workshop on this topic. Please review these concept and be sure to complete the coding exercises, before you dive into linked lists:
+[Primitive vs. Reference Values – Foundations Course](https://nashville-software-school.github.io/foundations-course/primitive-vs-reference)
+
 
   <iframe width="560" height="315" src="https://www.youtube.com/embed/N6dOwBde7-M?si=z_hZOUOD968Ci3O1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

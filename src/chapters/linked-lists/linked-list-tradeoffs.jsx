@@ -50,7 +50,7 @@ class ArrayPlaylist {
   // Adding to the end - what's the performance?
   addSong(title, artist, duration) {
     const song = { title, artist, duration };
-    this.songs.push(song); // O(1) amortized
+    this.songs.push(song); // O(1)
     console.log(\`✅ Added \${title} to end of playlist\`);
   }
   
@@ -194,8 +194,7 @@ Maya pulled out her tablet. "Alex, let's put this theory to the test. I want you
 Jordan nodded enthusiastically. "This would help me understand exactly when to use each approach!"
 
 🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`comparePerformance()\` to analyze different operations
-- Measure and compare access times for arrays vs linked lists
+- Implement \`comparePerformance()\` to fill in different operations time complexity in big O notation
 - **Click Run Code**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
 
@@ -267,19 +266,29 @@ class LinkedPlaylist {
 
 /*
 function comparePerformance(arrayPlaylist, linkedPlaylist, operation, index = 0) {
-  // Compare performance characteristics of different operations
-  // operation can be: "access", "add_end", "add_beginning"
-  // Return an object describing the performance characteristics
-  
   const results = {
     operation: operation,
-    arrayComplexity: "",
-    linkedComplexity: "",
-    recommendation: ""
   };
-  
-  // TODO: Analyze the time complexity for each operation
-  // Hint: Consider what each data structure needs to do for each operation
+
+  // TODO: Strings below should be replaced with the appropriate time complexity 
+  // (e.g., O(1), O(n), O(n²), etc.) for the corresponding operation
+
+  switch (operation) {
+    case "access":
+      results.arrayComplexity = "TODO";
+      results.linkedComplexity = "TODO";
+      break;
+      
+    case "add_end":
+      results.arrayComplexity = "TODO";
+      results.linkedComplexity = "TODO";
+      break;
+      
+    case "add_beginning":
+      results.arrayComplexity = "TODO";
+      results.linkedComplexity = "TODO";
+      break;
+  }
   
   return results;
 }
@@ -346,35 +355,26 @@ class LinkedPlaylist {
 function comparePerformance(arrayPlaylist, linkedPlaylist, operation, index = 0) {
   const results = {
     operation: operation,
-    arrayComplexity: "",
-    linkedComplexity: "",
-    recommendation: ""
   };
-  
+
+  // TODO: Strings below should be replaced with the appropriate time complexity 
+  // (e.g., O(1), O(n), O(n²), etc.) for the corresponding operation
+
   switch (operation) {
     case "access":
       results.arrayComplexity = "O(1)";
       results.linkedComplexity = "O(n)";
-      results.recommendation = "Array is much faster for random access";
-      console.log(\`📊 Random Access: Array O(1) vs Linked List O(n) - Array wins!\`);
       break;
       
     case "add_end":
-      results.arrayComplexity = "O(1) amortized";
+      results.arrayComplexity = "O(1)";
       results.linkedComplexity = "O(n)";
-      results.recommendation = "Array is faster (unless linked list has tail pointer)";
-      console.log(\`📊 Add to End: Array O(1) vs Linked List O(n) - Array wins!\`);
       break;
       
     case "add_beginning":
       results.arrayComplexity = "O(n)";
       results.linkedComplexity = "O(1)";
-      results.recommendation = "Linked list is much faster for beginning insertions";
-      console.log(\`📊 Add to Beginning: Array O(n) vs Linked List O(1) - Linked List wins!\`);
       break;
-      
-    default:
-      results.recommendation = "Unknown operation";
   }
   
   return results;
@@ -453,8 +453,8 @@ function comparePerformance(arrayPlaylist, linkedPlaylist, operation, index = 0)
               return new TestResult({ passed: false, message: "Array access should be O(1)" });
             }
             
-            if (testResult.addEndResult !== "O(1) amortized") {
-              return new TestResult({ passed: false, message: "Array add to end should be O(1) amortized" });
+            if (testResult.addEndResult !== "O(1)") {
+              return new TestResult({ passed: false, message: "Array add to end should be O(1)" });
             }
             
             if (testResult.addBeginResult !== "O(1)") {

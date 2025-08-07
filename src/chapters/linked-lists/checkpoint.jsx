@@ -91,8 +91,8 @@ while (__________) {
     answers: [
       "`current !== null`, `current.next`",
       "`head !== null`, `head.next`",
-      "`current !== null`, `current = next.next`",
-      "`current !== undefined`, `head = head.next`"
+      "`current === null`, `next.next.next`",
+      "`current !== undefined`, `head.next.value`"
     ],
     correctAnswer: 0
   },

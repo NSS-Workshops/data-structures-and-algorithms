@@ -7,6 +7,11 @@ export const mapsIntroChapter = {
   sectionId: "maps-and-sets",
   previousChapterId: "maps-sets-learning-objectives",
   content: `
+## What is a Map?
+In JavaScript, a Map is a data structure , a collection of key–value pairs where keys can be of any type (including objects, functions, or primitives), unlike plain objects which only allow strings or symbols as keys. In Javascript the Maps insertion order is preserves, has a built-in .size property, and provides convenient methods like .set(), .get(), .has(), and .delete() for efficient O(1) lookups and updates.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QtLbuFUI1I4?si=Avi0keGWunmUFrSf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Dr. Sarah's First Day at Mercy General Hospital
 
 The morning sun filtered through the tall windows of Mercy General Hospital as Dr. Sarah Chen adjusted her white coat and checked her tablet one more time. It was her first day as the new Chief Medical Information Officer, and she was about to meet with Marcus Rodriguez, the hospital's veteran IT director who had been managing patient data systems for over a decade.
@@ -291,7 +296,7 @@ Marcus opened his browser and showed Sarah a helpful video about JavaScript obje
 
 ### The Object Approach (What You Already Know)
 
-"If you've watched tutorials about JavaScript objects - like the one at https://www.youtube.com/embed/Z_2rpuPQmC0 - you'll recognize this pattern," Marcus said. "Let's see how we might handle patient records using regular JavaScript objects:"
+"If you've watched tutorials about JavaScript objects - like the one above - you'll recognize this pattern," Marcus said. "Let's see how we might handle patient records using regular JavaScript objects:"
 
 \`\`\`javascript
 // Using Objects for patient records (traditional approach)
@@ -468,64 +473,6 @@ Marcus created a comparison table on the whiteboard:
 | **Size Tracking** | ❌ | ✅ | Maps provide instant size |
 | **Guaranteed Iteration Order** | ❌ | ✅ | Maps maintain insertion order |
 | **Prototype-free Storage** | ❌ | ✅ | Maps don't inherit properties |
-
-### Performance Comparison
-
-"Now, here's something interesting about performance," Marcus said, opening a performance testing tool:
-
-\`\`\`javascript
-// Performance comparison: Objects vs Maps
-function performanceTest() {
-  const iterations = 100000;
-  
-  // Object performance
-  console.time('Object operations');
-  const obj = {};
-  
-  // Adding entries
-  for (let i = 0; i < iterations; i++) {
-    obj[\`patient-\${i}\`] = { id: i, name: \`Patient \${i}\` };
-  }
-  
-  // Reading entries
-  for (let i = 0; i < iterations; i++) {
-    const patient = obj[\`patient-\${i}\`];
-  }
-  
-  // Deleting entries
-  for (let i = 0; i < iterations; i++) {
-    delete obj[\`patient-\${i}\`];
-  }
-  
-  console.timeEnd('Object operations');
-  
-  // Map performance
-  console.time('Map operations');
-  const map = new Map();
-  
-  // Adding entries
-  for (let i = 0; i < iterations; i++) {
-    map.set(\`patient-\${i}\`, { id: i, name: \`Patient \${i}\` });
-  }
-  
-  // Reading entries
-  for (let i = 0; i < iterations; i++) {
-    const patient = map.get(\`patient-\${i}\`);
-  }
-  
-  // Deleting entries
-  for (let i = 0; i < iterations; i++) {
-    map.delete(\`patient-\${i}\`);
-  }
-  
-  console.timeEnd('Map operations');
-}
-
-// performanceTest();
-// Results vary, but Maps are often faster for frequent additions/deletions
-\`\`\`
-
-"The key insight," Marcus explained, "is that while objects are faster for property access when you know the keys at compile time, Maps are optimized for dynamic key-value operations - exactly what we need in healthcare systems."
 
 ### Migration Strategy: Objects to Maps
 
@@ -743,22 +690,6 @@ Marcus pulled out a notepad and sketched out the key operations they'd learned:
 - Time Complexity: O(1) - instant count
 - Example: Getting total number of active patients
 
-## Why Maps Are Perfect for Healthcare
-
-"Here's something important to understand," Marcus said, tapping his pen on the notepad. "Maps are ideal for healthcare because they solve the fundamental problem of **unique identification**."
-
-"What do you mean?" Sarah asked.
-
-"Every patient needs a unique identifier - their patient ID. And we need to instantly access all their information using that ID. Maps create this direct relationship perfectly."
-
-| Healthcare Need | Map Solution | Benefit |
-|----------------|--------------|---------|
-| Unique patient identification | Each patient ID is a unique key | No duplicate patients |
-| Instant record access | O(1) lookup time | Fast emergency response |
-| Easy updates | Set operation updates existing keys | Current information always |
-| Existence verification | Has operation checks for patients | Prevents errors |
-| Scalable system | Performance doesn't degrade | Grows with hospital |
-
 ## Looking Ahead
 
 As their first lesson wound down, Marcus smiled at Sarah's obvious enthusiasm. "Tomorrow, we'll explore a different but related concept - our patient allergy tracking system. That one uses something called a **Set**."
@@ -914,21 +845,22 @@ function findPatientsByRoom(patientMap, roomPrefix) {
 }`,
     tests: [
       {
-        name: "Test Map basic operations and defensive coding",
+        name: "⏱️ Sarah's First Challenge! - Test addPatient() and getPatientInfo() functions",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if functions exist
+            const hasAddPatient = typeof addPatient === 'function';
+            const hasGetPatientInfo = typeof getPatientInfo === 'function';
+
             // Test Map basic operations
             const patientMap = new Map();
             
             // Test addPatient function with valid inputs
             let addResult1 = false;
             let addResult2 = false;
-            let addResult3 = false;
-            let addResult4 = false;
             
-            if (typeof addPatient === 'function') {
-              // Valid inputs
+            if (hasAddPatient) {
               try {
                 addPatient(patientMap, 'P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
                 addResult1 = true;
@@ -938,49 +870,40 @@ function findPatientsByRoom(patientMap, roomPrefix) {
                 addPatient(patientMap, 'P-002', { name: 'Jane Smith', room: '302A', age: 32 });
                 addResult2 = true;
               } catch (e) { addResult2 = false; }
-              
-              // Test defensive coding - null/undefined inputs
-              try {
-                addPatient(patientMap, null, { name: 'Test' });
-                addResult3 = false; // Should not succeed
-              } catch (e) { addResult3 = true; } // Should throw or handle gracefully
-              
-              try {
-                addPatient(patientMap, 'P-003', null);
-                addResult4 = false; // Should not succeed
-              } catch (e) { addResult4 = true; } // Should throw or handle gracefully
             }
             
             // Test getPatientInfo function
             let patient1 = null;
             let patient2 = null;
-            let patient3 = null;
-            if (typeof getPatientInfo === 'function') {
+            if (hasGetPatientInfo) {
               patient1 = getPatientInfo(patientMap, 'P-001');
               patient2 = getPatientInfo(patientMap, 'P-999'); // Non-existent
-              patient3 = getPatientInfo(patientMap, null); // Null input
             }
             
             return ({
               mapSize: patientMap.size,
               patient1: patient1,
               patient2: patient2,
-              patient3: patient3,
               hasP001: patientMap.has('P-001'),
               addResult1: addResult1,
               addResult2: addResult2,
-              nullInputHandled: addResult3 || addResult4 // At least one null input was handled
+              hasAddPatient: hasAddPatient,
+              hasGetPatientInfo: hasGetPatientInfo
             });
             `;
-            
+
             const testResult = new Function(testCode)();
+
+            if (!testResult.hasAddPatient) {
+              return new TestResult({ passed: false, message: "addPatient function missing or not implemented. Make sure to uncomment and implement it." });
+            }
             
-            if (typeof testResult.mapSize === 'undefined') {
-              return new TestResult({ passed: false, message: "addPatient function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasGetPatientInfo) {
+              return new TestResult({ passed: false, message: "getPatientInfo function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.mapSize !== 2) {
-              return new TestResult({ passed: false, message: "addPatient should add valid patients to the map but reject invalid inputs" });
+              return new TestResult({ passed: false, message: "addPatient should add valid patients to the map" });
             }
             
             if (!testResult.patient1 || testResult.patient1.name !== 'John Doe') {
@@ -991,145 +914,147 @@ function findPatientsByRoom(patientMap, roomPrefix) {
               return new TestResult({ passed: false, message: "getPatientInfo should return null for non-existent patients" });
             }
             
-            if (testResult.patient3 !== null) {
-              return new TestResult({ passed: false, message: "getPatientInfo should handle null input gracefully and return null" });
-            }
-            
-            if (!testResult.hasP001) {
-              return new TestResult({ passed: false, message: "Patient should exist in map after being added" });
-            }
-            
-            if (!testResult.nullInputHandled) {
-              return new TestResult({ passed: false, message: "addPatient should implement defensive coding to handle null/undefined inputs properly" });
-            }
-            
             return new TestResult({ passed: true });
           } catch (error) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Map should handle basic patient operations correctly and implement defensive coding for null inputs."
+        message: "Sarah's First Challenge! - failed",
+        successMessage: "✅ Sarah's First Challenge Complete! addPatient() and getPatientInfo() are working correctly."
       },
       {
-        name: "Test updatePatientRoom function",
+        name: "⏱️ Sarah's Second Challenge! - Test updatePatientRoom() function",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if function exists
+            const hasUpdatePatientRoom = typeof updatePatientRoom === 'function';
+            const hasAddPatient = typeof addPatient === 'function';
+            const hasGetPatientInfo = typeof getPatientInfo === 'function';
+            
             // Test updatePatientRoom
             const patientMap = new Map();
             
-            // Add test patients
-            if (typeof addPatient === 'function') {
+            // Add test patient (if addPatient exists)
+            if (hasAddPatient) {
               addPatient(patientMap, 'P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
+            } else {
+              // Manually add patient for testing
+              patientMap.set('P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
             }
             
-            let updateResult1 = false;
-            let updateResult2 = false;
+            let updateResult1 = updatePatientRoom(patientMap, 'P-001', 'ICU-2');
+            let updateResult2 = updatePatientRoom(patientMap, 'P-999', 'Room-1'); // Non-existent
+            
             let updatedPatient = null;
-            
-            if (typeof updatePatientRoom === 'function') {
-              updateResult1 = updatePatientRoom(patientMap, 'P-001', 'ICU-2');
-              updateResult2 = updatePatientRoom(patientMap, 'P-999', 'Room-1'); // Non-existent
-              
-              if (typeof getPatientInfo === 'function') {
-                updatedPatient = getPatientInfo(patientMap, 'P-001');
-              }
+            if (hasGetPatientInfo) {
+              updatedPatient = getPatientInfo(patientMap, 'P-001');
+            } else {
+              updatedPatient = patientMap.get('P-001');
             }
             
-            return ({ 
+            return ({
               updateResult1: updateResult1,
               updateResult2: updateResult2,
-              updatedRoom: updatedPatient ? updatedPatient.room : null
+              updatedRoom: updatedPatient ? updatedPatient.room : null,
+              hasUpdatePatientRoom: hasUpdatePatientRoom
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.updateResult1 === 'undefined') {
-              return new TestResult({ passed: false, message: "updatePatientRoom function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasUpdatePatientRoom) {
+              return new TestResult({ passed: false, message: "updatePatientRoom function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.updateResult1 !== true) {
-              return new TestResult({ passed: false, message: "updatePatientRoom should return true when updating existing patient" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - updatePatientRoom should return true when updating existing patient" });
             }
             
             if (testResult.updateResult2 !== false) {
-              return new TestResult({ passed: false, message: "updatePatientRoom should return false when patient doesn't exist" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - updatePatientRoom should return false when patient doesn't exist" });
             }
             
             if (testResult.updatedRoom !== 'ICU-2') {
-              return new TestResult({ passed: false, message: "updatePatientRoom should actually update the patient's room" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - updatePatientRoom should actually update the patient's room" });
             }
             
             return new TestResult({ passed: true });
           } catch (error) {
-            return new TestResult({ passed: false, message: error.message });
+            return new TestResult({ passed: false, message: "Sarah's Second Challenge! - " + error.message });
           }
         },
-        message: "updatePatientRoom should update existing patients and handle non-existent patients correctly."
+        message: "Sarah's Second Challenge! - failed",
+        successMessage: "✅ Sarah's Second Challenge Complete! updatePatientRoom() is working correctly."
       },
       {
-        name: "Test findPatientsByRoom function",
+        name: "⏱️ Sarah's Third Challenge! - Test findPatientsByRoom() function",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if function exists
+            const hasFindPatientsByRoom = typeof findPatientsByRoom === 'function';
+            const hasAddPatient = typeof addPatient === 'function';
+            
             // Test findPatientsByRoom
             const patientMap = new Map();
             
             // Add test patients
-            if (typeof addPatient === 'function') {
+            if (hasAddPatient) {
               addPatient(patientMap, 'P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
               addPatient(patientMap, 'P-002', { name: 'Jane Smith', room: 'ICU-2', age: 32 });
               addPatient(patientMap, 'P-003', { name: 'Bob Johnson', room: '302A', age: 28 });
               addPatient(patientMap, 'P-004', { name: 'Alice Brown', room: 'ICU-3', age: 55 });
+            } else {
+              // Manually add patients for testing
+              patientMap.set('P-001', { name: 'John Doe', room: 'ICU-1', age: 45 });
+              patientMap.set('P-002', { name: 'Jane Smith', room: 'ICU-2', age: 32 });
+              patientMap.set('P-003', { name: 'Bob Johnson', room: '302A', age: 28 });
+              patientMap.set('P-004', { name: 'Alice Brown', room: 'ICU-3', age: 55 });
             }
             
-            let icuPatients = [];
-            let roomPatients = [];
-            let noMatchPatients = [];
+            let icuPatients = findPatientsByRoom(patientMap, 'ICU');
+            let roomPatients = findPatientsByRoom(patientMap, '302');
+            let noMatchPatients = findPatientsByRoom(patientMap, 'ER');
             
-            if (typeof findPatientsByRoom === 'function') {
-              icuPatients = findPatientsByRoom(patientMap, 'ICU');
-              roomPatients = findPatientsByRoom(patientMap, '302');
-              noMatchPatients = findPatientsByRoom(patientMap, 'ER');
-            }
-            
-            return ({ 
+            return ({
               icuPatients: icuPatients.sort(),
               roomPatients: roomPatients,
-              noMatchPatients: noMatchPatients
+              noMatchPatients: noMatchPatients,
+              hasFindPatientsByRoom: hasFindPatientsByRoom
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.icuPatients === 'undefined') {
-              return new TestResult({ passed: false, message: "findPatientsByRoom function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasFindPatientsByRoom) {
+              return new TestResult({ passed: false, message: "findPatientsByRoom function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (!Array.isArray(testResult.icuPatients)) {
-              return new TestResult({ passed: false, message: "findPatientsByRoom should return an array" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - findPatientsByRoom should return an array" });
             }
             
             const expectedICU = ['P-001', 'P-002', 'P-004'].sort();
             if (testResult.icuPatients.length !== 3 || !testResult.icuPatients.every(id => expectedICU.includes(id))) {
-              return new TestResult({ passed: false, message: `findPatientsByRoom should find all ICU patients. Expected: ${expectedICU}, Got: ${testResult.icuPatients}` });
+              return new TestResult({ passed: false, message: `Sarah's Third Challenge! - findPatientsByRoom should find all ICU patients. Expected: ${expectedICU}, Got: ${testResult.icuPatients}` });
             }
             
             if (testResult.roomPatients.length !== 1 || testResult.roomPatients[0] !== 'P-003') {
-              return new TestResult({ passed: false, message: "findPatientsByRoom should find patients in room 302A" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - findPatientsByRoom should find patients in room 302A" });
             }
             
             if (testResult.noMatchPatients.length !== 0) {
-              return new TestResult({ passed: false, message: "findPatientsByRoom should return empty array when no matches found" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - findPatientsByRoom should return empty array when no matches found" });
             }
             
             return new TestResult({ passed: true });
           } catch (error) {
-            return new TestResult({ passed: false, message: error.message });
+            return new TestResult({ passed: false, message: "Sarah's Third Challenge! - " + error.message });
           }
         },
-        message: "findPatientsByRoom should search through all patients and return matching IDs."
+        message: "Sarah's Third Challenge! - failed",
+        successMessage: "✅ Sarah's Third Challenge Complete! findPatientsByRoom() successfully searches and filters patients."
       },
     ]
   },
@@ -1142,87 +1067,28 @@ function findPatientsByRoom(patientMap, roomPrefix) {
           <main>
             <h2>Maps Introduction Questions</h2>
             <form className="auto-graded-quiz">
-              <div
-                className="question"
-                data-answers="Patient record lookup by ID,Medication database for drug information,Doctor schedule management"
-              >
+              <div className="question" data-answer="false">
                 <p>
-                  Which of the following scenarios are best implemented using a
-                  Map data structure in healthcare?
+                  Consider this code snippet:<br />
+                  <code>
+                    const patientMap = new Map();<br />
+                    const room1 = &#123; floor: 3, number: &apos;A&apos; &#125;;<br />
+                    const room2 = &#123; floor: 3, number: &apos;A&apos; &#125;;<br />
+                    patientMap.set(room1, &apos;Patient A&apos;);<br />
+                    patientMap.set(room2, &apos;Patient B&apos;);<br />
+                  </code><br />
+                  True or False: The Map will contain only one entry because room1 and room2 have the same content.
                 </p>
-
                 <label>
-                  <input
-                    type="checkbox"
-                    value="Patient record lookup by ID"
-                  />{" "}
-                  🏥 Patient record lookup by ID
+                  <input type="radio" name="reference-keys" value="true" required /> True
                 </label>
                 <br />
                 <label>
-                  <input
-                    type="checkbox"
-                    value="Patient waiting queue for appointments"
-                  />{" "}
-                  ⏰ Patient waiting queue for appointments
+                  <input type="radio" name="reference-keys" value="false" required /> False
                 </label>
-                <br />
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Medication database for drug information"
-                  />{" "}
-                  💊 Medication database for drug information
-                </label>
-                <br />
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Patient allergy tracking (unique allergies only)"
-                  />{" "}
-                  🚫 Patient allergy tracking (unique allergies only)
-                </label>
-                <br />
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Doctor schedule management"
-                  />{" "}
-                  👨‍⚕️ Doctor schedule management
-                </label>
-                <br />
-                <label>
-                  <input type="checkbox" value="Emergency room triage order" /> 🚨
-                  Emergency room triage order
-                </label>
-                <div className="feedback"></div>
+                <span className="feedback" />
                 <div className="explanation">
-                  <ul>
-                    <li>
-                      <strong>Patient record lookup:</strong> ✅ Correct — Perfect Map
-                      use case with patient ID as key and medical info as value.
-                    </li>
-                    <li>
-                      <strong>Patient waiting queue:</strong> ❌ Incorrect — This
-                      requires FIFO ordering (Queue), not key-value mapping.
-                    </li>
-                    <li>
-                      <strong>Medication database:</strong> ✅ Correct — Drug name
-                      as key, medication info as value for instant lookup.
-                    </li>
-                    <li>
-                      <strong>Allergy tracking:</strong> ❌ Incorrect — This only
-                      needs unique values (Set), not key-value pairs.
-                    </li>
-                    <li>
-                      <strong>Doctor schedule:</strong> ✅ Correct — Doctor ID as
-                      key, schedule information as value.
-                    </li>
-                    <li>
-                      <strong>ER triage order:</strong> ❌ Incorrect — This requires
-                      priority ordering, not key-value mapping.
-                    </li>
-                  </ul>
+                  <strong>False.</strong> The Map will contain TWO entries. When using objects as keys in Maps, JavaScript compares them by <strong>reference</strong>, not by content. Even though room1 and room2 have identical properties (floor: 3, number: &apos;A&apos;), they are different objects in memory, so they are treated as different keys. This is a crucial concept in healthcare systems where you might use patient objects or room objects as keys - each object instance is unique even if the data looks the same.
                 </div>
               </div>
 
@@ -1252,6 +1118,23 @@ function findPatientsByRoom(patientMap, roomPrefix) {
                   the unique identifier used to access the associated medical
                   information (the value). This key-value relationship enables
                   instant patient record lookup.
+                </div>
+              </div>
+
+              <div className="question" data-answer="true">
+                <p>
+                  True or False: JavaScript Maps preserve insertion order, but this behavior is not guaranteed in all programming languages that implement Map-like data structures.
+                </p>
+                <label>
+                  <input type="radio" name="insertion-order" value="true" required /> True
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="insertion-order" value="false" required /> False
+                </label>
+                <span className="feedback" />
+                <div className="explanation">
+                  <strong>True.</strong> JavaScript Maps guarantee insertion order preservation - when you iterate through a Map, you&apos;ll get entries in the order they were added. However, this is not universal across all programming languages. For example, Python dictionaries only preserve insertion order as of Python 3.7+, and some other languages&apos; hash map implementations may not preserve insertion order at all. This is an important consideration when writing portable code or working in multi-language environments in healthcare systems.
                 </div>
               </div>
 

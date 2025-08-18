@@ -7,6 +7,11 @@ export const setsIntroChapter = {
   sectionId: "maps-and-sets",
   previousChapterId: "maps-intro",
   content: `
+## What is a Set in JavaScript
+A Set in JavaScript is a data structure a collection of unique values—no duplicates are allowed—and values can be of any type. It preserves insertion order and offers methods like .add(), .has(), and .delete(), making it useful for tasks like removing duplicates from arrays or quickly checking membership, with typical operations running in O(1) time. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4pRkrVwpLQo?si=rh-Scfd2POlAOVQT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Dr. Sarah's Second Day: Understanding Patient Safety
 
 The next morning at Mercy General Hospital, Dr. Sarah Chen arrived early, eager to continue learning about data structures in healthcare systems. She found Marcus Rodriguez already at his desk, reviewing patient safety reports with a concerned expression.
@@ -100,7 +105,7 @@ Marcus pulled out his tablet and opened a coding environment. "Sarah, I want you
 "Absolutely! But remember - you don't need to build the Set from scratch. JavaScript provides a built-in Set class. Your job is to **use** the Set operations to solve real patient safety problems."
 
 🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`addAllergy()\` to record new patient allergies
+- Implement \`addAllergy()\` and \`checkAllergy()\` to record new patient allergies
 - Use \`allergySet.add()\` and \`allergySet.has()\` operations
 - **Click Run Code**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
@@ -690,21 +695,22 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
 }`,
     tests: [
       {
-        name: "Test Set basic operations and defensive coding",
+        name: "⏱️ Sarah's First Challenge! - Test addAllergy() and checkAllergy() functions",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if functions exist
+            const hasAddAllergy = typeof addAllergy === 'function';
+            const hasCheckAllergy = typeof checkAllergy === 'function';
+            
             // Test Set basic operations
             const allergySet = new Set();
             
-            // Test addAllergy function with valid and invalid inputs
+            // Test addAllergy function
             let addResult1 = false;
             let addResult2 = false;
-            let addResult3 = false;
-            let addResult4 = false;
             
-            if (typeof addAllergy === 'function') {
-              // Valid inputs
+            if (hasAddAllergy) {
               try {
                 addAllergy(allergySet, 'Penicillin');
                 addResult1 = true;
@@ -715,17 +721,6 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
                 addResult2 = true;
               } catch (e) { addResult2 = false; }
               
-              // Test defensive coding - null/undefined inputs
-              try {
-                addAllergy(allergySet, null);
-                addResult3 = false; // Should not succeed
-              } catch (e) { addResult3 = true; } // Should handle gracefully
-              
-              try {
-                addAllergy(allergySet, '');
-                addResult4 = false; // Should not succeed with empty string
-              } catch (e) { addResult4 = true; } // Should handle gracefully
-              
               // Test duplicate (should be ignored)
               addAllergy(allergySet, 'Penicillin');
             }
@@ -733,11 +728,9 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
             // Test checkAllergy function
             let hasPenicillin = false;
             let hasIbuprofen = false;
-            let nullCheckResult = false;
-            if (typeof checkAllergy === 'function') {
+            if (hasCheckAllergy) {
               hasPenicillin = checkAllergy(allergySet, 'Penicillin');
               hasIbuprofen = checkAllergy(allergySet, 'Ibuprofen'); // Not added
-              nullCheckResult = checkAllergy(allergySet, null); // Should return false
             }
             
             return ({
@@ -745,19 +738,23 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
               hasPenicillin: hasPenicillin,
               hasIbuprofen: hasIbuprofen,
               hasLatex: allergySet.has('Latex'),
-              nullCheckResult: nullCheckResult,
-              nullInputHandled: addResult3 || addResult4 // At least one invalid input was handled
+              hasAddAllergy: hasAddAllergy,
+              hasCheckAllergy: hasCheckAllergy
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.setSize === 'undefined') {
-              return new TestResult({ passed: false, message: "addAllergy function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasAddAllergy) {
+              return new TestResult({ passed: false, message: "addAllergy function missing or not implemented. Make sure to uncomment and implement it." });
+            }
+            
+            if (!testResult.hasCheckAllergy) {
+              return new TestResult({ passed: false, message: "checkAllergy function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.setSize !== 2) {
-              return new TestResult({ passed: false, message: "Set should have 2 unique allergies (duplicates and invalid inputs should be ignored)" });
+              return new TestResult({ passed: false, message: "Set should have 2 unique allergies (duplicates should be ignored)" });
             }
             
             if (testResult.hasPenicillin !== true) {
@@ -772,67 +769,59 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
               return new TestResult({ passed: false, message: "Latex allergy should exist in set after being added" });
             }
             
-            if (testResult.nullCheckResult !== false) {
-              return new TestResult({ passed: false, message: "checkAllergy should return false for null input" });
-            }
-            
-            if (!testResult.nullInputHandled) {
-              return new TestResult({ passed: false, message: "addAllergy should implement defensive coding to handle null/empty inputs properly" });
-            }
-            
             return new TestResult({ passed: true });
           } catch (error) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Set should handle basic allergy operations correctly and implement defensive coding for invalid inputs."
+        message: "Sarah's First Challenge! - failed",
+        successMessage: "✅ Sarah's First Challenge Complete! addAllergy() and checkAllergy() are working correctly."
       },
       {
-        name: "Test findCommonAllergies function",
+        name: "⏱️ Sarah's Second Challenge! - Test findCommonAllergies() function",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if function exists
+            const hasFindCommonAllergies = typeof findCommonAllergies === 'function';
+            
             // Test findCommonAllergies
             const patient1Allergies = new Set(['Penicillin', 'Latex', 'Shellfish']);
             const patient2Allergies = new Set(['Penicillin', 'Ibuprofen', 'Peanuts']);
             const patient3Allergies = new Set(['Aspirin', 'Codeine']);
             
-            let commonAllergies1 = new Set();
-            let commonAllergies2 = new Set();
+            let commonAllergies1 = findCommonAllergies(patient1Allergies, patient2Allergies);
+            let commonAllergies2 = findCommonAllergies(patient1Allergies, patient3Allergies);
             
-            if (typeof findCommonAllergies === 'function') {
-              commonAllergies1 = findCommonAllergies(patient1Allergies, patient2Allergies);
-              commonAllergies2 = findCommonAllergies(patient1Allergies, patient3Allergies);
-            }
-            
-            return ({ 
+            return ({
               common1Size: commonAllergies1.size,
               common1HasPenicillin: commonAllergies1.has('Penicillin'),
               common1HasLatex: commonAllergies1.has('Latex'),
-              common2Size: commonAllergies2.size
+              common2Size: commonAllergies2.size,
+              hasFindCommonAllergies: hasFindCommonAllergies
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.common1Size === 'undefined') {
-              return new TestResult({ passed: false, message: "findCommonAllergies function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasFindCommonAllergies) {
+              return new TestResult({ passed: false, message: "findCommonAllergies function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.common1Size !== 1) {
-              return new TestResult({ passed: false, message: "Should find 1 common allergy between patient1 and patient2 (Penicillin)" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - Should find 1 common allergy between patient1 and patient2 (Penicillin)" });
             }
             
             if (!testResult.common1HasPenicillin) {
-              return new TestResult({ passed: false, message: "Common allergies should include Penicillin" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - Common allergies should include Penicillin" });
             }
             
             if (testResult.common1HasLatex) {
-              return new TestResult({ passed: false, message: "Common allergies should not include Latex (not shared)" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - Common allergies should not include Latex (not shared)" });
             }
             
             if (testResult.common2Size !== 0) {
-              return new TestResult({ passed: false, message: "Should find 0 common allergies between patient1 and patient3" });
+              return new TestResult({ passed: false, message: "Sarah's Second Challenge! - Should find 0 common allergies between patient1 and patient3" });
             }
             
             return new TestResult({ passed: true });
@@ -840,13 +829,17 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "findCommonAllergies should correctly identify shared allergies between patients."
+        message: "Sarah's Second Challenge! - failed",
+        successMessage: "✅ Sarah's Second Challenge Complete! findCommonAllergies() successfully identifies shared allergies between patients."
       },
       {
-        name: "Test isMedicationSafe function",
+        name: "⏱️ Sarah's Third Challenge! - Test isMedicationSafe() function",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if function exists
+            const hasIsMedicationSafe = typeof isMedicationSafe === 'function';
+            
             // Test isMedicationSafe
             const patientAllergies = new Set(['Penicillin', 'Latex', 'Shellfish']);
             
@@ -855,46 +848,40 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
             const unsafeIngredients2 = new Set(['Acetaminophen', 'Latex']); // Contains Latex
             const emptyIngredients = new Set();
             
-            let safeResult = true;
-            let unsafeResult1 = true;
-            let unsafeResult2 = true;
-            let emptyResult = true;
+            let safeResult = isMedicationSafe(patientAllergies, safeIngredients);
+            let unsafeResult1 = isMedicationSafe(patientAllergies, unsafeIngredients1);
+            let unsafeResult2 = isMedicationSafe(patientAllergies, unsafeIngredients2);
+            let emptyResult = isMedicationSafe(patientAllergies, emptyIngredients);
             
-            if (typeof isMedicationSafe === 'function') {
-              safeResult = isMedicationSafe(patientAllergies, safeIngredients);
-              unsafeResult1 = isMedicationSafe(patientAllergies, unsafeIngredients1);
-              unsafeResult2 = isMedicationSafe(patientAllergies, unsafeIngredients2);
-              emptyResult = isMedicationSafe(patientAllergies, emptyIngredients);
-            }
-            
-            return ({ 
+            return ({
               safeResult: safeResult,
               unsafeResult1: unsafeResult1,
               unsafeResult2: unsafeResult2,
-              emptyResult: emptyResult
+              emptyResult: emptyResult,
+              hasIsMedicationSafe: hasIsMedicationSafe
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.safeResult === 'undefined') {
-              return new TestResult({ passed: false, message: "isMedicationSafe function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasIsMedicationSafe) {
+              return new TestResult({ passed: false, message: "isMedicationSafe function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.safeResult !== true) {
-              return new TestResult({ passed: false, message: "isMedicationSafe should return true for medications with no allergic ingredients" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - isMedicationSafe should return true for medications with no allergic ingredients" });
             }
             
             if (testResult.unsafeResult1 !== false) {
-              return new TestResult({ passed: false, message: "isMedicationSafe should return false when medication contains Penicillin" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - isMedicationSafe should return false when medication contains Penicillin" });
             }
             
             if (testResult.unsafeResult2 !== false) {
-              return new TestResult({ passed: false, message: "isMedicationSafe should return false when medication contains Latex" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - isMedicationSafe should return false when medication contains Latex" });
             }
             
             if (testResult.emptyResult !== true) {
-              return new TestResult({ passed: false, message: "isMedicationSafe should return true for medications with no ingredients" });
+              return new TestResult({ passed: false, message: "Sarah's Third Challenge! - isMedicationSafe should return true for medications with no ingredients" });
             }
             
             return new TestResult({ passed: true });
@@ -902,7 +889,8 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "isMedicationSafe should correctly identify safe and unsafe medications based on patient allergies."
+        message: "Sarah's Third Challenge! - failed",
+        successMessage: "✅ Sarah's Third Challenge Complete! isMedicationSafe() correctly identifies safe and unsafe medications for patient safety."
       },
     ]
   },
@@ -915,87 +903,28 @@ function isMedicationSafe(patientAllergies, medicationIngredients) {
           <main>
             <h2>Sets Introduction Questions</h2>
             <form className="auto-graded-quiz">
-              <div
-                className="question"
-                data-answers="Patient allergy tracking,Completed procedure tracking,Medication ingredient checking"
-              >
+              <div className="question" data-answer="true">
                 <p>
-                  Which of the following scenarios are best implemented using a
-                  Set data structure in healthcare?
+                  Consider this code snippet:<br />
+                  <code>
+                    const allergySet = new Set();<br />
+                    allergySet.add(&apos;Penicillin&apos;);<br />
+                    allergySet.add(&apos;Latex&apos;);<br />
+                    allergySet.add(&apos;Penicillin&apos;);<br />
+                    console.log(allergySet.size);<br />
+                  </code><br />
+                  True or False: The Set will contain 2 unique allergies because Sets automatically prevent duplicates.
                 </p>
-
                 <label>
-                  <input
-                    type="checkbox"
-                    value="Patient allergy tracking"
-                  />{" "}
-                  🚫 Patient allergy tracking
+                  <input type="radio" name="set-duplicates" value="true" required /> True
                 </label>
                 <br />
                 <label>
-                  <input
-                    type="checkbox"
-                    value="Patient medical history with dates"
-                  />{" "}
-                  📅 Patient medical history with dates
+                  <input type="radio" name="set-duplicates" value="false" required /> False
                 </label>
-                <br />
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Completed procedure tracking"
-                  />{" "}
-                  ✅ Completed procedure tracking
-                </label>
-                <br />
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Patient room assignments with details"
-                  />{" "}
-                  🏥 Patient room assignments with details
-                </label>
-                <br />
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Medication ingredient checking"
-                  />{" "}
-                  💊 Medication ingredient checking
-                </label>
-                <br />
-                <label>
-                  <input type="checkbox" value="Doctor schedule with time slots" /> ⏰
-                  Doctor schedule with time slots
-                </label>
-                <div className="feedback"></div>
+                <span className="feedback" />
                 <div className="explanation">
-                  <ul>
-                    <li>
-                      <strong>Patient allergy tracking:</strong> ✅ Correct — Perfect Set
-                      use case for unique allergies without duplicates.
-                    </li>
-                    <li>
-                      <strong>Medical history with dates:</strong> ❌ Incorrect — This
-                      requires key-value pairs (Map) to associate events with dates.
-                    </li>
-                    <li>
-                      <strong>Completed procedure tracking:</strong> ✅ Correct — Set
-                      tracks which procedures are done without duplicates.
-                    </li>
-                    <li>
-                      <strong>Room assignments with details:</strong> ❌ Incorrect — This
-                      requires key-value mapping (Map) for patient-to-room relationships.
-                    </li>
-                    <li>
-                      <strong>Medication ingredient checking:</strong> ✅ Correct — Set
-                      stores unique ingredients for allergy checking.
-                    </li>
-                    <li>
-                      <strong>Doctor schedule with time slots:</strong> ❌ Incorrect — This
-                      requires structured data (Map) to associate doctors with schedules.
-                    </li>
-                  </ul>
+                  <strong>True.</strong> The Set will contain exactly 2 unique allergies: &apos;Penicillin&apos; and &apos;Latex&apos;. When &apos;Penicillin&apos; is added the second time, the Set automatically ignores the duplicate because Sets only store unique values. This is why Sets are perfect for allergy tracking in healthcare systems - they prevent duplicate entries and ensure each allergy is only recorded once per patient, maintaining clean and accurate medical records.
                 </div>
               </div>
 

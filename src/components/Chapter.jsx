@@ -6,7 +6,6 @@ import Editor from '@monaco-editor/react'
 import { marked } from 'marked'
 import CodeBlock from './CodeBlock'
 import MultiFileEditor from './MultiFileEditor'
-import HTMLRenderer from './HTMLRenderer'
 import HTMLCSSEditor from './HTMLCSSEditor'
 import ProtectedRoute from './ProtectedRoute'
 import * as ReactDOM from 'react-dom/client'
@@ -276,12 +275,6 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
       if (hideResultsTimeout) {
         clearTimeout(hideResultsTimeout)
       }
-
-      // Set a new timeout to hide test results after 8 seconds
-      const timeout = setTimeout(() => {
-        setShowResults(false)
-      }, 8000)
-      setHideResultsTimeout(timeout)
 
       // Get current code for hashing - only include user's code, not solution
       let currentCode;

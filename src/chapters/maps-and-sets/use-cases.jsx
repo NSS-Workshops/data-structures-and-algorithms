@@ -623,19 +623,23 @@ function getEquipmentUsageStats(equipmentUsage) {
 }`,
     tests: [
       {
-        name: "Test emergency call frequency tracking",
+        name: "⏱️ Jake's First Challenge! - Test recordEmergencyCall() and getEmergencyStats() functions",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if functions exist
+            const hasRecordEmergencyCall = typeof recordEmergencyCall === 'function';
+            const hasGetEmergencyStats = typeof getEmergencyStats === 'function';
+            
             // Test emergency call tracking
             const emergencyTracker = new Map();
             
+            // Test recordEmergencyCall function with valid inputs
             let recordResult1 = false;
             let recordResult2 = false;
             let recordResult3 = false;
-            let stats = [];
             
-            if (typeof recordEmergencyCall === 'function') {
+            if (hasRecordEmergencyCall) {
               try {
                 recordEmergencyCall(emergencyTracker, 'Medical');
                 recordResult1 = true;
@@ -652,7 +656,9 @@ function getEquipmentUsageStats(equipmentUsage) {
               } catch (e) { recordResult3 = false; }
             }
             
-            if (typeof getEmergencyStats === 'function') {
+            // Test getEmergencyStats function
+            let stats = [];
+            if (hasGetEmergencyStats) {
               stats = getEmergencyStats(emergencyTracker);
             }
             
@@ -661,14 +667,20 @@ function getEquipmentUsageStats(equipmentUsage) {
               medicalCount: emergencyTracker.get('Medical'),
               fireCount: emergencyTracker.get('Fire'),
               stats: stats,
-              recordResults: [recordResult1, recordResult2, recordResult3]
+              recordResults: [recordResult1, recordResult2, recordResult3],
+              hasRecordEmergencyCall: hasRecordEmergencyCall,
+              hasGetEmergencyStats: hasGetEmergencyStats
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (!testResult.recordResults[0]) {
-              return new TestResult({ passed: false, message: "recordEmergencyCall function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasRecordEmergencyCall) {
+              return new TestResult({ passed: false, message: "recordEmergencyCall function missing or not implemented. Make sure to uncomment and implement it." });
+            }
+            
+            if (!testResult.hasGetEmergencyStats) {
+              return new TestResult({ passed: false, message: "getEmergencyStats function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.mapSize !== 2) {
@@ -696,29 +708,36 @@ function getEquipmentUsageStats(equipmentUsage) {
             return new TestResult({ passed: false, message: error.message });
           }
         },
-        message: "Emergency call tracking should count frequencies correctly and provide sorted statistics."
+        message: "Jake's First Challenge! - failed",
+        successMessage: "✅ Jake's First Challenge Complete! recordEmergencyCall() and getEmergencyStats() are working correctly."
       },
       {
-        name: "Test hospital contact deduplication",
+        name: "⏱️ Jake's Second Challenge! - Test contactHospital() and getRecentContacts() functions",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if functions exist
+            const hasContactHospital = typeof contactHospital === 'function';
+            const hasGetRecentContacts = typeof getRecentContacts === 'function';
+            
             // Test hospital contact tracking
             const hospitalContacts = new Map();
             const currentTime = Date.now();
             
+            // Test contactHospital function
             let contact1 = false;
             let contact2 = false;
             let contact3 = false;
-            let recentContacts = [];
             
-            if (typeof contactHospital === 'function') {
+            if (hasContactHospital) {
               contact1 = contactHospital(hospitalContacts, 'General Hospital', currentTime);
               contact2 = contactHospital(hospitalContacts, 'General Hospital', currentTime + 300000); // 5 min later
               contact3 = contactHospital(hospitalContacts, 'City Medical', currentTime);
             }
             
-            if (typeof getRecentContacts === 'function') {
+            // Test getRecentContacts function
+            let recentContacts = [];
+            if (hasGetRecentContacts) {
               recentContacts = getRecentContacts(hospitalContacts, currentTime + 300000);
             }
             
@@ -726,71 +745,86 @@ function getEquipmentUsageStats(equipmentUsage) {
               contact1: contact1,
               contact2: contact2,
               contact3: contact3,
-              recentContacts: recentContacts.sort()
+              recentContacts: recentContacts.sort(),
+              hasContactHospital: hasContactHospital,
+              hasGetRecentContacts: hasGetRecentContacts
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.contact1 === 'undefined') {
-              return new TestResult({ passed: false, message: "contactHospital function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasContactHospital) {
+              return new TestResult({ passed: false, message: "contactHospital function missing or not implemented. Make sure to uncomment and implement it." });
+            }
+            
+            if (!testResult.hasGetRecentContacts) {
+              return new TestResult({ passed: false, message: "getRecentContacts function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.contact1 !== true) {
-              return new TestResult({ passed: false, message: "contactHospital should return true for first contact with hospital" });
+              return new TestResult({ passed: false, message: "Jake's Second Challenge! - contactHospital should return true for first contact with hospital" });
             }
             
             if (testResult.contact2 !== false) {
-              return new TestResult({ passed: false, message: "contactHospital should return false for duplicate contact within time window" });
+              return new TestResult({ passed: false, message: "Jake's Second Challenge! - contactHospital should return false for duplicate contact within time window" });
             }
             
             if (testResult.contact3 !== true) {
-              return new TestResult({ passed: false, message: "contactHospital should return true for different hospital" });
+              return new TestResult({ passed: false, message: "Jake's Second Challenge! - contactHospital should return true for different hospital" });
             }
             
             if (!testResult.recentContacts || testResult.recentContacts.length !== 2) {
-              return new TestResult({ passed: false, message: "getRecentContacts should return all hospitals contacted within time window" });
+              return new TestResult({ passed: false, message: "Jake's Second Challenge! - getRecentContacts should return all hospitals contacted within time window" });
             }
             
             const expectedContacts = ['City Medical', 'General Hospital'];
             if (!expectedContacts.every(hospital => testResult.recentContacts.includes(hospital))) {
-              return new TestResult({ passed: false, message: "getRecentContacts should include both contacted hospitals" });
+              return new TestResult({ passed: false, message: "Jake's Second Challenge! - getRecentContacts should include both contacted hospitals" });
             }
             
             return new TestResult({ passed: true });
           } catch (error) {
-            return new TestResult({ passed: false, message: error.message });
+            return new TestResult({ passed: false, message: "Jake's Second Challenge! - " + error.message });
           }
         },
-        message: "Hospital contact tracking should prevent duplicates within time window and track recent contacts."
+        message: "Jake's Second Challenge! - failed",
+        successMessage: "✅ Jake's Second Challenge Complete! contactHospital() and getRecentContacts() are working correctly."
       },
       {
-        name: "Test equipment assignment and usage tracking",
+        name: "⏱️ Jake's Third Challenge! - Test assignEquipment(), getAvailableEquipment(), and getEquipmentUsageStats() functions",
         test: (code) => {
           try {
             const testCode = code + `
+            // Check if functions exist
+            const hasAssignEquipment = typeof assignEquipment === 'function';
+            const hasGetAvailableEquipment = typeof getAvailableEquipment === 'function';
+            const hasGetEquipmentUsageStats = typeof getEquipmentUsageStats === 'function';
+            
             // Test equipment assignment and usage
             const equipmentAssignments = new Set();
             const equipmentUsage = new Map();
             const allEquipment = ['Defibrillator', 'Oxygen Tank', 'Stretcher', 'First Aid Kit'];
             
+            // Test assignEquipment function
             let assign1 = false;
             let assign2 = false;
             let assign3 = false;
-            let available = [];
-            let usageStats = [];
             
-            if (typeof assignEquipment === 'function') {
+            if (hasAssignEquipment) {
               assign1 = assignEquipment(equipmentAssignments, equipmentUsage, 'Unit-1', 'Defibrillator');
               assign2 = assignEquipment(equipmentAssignments, equipmentUsage, 'Unit-2', 'Defibrillator'); // Duplicate
               assign3 = assignEquipment(equipmentAssignments, equipmentUsage, 'Unit-1', 'Oxygen Tank');
             }
             
-            if (typeof getAvailableEquipment === 'function') {
+            // Test getAvailableEquipment function
+            let available = [];
+            if (hasGetAvailableEquipment) {
               available = getAvailableEquipment(equipmentAssignments, allEquipment);
             }
             
-            if (typeof getEquipmentUsageStats === 'function') {
+            // Test getEquipmentUsageStats function
+            let usageStats = [];
+            if (hasGetEquipmentUsageStats) {
               usageStats = getEquipmentUsageStats(equipmentUsage);
             }
             
@@ -802,56 +836,68 @@ function getEquipmentUsageStats(equipmentUsage) {
               available: available.sort(),
               usageStats: usageStats,
               defibrillatorUsage: equipmentUsage.get('Defibrillator'),
-              oxygenUsage: equipmentUsage.get('Oxygen Tank')
+              oxygenUsage: equipmentUsage.get('Oxygen Tank'),
+              hasAssignEquipment: hasAssignEquipment,
+              hasGetAvailableEquipment: hasGetAvailableEquipment,
+              hasGetEquipmentUsageStats: hasGetEquipmentUsageStats
             });
             `;
             
             const testResult = new Function(testCode)();
             
-            if (typeof testResult.assign1 === 'undefined') {
-              return new TestResult({ passed: false, message: "assignEquipment function not found. Make sure to uncomment and implement it." });
+            if (!testResult.hasAssignEquipment) {
+              return new TestResult({ passed: false, message: "assignEquipment function missing or not implemented. Make sure to uncomment and implement it." });
+            }
+            
+            if (!testResult.hasGetAvailableEquipment) {
+              return new TestResult({ passed: false, message: "getAvailableEquipment function missing or not implemented. Make sure to uncomment and implement it." });
+            }
+            
+            if (!testResult.hasGetEquipmentUsageStats) {
+              return new TestResult({ passed: false, message: "getEquipmentUsageStats function missing or not implemented. Make sure to uncomment and implement it." });
             }
             
             if (testResult.assign1 !== true) {
-              return new TestResult({ passed: false, message: "assignEquipment should return true for first assignment" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - assignEquipment should return true for first assignment" });
             }
             
             if (testResult.assign2 !== false) {
-              return new TestResult({ passed: false, message: "assignEquipment should return false for duplicate assignment" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - assignEquipment should return false for duplicate assignment" });
             }
             
             if (testResult.assign3 !== true) {
-              return new TestResult({ passed: false, message: "assignEquipment should return true for different equipment" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - assignEquipment should return true for different equipment" });
             }
             
             if (testResult.assignmentsSize !== 2) {
-              return new TestResult({ passed: false, message: "Equipment assignments should track unique equipment only" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - Equipment assignments should track unique equipment only" });
             }
             
             const expectedAvailable = ['First Aid Kit', 'Stretcher'];
             if (!testResult.available || testResult.available.length !== 2 ||
                 !expectedAvailable.every(item => testResult.available.includes(item))) {
-              return new TestResult({ passed: false, message: "getAvailableEquipment should return unassigned equipment" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - getAvailableEquipment should return unassigned equipment" });
             }
             
             if (testResult.defibrillatorUsage !== 1) {
-              return new TestResult({ passed: false, message: "assignEquipment should track usage count (Defibrillator should have count 1)" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - assignEquipment should track usage count (Defibrillator should have count 1)" });
             }
             
             if (testResult.oxygenUsage !== 1) {
-              return new TestResult({ passed: false, message: "assignEquipment should track usage count (Oxygen Tank should have count 1)" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - assignEquipment should track usage count (Oxygen Tank should have count 1)" });
             }
             
             if (!testResult.usageStats || testResult.usageStats.length !== 2) {
-              return new TestResult({ passed: false, message: "getEquipmentUsageStats should return stats for all used equipment" });
+              return new TestResult({ passed: false, message: "Jake's Third Challenge! - getEquipmentUsageStats should return stats for all used equipment" });
             }
             
             return new TestResult({ passed: true });
           } catch (error) {
-            return new TestResult({ passed: false, message: error.message });
+            return new TestResult({ passed: false, message: "Jake's Third Challenge! - " + error.message });
           }
         },
-        message: "Equipment assignment should prevent duplicates, track usage, and identify available equipment."
+        message: "Jake's Third Challenge! - failed",
+        successMessage: "✅ Jake's Third Challenge Complete! assignEquipment(), getAvailableEquipment(), and getEquipmentUsageStats() are working correctly."
       },
     ]
   },

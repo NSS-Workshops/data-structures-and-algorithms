@@ -47,9 +47,9 @@ Maria pulled up a coding environment. "The beautiful thing about understanding h
 
 \`\`\`javascript
 class CustomHashSet {
-  constructor(initialCapacity = 16, loadFactor = 0.75) {
-    // We'll use our CustomHashMap internally, but only care about keys
-    this.map = new CustomHashMap(initialCapacity, loadFactor);
+  constructor() {
+    // We'll use our Map internally, but only care about keys
+    this.map = new Map();
   }
   
   add(value) {
@@ -71,7 +71,7 @@ class CustomHashSet {
   
   size() {
     // Get the number of unique values in our set
-    return this.map.getSize();
+    return this.map.size;
   }
   
   clear() {
@@ -81,7 +81,7 @@ class CustomHashSet {
   
   values() {
     // Get all values in the set (same as keys for a Set)
-    return this.map.keys();
+    return Array.from(this.map.keys());
   }
   
   forEach(callback) {
@@ -321,120 +321,6 @@ console.log('Hospital Allergy Report:', allergyReport);
 
 "This challenge teaches you how to implement advanced set comparison operations that are essential for comprehensive safety checking," Maria explained.
 
-## Performance Analysis: Why Custom Sets Matter
-
-Maria pulled up a performance dashboard showing the hospital's medication safety metrics. "Let's talk about why our custom Set implementation is crucial for patient safety."
-
-### Time Complexity Comparison
-
-| Operation | Array-based | Custom HashSet | Impact on Safety |
-|-----------|-------------|----------------|------------------|
-| **Check allergy** | O(n) | O(1) | Instant safety verification |
-| **Add allergy** | O(1) | O(1) | Fast patient record updates |
-| **Remove allergy** | O(n) | O(1) | Quick correction of errors |
-| **Find intersection** | O(n²) | O(n) | Rapid conflict detection |
-| **Union of allergies** | O(n²) | O(n) | Efficient family history |
-
-"The difference is dramatic," Maria explained. "With our old array-based system, checking a patient's allergies against a medication could take several seconds when patients had many allergies. With our CustomHashSet, it's instantaneous."
-
-### Real-World Impact
-
-"Since implementing our Set-based safety system, we've achieved:"
-- **99.8% reduction in allergy check time** - from 2-5 seconds to under 10 milliseconds
-- **Zero missed allergy conflicts** - the old system missed 3-4 conflicts per month
-- **50% faster medication dispensing** - pharmacists spend less time waiting for safety checks
-- **Improved patient satisfaction** - faster service with better safety
-
-## Advanced Set Operations for Medical Research
-
-Maria opened another interface showing research applications. "Our CustomHashSet also enables advanced medical research through set operations."
-
-\`\`\`javascript
-class MedicalResearchAnalyzer {
-  constructor(safetySystem) {
-    this.safetySystem = safetySystem;
-  }
-  
-  findGeneticAllergyPatterns(familyMembers) {
-    // Find allergies common to all family members (potential genetic markers)
-    if (familyMembers.length === 0) return new CustomHashSet();
-    
-    let commonAllergies = this.safetySystem.patientAllergies.get(familyMembers[0]);
-    
-    for (let i = 1; i < familyMembers.length; i++) {
-      const memberAllergies = this.safetySystem.patientAllergies.get(familyMembers[i]);
-      if (memberAllergies) {
-        commonAllergies = commonAllergies.intersection(memberAllergies);
-      }
-    }
-    
-    return commonAllergies;
-  }
-  
-  identifyRareAllergyCombinations(threshold = 2) {
-    // Find allergy combinations that appear in fewer than threshold patients
-    const combinationCounts = new Map();
-    
-    for (const [patientId, allergySet] of this.safetySystem.patientAllergies) {
-      const allergies = allergySet.values().sort();
-      const combination = allergies.join(',');
-      
-      if (combinationCounts.has(combination)) {
-        combinationCounts.set(combination, combinationCounts.get(combination) + 1);
-      } else {
-        combinationCounts.set(combination, 1);
-      }
-    }
-    
-    const rareCombinations = [];
-    for (const [combination, count] of combinationCounts) {
-      if (count < threshold) {
-        rareCombinations.push({
-          allergies: combination.split(','),
-          patientCount: count
-        });
-      }
-    }
-    
-    return rareCombinations;
-  }
-  
-  suggestAlternativeMedications(patientId, problematicMedication) {
-    const patientAllergies = this.safetySystem.patientAllergies.get(patientId);
-    const alternatives = [];
-    
-    for (const [medicationName, ingredientSet] of this.safetySystem.medicationIngredients) {
-      if (medicationName !== problematicMedication) {
-        const conflicts = patientAllergies.intersection(ingredientSet);
-        if (conflicts.values().length === 0) {
-          alternatives.push(medicationName);
-        }
-      }
-    }
-    
-    return alternatives;
-  }
-}
-\`\`\`
-
-## Looking Ahead: Advanced Data Structures
-
-As their session wound down, Maria smiled at Sarah's obvious enthusiasm. "You've now learned to build both Maps and Sets from scratch using hash tables. This foundation opens up a world of advanced data structures."
-
-"What kind of advanced structures?" Sarah asked, curious.
-
-"Well, we could build **ordered Sets** that maintain insertion order, **multi-Sets** that allow duplicate values with counts, or **bloom filters** for memory-efficient approximate membership testing. Each has specific applications in healthcare."
-
-Sarah thought about the possibilities. "It's amazing how understanding the fundamentals of hash tables opens up so many possibilities."
-
-"Exactly! And in healthcare, every optimization we make, every data structure we perfect, has the potential to save lives. The Set operations you've learned today will help prevent medication errors and improve patient safety for years to come."
-
-As Sarah helped Maria organize the code examples for the day, she felt a profound sense of accomplishment. What had started as learning about data structures had evolved into building systems that could literally save lives.
-
-"Maria," Sarah said as they prepared to leave, "I never realized that something as abstract as a Set could have such a direct impact on patient safety."
-
-Maria's smile was warm and knowing. "That's the wonderful thing about working in healthcare technology, Sarah. Every algorithm we implement, every data structure we optimize, every system we build has the potential to help save lives. You've now mastered the fundamental building blocks of computer science - Maps and Sets. These tools will serve you well in whatever challenges lie ahead."
-
 ## Key Takeaways
 
 By the end of their session, Sarah had learned that:
@@ -445,10 +331,7 @@ By the end of their session, Sarah had learned that:
 - **O(1) performance is crucial for safety systems** - instant allergy checking can prevent life-threatening errors
 - **Mathematical set operations have real-world applications** - genetic analysis, medication alternatives, and research
 - **Custom implementations enable domain-specific optimizations** - audit logging, safety alerts, and compliance tracking
-- **Understanding fundamentals enables advanced structures** - ordered sets, multi-sets, and bloom filters
-- **Data structures directly impact patient outcomes** - faster, more reliable systems save lives
-
-Through hands-on implementation, Sarah discovered that Sets aren't just abstract mathematical concepts - they're practical tools that power critical safety systems in healthcare. The simple act of checking for allergies had revealed the elegant engineering behind one of computer science's most fundamental and useful data structures.`,
+`,
   exercise: {
     starterCode: `/*
 Problem: Building a Custom HashSet for Allergy Safety
@@ -470,9 +353,9 @@ Complete the methods below to build a working HashSet!
 
 /*
 class CustomHashSet {
-  constructor(initialCapacity = 16, loadFactor = 0.75) {
-    // Use CustomHashMap internally, treating values as keys
-    this.map = new CustomHashMap(initialCapacity, loadFactor);
+  constructor() {
+    // Use Map internally, treating values as keys
+    this.map = new Map();
   }
   
   add(value) {
@@ -506,7 +389,7 @@ class CustomHashSet {
   
   size() {
     // Return number of values in the set
-    return this.map.getSize();
+    return this.map.size;
   }
   
   clear() {
@@ -516,7 +399,7 @@ class CustomHashSet {
   
   values() {
     // Return array of all values in the set
-    return this.map.keys(); // Keys are our values in a Set
+    return Array.from(this.map.keys()); // Keys are our values in a Set
   }
 }
 */
@@ -608,8 +491,8 @@ Complete solution showing how to implement a hash table-based Set from scratch.
 */
 
 class CustomHashSet {
-  constructor(initialCapacity = 16, loadFactor = 0.75) {
-    this.map = new CustomHashMap(initialCapacity, loadFactor);
+  constructor() {
+    this.map = new Map();
   }
   
   add(value) {
@@ -627,7 +510,7 @@ class CustomHashSet {
   }
   
   size() {
-    return this.map.getSize();
+    return this.map.size;
   }
   
   clear() {
@@ -635,7 +518,7 @@ class CustomHashSet {
   }
   
   values() {
-    return this.map.keys();
+    return Array.from(this.map.keys());
   }
   
   union(otherSet) {

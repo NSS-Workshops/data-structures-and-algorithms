@@ -8,9 +8,11 @@ export const implementMapChapter = {
   previousChapterId: 'use-cases',
   content: `
 
-A look under the hood of the [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) data structure, <strong>watch until minute 3:20 only!</strong>
+We are about to look under the hood of the [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) data structure, <strong>watch until minute 3:20 only!</strong>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/t-vM3LJDfug?si=xUHZi4tAguRDz9ck" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-This is how the built-in javascript  Map() data structure works under the hood! This chapter gives you a peek behind the scenes.
+
+This chapter gives you a peek behind the scenes at how JavaScript’s built-in Map() works under the hood. Even though we get this powerful data structure “for free” in the language, exploring the nuts and bolts that make it possible will build your intuition for using it effectively. It can also help you spot and fix tricky Map-related bugs. And beyond that, it’s great practice for sharpening your problem-solving skills—and maybe even impressing your friends (or your interviewer :D ).
+
 
 ## The Challenge: Building a Better System
 Three weeks had passed since Dr. Sarah Chen's introduction to Maps at Mercy General Hospital, and she had become increasingly fascinated with how these data structures powered their patient records system. This morning, she found herself in the hospital's IT department, sitting across from David Kim, the lead software architect who had been with the hospital for over eight years.
@@ -178,6 +180,10 @@ As Sarah worked through the challenges, David pulled up a performance monitoring
 "What do you mean?" Sarah asked, looking up from her code.
 
 "As we add more patient records, our hash table gets more crowded. More collisions mean longer search times. We need to **resize** the hash table when it gets too full."
+
+David leaned closer to the screen. "Here’s the other part people forget — when two different keys land in the same slot, the engine tucks them into a little chain hanging off that bucket. If there are only a few, it’s still lightning fast. But as more pile into the same spot, the engine has to walk that chain one by one to find what you’re looking for. In the absolute worst case, if everything ended up in a single bucket, a lookup could take as long as searching through the whole table — O(n) time instead of O(1)."
+
+He pointed back to the dashboard. "That’s why we say map operations are amortized constant time. Most of the time they’re blazing fast, but collisions remind us that it isn’t a perfect guarantee.
 
 David showed her a graph of performance over time. "See how lookup times increase as the hash table fills up? That's why we use a **load factor** - when the table is 75% full, we double its size and **rehash** all existing entries."
 
@@ -1070,18 +1076,53 @@ class CustomHashMap {
                 </div>
               </div>
 
-              <div className="question" data-answer="0.75">
+              <div className="question" data-answer="ratio">
                 <p>
-                  What is the typical load factor threshold used to trigger
-                  dynamic resizing in hash tables? (Enter as decimal, e.g., 0.75)
+                  What is the load factor in a hash table?
                 </p>
-                <input type="text" required />
+                <label>
+                  <input type="radio" name="load-factor" value="ratio" required /> The ratio of the number of stored elements to the total capacity of the hash table
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="load-factor" value="threshold" required /> The maximum number of elements that can be stored before resizing
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="load-factor" value="collision" required /> The number of collisions that occur during insertion operations
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="load-factor" value="capacity" required /> The total number of buckets available in the hash table array
+                </label>
                 <span className="feedback" />
                 <div className="explanation">
-                  A load factor of 0.75 (75%) is commonly used as the threshold for
-                  resizing hash tables. This balances memory usage with performance -
-                  keeping the table from becoming too crowded while not wasting
-                  excessive space.
+                  <strong>The ratio of the number of stored elements to the total capacity of the hash table.</strong> The load factor is calculated as (number of elements) / (total capacity). For example, if a hash table has 12 elements stored in an array of size 16, the load factor is 12/16 = 0.75 or 75%. This metric is crucial for maintaining hash table performance - when the load factor gets too high (typically above 0.75), the hash table is resized to maintain efficient O(1) operations.
+                </div>
+              </div>
+
+              <div className="question" data-answer="collisions">
+                <p>
+                  How can a Map&apos;s get() operation degrade from O(1) to O(n) time complexity?
+                </p>
+                <label>
+                  <input type="radio" name="map-degradation" value="collisions" required /> When many keys hash to the same bucket, requiring a linear scan through the collision chain
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="map-degradation" value="resizing" required /> When the hash table is being resized and all operations become slower
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="map-degradation" value="memory" required /> When the system runs out of memory and has to use disk storage
+                </label>
+                <br />
+                <label>
+                  <input type="radio" name="map-degradation" value="sorting" required /> When keys need to be sorted before they can be retrieved
+                </label>
+                <span className="feedback" />
+                <div className="explanation">
+                  <strong>When many keys hash to the same bucket, requiring a linear scan through the collision chain.</strong> In hash tables using separate chaining (like our CustomHashMap), collisions are handled by storing multiple key-value pairs in the same bucket using a linked list or array. When the hash function produces many collisions (due to poor distribution or high load factor), a single bucket might contain many entries. To find a specific key, the get() operation must scan through this entire chain linearly, resulting in O(n) time complexity in the worst case where all n keys hash to the same bucket. This is why good hash functions and proper load factor management are crucial for maintaining O(1) performance.
                 </div>
               </div>
 

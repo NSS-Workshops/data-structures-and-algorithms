@@ -379,16 +379,6 @@ David opened a comparison document. "Here's why our custom HashMap is better tha
 - Custom iteration patterns for medical data
 - Integration with existing hospital systems
 
-## Looking Ahead: Sets and Advanced Structures
-
-As their session wound down, David smiled at Sarah's obvious enthusiasm. "Tomorrow, we'll take what you've learned about hash tables and use it to build a custom **Set** implementation."
-
-"How is that different from what we just built?" Sarah asked.
-
-"Great question! A Set is like a Map where we only care about the keys, not the values. It's perfect for tracking things like patient allergies, completed procedures, or visited departments - situations where we only need to know if something exists, not store additional data about it."
-
-Sarah thought about it. "So it's like our HashMap, but simpler because we don't need to store values?"
-
 "Exactly! And because it's simpler, we can optimize it in different ways. We can also implement powerful set operations like union, intersection, and difference - operations that are crucial for medical data analysis."
 
 As Sarah helped David organize the code examples for the day, she felt a deep sense of accomplishment. What had started as learning about patient records had evolved into understanding the fundamental building blocks of computer science.

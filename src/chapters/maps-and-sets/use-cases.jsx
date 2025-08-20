@@ -383,20 +383,6 @@ Elena pulled out a notepad and summarized what they'd learned:
 - **Membership Testing**: Checking if a unit has specific capabilities, if an area has been covered
 - **Data Analysis**: Finding unique incident types, identifying distinct neighborhoods
 
-## Looking Ahead: Building Our Own Data Structures
-
-"Tomorrow," Elena said as they prepared to wrap up their shift, "we're going to dive deeper into how these data structures actually work internally. Our IT department is building a custom dispatch system, and they want us to understand how to implement our own Map and Set structures."
-
-"You mean we're going to build Maps and Sets from scratch?" Jake asked, his eyes lighting up with excitement.
-
-"Exactly! Understanding how hash tables work, how collision resolution happens, and how to optimize for our specific use cases. It's going to be fascinating."
-
-As the night shift came to an end and the morning crew began arriving, Jake felt a sense of accomplishment. What had started as a overwhelming night of emergency calls had turned into a deep understanding of how the right data structures could transform chaos into organized, efficient systems.
-
-"Elena," Jake said as they gathered their things, "I never thought I'd say this, but I'm actually excited about hash tables and collision resolution."
-
-Elena laughed. "That's the wonderful thing about working in emergency services, Jake. Every system we build, every optimization we make, has the potential to help save lives. Tomorrow, we'll discover how to build these life-saving data structures from the ground up."
-
 ## Key Takeaways
 
 By the end of their shift, Jake had learned that:

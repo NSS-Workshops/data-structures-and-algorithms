@@ -363,9 +363,16 @@ comparisonDemo.add(NaN); // Duplicate - ignored!
 console.log(comparisonDemo.has(NaN)); // true
 \`\`\`
 
+When working with Sets in JavaScript, it's crucial to understand how they determine if two values are "equal" and should be treated as duplicates. 
+For primitive values like strings, numbers, and booleans, Sets compare by value - meaning 'Penicillin' and 'Penicillin' are considered identical and only one will be stored. 
+However, for objects and arrays, Sets compare by reference (memory location) rather than content. 
+This means two objects with identical properties like {name: 'Penicillin', severity: 'High'} and {name: 'Penicillin', severity: 'High'} are treated as completely 
+different values because they exist at different memory locations. 
+
 ## Set Uniqueness and No Duplicates
 
-"This brings us to a critical concept," Elena said seriously. "Sets enforce **absolute uniqueness** - you cannot have duplicate values, period."
+This brings us to a critical Set concept,” Elena said seriously. “Sets enforce uniqueness—but with a catch: primitives are unique by value, while reference types (objects, arrays, functions) are unique by reference aka memory address. 
+So two objects that look the same can both be in a Set unless they’re the exact same reference , like we saw above with allergy1 and allergy2. 
 
 \`\`\`javascript
 // Demonstrating uniqueness in allergy tracking
@@ -546,22 +553,6 @@ console.log('Patient 1 unique:', [...findUniqueAllergies(patient1, patient2)]);
 | Track completed procedures | Boolean membership | Clear completion status |
 | Medication safety screening | Ingredient intersection | Prevent adverse reactions |
 | Family history tracking | Set union operations | Comprehensive risk assessment |
-
-## Looking Ahead
-
-As their second lesson wound down, Elena smiled at Sarah's obvious enthusiasm. "Tomorrow, we'll explore how Maps and Sets work together in our comprehensive patient management system."
-
-"How do they work together?" Sarah asked, curious.
-
-"Well, imagine we have a Map where each patient ID points to their allergy Set. Or a Map where each medication name points to its ingredient Set. The combination of these data structures creates powerful, efficient systems."
-
-Marcus nodded. "That's when you really see the power of choosing the right data structure for each specific need."
-
-As Sarah helped Elena organize the pharmacy records for the day, she felt a deep sense of accomplishment. What had started as learning about allergy tracking had revealed another fundamental principle of computer science. The Set wasn't just a way to store allergies; it was a powerful tool for ensuring patient safety through efficient, reliable data management.
-
-"Elena," Sarah said as they prepared to leave, "I never realized how much computer science goes into keeping patients safe."
-
-Elena's smile was warm and knowing. "That's the wonderful thing about working in healthcare technology, Sarah. Every data structure we choose, every algorithm we implement, has the potential to save lives. Tomorrow, we'll see how combining Maps and Sets creates even more powerful systems for patient care."
 
 ## Key Takeaways
 

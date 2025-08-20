@@ -8,7 +8,7 @@ export const mapsIntroChapter = {
   previousChapterId: "maps-sets-learning-objectives",
   content: `
 ## What is a Map?
-In JavaScript, a Map is a data structure , a collection of key–value pairs where keys can be of any type (including objects, functions, or primitives), unlike plain objects which only allow strings or symbols as keys. In Javascript the Maps insertion order is preserves, has a built-in .size property, and provides convenient methods like .set(), .get(), .has(), and .delete() for efficient O(1) lookups and updates.
+In JavaScript, a Map is a data structure , a collection of key–value pairs where keys can be of any type (including objects, functions, or primitives), unlike plain objects which only allow strings or symbols as keys. In Javascript the Maps insertion order is preserved, has a built-in .size property, and provides convenient methods like .set(), .get(), .has(), and .delete() for efficient O(1) lookups and updates.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QtLbuFUI1I4?si=Avi0keGWunmUFrSf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -85,6 +85,28 @@ Sarah was impressed. "So the system doesn't have to search through every patient
 
 "Exactly! The Map structure allows **O(1)** lookup time - that means constant time, regardless of how many patients we have in the system."
 
+get() returns undefined when the key isn’t in the Map. We could use that to test membership, but it’s brittle.
+If you ever store undefined (or other falsy values like 0), the check can lie. 
+The canonical way to test membership is has(), which will examine in the next section.
+
+\`\`\`
+// Patient record context: patientID -> allergy count
+const patientAllergyCounts = new Map();
+patientAllergyCounts.set("PT-101", 2);
+patientAllergyCounts.set("PT-202", undefined); // key exists, value not loaded yet
+patientAllergyCounts.set("PT-303", 0);         // key exists, zero allergies (falsy)
+
+// Using get() for membership (NOT recommended)
+console.log(patientAllergyCounts.get("PT-101") !== undefined); // true
+console.log(patientAllergyCounts.get("PT-202") !== undefined); // false  ← wrong: key exists
+console.log(patientAllergyCounts.get("PT-303"));               // 0 (falsy) → easy to misread
+
+// Canonical membership check
+console.log(patientAllergyCounts.has("PT-101")); // true
+console.log(patientAllergyCounts.has("PT-202")); // true  ← correct
+console.log(patientAllergyCounts.has("PT-999")); // false
+\`\`\`
+
 ### has(): Checking Patient Existence
 
 Halfway through their tour, Dr. James Wilson, a senior physician, approached the station looking concerned.
@@ -105,6 +127,64 @@ He showed Sarah how the system could remove a patient record:
 - Result: Patient no longer appears in active patient lookups
 
 "Of course," Marcus added quickly, "we don't actually delete the medical records - they're archived for legal and medical reasons. But we remove them from the active patient Map to keep our system focused on current patients."
+
+### Iterating a Map (for...of)
+
+As the afternoon approached, Dr. Martinez, the head of the Emergency Department, approached the station with a concerned expression.
+
+"Marcus, we need to generate a report of all patients currently in the ICU for the evening shift handoff. Can the system help us loop through all our patient records?"
+
+"Perfect timing, Dr. Martinez!" Marcus said, turning to Sarah. "This brings us to another essential Map operation - **iteration**. Sometimes we need to examine all patient records, not just look up individual ones."
+
+Marcus pulled up the system interface. "Sarah, watch this. When we need to go through all patients in our Map, we use a \`for...of\` loop with **destructuring** to efficiently and concisely access both the patient ID and their information."
+
+\`\`\`javascript
+// Looping through all patient records using for...of with destructuring
+const patientMap = new Map();
+
+// Add some sample patients
+patientMap.set('P-2024-001', { name: 'John Smith', room: 'ICU-1', condition: 'Stable' });
+patientMap.set('P-2024-002', { name: 'Maria Garcia', room: 'ICU-2', condition: 'Critical' });
+patientMap.set('P-2024-003', { name: 'David Lee', room: '302A', condition: 'Recovering' });
+
+// Method 1: Destructuring entries (most common and efficient)
+console.log('=== All Patient Records ===');
+for (const [patientId, patientInfo] of patientMap) {
+  console.log(\`Patient \${patientId}: \${patientInfo.name} in \${patientInfo.room} - \${patientInfo.condition}\`);
+}
+
+// Method 2: Iterating over keys only
+console.log('\\n=== Patient IDs Only ===');
+for (const patientId of patientMap.keys()) {
+  console.log(\`Patient ID: \${patientId}\`);
+}
+
+// Method 3: Iterating over values only
+console.log('\\n=== Patient Info Only ===');
+for (const patientInfo of patientMap.values()) {
+  console.log(\`\${patientInfo.name} - \${patientInfo.condition}\`);
+}
+\`\`\`
+
+"Notice the **destructuring** syntax," Marcus explained, pointing to the first loop. "When we write \`[patientId, patientInfo]\`, we're automatically unpacking each Map entry into two separate variables - the key and the value."
+
+Sarah looked intrigued. "So instead of getting some complex object, we immediately get the patient ID and all their information as separate variables?"
+
+"Exactly! It's much cleaner than the alternative," Marcus demonstrated:
+
+\`\`\`javascript
+// Without destructuring (more verbose)
+for (const entry of patientMap) {
+  const patientId = entry[0];        // Get the key
+  const patientInfo = entry[1];      // Get the value
+  console.log(\`Patient \${patientId}: \${patientInfo.name}\`);
+}
+
+// With destructuring (clean and readable)
+for (const [patientId, patientInfo] of patientMap) {
+  console.log(\`Patient \${patientId}: \${patientInfo.name}\`);
+}
+\`\`\`
 
 ## ⏱️ Sarah's First Challenge!
 
@@ -286,17 +366,14 @@ console.log('Available doctor at 10 AM:', availableDoctor);
 
 Sarah nodded. "Yes, I've used objects plenty of times. They're like containers that hold key-value pairs."
 
-"Exactly! And that might make you wonder - why do we need Maps when we already have objects?" Marcus pulled up a side-by-side comparison on his screen. "I actually have a great video resource that explains objects really well - it covers the fundamentals that most JavaScript developers already know. But here's the thing: understanding objects deeply actually makes it easier to appreciate why Maps exist and when to use them instead."
-
-Marcus opened his browser and showed Sarah a helpful video about JavaScript objects. "This video does an excellent job explaining object fundamentals - the syntax, property access, and basic usage patterns that you're probably already familiar with. But what it doesn't cover is the limitations of objects and when you should reach for Maps instead."
-
 "So Maps aren't replacing objects?" Sarah asked.
 
 "Not at all! Objects and Maps serve different purposes. Think of it this way: objects are perfect when you know your property names ahead of time - like a patient record template with fixed fields. But Maps shine when you're dealing with dynamic keys - like patient IDs that you won't know until runtime."
 
+
 ### The Object Approach (What You Already Know)
 
-"If you've watched tutorials about JavaScript objects - like the one above - you'll recognize this pattern," Marcus said. "Let's see how we might handle patient records using regular JavaScript objects:"
+"If you've watched the video above - you'll recognize this pattern," Marcus said. "Let's see how we might handle patient records using regular JavaScript objects:"
 
 \`\`\`javascript
 // Using Objects for patient records (traditional approach)
@@ -398,7 +475,7 @@ patientMap.set('P-002', { name: 'Jane' });
 console.log(patientMap.size); // 2 (exact count, no inherited properties)
 \`\`\`
 
-#### 4. Iteration Order Guarantees
+#### 4. Iteration Order Guarantees (JavaScript preserves insertion order of a Map, other languages may not!)
 
 \`\`\`javascript
 // Objects: Iteration order is complex and can be unpredictable
@@ -414,7 +491,7 @@ for (const key in patientObj) {
   console.log(key, patientObj[key]);
 }
 
-// Maps: ALWAYS maintain insertion order
+// Maps: ALWAYS maintain insertion order in JS!
 const patientMap = new Map();
 patientMap.set('P-003', 'Third');
 patientMap.set('P-001', 'First');
@@ -467,11 +544,11 @@ Marcus created a comparison table on the whiteboard:
 |----------|------------|---------|-----|
 | **Configuration/Settings** | ✅ | ❌ | Objects are perfect for known, fixed properties |
 | **JSON Data** | ✅ | ❌ | JSON naturally maps to objects |
-| **Record/Entity Storage** | ❌ | ✅ | Maps handle dynamic keys better |
+| **Record/Entity Storage** | ❌ | ✅ | Maps handle dynamic keys better, because that’s what they’re built for. |
 | **Frequent Additions/Deletions** | ❌ | ✅ | Maps are optimized for this |
 | **Non-string Keys** | ❌ | ✅ | Objects convert all keys to strings |
 | **Size Tracking** | ❌ | ✅ | Maps provide instant size |
-| **Guaranteed Iteration Order** | ❌ | ✅ | Maps maintain insertion order |
+| **Guaranteed Iteration Order** | ❌ | ✅ | Maps maintain insertion order in JS (This isn’t universal across languages. For example, in Java's Map doesn’t guarantee insertion order. Always check your language’s data-structure documentation.)|
 | **Prototype-free Storage** | ❌ | ✅ | Maps don't inherit properties |
 
 ### Migration Strategy: Objects to Maps
@@ -516,11 +593,12 @@ Marcus pulled up a summary slide. "Let's consolidate what we've learned about wh
 - You have dynamic keys that aren't known at compile time
 - You need non-string keys (numbers, objects, functions)
 - You frequently add/remove key-value pairs
-- You need guaranteed insertion order
+- You need guaranteed insertion order (in JS)
 - You want to avoid prototype pollution
 - You need an accurate count of entries
 
-"The video I mentioned earlier covers objects beautifully," Marcus said, "but it doesn't address these nuanced differences. That's why understanding both is so valuable in healthcare systems where we deal with both structured data (objects) and dynamic lookups (Maps)."
+#### **[This MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map#objects_vs._maps) article goes into more detail about when to use objects vs Maps**
+
 
 ## Understanding Map Keys and Data Types
 
@@ -647,67 +725,6 @@ function updatePatientRoom(patientMap, patientId, newRoom) {
 }
 \`\`\`
 
-## Understanding Map Performance
-
-"Now, here's something important to understand," Marcus said, pulling up a performance chart. "All of these Map operations are **O(1)** - constant time. Do you know what that means?"
-
-Sarah shook her head.
-
-"It means that whether we have 50 patients or 50,000 patients, these operations take the same amount of time. Looking up a patient? Same speed. Adding a new patient? Same speed. The size of our patient database doesn't slow us down."
-
-"That's incredible!" Sarah realized. "So as our hospital grows, the system doesn't get slower?"
-
-"Exactly! That's what makes Maps so powerful for healthcare applications. When every second counts in an emergency, we need systems that respond instantly."
-
-## Map Operations Summary
-
-Marcus pulled out a notepad and sketched out the key operations they'd learned:
-
-### Core Map Operations
-
-**Set (Adding/Updating patient records)**
-- Adds a key-value pair to the Map
-- Time Complexity: O(1) - always fast, no matter how many patients
-- Example: Adding new patient P-2024-158 with their medical information
-
-**Get (Retrieving patient information)**
-- Retrieves the value associated with a key
-- Time Complexity: O(1) - instant lookup
-- Example: Getting all information for patient P-2024-001
-
-**Has (Checking if patient exists)**
-- Checks if a key exists in the Map
-- Time Complexity: O(1) - quick verification
-- Example: Verifying if patient P-2024-089 is in the system
-
-**Delete (Removing patient records)**
-- Removes a key-value pair from the Map
-- Time Complexity: O(1) - fast removal
-- Example: Removing discharged patient from active records
-
-**Size (Counting total patients)**
-- Returns the number of key-value pairs in the Map
-- Time Complexity: O(1) - instant count
-- Example: Getting total number of active patients
-
-## Looking Ahead
-
-As their first lesson wound down, Marcus smiled at Sarah's obvious enthusiasm. "Tomorrow, we'll explore a different but related concept - our patient allergy tracking system. That one uses something called a **Set**."
-
-"How is that different from a Map?" Sarah asked, curious.
-
-"Well, imagine if we only cared about **which** allergies a patient has, not how many times they've had reactions or when they were discovered. We just need to know: does this patient have a penicillin allergy? Yes or no."
-
-Sarah thought about it. "So it's like... a collection of unique items without the extra information?"
-
-"Exactly! A Set stores unique values without associating them with other data. It's perfect for tracking things like allergies, symptoms that have been observed, or procedures that have been completed."
-
-As Sarah helped Marcus organize the patient records for the day, she felt a sense of accomplishment. What had started as learning about a hospital computer system had revealed a fundamental principle of computer science. The Map wasn't just a way to store patient data; it was a powerful tool for creating efficient, reliable systems that could save lives.
-
-"Marcus," Sarah said as they prepared to leave, "I never thought managing patient records could teach me so much about programming."
-
-Marcus's smile was warm and knowing. "That's the wonderful thing about working in healthcare technology, Sarah. Every system we build has the potential to help save lives. Tomorrow, we'll discover how Sets help us track patient allergies and ensure medication safety."
-
 ## Key Takeaways
 
 By the end of their first day, Sarah had learned that:
@@ -722,8 +739,7 @@ By the end of their first day, Sarah had learned that:
 - **Key type flexibility** - Maps accept any data type as keys, unlike objects which convert to strings
 - **Real-world applications include** patient records, medication databases, and doctor schedules
 - **Healthcare systems require instant access** - Maps provide the speed needed for emergency situations
-
-Through hands-on coding challenges, Sarah discovered that understanding how to **use** data structures is just as important as knowing how they work internally. The simple act of looking up patient records had revealed one of computer science's most fundamental and useful data structures. And this was just the beginning of Sarah's journey into the organized, efficient world of healthcare information systems and the data structures that power them.`,
+`,
   exercise: {
     starterCode: `/*
 Problem: Using Map Operations to Manage Patient Records
@@ -1134,7 +1150,7 @@ function findPatientsByRoom(patientMap, roomPrefix) {
                 </label>
                 <span className="feedback" />
                 <div className="explanation">
-                  <strong>True.</strong> JavaScript Maps guarantee insertion order preservation - when you iterate through a Map, you&apos;ll get entries in the order they were added. However, this is not universal across all programming languages. For example, Python dictionaries only preserve insertion order as of Python 3.7+, and some other languages&apos; hash map implementations may not preserve insertion order at all. This is an important consideration when writing portable code or working in multi-language environments in healthcare systems.
+                  <strong>True.</strong> JavaScript Maps guarantee insertion order preservation - when you iterate through a Map, you&apos;ll get entries in the order they were added. However, this is not universal across all programming languages. For example, Python dictionaries only preserve insertion order as of Python 3.7+, and some other languages&apos; hash map implementations do not preserve insertion order at all. This is an important consideration when workin with Maps in other languages.
                 </div>
               </div>
 

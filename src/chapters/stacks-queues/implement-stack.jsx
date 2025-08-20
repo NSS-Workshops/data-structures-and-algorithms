@@ -437,18 +437,6 @@ As their coding session wrapped up, Maya summarized the key points:
 - **Memory efficiency matters**: Arrays use less memory than linked structures
 - **Simple operations**: When you only need basic stack functionality
 
-## Looking Ahead
-
-"Tomorrow," Maya said as they saved their code, "we'll tackle the more complex challenge - implementing our hold request queue system. That's trickier because we need to add at one end and remove from the other."
-
-Alex was excited. "Will it be as elegant as this stack implementation?"
-
-"It'll be different," Maya replied. "Queues have their own challenges, but once you understand them, you'll see why different data structures are suited for different problems."
-
-Sam grinned. "I can't wait to build a system that'll make sure I never mess up hold requests again!"
-
-"That's exactly the right attitude," Maya said. "Good data structures don't just make programs faster - they make them more reliable and help prevent mistakes."
-
 ## 💻 Alex's Implementation Challenge!
 
 "Now comes the exciting part," Maya said, pulling out her laptop. "Alex, you've seen how stacks work conceptually and you've used them to solve problems. But now I want you to build your own Stack class from scratch!"

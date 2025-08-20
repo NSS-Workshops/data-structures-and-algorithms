@@ -300,20 +300,6 @@ Sam thought for a moment. "Call Mr. Chen and explain that Mrs. Patterson was fir
 
 "Perfect!" Maya beamed. "That's exactly right. And this is why understanding data structures matters - it helps us make fair, consistent decisions."
 
-## Looking Ahead
-
-As the morning lesson concluded, Alex felt confident about the difference between stacks and queues. "So tomorrow we'll learn how to actually build these systems?"
-
-"Exactly," Maya said. "We'll start by creating a digital version of our book return cart - implementing a stack class. Then we'll build a proper hold request system - implementing a queue class."
-
-"Will we write actual code?" Alex asked excitedly.
-
-"Absolutely. You'll see how the concepts we've learned translate into working programs. And you'll discover why some implementations are better than others."
-
-Sam grinned. "I can't wait to build a system that won't let me accidentally promise books to the wrong people!"
-
-Maya laughed. "That's exactly the kind of problem good data structures solve, Sam. They help us avoid mistakes and ensure fairness."
-
 ## Key Takeaways
 
 By the end of their second day, Alex had learned that:

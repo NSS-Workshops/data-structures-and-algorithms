@@ -8,12 +8,12 @@
  * @returns {String} The formatted markup string
  */
 export function formatGlossary(data) {
-    let output = `| Term | Definition | Week |
-|------|------------|------|`;
+    let output = `| Term | Definition |
+|------|------------|`;
 
     data.forEach(d => {
         output += `
-| ${d.term} |  ${d.definition} | ${d.week} |`
+| ${d.term} |  ${d.definition} |`
     });
 
     return output;
@@ -25,12 +25,12 @@ export function formatGlossary(data) {
  * @returns {String} The formatted markup string
  */
 export function formatObjectives(data) {
-    let output = `| Category | Module | Learning Objective Name | Bloom Level |
-|----------|--------|------------------------|-------------|`;
+    let output = `| Category | Learning Objective Name | Bloom Level |
+|----------|------------------------|-------------|`;
     
     data.forEach(d => {
         output += `
-| ${d.category} | ${d.module} | ${d.name} | ${d.level} |`;
+| ${d.category} | ${d.name} | ${d.level} |`;
     });
 
     return output;

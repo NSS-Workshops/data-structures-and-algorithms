@@ -200,24 +200,6 @@ Alex shook their head.
 
 "Exactly! That's what makes stacks so powerful for certain applications. When you need LIFO behavior and you want it to be fast, stacks are your best friend."
 
-## Looking Ahead
-
-As their first lesson wound down, Maya smiled at Alex's obvious enthusiasm. "Tomorrow, we'll explore a different system - our hold request process. That one works completely differently from our book return stack."
-
-"How so?" Alex asked, curious.
-
-"Well, imagine if someone requested a popular book first, but we gave it to the person who requested it last. That wouldn't be very fair, would it?"
-
-Alex laughed. "No, definitely not! So we need... the opposite of LIFO?"
-
-"Exactly - First In, First Out, or FIFO. We call that a **queue**, and it's perfect for situations where fairness and order matter. But that's tomorrow's lesson."
-
-As Alex helped Maya tidy up the circulation desk, they felt a sense of accomplishment. What had started as a simple task - processing returned books - had revealed a fundamental principle of computer science. The stack wasn't just a pile of books; it was a powerful tool for organizing information and solving problems.
-
-"Maya," Alex said as they prepared to leave, "I never thought organizing books could teach me about programming."
-
-Maya's smile was warm and knowing. "That's the wonderful thing about working in a library, Alex. Everything here has a story to tell - even the way we stack books. Tomorrow, we'll discover what stories our queues have to share."
-
 ## Key Takeaways
 
 By the end of their first day, Alex had learned that:

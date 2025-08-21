@@ -2,7 +2,7 @@ import { TestResult } from "../../utils/test_utils";
 
 export const codeExcerciseTwoChapter = {
   id: 'e49003dd',
-  title: 'Module 8 - Code Excercise 2',
+  title: 'Sliding Window - Variable Size Window Practice',
   sectionId: 'sliding-window',
   previousChapterId: null,
   content: `
@@ -36,16 +36,16 @@ Leave 10–15 minutes to reflect, share feedback, and then switch roles.
 
 Best of luck, and enjoy the practice! 🚀
 
-## Problem: Longest Substring Without Repeating Characters
+## Problem: Longest Period Without Repeated Sectors
 
-Given a string, find the length of the longest substring without repeating characters.
+Given a sequence of stock sector codes, find the length of the longest consecutive period without investing in the same sector twice.
 
-Use the sliding window technique with a variable-size window.
+Use the sliding window technique with a variable-size window for portfolio diversification analysis.
 
 ### Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
-- How would you return the actual substring instead of just the length?`,
+- How would you return the actual period instead of just the length?`,
   exercise: {
     starterCode:`/*
 Problem: Longest Substring Without Repeating Characters

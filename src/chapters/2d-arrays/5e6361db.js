@@ -46,14 +46,14 @@ Write a function \`getNeighbors\` that returns an array of the values of all val
   exercise: {
     starterCode:`
     /*
-Problem: Increment All Neighbors
+Problem: Return Neighbor Values
 */
 function getNeighbors(grid, row, col) {
   // Return an array of top, bottom, left, right neighbor values
 }`,
     solution:`
     /*
-Problem: Increment All Neighbors
+Problem: Return Neighbor Values
 */
     function getNeighbors(grid, row, col) {
   const result = [];

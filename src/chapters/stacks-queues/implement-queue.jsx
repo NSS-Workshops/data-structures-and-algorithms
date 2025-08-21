@@ -658,18 +658,6 @@ Alex thought for a moment. "Queues are trickier than stacks because we need to e
 - **Test edge cases**: Empty queues, full queues, single-element queues
 - **Use descriptive names**: Method names should reflect the domain (addHoldRequest vs enqueue)
 
-## Looking Ahead
-
-"Tomorrow," Maya said as they saved their code, "we'll explore when to choose arrays versus linked lists for both stacks and queues. You'll see how different implementations have different trade-offs."
-
-Alex was excited. "Will we build linked list versions too?"
-
-"We'll analyze them," Maya replied. "By the end of this week, you'll be able to choose the right data structure and implementation for any situation."
-
-Sam grinned. "And I'll finally have a bulletproof hold request system!"
-
-"That's the goal," Maya said with a smile. "Good data structures don't just make programs faster - they make them more reliable and help prevent the kind of mistakes that frustrated patrons."
-
 ## 💻 Alex's Queue Implementation Challenge!
 
 "Alright Alex," Maya said, opening a fresh code editor window. "Yesterday you built a stack from scratch, and today you've learned all about queues. Now it's time for the ultimate test - implementing your own Queue class!"

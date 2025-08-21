@@ -10,6 +10,8 @@ import { glossaryChapter } from './glossary';
 import { mapsAndSetsCheckpointChapter } from './checkpoint';
 import { codeExcerciseOneChapter } from './9dacc692';
 import { codeExcerciseTwoChapter } from './cc07fff4';
+import { inClassSetCode } from './b7e2c834';
+import { inClassMapCode } from './a8f3d921';
 
 export const mapsAndSetsChapters = [
   mapsAndSetsLearningObjectivesChapter,
@@ -23,7 +25,9 @@ export const mapsAndSetsChapters = [
   glossaryChapter,
   mapsAndSetsCheckpointChapter,
   codeExcerciseOneChapter,
-  codeExcerciseTwoChapter
+  codeExcerciseTwoChapter,
+  inClassSetCode,
+  inClassMapCode
 ];
 
 /**

@@ -40,8 +40,6 @@ Best of luck, and enjoy the practice! 🚀
 
 Given a string, find the length of the longest substring without repeating characters.
 
-Use the sliding window technique with a variable-size window.
-
 ### Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
@@ -51,8 +49,6 @@ Use the sliding window technique with a variable-size window.
 Problem: Longest Substring Without Repeating Characters
 
 Given a string, find the length of the longest substring without repeating characters.
-
-Use the sliding window technique with a variable-size window.
 
 Examples:
 Input: "abcabcbb" → Output: 3 (substring "abc")

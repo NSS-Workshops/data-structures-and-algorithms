@@ -2,7 +2,7 @@ import { TestResult } from "../../utils/test_utils";
 
 export const codeExcerciseOneChapter = {
   id: '6fd72967',
-  title: 'Sliding Window - Fixed Size Window Practice',
+  title: 'Module 8 - Code Excercise 1',
   sectionId: 'sliding-window',
   previousChapterId: null,
   content: `
@@ -36,11 +36,11 @@ Leave 10–15 minutes to reflect, share feedback, and then switch roles.
 
 Best of luck, and enjoy the practice! 🚀
 
-## Problem: Maximum Sum Subarray of Size K (Financial Trading)
+## Problem: Maximum Sum Subarray of Size K
 
-Given an array of daily trading profits and a number k, find the maximum sum of any contiguous k-day period.
+Given an array of integers and a number k, find the maximum sum of any contiguous subarray of size k.
 
-Use the sliding window technique to solve this efficiently for portfolio analysis.
+Use the sliding window technique to solve this efficiently.
 
 ### Follow-up Questions:
 - What is the time complexity of your solution?

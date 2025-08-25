@@ -1,11 +1,11 @@
 import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
 import { TestResult } from "../../utils/test_utils";
 
-export const subarraysSubstringsChapter = {
-  id: 'subarrays-substrings',
+export const optimalTradingPeriod = {
+  id: 'optimal-trading-period',
   title: 'Variable-Size Windows - Optimal Trading Period Analysis',
   sectionId: 'sliding-window',
-  previousChapterId: 'maintaining-window-state',
+  previousChapterId: 'sliding-window-intro',
   content: `
 ## The Trading Strategy Challenge
 
@@ -13,7 +13,7 @@ Michael Chen, a quantitative trader at CleanEnergy Capital, needed to identify o
 
 "I need to find the longest consecutive period where our green energy strategy maintains at least a 15% annual return," Michael explained to his colleague, Lisa Park. "The period length can vary - it might be 30 days, 90 days, or even 200 days."
 
-Lisa recognized this as a classic variable-size sliding window problem. "This requires the two-pointer technique where we expand and contract the window based on performance conditions."
+Lisa recognized this as a classic variable-size sliding window problem from her Data Structures and Algorithms class at Nashville Software School. "This requires the two-pointer technique where we expand and contract the window based on performance conditions."
 
 ## Understanding Variable-Size Windows
 
@@ -97,6 +97,8 @@ console.log("Longest profitable period:", findLongestProfitablePeriod(dailyRetur
 ## Advanced Application: Minimum Risk Period
 
 Finding the shortest period to achieve a target return while minimizing risk:
+Identify the smallest time window where the target return is reached, because shorter holding periods expose you to less market risk.
+Shorter holding periods mean less time for the price to move against you, so you hit your target faster and reduce exposure to market risk.
 
 \`\`\`javascript
 // Find shortest period to achieve target cumulative return
@@ -143,46 +145,16 @@ const cumulativeReturns = [0.05, 0.12, 0.08, 0.15, 0.22, 0.18, 0.25, 0.30, 0.28,
 console.log("Shortest target period:", findShortestTargetPeriod(cumulativeReturns, 0.20));
 \`\`\`
 
-## Key Differences: Fixed vs Variable Windows
+## ⏱️ Michael's First Challenge!
 
-### Fixed-Size Windows
-- **Use case**: Moving averages, rolling volatility
-- **Window size**: Constant (e.g., always 20 days)
-- **Complexity**: O(n)
-- **Pattern**: Slide by removing left, adding right
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement the \`findLongestGrowthPeriod()\` function using the variable-size sliding window technique
+- Use the two-pointer approach to track consecutive non-decreasing portfolio values
+- **Click Run Tests**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
 
-### Variable-Size Windows  
-- **Use case**: Optimization problems, finding best periods
-- **Window size**: Changes based on conditions
-- **Complexity**: O(n) with two pointers
-- **Pattern**: Expand right, contract left based on criteria
+"This challenge teaches you the variable-size sliding window optimization that powers sophisticated trading algorithms," Lisa explained. "The same technique that helps us identify optimal holding periods and validate sustainable investment performance over time."
 
-## When to Use Variable-Size Windows
-
-Use variable-size sliding windows when you need to:
-
-1. **Find optimal contiguous periods** meeting specific criteria
-2. **Minimize or maximize** some metric over flexible time periods
-3. **Solve optimization problems** with contiguous constraints
-4. **Identify patterns** of variable length in time series
-
-Common financial applications:
-- Longest bull market period
-- Shortest time to recovery
-- Optimal rebalancing periods
-- Maximum drawdown duration
-- Best performing quarters
-
-## Performance Characteristics
-
-Variable-size windows maintain O(n) complexity because:
-- Each element is visited at most twice (once by right pointer, once by left pointer)
-- Inner while loop doesn't reset the left pointer
-- Total operations remain linear with input size
-
-## 🧠 Recall Practice
-
-Test your understanding of variable-size sliding windows:
 `,
   exercise: {
     starterCode: `/*
@@ -334,27 +306,49 @@ console.log("Longest growth period:", findLongestGrowthPeriod(testValues));`,
 
         return (
           <main>
-            <h2>Variable-Size Windows - Recall Practice</h2>
+            <h2>🧠 Recall Practice</h2>
             <form className="auto-graded-quiz">
-              <div className="question" data-answer="contiguous">
+              <div className="question" data-answer="portfolioValues[i] < portfolioValues[i - 1]">
                 <p>
-                  What is the key characteristic that makes a sequence of elements qualify as a subarray (as opposed to a subsequence) in financial time-series analysis?
+                  Complete the missing condition in this variable-size sliding window code that detects when portfolio growth stops:
                 </p>
+                <pre><code>{`
+for (let i = 1; i \< portfolioValues.length; i++\) {
+  // Check if current value maintains growth
+  if (_______________) {
+    // Growth stopped, update best period
+    const currentLength = i - currentStart;
+    // ... rest of logic
+  }
+}`}</code></pre>
                 <input type="text" required />
                 <span className="feedback" />
                 <div className="explanation">
-                  The key characteristic is that subarrays must be <strong>contiguous</strong>. This means the time periods must be adjacent to each other with no gaps, which is essential for financial analysis where temporal relationships matter (e.g., consecutive trading days, continuous performance periods).
+                  The condition <strong>{`portfolioValues[i] < portfolioValues[i - 1]`}</strong> detects when the current value is less than the previous value, indicating that the growth period has ended. This triggers the window reset logic in the variable-size sliding window algorithm.
                 </div>
               </div>
 
-              <div className="question" data-answer="variable-size sliding window">
+              <div className="question" data-answer="O(n)">
                 <p>
-                  When you need to find the optimal trading period that meets certain criteria (like &quot;longest period with minimum 15% return&quot;), which sliding window approach should you use?
+                  Analyze the time complexity of this variable-size sliding window algorithm:
                 </p>
+                <pre><code>{`
+function findLongestGrowthPeriod(portfolioValues) {
+  let maxLength = 1;
+  let currentStart = 0;
+  
+  for (let i = 1; i < portfolioValues.length; i++) {
+    if (portfolioValues[i] < portfolioValues[i - 1]) {
+      // Update best period and reset window
+      currentStart = i;
+    }
+  }
+  return bestPeriod;
+}`}</code></pre>
                 <input type="text" required />
                 <span className="feedback" />
                 <div className="explanation">
-                  You should use a <strong>variable-size sliding window</strong> (also called the two-pointer technique). This approach expands the window by moving the right pointer and contracts it by moving the left pointer based on the performance criteria. It&apos;s perfect for optimization problems where you&apos;re looking for the best trading period of flexible length.
+                  The time complexity is <strong>O(n)</strong> where n is the length of the portfolio values array. Even though this is a variable-size sliding window, we only make one pass through the array with a single loop. Each element is visited exactly once, and the window reset operations are constant time, resulting in linear time complexity.
                 </div>
               </div>
 

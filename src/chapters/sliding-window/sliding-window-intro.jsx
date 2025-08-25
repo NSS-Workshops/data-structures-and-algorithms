@@ -7,14 +7,64 @@ export const slidingWindowIntroChapter = {
   sectionId: 'sliding-window',
   previousChapterId: 'sliding-window-learning-objectives',
   content: `
-## The Trading Floor Challenge
+  Let's have an inside look at the world of active traders buying and selling in the finnacial markets. These folks don’t just look at raw price charts, they rely on technical indicators. These are math-based tools, like the 20-day simple moving average (SMA), that smooth past price data to make trends and patterns easier to see.
+  ▶️ Watch until 1:36 for a quick explanbation of what simple moving averages are:
+  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IvvUbh-cnX4?si=58Kf4ru2Kgu2VzbS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Sarah Martinez, a quantitative analyst at GreenCapital ESG Investments, stared at her screen displaying real-time sustainable stock price data. Her team needed to calculate moving averages and volatility measures for thousands of green energy and [ESG-compliant stocks](https://en.wikipedia.org/wiki/Environmental,_social,_and_governance), but their current approach was too slow for high-frequency sustainable trading decisions.
+## The Trading Floor Challenge  
 
-"We're recalculating the entire 20-day moving average from scratch every time a new price comes in," Sarah explained to her colleague, Alex Chen, a senior software engineer. "With ESG market data streaming in every millisecond, we can't afford this inefficiency."
 
-Alex nodded, examining the price data: [100, 102, 98, 105, 103, 107, 104, 109, 106, 108, ...]
+Sarah Martinez, an analyst at GreenCapital ESG Investments, stared at her screen displaying real-time sustainable stock price data. Her team needed to calculate moving averages and volatility measures for thousands of green energy and ESG-compliant stocks, but their current approach was too slow for high-frequency sustainable trading decisions.
 
+
+
+
+
+
+
+“We’re recalculating the entire 20-day moving average from scratch every time a new daily price comes in,” Sarah explained to her colleague, Alex Chen, a senior software engineer.
+
+
+A 20-day moving average is the average of the last 20 days of data, updated each day.
+
+For each day, we look back at the last 20 days of closing prices, add them all up, and then divide by 20 to get that day’s 20-day simple moving average.
+
+This is what our inefficient function looks like calculating SMA20 
+\`\`\`javascript
+function calculateSMA(prices, period) {
+  const result = [];
+
+  for (let i = period - 1; i < prices.length; i++) {
+    let sum = 0;
+    // sum up the last period prices
+    for (let j = i - period + 1; j <= i; j++) {
+      sum += prices[j];
+    }
+    result.push(sum / period);
+  }
+  return result;
+}
+\`\`\`
+
+This current solution has a far from optimal runtime compleity of  O(n×k), said Alex, but maybe we can optimize this using the sliding window technique I learned in Nashville Software Schools Data Structure and algorithm course. 😉
+
+Simple moving average using sliding window:
+
+- On day 20, you add up days 1–20 and divide by 20.
+
+- On day 21, you drop day 1, add day 21, and average days 2–21.
+
+- On day 22, you average days 3–22.
+
+
+
+
+
+
+A sliding window can help us calculate a stock’s 20-day simple moving average, where each new day’s price enters the window, the oldest drops out, and the rolling average helps our traders spot the trend without being distracted by short-term price fluctuations.
+
+Sarah nodded, examining the price data for CarbonVault Systems a leader in carbon capture solutions: [100, 102, 98, 105, 103, 107, 104, 109, 106, 108, ...] Each number in the array is the daily closing price of CarbonVault Systems stock, so the 10 values shown correspond to 10 consecutive days of trading data.
 "This is a perfect case for the sliding window technique," Alex said. "Instead of recalculating everything, we can maintain a running calculation as we slide through the data."
 
 ## What is the Sliding Window Technique?
@@ -23,7 +73,7 @@ The sliding window technique is a computational method that maintains a "window"
 
 Think of it like a magnifying glass moving across a chart - you examine one section at a time, but instead of lifting and repositioning the glass, you slide it smoothly to the next position.
 
-## Two Forms of Sliding Window
+## Two Forms of Sliding Window Fixed and Variable size
 
 ### 1. Fixed-Size Window
 The window size remains constant throughout the algorithm. Perfect for financial indicators like moving averages, where you always want the same period (e.g., 20-day moving average).
@@ -47,30 +97,6 @@ FIXED_SIZE_SLIDING_WINDOW(data, windowSize):
     RETURN result
 \`\`\`
 
-### 2. Variable-Size Window
-The window size can grow or shrink based on conditions. Useful for finding optimal trading periods or detecting patterns that meet specific criteria.
-
-**Pseudocode Template:**
-\`\`\`
-VARIABLE_SIZE_SLIDING_WINDOW(data, condition):
-    left = 0
-    result = []
-    
-    FOR right = 0 TO data.length - 1:
-        // Expand window by including data[right]
-        ADD data[right] TO window
-        
-        // Contract window while condition is violated
-        WHILE condition_violated(window):
-            REMOVE data[left] FROM window
-            left++
-        
-        // Update result with current optimal window
-        IF condition_met(window):
-            result.append(current_window_info)
-    
-    RETURN result
-\`\`\`
 
 ## ⏱️ Sarah's First Challenge!
 
@@ -83,59 +109,6 @@ VARIABLE_SIZE_SLIDING_WINDOW(data, condition):
 - Use the provided template to optimize from O(n×k) to O(n) time complexity
 - **Click Run Tests**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
-
-"This challenge teaches you the core sliding window optimization that powers real-time financial analysis systems," Alex explained. "The same technique that helps us track sustainable investment performance in milliseconds rather than seconds."
-
-## Financial Application: Moving Average Calculation
-
-Let's see how Sarah optimized her moving average calculation:
-
-**Naive Approach (O(n×k)):**
-\`\`\`javascript
-function calculateMovingAverages(prices, period) {
-  const averages = [];
-  
-  // For each possible period, recalculate entire sum
-  for (let i = 0; i <= prices.length - period; i++) {
-    let sum = 0;
-    for (let j = i; j < i + period; j++) {
-      sum += prices[j];
-    }
-    averages.push(sum / period);
-  }
-  
-  return averages;
-}
-\`\`\`
-
-**Sliding Window Approach (O(n)):**
-\`\`\`javascript
-function calculateMovingAveragesOptimized(prices, period) {
-  if (prices.length < period) return [];
-  
-  const averages = [];
-  
-  // Calculate first window sum
-  let windowSum = 0;
-  for (let i = 0; i < period; i++) {
-    windowSum += prices[i];
-  }
-  averages.push(windowSum / period);
-  
-  // Slide window through remaining data
-  for (let i = period; i < prices.length; i++) {
-    // Remove oldest price, add newest price
-    windowSum = windowSum - prices[i - period] + prices[i];
-    averages.push(windowSum / period);
-  }
-  
-  return averages;
-}
-
-// Test with stock prices
-const stockPrices = [100, 102, 98, 105, 103, 107, 104, 109, 106, 108];
-console.log("3-period moving averages:", calculateMovingAveragesOptimized(stockPrices, 3));
-\`\`\`
 
 ## Performance Impact in Trading
 
@@ -153,22 +126,13 @@ The sliding window technique is appropriate when:
 
 1. **You need to find something among all contiguous subarrays of a specific size** (fixed-size window)
 2. **You need to find the optimal contiguous subarray that meets certain criteria** (variable-size window)
-3. **You're dealing with time-series data** where temporal relationships matter
 4. **You want to optimize from O(n²) or O(n×k) to O(n)** complexity
-
-Common financial applications:
-- Moving averages (SMA, EMA)
-- Volatility calculations (rolling standard deviation)
-- Maximum drawdown analysis
-- Bollinger Bands calculations
-- RSI (Relative Strength Index) computations
 
 ## Key Takeaways
 
 - **Sliding window optimizes contiguous subarray/substring problems**
 - **Two main forms: fixed-size and variable-size windows**
 - **Reduces time complexity from O(n×k) to O(n) for fixed-size problems**
-- **Essential for real-time financial data processing**
 - **The technique maintains running calculations instead of recalculating from scratch**
 
 ## 🧠 Recall Practice
@@ -326,7 +290,7 @@ console.log("SMA values:", calculateSMA(testPrices, 3)); // Should output [100.0
                 </div>
               </div>
 
-              <div className="question" data-answer="fixed-size">
+              <div className="question" data-answer="fixed">
                 <p>
                   When calculating a 20-day moving average for stock prices, which type of sliding window should you use?
                 </p>

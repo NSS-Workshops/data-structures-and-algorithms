@@ -43,7 +43,7 @@ Test your understanding of the sliding window technique, focusing on financial a
                 </div>
               </div>
 
-              <div className="question" data-answer="variable-size">
+              <div className="question" data-answer="variable">
                 <p>Which type of sliding window should you use for problems like &quot;find the longest trading period with at least 15% return&quot;?</p>
                 <input type="text" required />
                 <span className="feedback" />
@@ -61,7 +61,7 @@ Test your understanding of the sliding window technique, focusing on financial a
                 </div>
               </div>
 
-              <div className="question" data-answer="fixed-size">
+              <div className="question" data-answer="fixed">
                 <p>When calculating a 30-day rolling volatility for risk management, which type of sliding window should you use?</p>
                 <input type="text" required />
                 <span className="feedback" />

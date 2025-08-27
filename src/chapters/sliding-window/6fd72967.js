@@ -40,8 +40,6 @@ Best of luck, and enjoy the practice! 🚀
 
 Given an array of integers and a number k, find the maximum sum of any contiguous subarray of size k.
 
-Use the sliding window technique to solve this efficiently.
-
 ### Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
@@ -51,8 +49,6 @@ Use the sliding window technique to solve this efficiently.
 Problem: Maximum Sum Subarray of Size K
 
 Given an array of integers and a number k, find the maximum sum of any contiguous subarray of size k.
-
-Use the sliding window technique to solve this efficiently.
 
 Examples:
 Input: arr = [2, 1, 5, 1, 3, 2], k = 3
@@ -71,7 +67,6 @@ Follow-up Questions:
 */
 
 function maxSumSubarray(arr, k) {
-  // Approach: Use sliding window technique
   // 1. Calculate sum of first k elements
   // 2. Slide window: remove leftmost element, add rightmost element
   // 3. Keep track of maximum sum seen so far

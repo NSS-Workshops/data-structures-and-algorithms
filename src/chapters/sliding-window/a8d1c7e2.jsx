@@ -98,7 +98,7 @@ function maxSumSubarray(arr, k) {
         name: "Negative numbers allowed",
         test: (code) => {
           try {
-            const maxSumSubarray = new Function(`\${code}; return maxSumSubarray;`)();
+            const maxSumSubarray = new Function(`${code}; return maxSumSubarray;`)();
             const t1 = maxSumSubarray([-1, -2, -3, -4], 2) === -3; // [-1,-2]
             const t2 = maxSumSubarray([1, -2, 3, -4, 5], 2) === 1; // [-4,5]
             const t3 = maxSumSubarray([-5, -1, -3, -2], 3) === -6; // [-1,-3,-2]
@@ -106,7 +106,7 @@ function maxSumSubarray(arr, k) {
               ? new TestResult({ passed: true })
               : new TestResult({ passed: false, message: "Negative number cases failed." });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Function should handle arrays with negative numbers."
@@ -115,7 +115,7 @@ function maxSumSubarray(arr, k) {
         name: "Edge cases",
         test: (code) => {
           try {
-            const maxSumSubarray = new Function(`\${code}; return maxSumSubarray;`)();
+            const maxSumSubarray = new Function(`${code}; return maxSumSubarray;`)();
             const t1 = maxSumSubarray([5], 1) === 5;
             const t2 = maxSumSubarray([1, 2, 3], 3) === 6;
             const t3 = maxSumSubarray([], 1) === 0;
@@ -125,7 +125,7 @@ function maxSumSubarray(arr, k) {
               ? new TestResult({ passed: true })
               : new TestResult({ passed: false, message: "Edge cases failed." });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Function should handle edge cases correctly."
@@ -134,14 +134,14 @@ function maxSumSubarray(arr, k) {
         name: "Larger array sanity",
         test: (code) => {
           try {
-            const maxSumSubarray = new Function(`\${code}; return maxSumSubarray;`)();
+            const maxSumSubarray = new Function(`${code}; return maxSumSubarray;`)();
             const largeArr = [1,2,3,4,5,6,7,8,9,10];
             const got = maxSumSubarray(largeArr, 3);
             return (got === 27)
               ? new TestResult({ passed: true })
-              : new TestResult({ passed: false, message: `Expected 27, got \${got}` });
+              : new TestResult({ passed: false, message: `Expected 27, got ${got}` });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Function should work efficiently with larger arrays."

@@ -1,4 +1,4 @@
-/* ------------------------------ EXERCISE 2 ------------------------------ */
+import { TestResult } from "../../utils/test_utils";
 
 export const codeExerciseVariableWindow = {
   id: 'c3f94b51',
@@ -6,9 +6,7 @@ export const codeExerciseVariableWindow = {
   sectionId: 'sliding-window',
   previousChapterId: null,
   content: `
-  Hi again 👋,
-
-⚠️ **Please do not share this URL / problem before class.**
+  Hi 👋,
 
 ### Group Exercise Rules
 - Be kind 💜
@@ -86,17 +84,16 @@ function minSubarrayLenAtLeastTarget(target, arr) {
         name: "Basic variable-window cases",
         test: (code) => {
           try {
-            const minSubarrayLenAtLeastTarget = new Function(`\${code}; return minSubarrayLenAtLeastTarget;`)();
+            const minSubarrayLenAtLeastTarget = new Function(`${code}; return minSubarrayLenAtLeastTarget;`)();
             const t1 = minSubarrayLenAtLeastTarget(7, [2,1,5,2,3,2]) === 2; // [5,2]
             const t2 = minSubarrayLenAtLeastTarget(7, [2,1,5,2,8]) === 1;   // [8]
-            const t3 = minSubarrayLenAtLeastTarget(8, [3,4,1,1,6]) === 2;   // [3,4,1] len3 meets 8, but [1,1,6] len3; actually [3,4,1]=8 len3; [1,6,?] doesn't; minimal is 2 with [2,6]? adjust example:
-            // Fix example: use [3,4,1,1,6] and target=11 => minimal is 2 ([5,6] doesn't exist). Let's re-test with a clean set.
-            const a = minSubarrayLenAtLeastTarget(11, [3,4,1,1,6]) === 3; // [4,1,6] length 3
-            return (t1 && t2 && a)
+            // For [3,4,1,1,6] with target=11: [4,1,1,6] has sum=12 and length=4
+            const t3 = minSubarrayLenAtLeastTarget(11, [3,4,1,1,6]) === 4; // [4,1,1,6] length 4
+            return (t1 && t2 && t3)
               ? new TestResult({ passed: true })
               : new TestResult({ passed: false, message: "Basic cases failed." });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Function should find the smallest subarray length with sum >= target."
@@ -105,14 +102,14 @@ function minSubarrayLenAtLeastTarget(target, arr) {
         name: "No possible subarray",
         test: (code) => {
           try {
-            const fn = new Function(`\${code}; return minSubarrayLenAtLeastTarget;`)();
+            const fn = new Function(`${code}; return minSubarrayLenAtLeastTarget;`)();
             const t1 = fn(5, [1,1,1,1]) === 0;
             const t2 = fn(100, [10,20,30]) === 0;
             return (t1 && t2)
               ? new TestResult({ passed: true })
               : new TestResult({ passed: false, message: "No-solution cases failed." });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Should return 0 when no subarray reaches the target."
@@ -121,7 +118,7 @@ function minSubarrayLenAtLeastTarget(target, arr) {
         name: "Edge & single-element hits",
         test: (code) => {
           try {
-            const fn = new Function(`\${code}; return minSubarrayLenAtLeastTarget;`)();
+            const fn = new Function(`${code}; return minSubarrayLenAtLeastTarget;`)();
             const t1 = fn(3, [3]) === 1;
             const t2 = fn(3, []) === 0;
             const t3 = fn(1, [0,0,0,1]) === 1;
@@ -130,7 +127,7 @@ function minSubarrayLenAtLeastTarget(target, arr) {
               ? new TestResult({ passed: true })
               : new TestResult({ passed: false, message: "Edge cases failed." });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Handles empty arrays, single hits, and zeros."
@@ -139,17 +136,15 @@ function minSubarrayLenAtLeastTarget(target, arr) {
         name: "Larger array sanity",
         test: (code) => {
           try {
-            const fn = new Function(`\${code}; return minSubarrayLenAtLeastTarget;`)();
-            const big = Array.from({length: 100}, (_, i) => i % 5); // 0..4 repeating
-            // target 10 can be met with [4,3,2,1] but due to zeros pattern, minimal length should be 5: [2,3,4,0,1] => sum 10
+            const fn = new Function(`${code}; return minSubarrayLenAtLeastTarget;`)();
             // Let's construct a deterministic case:
             const arr = [1,2,3,4,0,0,0,5,5,1]; // minimal for target=10 is 2 ([5,5])
             const got = fn(10, arr);
             return (got === 2)
               ? new TestResult({ passed: true })
-              : new TestResult({ passed: false, message: `Expected 2, got \${got}` });
+              : new TestResult({ passed: false, message: `Expected 2, got ${got}` });
           } catch (e) {
-            return new TestResult({ passed: false, message: `Error: \${e.message}` });
+            return new TestResult({ passed: false, message: `Error: ${e.message}` });
           }
         },
         message: "Works efficiently on larger arrays."

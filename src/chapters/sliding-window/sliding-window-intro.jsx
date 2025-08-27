@@ -7,6 +7,21 @@ export const slidingWindowIntroChapter = {
   sectionId: 'sliding-window',
   previousChapterId: 'sliding-window-learning-objectives',
   content: `
+  **Sliding Window Technique Fundamentals**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p-ss2JNynmw?si=PTDDDVpT4059Ekei" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+This video provides an introduction to the sliding window technique, explaining the core concepts and demonstrating how to identify when to use this approach. 
+
+**Advanced Sliding Window Problems**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dOonV4byDEg?si=nS8YpZTokqGaFtlu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+This video dives deeper into more complex sliding window problems, including variable-size windows and optimization challenges.
+
+
+  ## Now that we have an intuition for the technique, let’s look at a real-world use case
+
   Let's have an inside look at the world of active traders buying and selling in the finnacial markets. These folks don’t just look at raw price charts, they rely on technical indicators. These are math-based tools, like the 20-day simple moving average (SMA), that smooth past price data to make trends and patterns easier to see.
   ▶️ Watch until 1:36 for a quick explanbation of what simple moving averages are:
   

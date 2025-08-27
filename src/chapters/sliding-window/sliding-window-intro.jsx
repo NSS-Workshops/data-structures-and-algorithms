@@ -47,7 +47,7 @@ function calculateSMA(prices, period) {
 }
 \`\`\`
 
-This current solution has a far from optimal runtime compleity of  O(n×k), said Alex, but maybe we can optimize this using the sliding window technique I learned in Nashville Software Schools Data Structure and algorithm course. 😉
+This current solution has a far from optimal runtime compleity of  O(nk), said Alex, but maybe we can optimize this using the sliding window technique I learned in Nashville Software Schools Data Structure and algorithm course. 😉
 
 Simple moving average using sliding window:
 
@@ -106,7 +106,7 @@ FIXED_SIZE_SLIDING_WINDOW(data, windowSize):
 
 🔓 **Uncomment the below code section in the editor 👉:**
 - Implement the \`calculateSMA()\` function using the fixed-size sliding window technique
-- Use the provided template to optimize from O(n×k) to O(n) time complexity
+- Use the provided template to optimize from O(nk) to O(n) time complexity
 - **Click Run Tests**
 - **Inspect 📋 Console Output window and run test to check for correctness!**
 
@@ -114,7 +114,7 @@ FIXED_SIZE_SLIDING_WINDOW(data, windowSize):
 
 The performance difference is crucial in financial markets:
 
-- **Naive approach**: O(n×k) - For 1000 data points with 20-day period = 20,000 operations
+- **Naive approach**: O(nk) - For 1000 data points with 20-day period = 20,000 operations
 - **Sliding window**: O(n) - For 1000 data points = 1000 operations
 - **Speedup**: 20x faster!
 
@@ -126,13 +126,13 @@ The sliding window technique is appropriate when:
 
 1. **You need to find something among all contiguous subarrays of a specific size** (fixed-size window)
 2. **You need to find the optimal contiguous subarray that meets certain criteria** (variable-size window)
-4. **You want to optimize from O(n²) or O(n×k) to O(n)** complexity
+4. **You want to optimize from O(n²) or O(nk) to O(n)** complexity
 
 ## Key Takeaways
 
 - **Sliding window optimizes contiguous subarray/substring problems**
 - **Two main forms: fixed-size and variable-size windows**
-- **Reduces time complexity from O(n×k) to O(n) for fixed-size problems**
+- **Reduces time complexity from O(nk) to O(n) for fixed-size problems**
 - **The technique maintains running calculations instead of recalculating from scratch**
 
 ## 🧠 Recall Practice
@@ -286,7 +286,7 @@ console.log("SMA values:", calculateSMA(testPrices, 3)); // Should output [100.0
                 <input type="text" required />
                 <span className="feedback" />
                 <div className="explanation">
-                  The sliding window approach has <strong>O(n)</strong> time complexity. We make one pass through the array, and for each position we perform constant-time operations (one subtraction and one addition). This is much better than the naive O(n×k) approach that recalculates the sum for each window.
+                  The sliding window approach has <strong>O(n)</strong> time complexity. We make one pass through the array, and for each position we perform constant-time operations (one subtraction and one addition). This is much better than the naive O(nk) approach that recalculates the sum for each window.
                 </div>
               </div>
 

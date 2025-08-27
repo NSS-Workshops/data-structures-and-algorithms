@@ -11,8 +11,7 @@ export const slidingWindowLearningObjectivesChapter = {
   title: 'Learning Objectives',
   sectionId: 'sliding-window',
   previousChapterId: null,
-  content: `# Learning Objectives: Sliding Window Technique
-
+  content: `
 ## 🎯 What You Will Learn
 
 This section covers the sliding window technique, a powerful pattern for optimizing array and string problems. By the end of this section, you will understand how to identify sliding window opportunities and implement efficient solutions.

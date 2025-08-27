@@ -47,102 +47,37 @@ VARIABLE_SIZE_SLIDING_WINDOW(data, condition):
     RETURN bestResult
 \`\`\`
 
-## Financial Application: Longest Profitable Period
+## 📈 Financial Example: Quickest Time to Hit Profit Target
 
-Let's implement Michael's strategy analysis:
+Given a list of daily profits, find the minimum number of consecutive days needed to reach a target cumulative profit.
 
+This models: “How quickly can I reach my profit goal with consecutive trading days?”
 \`\`\`javascript
-// Find longest consecutive period with minimum return threshold
-function findLongestProfitablePeriod(dailyReturns, minThreshold = 0.15) {
-  if (dailyReturns.length === 0) return null;
-  
-  let left = 0;
-  let maxLength = 0;
-  let bestPeriod = null;
-  let windowSum = 0;
-  
-  // Expand window with right pointer
-  for (let right = 0; right < dailyReturns.length; right++) {
-    // Add new return to window
-    windowSum += dailyReturns[right];
-    
-    // Contract window while average return is below threshold
-    while (left <= right && (windowSum / (right - left + 1)) < minThreshold) {
-      windowSum -= dailyReturns[left];
-      left++;
-    }
-    
-    // Update best period if current window is longer
-    const currentLength = right - left + 1;
-    if (currentLength > maxLength) {
-      maxLength = currentLength;
-      bestPeriod = {
-        startDay: left,
-        endDay: right,
-        length: currentLength,
-        averageReturn: (windowSum / currentLength).toFixed(4),
-        totalReturn: windowSum.toFixed(4)
-      };
+// Find the shortest streak of days where cumulative profit ≥ target
+function quickestProfitTarget(profits, target) {
+  let left = 0;        // start of window
+  let sum = 0;         // running sum of current window
+  let minLen = Infinity; // track best (smallest) window length
+
+  // Expand the window one day at a time
+  for (let right = 0; right < profits.length; right++) {
+    sum += profits[right];
+
+    // Once we’ve reached the target, try to shrink from the left
+    // Shrinking keeps it valid while removing extra "baggage" days
+    while (sum >= target) {
+      minLen = Math.min(minLen, right - left + 1); // update best length
+      sum -= profits[left++]; // shrink from left
     }
   }
-  
-  return bestPeriod;
+
+  // If never reached target, return 0
+  return minLen === Infinity ? 0 : minLen;
 }
 
-// Test with sample daily returns (as decimals)
-const dailyReturns = [0.12, 0.18, 0.16, 0.14, 0.20, 0.13, 0.11, 0.19, 0.17, 0.15];
-console.log("Longest profitable period:", findLongestProfitablePeriod(dailyReturns, 0.15));
-\`\`\`
-
-## Advanced Application: Minimum Risk Period
-
-Finding the shortest period to achieve a target return while minimizing risk:
-Identify the smallest time window where the target return is reached, because shorter holding periods expose you to less market risk.
-Shorter holding periods mean less time for the price to move against you, so you hit your target faster and reduce exposure to market risk.
-
-\`\`\`javascript
-// Find shortest period to achieve target cumulative return
-function findShortestTargetPeriod(dailyReturns, targetReturn = 1.0) {
-  if (dailyReturns.length === 0) return null;
-  
-  let left = 0;
-  let minLength = Infinity;
-  let bestPeriod = null;
-  let windowSum = 0;
-  
-  // Expand window with right pointer
-  for (let right = 0; right < dailyReturns.length; right++) {
-    // Add new return to window
-    windowSum += dailyReturns[right];
-    
-    // Contract window while we exceed target return
-    while (windowSum >= targetReturn) {
-      const currentLength = right - left + 1;
-      
-      // Update best period if current window is shorter
-      if (currentLength < minLength) {
-        minLength = currentLength;
-        bestPeriod = {
-          startDay: left,
-          endDay: right,
-          length: currentLength,
-          totalReturn: windowSum.toFixed(4),
-          averageReturn: (windowSum / currentLength).toFixed(4)
-        };
-      }
-      
-      // Shrink window from left
-      windowSum -= dailyReturns[left];
-      left++;
-    }
-  }
-  
-  return bestPeriod;
-}
-
-// Test with cumulative returns
-const cumulativeReturns = [0.05, 0.12, 0.08, 0.15, 0.22, 0.18, 0.25, 0.30, 0.28, 0.35];
-console.log("Shortest target period:", findShortestTargetPeriod(cumulativeReturns, 0.20));
+// Example: How quickly can we reach $7 profit?
+console.log(quickestProfitTarget([2, 3, 1, 2, 4, 3], 7));
+// → 2  (profits [4,3] reach $7 in just 2 days)
 \`\`\`
 
 ## ⏱️ Michael's First Challenge!

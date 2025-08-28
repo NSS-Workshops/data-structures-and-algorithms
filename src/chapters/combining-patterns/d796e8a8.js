@@ -1,138 +1,134 @@
 import { TestResult } from "../../utils/test_utils";
 
-export const codeExcerciseTwoChapter = {
+export const codeExcerciseOneAlsoChapter = {
   id: 'd796e8a8',
-  title: 'Module 10 - Code Excercise 2',
+  title: 'DSA Challenge 1 - Arrays: iterate, add, remove',
   sectionId: 'combining-patterns',
   previousChapterId: null,
   content: `
-  Hi 👋,
-You'll be guiding your partner through the coding problem on the right side of your screen. 
+# Challenge 1: Arrays — iterate, add, remove
 
-⚠️ **Please do not share this URL / problem before class.**  
-Revealing the question early defeats the purpose of simulating a real-world interview, where candidates do not know the problem in advance. Let's give your partner the chance to experience the challenge authentically.
+**Navigate:** 1 | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 
-🧠 **Before class:**  
-Take time to study the problem. During the session, you'll have 90 minutes in your breakout room to run a mock interview with your partner. Be sure to take turns acting as the interviewer and interviewee.
+**Why it matters:** Arrays are the workhorse. Mastering iteration and index-based edits builds intuition for time complexity.
 
-🗣️ **As the interviewer, your responsibilities are:**
-- Send this URL to your partner (copy and past the whole url and slack it directly to you partner)
-- Briefly introduce the problem
-- Never give away the answer
-- Take notes and provide feedback
-- Fill out this [feedback form](https://forms.gle/sXK3tJaGNEk52jm4A)
+**Objectives:**
+- Implement code to iterate over an array and perform an operation.
+- Implement code to add/remove by index.
+- Explain why insert/remove by index is **O(n)** and \`.push/.pop\` are **O(1)** while \`.shift/.unshift\` are **O(n)\`.
 
-🗣️ **As the interviewee, your responsibilities are:**
-- Ask clarifying questions
-- Follow the steps in the [solving guide](https://forms.gle/sXK3tJaGNEk52jm4A):
-    Step 1: Clarify
-    Step 2: Plan
-    Step 3: Implement
-    Step 4: Test
-    Step 5: Optimize
+**Time Estimate:** 20 minutes
 
-🪞 **After the first interview:**  
-Leave 10–15 minutes to reflect, share feedback, and then switch roles.
+## Problems to Solve:
 
-Best of luck, and enjoy the practice! 🚀
+1. **sumOfSquares(nums)** - Return the sum of x² for each x in nums (no Array.prototype.map)
+2. **insertAt(arr, index, value)** - Return NEW array with value inserted at index
+3. **removeAt(arr, index)** - Return NEW array without the element at index
 
-## Problem: Top K Frequent Elements
+## Big-O Analysis:
+- **insertAt/removeAt are O(n)**: They require shifting elements to maintain array structure
+- **push/pop are O(1)**: They operate at the end, no shifting needed  
+- **shift/unshift are O(n)**: They operate at the beginning, requiring all elements to shift`,
 
-Given an integer array and an integer k, return the k most frequent elements. You may return the answer in any order.
-
-### Follow-up Questions:
-- What is the time complexity of your solution?
-- What is the space complexity?
-- How could you optimize this with a heap data structure?`,
   exercise: {
-    starterCode:`/*
-Problem: Top K Frequent Elements
+    starterCode: `/*
+Challenge 1: Arrays — iterate, add, remove
 
-Given an integer array and an integer k, return the k most frequent elements.
-You may return the answer in any order.
+Implement the following functions:
 
-Examples:
-Input: nums = [1, 1, 1, 2, 2, 3], k = 2
-Output: [1, 2]
+1. sumOfSquares(nums) - return the sum of x^2 for each x in nums (no Array.prototype.map)
+2. insertAt(arr, index, value) - returns NEW array with value inserted at index
+3. removeAt(arr, index) - returns NEW array without the element at index
 
-Input: nums = [1], k = 1
-Output: [1]
-
-Input: nums = [1, 2, 3, 4, 5], k = 3
-Output: [1, 2, 3] (or any 3 elements since all have same frequency)
-
-Follow-up Questions:
-- What is the time complexity of your solution?
-- What is the space complexity?
-- How could you optimize this with a heap data structure?
+Time Complexity Questions:
+- Why are insertAt/removeAt O(n)?
+- Why are push/pop O(1) but shift/unshift O(n)?
 */
 
-function topKFrequent(nums, k) {
-  // Approach: Use Map for frequency counting + sorting
-  // 1. Count frequency of each element using Map
-  // 2. Sort elements by frequency
-  // 3. Return top k elements
-  
+function sumOfSquares(nums) {
+  // return the sum of x^2 for each x in nums (no Array.prototype.map)
+  // Your code here
+}
+
+function insertAt(arr, index, value) {
+  // returns NEW array with value inserted at index
+  // Your code here
+}
+
+function removeAt(arr, index) {
+  // returns NEW array without the element at index
   // Your code here
 }`,
-    solution:`/*
-Problem: Top K Frequent Elements
 
-Given an integer array and an integer k, return the k most frequent elements.
+    solution: `/*
+Challenge 1: Arrays — iterate, add, remove
 */
 
-function topKFrequent(nums, k) {
-  // Step 1: Count frequency of each element
-  const frequencyMap = new Map();
-  
-  for (let num of nums) {
-    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+function sumOfSquares(nums) {
+  // return the sum of x^2 for each x in nums (no Array.prototype.map)
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i] * nums[i];
   }
-  
-  // Step 2: Convert map to array of [element, frequency] pairs
-  const frequencyArray = Array.from(frequencyMap.entries());
-  
-  // Step 3: Sort by frequency in descending order
-  frequencyArray.sort((a, b) => b[1] - a[1]);
-  
-  // Step 4: Extract top k elements
-  const result = [];
-  for (let i = 0; i < k && i < frequencyArray.length; i++) {
-    result.push(frequencyArray[i][0]);
-  }
-  
-  return result;
-  
-  // Time Complexity: O(n log n) where n is number of unique elements
-  // - Frequency counting: O(n)
-  // - Sorting: O(n log n) 
-  // - Extracting k elements: O(k)
-  // Space Complexity: O(n) for the frequency map and array
-  
-  // Alternative with heap would be O(n log k) time complexity
-}`,
-    tests:[
+  return sum;
+}
+
+function insertAt(arr, index, value) {
+  // returns NEW array with value inserted at index
+  return [...arr.slice(0, index), value, ...arr.slice(index)];
+}
+
+function removeAt(arr, index) {
+  // returns NEW array without the element at index
+  return [...arr.slice(0, index), ...arr.slice(index + 1)];
+}
+
+// Big-O Analysis:
+// - insertAt/removeAt are O(n): They require shifting elements to maintain array structure
+// - push/pop are O(1): They operate at the end, no shifting needed
+// - shift/unshift are O(n): They operate at the beginning, requiring all elements to shift`,
+
+    tests: [
       {
-        name: "Basic top k frequent elements",
+        name: "sumOfSquares calculates correctly",
         test: (code) => {
           try {
-            const topKFrequent = new Function(`${code}; return topKFrequent;`)();
+            const func = new Function(`${code}; return { sumOfSquares, insertAt, removeAt };`)();
+            const result = func.sumOfSquares([1, 2, 3]);
+            if (result === 14) {
+              return new TestResult({ passed: true });
+            } else {
+              return new TestResult({
+                passed: false,
+                message: `Expected 14, got ${result}`
+              });
+            }
+          } catch (error) {
+            return new TestResult({
+              passed: false,
+              message: `Error: ${error.message}`
+            });
+          }
+        },
+        message: "Function should calculate sum of squares correctly."
+      },
+      {
+        name: "insertAt works correctly",
+        test: (code) => {
+          try {
+            const func = new Function(`${code}; return { sumOfSquares, insertAt, removeAt };`)();
+            const result1 = func.insertAt([10, 20, 30], 1, 99);
+            const result2 = func.insertAt([], 0, 'a');
             
-            const result1 = topKFrequent([1, 1, 1, 2, 2, 3], 2);
-            const result2 = topKFrequent([1], 1);
-            
-            // For result1, should contain 1 and 2 (most frequent)
-            const test1 = result1.length === 2 && result1.includes(1) && result1.includes(2);
-            
-            // For result2, should contain 1
-            const test2 = result2.length === 1 && result2[0] === 1;
+            const test1 = JSON.stringify(result1) === JSON.stringify([10, 99, 20, 30]);
+            const test2 = JSON.stringify(result2) === JSON.stringify(['a']);
             
             if (test1 && test2) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
                 passed: false,
-                message: `Basic cases failed. Result1: ${JSON.stringify(result1)}, Result2: ${JSON.stringify(result2)}`
+                message: `Test 1: ${JSON.stringify(result1)}, Test 2: ${JSON.stringify(result2)}`
               });
             }
           } catch (error) {
@@ -142,32 +138,21 @@ function topKFrequent(nums, k) {
             });
           }
         },
-        message: "Function should return k most frequent elements."
+        message: "Function should insert elements at correct positions."
       },
       {
-        name: "Handle equal frequencies",
+        name: "removeAt works correctly",
         test: (code) => {
           try {
-            const topKFrequent = new Function(`${code}; return topKFrequent;`)();
+            const func = new Function(`${code}; return { sumOfSquares, insertAt, removeAt };`)();
+            const result = func.removeAt([10, 20, 30], 1);
             
-            // All elements have same frequency
-            const result = topKFrequent([1, 2, 3, 4, 5], 3);
-            
-            // Should return exactly 3 elements
-            const correctLength = result.length === 3;
-            
-            // All returned elements should be from the original array
-            const validElements = result.every(num => [1, 2, 3, 4, 5].includes(num));
-            
-            // No duplicates in result
-            const noDuplicates = new Set(result).size === result.length;
-            
-            if (correctLength && validElements && noDuplicates) {
+            if (JSON.stringify(result) === JSON.stringify([10, 30])) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
                 passed: false,
-                message: `Equal frequency case failed. Result: ${JSON.stringify(result)}, Length: ${result.length}`
+                message: `Expected [10, 30], got ${JSON.stringify(result)}`
               });
             }
           } catch (error) {
@@ -177,96 +162,7 @@ function topKFrequent(nums, k) {
             });
           }
         },
-        message: "Function should handle elements with equal frequencies."
-      },
-      {
-        name: "Handle k equals array length",
-        test: (code) => {
-          try {
-            const topKFrequent = new Function(`${code}; return topKFrequent;`)();
-            
-            const result = topKFrequent([1, 2, 3], 3);
-            
-            // Should return all unique elements
-            const correctLength = result.length === 3;
-            const hasAllElements = [1, 2, 3].every(num => result.includes(num));
-            
-            if (correctLength && hasAllElements) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `k=length case failed. Result: ${JSON.stringify(result)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should handle k equal to number of unique elements."
-      },
-      {
-        name: "Handle k greater than unique elements",
-        test: (code) => {
-          try {
-            const topKFrequent = new Function(`${code}; return topKFrequent;`)();
-            
-            const result = topKFrequent([1, 1, 2, 2], 5);
-            
-            // Should return all unique elements (only 2 unique elements exist)
-            const correctLength = result.length === 2;
-            const hasCorrectElements = result.includes(1) && result.includes(2);
-            
-            if (correctLength && hasCorrectElements) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `k>unique case failed. Result: ${JSON.stringify(result)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should handle k greater than number of unique elements."
-      },
-      {
-        name: "Handle negative numbers and zeros",
-        test: (code) => {
-          try {
-            const topKFrequent = new Function(`${code}; return topKFrequent;`)();
-            
-            const result = topKFrequent([-1, -1, 0, 0, 0, 1], 2);
-            
-            // 0 appears 3 times, -1 appears 2 times, 1 appears 1 time
-            // Top 2 should be 0 and -1
-            const correctLength = result.length === 2;
-            const hasZero = result.includes(0);
-            const hasMinusOne = result.includes(-1);
-            
-            if (correctLength && hasZero && hasMinusOne) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `Negative numbers case failed. Result: ${JSON.stringify(result)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should handle negative numbers and zeros."
+        message: "Function should remove elements at correct positions."
       }
     ]
   }

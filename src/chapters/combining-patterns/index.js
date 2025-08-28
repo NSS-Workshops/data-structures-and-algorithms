@@ -6,8 +6,19 @@ import { solvingComplexProblemsChapter } from './solving-complex-problems';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';
 import { combiningPatternsCheckpointChapter } from './checkpoint';
-import { codeExcerciseOneChapter } from './9b8a8427';
-import { codeExcerciseTwoChapter } from './d796e8a8';
+import {codeExcerciseOneChapter} from './9b8a8427';
+import  {codeExcerciseOneAlsoChapter} from './d796e8a8';
+import {codeExcerciseTwoChapter} from './a4b7c9d2';
+import {codeExcerciseThreeChapter} from "./e8f1a5b3";
+import {codeExcerciseFourChapter} from "./c6d9e2f4";
+import {codeExcerciseFiveChapter} from "./b3a8d7c1";
+import {codeExcerciseSixChapter} from "./f9e4b2a7";
+import {codeExcerciseSevenChapter} from "./d1c5f8e3";
+import {codeExcerciseEightChapter} from "./a7b2e9f6";
+import {codeExcerciseNineChapter} from "./c4f7a1d8";
+
+
+
 
 export const combiningPatternsChapters = [
   combiningPatternsLearningObjectivesChapter,
@@ -19,7 +30,15 @@ export const combiningPatternsChapters = [
   glossaryChapter,
   combiningPatternsCheckpointChapter,
   codeExcerciseOneChapter,
-  codeExcerciseTwoChapter
+  codeExcerciseOneAlsoChapter,
+  codeExcerciseTwoChapter,
+  codeExcerciseThreeChapter,
+  codeExcerciseFourChapter,
+  codeExcerciseFiveChapter,
+  codeExcerciseSixChapter,
+  codeExcerciseSevenChapter,
+  codeExcerciseEightChapter,
+  codeExcerciseNineChapter,
 ];
 
 /**

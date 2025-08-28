@@ -6,6 +6,8 @@ import { glossaryChapter } from './glossary';
 import { slidingWindowCheckpointChapter } from './checkpoint';
 import { codeExcerciseOneChapter } from './6fd72967';
 import { codeExcerciseTwoChapter } from './e49003dd';
+import { codeExerciseFixedWindow } from './a8d1c7e2';
+import { codeExerciseVariableWindow } from './c3f94b51';
 
 export const slidingWindowChapters = [
   slidingWindowLearningObjectivesChapter,
@@ -15,7 +17,9 @@ export const slidingWindowChapters = [
   glossaryChapter,
   slidingWindowCheckpointChapter,
   codeExcerciseOneChapter,
-  codeExcerciseTwoChapter
+  codeExcerciseTwoChapter,
+  codeExerciseVariableWindow,
+  codeExerciseFixedWindow
 ];
 
 /**

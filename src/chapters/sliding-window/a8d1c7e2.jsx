@@ -1,7 +1,5 @@
 import { TestResult } from "../../utils/test_utils";
 
-/* ------------------------------ EXERCISE 1 ------------------------------ */
-
 export const codeExerciseFixedWindow = {
   id: 'a8d1c7e2',
   title: 'Module 8 - In Class Code Exercise One',

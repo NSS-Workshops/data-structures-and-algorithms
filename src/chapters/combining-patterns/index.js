@@ -1,10 +1,8 @@
 import { combiningPatternsLearningObjectivesChapter } from './learning-objectives';
-import { recognizingPatternsChapter } from './recognizing-patterns';
-import { choosingDataStructuresChapter } from './choosing-data-structures';
-import { analyzingTradeoffsChapter } from './analyzing-tradeoffs';
-import { solvingComplexProblemsChapter } from './solving-complex-problems';
-import { supplementalMaterialsChapter } from './supplemental-materials';
-import { glossaryChapter } from './glossary';
+import { combinePatternsOne } from './combine-patterns-one';
+import { combinePatternsTwo } from './combine-patterns-two';
+import { combinePatternsThree } from './combine-patterns-three';
+import { combinePatternsFour } from './combine-patterns-four';
 import { combiningPatternsCheckpointChapter } from './checkpoint';
 import {codeExcerciseOneChapter} from './9b8a8427';
 import  {codeExcerciseOneAlsoChapter} from './d796e8a8';
@@ -22,12 +20,10 @@ import {codeExcerciseNineChapter} from "./c4f7a1d8";
 
 export const combiningPatternsChapters = [
   combiningPatternsLearningObjectivesChapter,
-  recognizingPatternsChapter,
-  choosingDataStructuresChapter,
-  analyzingTradeoffsChapter,
-  solvingComplexProblemsChapter,
-  supplementalMaterialsChapter,
-  glossaryChapter,
+  combinePatternsOne,
+  combinePatternsTwo,
+  combinePatternsThree,
+  combinePatternsFour,
   combiningPatternsCheckpointChapter,
   codeExcerciseOneChapter,
   codeExcerciseOneAlsoChapter,

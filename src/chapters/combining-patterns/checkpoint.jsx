@@ -2,28 +2,10 @@ import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
 
 export const combiningPatternsCheckpointChapter = {
   id: 'combining-patterns-checkpoint',
-  title: 'Checkpoint: Combining Patterns',
+  title: 'Final Self Assessment: Data Structures & Algorithms',
   sectionId: 'combining-patterns',
-  previousChapterId: 'combining-patterns-glossary',
-  content: `
-## Final Course Assessment: Data Structures & Algorithms Mastery
-
-Congratulations! You've completed an incredible journey through data structures and algorithms, culminating in building real-world global cooling AI systems. This comprehensive assessment covers all the major concepts from the entire course.
-
-**Topics Covered:**
-- Algorithmic Thinking & Big O Analysis
-- Arrays, Two Pointers, and Sliding Window Patterns
-- 2D Arrays and Matrix Operations
-- Linked Lists and Node-based Structures
-- Stacks, Queues, and LIFO/FIFO Patterns
-- Maps, Sets, and Hash-based Data Structures
-- Sorting Algorithms and Binary Search
-- Pattern Recognition and Data Structure Selection
-- Performance Trade-offs and System Optimization
-- Complex System Integration
-
-This assessment demonstrates your mastery of both theoretical concepts and practical application in solving real-world global cooling challenges.
-`,
+  previousChapterId: 'solving-complex-problems',
+  content: null,
   quiz: {
     component: () => {
       const CheckpointComponent = () => {
@@ -31,11 +13,10 @@ This assessment demonstrates your mastery of both theoretical concepts and pract
         
         return (
           <main>
-            <h2>Final Course Assessment: Data Structures & Algorithms Mastery</h2>
             <p className="assessment-intro">
               This comprehensive assessment covers all major concepts from the course.
               Take your time and demonstrate your understanding of data structures, algorithms,
-              and their real-world applications in global cooling science and AI systems.
+              and their real-world applications.
             </p>
             
             <form className="auto-graded-quiz">
@@ -320,30 +301,6 @@ This assessment demonstrates your mastery of both theoretical concepts and pract
                   more accurate predictions, support processing of massive datasets, and allow global-scale monitoring systems.
                   However, they are tools that support human decision-making rather than automatically solving complex problems.
                 </div>
-              </div>
-
-              <div className="assessment-summary">
-                <h3>🎉 Course Completion</h3>
-                <p>
-                  By completing this assessment, you&apos;ve demonstrated mastery of fundamental computer science concepts
-                  and their practical application to real-world challenges. You&apos;ve learned not just how to code,
-                  but how to think computationally about complex problems.
-                </p>
-                <p>
-                  <strong>Skills You&apos;ve Mastered:</strong>
-                </p>
-                <ul>
-                  <li>✅ Algorithmic thinking and complexity analysis</li>
-                  <li>✅ Data structure selection and optimization</li>
-                  <li>✅ Pattern recognition in problem-solving</li>
-                  <li>✅ Performance trade-off analysis</li>
-                  <li>✅ Complex system integration</li>
-                  <li>✅ Real-world application of CS concepts</li>
-                </ul>
-                <p>
-                  These skills will serve you throughout your career, whether you&apos;re building cooling monitoring systems,
-                  financial platforms, social networks, or the next breakthrough technology.
-                </p>
               </div>
 
               <button className="code-button test-button" type="submit">

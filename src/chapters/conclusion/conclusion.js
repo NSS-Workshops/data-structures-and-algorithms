@@ -1,11 +1,14 @@
 export const conclusionChapter = {
   id: 'conclusion',
-  title: 'Conclusion',
+  title: 'Congratulations 🎉',
   sectionId: 'conclusion',
   previousChapterId: null,
-  content: `# Congratulations! 🎉
+  content: `
 
-You've completed this comprehensive journey through Data Structures and Algorithms! This is a significant achievement that represents hours of dedicated learning, practice, and problem-solving. Take a moment to appreciate how far you've come.
+<div id="celebrate-message" class="celebrate-component"></div>
+
+
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/TDJUot9OBLc?si=oXuNne1exneGkgcD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## 🎯 What You've Accomplished
 
@@ -99,12 +102,13 @@ Remember that mastery comes through consistent practice and application. The con
 
 ## 🎊 Celebrate Your Achievement
 
-You've completed a challenging and rewarding course. You now possess knowledge that many developers never take the time to learn systematically. This foundation will serve you well throughout your career, whether you're building web applications, mobile apps, distributed systems, or working on cutting-edge AI projects.
+You've completed a challenging and we hope rewarding course. You now possess knowledge that many developers never take the time to learn systematically. This foundation will serve you well throughout your career, whether you're building web applications, mobile apps, distributed systems, or working on cutting-edge AI projects.
 
-Keep coding, keep learning, and most importantly, keep solving problems. The world needs more thoughtful, skilled developers like you.
+Keep coding, keep learning, and most importantly, keep solving problems. The world needs thoughtful, skilled developers like you.
 
 **Congratulations on completing Data Structures and Algorithms!** 
 
-Your journey as a more skilled and confident programmer starts now. 🚀`,
+Your journey as a more skilled and confident programmer starts now. 🚀
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/xogyw_8Fr6o?si=d05qamqYQSO71Dmu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
   exercise: null
 };

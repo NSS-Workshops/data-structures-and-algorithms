@@ -36,112 +36,105 @@ Leave 10–15 minutes to reflect, share feedback, and then switch roles.
 
 Best of luck, and enjoy the practice! 🚀
 
-## Problem: Sort Colors (Dutch Flag)
+## Problem: Find First Occurrence (Binary Search Variant)
 
-Given an array with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+Given a sorted array of integers that may contain duplicates and a target value, return the index of the first occurrence of the target if it exists in the array. If the target doesn't exist, return -1.
 
-We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
-
-You must solve this problem without using the library's sort function and in one pass (O(n) time).
+You must write an algorithm with O(log n) runtime complexity.
 
 ### Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
-- How would this extend to k colors instead of 3?`,
+- How would you modify this to find the last occurrence instead?`,
   exercise: {
     starterCode:`/*
-Problem: Sort Colors (Dutch Flag)
+Problem: Find First Occurrence (Binary Search Variant)
 
-Given an array with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+Given a sorted array of integers that may contain duplicates and a target value, return the index of the first occurrence of the target if it exists in the array. If the target doesn't exist, return -1.
 
-We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
-
-You must solve this problem without using the library's sort function and in one pass (O(n) time).
+You must write an algorithm with O(log n) runtime complexity.
 
 Examples:
-Input: [2, 0, 2, 1, 1, 0]
-Output: [0, 0, 1, 1, 2, 2]
+Input: nums = [5, 7, 7, 8, 8, 10], target = 8
+Output: 3
 
-Input: [2, 0, 1]
-Output: [0, 1, 2]
+Input: nums = [5, 7, 7, 8, 8, 10], target = 6
+Output: -1
+
+Input: nums = [1, 1, 1, 1, 1], target = 1
+Output: 0
 
 Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
-- How would this extend to k colors instead of 3?
+- How would you modify this to find the last occurrence instead?
 */
 
-function sortColors(nums) {
-  // Approach: Use three pointers (Dutch Flag algorithm)
-  // left: boundary for 0s (red)
-  // right: boundary for 2s (blue)  
-  // current: current element being processed
-  // Goal: [0s][1s][2s]
+function searchFirst(nums, target) {
+  // Approach: Modified binary search
+  // When we find the target, continue searching left to find first occurrence
+  // Keep track of the leftmost found index
   
   // Your code here
 }`,
     solution:`/*
-Problem: Sort Colors (Dutch Flag)
+Problem: Find First Occurrence (Binary Search Variant)
 
-Given an array with n objects colored red, white, or blue, sort them in-place.
-Use integers 0, 1, and 2 to represent red, white, and blue respectively.
+Given a sorted array that may contain duplicates, find the first occurrence of target.
 */
 
-function sortColors(nums) {
-  // Initialize three pointers
-  let left = 0;           // Boundary for 0s (red)
-  let right = nums.length - 1;  // Boundary for 2s (blue)
-  let current = 0;        // Current element being processed
+function searchFirst(nums, target) {
+  // Initialize left and right pointers
+  let left = 0;
+  let right = nums.length - 1;
+  let result = -1; // Store the first occurrence index
   
-  // Process elements until current passes right boundary
-  while (current <= right) {
-    if (nums[current] === 0) {
-      // Found red (0): swap with left boundary and move both pointers
-      [nums[current], nums[left]] = [nums[left], nums[current]];
-      left++;
-      current++;
-    } 
-    else if (nums[current] === 2) {
-      // Found blue (2): swap with right boundary, move right pointer
-      // Don't increment current as we need to check the swapped element
-      [nums[current], nums[right]] = [nums[right], nums[current]];
-      right--;
-    } 
+  // Continue searching while search space is valid
+  while (left <= right) {
+    // Calculate middle index (avoid overflow)
+    const mid = Math.floor(left + (right - left) / 2);
+    
+    // Check if we found the target
+    if (nums[mid] === target) {
+      result = mid; // Record this occurrence
+      // Continue searching left for first occurrence
+      right = mid - 1;
+    }
+    // If target is smaller, search left half
+    else if (nums[mid] > target) {
+      right = mid - 1;
+    }
+    // If target is larger, search right half
     else {
-      // Found white (1): it's in correct position, just move current
-      current++;
+      left = mid + 1;
     }
   }
   
-  // Array is now sorted in-place: [0s][1s][2s]
+  // Return first occurrence index or -1 if not found
+  return result;
   
-  // Time Complexity: O(n) - single pass through the array
+  // Time Complexity: O(log n) - we eliminate half the search space each iteration
   // Space Complexity: O(1) - only using constant extra space for pointers
 }`,
     tests:[
       {
-        name: "Basic color sorting",
+        name: "Find first occurrence with duplicates",
         test: (code) => {
           try {
-            const sortColors = new Function(`${code}; return sortColors;`)();
+            const searchFirst = new Function(`${code}; return searchFirst;`)();
             
-            const test1 = [2, 0, 2, 1, 1, 0];
-            sortColors(test1);
-            const expected1 = [0, 0, 1, 1, 2, 2];
+            const nums1 = [5, 7, 7, 8, 8, 10];
+            const test1 = searchFirst(nums1, 8) === 3;
+            const test2 = searchFirst(nums1, 7) === 1;
+            const test3 = searchFirst(nums1, 5) === 0;
+            const test4 = searchFirst(nums1, 10) === 5;
             
-            const test2 = [2, 0, 1];
-            sortColors(test2);
-            const expected2 = [0, 1, 2];
-            
-            const result1 = JSON.stringify(test1) === JSON.stringify(expected1);
-            const result2 = JSON.stringify(test2) === JSON.stringify(expected2);
-            
-            if (result1 && result2) {
+            if (test1 && test2 && test3 && test4) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
                 passed: false,
-                message: `Basic sorting failed. Test1: ${JSON.stringify(test1)}, Test2: ${JSON.stringify(test2)}`
+                message: `Failed to find first occurrences. 8: ${searchFirst(nums1, 8)}, 7: ${searchFirst(nums1, 7)}, 5: ${searchFirst(nums1, 5)}, 10: ${searchFirst(nums1, 10)}`
               });
             }
           } catch (error) {
@@ -151,41 +144,55 @@ function sortColors(nums) {
             });
           }
         },
-        message: "Function should sort colors correctly in basic cases."
+        message: "Function should find first occurrence of targets with duplicates."
+      },
+      {
+        name: "Handle non-existing targets",
+        test: (code) => {
+          try {
+            const searchFirst = new Function(`${code}; return searchFirst;`)();
+            
+            const nums = [5, 7, 7, 8, 8, 10];
+            const test1 = searchFirst(nums, 6) === -1;
+            const test2 = searchFirst(nums, 4) === -1;
+            const test3 = searchFirst(nums, 11) === -1;
+            const test4 = searchFirst(nums, 9) === -1;
+            
+            if (test1 && test2 && test3 && test4) {
+              return new TestResult({ passed: true });
+            } else {
+              return new TestResult({
+                passed: false,
+                message: `Failed to handle non-existing targets. 6: ${searchFirst(nums, 6)}, 4: ${searchFirst(nums, 4)}, 11: ${searchFirst(nums, 11)}, 9: ${searchFirst(nums, 9)}`
+              });
+            }
+          } catch (error) {
+            return new TestResult({
+              passed: false,
+              message: `Error: ${error.message}`
+            });
+          }
+        },
+        message: "Function should return -1 for non-existing targets."
       },
       {
         name: "Handle edge cases",
         test: (code) => {
           try {
-            const sortColors = new Function(`${code}; return sortColors;`)();
+            const searchFirst = new Function(`${code}; return searchFirst;`)();
             
-            const test1 = [0];
-            sortColors(test1);
-            const expected1 = [0];
+            const test1 = searchFirst([], 1) === -1; // Empty array
+            const test2 = searchFirst([1], 1) === 0; // Single element found
+            const test3 = searchFirst([1], 2) === -1; // Single element not found
+            const test4 = searchFirst([1, 1], 1) === 0; // Two identical elements
+            const test5 = searchFirst([1, 2], 2) === 1; // Two different elements
             
-            const test2 = [1];
-            sortColors(test2);
-            const expected2 = [1];
-            
-            const test3 = [2];
-            sortColors(test3);
-            const expected3 = [2];
-            
-            const test4 = [];
-            sortColors(test4);
-            const expected4 = [];
-            
-            const result1 = JSON.stringify(test1) === JSON.stringify(expected1);
-            const result2 = JSON.stringify(test2) === JSON.stringify(expected2);
-            const result3 = JSON.stringify(test3) === JSON.stringify(expected3);
-            const result4 = JSON.stringify(test4) === JSON.stringify(expected4);
-            
-            if (result1 && result2 && result3 && result4) {
+            if (test1 && test2 && test3 && test4 && test5) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
                 passed: false,
-                message: `Edge cases failed. Single 0: ${JSON.stringify(test1)}, Single 1: ${JSON.stringify(test2)}, Single 2: ${JSON.stringify(test3)}, Empty: ${JSON.stringify(test4)}`
+                message: `Edge cases failed. Empty: ${searchFirst([], 1)}, Single found: ${searchFirst([1], 1)}, Single not found: ${searchFirst([1], 2)}, Two identical: ${searchFirst([1, 1], 1)}, Two different: ${searchFirst([1, 2], 2)}`
               });
             }
           } catch (error) {
@@ -195,31 +202,25 @@ function sortColors(nums) {
             });
           }
         },
-        message: "Function should handle edge cases (single elements, empty array)."
+        message: "Function should handle edge cases correctly."
       },
       {
-        name: "Handle already sorted arrays",
+        name: "Handle arrays with all same elements",
         test: (code) => {
           try {
-            const sortColors = new Function(`${code}; return sortColors;`)();
+            const searchFirst = new Function(`${code}; return searchFirst;`)();
             
-            const test1 = [0, 0, 1, 1, 2, 2];
-            sortColors(test1);
-            const expected1 = [0, 0, 1, 1, 2, 2];
+            const test1 = searchFirst([1, 1, 1, 1, 1], 1) === 0;
+            const test2 = searchFirst([5, 5, 5], 5) === 0;
+            const test3 = searchFirst([2, 2, 2, 2], 2) === 0;
+            const test4 = searchFirst([1, 1, 1, 1, 1], 2) === -1;
             
-            const test2 = [0, 1, 2];
-            sortColors(test2);
-            const expected2 = [0, 1, 2];
-            
-            const result1 = JSON.stringify(test1) === JSON.stringify(expected1);
-            const result2 = JSON.stringify(test2) === JSON.stringify(expected2);
-            
-            if (result1 && result2) {
+            if (test1 && test2 && test3 && test4) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
                 passed: false,
-                message: `Already sorted cases failed. Test1: ${JSON.stringify(test1)}, Test2: ${JSON.stringify(test2)}`
+                message: `Same elements cases failed. All 1s: ${searchFirst([1, 1, 1, 1, 1], 1)}, All 5s: ${searchFirst([5, 5, 5], 5)}, All 2s: ${searchFirst([2, 2, 2, 2], 2)}, Not found: ${searchFirst([1, 1, 1, 1, 1], 2)}`
               });
             }
           } catch (error) {
@@ -229,31 +230,31 @@ function sortColors(nums) {
             });
           }
         },
-        message: "Function should handle already sorted arrays correctly."
+        message: "Function should handle arrays with all same elements correctly."
       },
       {
-        name: "Handle reverse sorted arrays",
+        name: "Work with larger arrays with duplicates",
         test: (code) => {
           try {
-            const sortColors = new Function(`${code}; return sortColors;`)();
+            const searchFirst = new Function(`${code}; return searchFirst;`)();
             
-            const test1 = [2, 2, 1, 1, 0, 0];
-            sortColors(test1);
-            const expected1 = [0, 0, 1, 1, 2, 2];
+            // Create larger array with duplicates: [1,1,1,2,2,2,3,3,3,...]
+            const largeArray = [];
+            for (let i = 1; i <= 100; i++) {
+              largeArray.push(i, i, i); // Each number appears 3 times
+            }
             
-            const test2 = [2, 1, 0];
-            sortColors(test2);
-            const expected2 = [0, 1, 2];
+            const test1 = searchFirst(largeArray, 50) === 147; // 50 first appears at index 147 (49*3)
+            const test2 = searchFirst(largeArray, 1) === 0; // First element
+            const test3 = searchFirst(largeArray, 100) === 297; // Last unique number first appears at 297
+            const test4 = searchFirst(largeArray, 101) === -1; // Not in array
             
-            const result1 = JSON.stringify(test1) === JSON.stringify(expected1);
-            const result2 = JSON.stringify(test2) === JSON.stringify(expected2);
-            
-            if (result1 && result2) {
+            if (test1 && test2 && test3 && test4) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
                 passed: false,
-                message: `Reverse sorted cases failed. Test1: ${JSON.stringify(test1)}, Test2: ${JSON.stringify(test2)}`
+                message: `Large array test failed. 50: ${searchFirst(largeArray, 50)}, 1: ${searchFirst(largeArray, 1)}, 100: ${searchFirst(largeArray, 100)}, 101: ${searchFirst(largeArray, 101)}`
               });
             }
           } catch (error) {
@@ -263,46 +264,7 @@ function sortColors(nums) {
             });
           }
         },
-        message: "Function should handle reverse sorted arrays correctly."
-      },
-      {
-        name: "Handle arrays with same color",
-        test: (code) => {
-          try {
-            const sortColors = new Function(`${code}; return sortColors;`)();
-            
-            const test1 = [0, 0, 0, 0];
-            sortColors(test1);
-            const expected1 = [0, 0, 0, 0];
-            
-            const test2 = [1, 1, 1];
-            sortColors(test2);
-            const expected2 = [1, 1, 1];
-            
-            const test3 = [2, 2, 2, 2, 2];
-            sortColors(test3);
-            const expected3 = [2, 2, 2, 2, 2];
-            
-            const result1 = JSON.stringify(test1) === JSON.stringify(expected1);
-            const result2 = JSON.stringify(test2) === JSON.stringify(expected2);
-            const result3 = JSON.stringify(test3) === JSON.stringify(expected3);
-            
-            if (result1 && result2 && result3) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `Same color cases failed. All 0s: ${JSON.stringify(test1)}, All 1s: ${JSON.stringify(test2)}, All 2s: ${JSON.stringify(test3)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should handle arrays with all same color."
+        message: "Function should work efficiently with larger arrays containing duplicates."
       }
     ]
   }

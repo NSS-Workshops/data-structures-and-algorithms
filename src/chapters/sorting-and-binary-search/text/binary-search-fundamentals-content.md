@@ -175,107 +175,14 @@ When implementing binary search, watch out for:
 
 5. **Duplicate Elements:** Standard binary search finds any matching element, not necessarily the first or last occurrence.
 
-## Binary Search Challenges at Groove Records
-
-As Sam implemented binary search in his daily operations, he encountered some practical challenges that taught Alex important lessons:
 
 ### Handling Partial Matches
-```javascript
-// Customer asks for "Hotel" but the full title is "Hotel California"
-function findAlbumsStartingWith(sortedCollection, prefix) {
-  // Find the first album that starts with the prefix
-  let left = 0;
-  let right = sortedCollection.length - 1;
-  let firstMatch = -1;
-  
-  while (left <= right) {
-    const mid = Math.floor(left + (right - left) / 2);
-    const currentTitle = sortedCollection[mid].title;
-    
-    if (currentTitle.toLowerCase().startsWith(prefix.toLowerCase())) {
-      firstMatch = mid;
-      right = mid - 1; // Keep looking for earlier matches
-    } else if (currentTitle.toLowerCase() < prefix.toLowerCase()) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
-    }
-  }
-  
-  // Collect all albums starting with the prefix
-  const matches = [];
-  if (firstMatch !== -1) {
-    for (let i = firstMatch; i < sortedCollection.length; i++) {
-      if (sortedCollection[i].title.toLowerCase().startsWith(prefix.toLowerCase())) {
-        matches.push(sortedCollection[i]);
-      } else {
-        break;
-      }
-    }
-  }
-  
-  return matches;
-}
-```
-
-### Case-Insensitive Search
-```javascript
-// Handle different capitalization in search terms
-function findAlbumCaseInsensitive(sortedCollection, targetTitle) {
-  let left = 0;
-  let right = sortedCollection.length - 1;
-  
-  while (left <= right) {
-    const mid = Math.floor(left + (right - left) / 2);
-    const currentTitle = sortedCollection[mid].title.toLowerCase();
-    const target = targetTitle.toLowerCase();
-    
-    if (currentTitle === target) {
-      return sortedCollection[mid];
-    } else if (currentTitle < target) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
-    }
-  }
-  
-  return null;
-}
-```
-
-### Price Range Searches
-
-```javascript
-// Find all albums in a specific price range
-function findAlbumsInPriceRange(collectionSortedByPrice, minPrice, maxPrice) {
-  // Find first album >= minPrice
-  const startIndex = findInsertionPoint(collectionSortedByPrice, minPrice, 'price');
-  // Find first album > maxPrice
-  const endIndex = findInsertionPoint(collectionSortedByPrice, maxPrice + 0.01, 'price');
-  
-  return collectionSortedByPrice.slice(startIndex, endIndex);
-}
-
-function findInsertionPoint(sortedCollection, targetValue, property) {
-  let left = 0;
-  let right = sortedCollection.length;
-  
-  while (left < right) {
-    const mid = Math.floor(left + (right - left) / 2);
-    if (sortedCollection[mid][property] < targetValue) {
-      left = mid + 1;
-    } else {
-      right = mid;
-    }
-  }
-  
-  return left;
-}
-```
 
 "Binary search isn't just about finding exact matches," Alex realized. "It's about efficiently navigating any sorted data to answer complex questions. The core principle stays the same - divide and conquer - but the implementation details matter for creating a great customer experience."
 
-Sam was delighted. "Now I can instantly answer customer questions like 'What albums do you have under $20?' or 'Show me everything from the 1980s.' My customers love how quickly I can help them!"
+Sam was delighted. "Now I can instantly answer all kinds of customer questions and sell more records!"
+
+Try out a new challenge in the exercise column. This is a difficult challenge, so try your best to follow the comments and implement that logic.
 
 ## Real-World Applications
 

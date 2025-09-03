@@ -260,7 +260,7 @@ Maya continued, "...incidentally, if you wanted to find the record that's closes
 
 "How would my collection of records get, uh, rotated?"
 
-"Never mind that. The trick with rotated sorted arrays is that one half is always properly sorted. We first determine which half is sorted by comparing the endpoints, then check if our target is within the sorted half's range. If it is, we search there; otherwise, we search the other half. This maintains the O(log n) efficiency... even with the rotation!"
+"Never mind that. The trick with rotated sorted arrays is that one half is always properly sorted. We first determine which half is sorted by comparing the endpoints. Then we check if our target is within the sorted half's range. If it is, we continue the binary search there; otherwise, we search the other half. This maintains the O(log n) efficiency... even with the rotation!"
 
 ```javascript
 function searchInRotatedArray(arr, target) {
@@ -311,7 +311,7 @@ Sometimes, binary search can be applied to the answer space rather than the inpu
 
 ### Example: Find the minimum size subarray with sum >= target
 
-<span style="color:green">Maya explained this advanced concept: "Binary search on answer space is a powerful technique where instead of searching through data, we search through possible answers. Here, we're not searching through the array elements, but through possible subarray lengths (1 to array length). For each potential length, we check if it's possible to find a subarray of that length with the required sum. This transforms an optimization problem into a series of yes/no questions that binary search can handle."</span>
+Maya explained this advanced concept: "Binary search on answer space is a powerful technique where instead of searching through data, we search through possible answers. Here, we're not searching through the array elements, but through possible subarray lengths (1 to array length). For each potential length, we check if it's possible to find a subarray of that length with the required sum. This transforms an optimization problem into a series of yes/no questions that binary search can handle."
 
 ```javascript
 function minSubArrayLen(target, nums) {
@@ -360,14 +360,9 @@ function isValidSubarraySize(nums, size, target) {
 }
 ```
 
-<span style="color:red">
-## Real-World Applications at Groove Records
-
-As Sam mastered these binary search variants, he found creative applications throughout his business:
-
 ### Inventory Optimization
 
-<span style="color:green">Maya explained the business application: "This uses binary search on the answer space of possible prices. Instead of searching through data, we're searching through the range of possible prices to find the optimal one. For each price point, we calculate the projected profit and use that to guide our search toward the target profit level."</span>
+Maya went on to offer one more example: "We can use binary search on the answer space of possible prices. Instead of searching through data, we're searching through the range of possible prices to find the optimal one. For each price point, we calculate the projected profit and use that to guide our search toward the target profit level."
 
 ```javascript
 // Find the optimal price point for maximum profit
@@ -393,113 +388,6 @@ function findOptimalPricePoint(salesData, targetProfit) {
 }
 ```
 
-### Customer Preference Analysis
-
-<span style="color:green">Maya noted: "This isn't traditional binary search, but it uses the concept of comparing elements with their neighbors to find 'peaks' - albums that are more popular than those around them. It's a linear scan that applies binary search thinking to identify local maxima in the popularity data."</span>
-
-```javascript
-// Find albums that are "peaks" in customer interest
-function findPopularityPeaks(albumsByPopularity) {
-  const peaks = [];
-  
-  for (let i = 0; i < albumsByPopularity.length; i++) {
-    const current = albumsByPopularity[i];
-    const left = i > 0 ? albumsByPopularity[i - 1] : null;
-    const right = i < albumsByPopularity.length - 1 ? albumsByPopularity[i + 1] : null;
-    
-    // Check if current album is more popular than its neighbors
-    if ((!left || current.popularity > left.popularity) &&
-        (!right || current.popularity > right.popularity)) {
-      peaks.push(current);
-    }
-  }
-  
-  return peaks;
-}
-```
-
-### Dynamic Pricing
-
-<span style="color:green">Maya explained the market positioning logic: "This uses our insertion point finder to determine where an album's price fits in the competitive landscape. By finding where the price would be inserted in a sorted list of competitor prices, we can determine if we're pricing competitively, too high, or too low relative to the market."</span>
-
-```javascript
-// Adjust prices based on demand using binary search principles
-function findMarketPrice(album, competitorPrices) {
-  // Find where this album's price should fit in the market
-  const insertionPoint = findInsertionPoint(competitorPrices, album.price);
-  
-  // Position in market (0 = cheapest, 1 = most expensive)
-  const marketPosition = insertionPoint / competitorPrices.length;
-  
-  if (marketPosition < 0.3) {
-    return "Price competitively - you're in the low end";
-  } else if (marketPosition > 0.7) {
-    return "Consider lowering price - you're in the high end";
-  } else {
-    return "Price is well-positioned in the market";
-  }
-}
-```
-
-"These advanced search techniques have transformed my entire business," Sam reflected. "I can optimize pricing, manage inventory efficiently, and provide incredible customer service. Binary search variants aren't just about finding things - they're about making intelligent decisions with data."
-
-Alex nodded enthusiastically. "And the best part is, all of these techniques build on the same fundamental principle - using the sorted nature of data to make smart eliminations and find answers efficiently."
-
-Maya smiled proudly. "Sam, you've gone from manually searching through records to implementing sophisticated algorithms that rival what major retailers use. You've truly mastered the art of efficient search."
-</span>
-
-## Finding Peak Element
-
-A peak element is an element that is greater than its neighbors. For an array with distinct elements, there is always at least one peak element.
-
-```javascript
-function findPeakElement(nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  
-  while (left < right) {
-    const mid = Math.floor(left + (right - left) / 2);
-    
-    // If mid is a decreasing part, peak is in the left half
-    if (nums[mid] > nums[mid + 1]) {
-      right = mid;
-    }
-    // If mid is an increasing part, peak is in the right half
-    else {
-      left = mid + 1;
-    }
-  }
-  
-  // When left === right, we've found the peak
-  return left;
-}
-
-// Example
-const array = [1, 3, 4, 3, 5, 6, 4];
-console.log(findPeakElement(array)); // Output: 5 (index of 6)
-```
-
-<span style="color:red">
-## The Complete Search Solution
-
-As their final session concluded, Sam's record store had become a model of algorithmic efficiency:
-
-- **Basic binary search** for finding any album quickly
-- **First/last occurrence search** for handling multiple copies
-- **Insertion point finding** for maintaining sorted inventory
-- **Closest match search** for customer recommendations
-- **Range searches** for price and year-based browsing
-- **Rotated array search** for handling reorganized sections
-
-"I started with a chaotic pile of records and customers who couldn't find anything," Sam said, looking proudly at his organized, efficiently searchable collection. "Now I can answer any customer question in seconds, manage my inventory intelligently, and even optimize my pricing strategy."
-
-Alex had learned that binary search variants weren't just academic exercises - they were practical tools that solved real business problems. "The key insight is that once you have sorted data, you can answer incredibly sophisticated questions efficiently by applying the right variant of binary search."
-
-"Tomorrow," Maya said, "we'll explore how these search and sorting principles combine with other data structures to solve even more complex problems. But you've now mastered the fundamental techniques that power modern search systems."
-
-Sam's record store had become a testament to the power of algorithmic thinking applied to real-world challenges. Every customer interaction was now fast, efficient, and satisfying - all thanks to the magic of binary search variants.
-</span>
-
 ## Tips for Binary Search Variants
 
 1. **Identify the Search Space**: Clearly define what you're searching for (an element, a position, a value)
@@ -507,5 +395,3 @@ Sam's record store had become a testament to the power of algorithmic thinking a
 3. **Handle Edge Cases**: Empty arrays, single elements, duplicates, etc.
 4. **Avoid Off-by-One Errors**: Be careful with boundary conditions and index calculations
 5. **Test with Examples**: Verify your algorithm with simple examples and edge cases
-
-TBD

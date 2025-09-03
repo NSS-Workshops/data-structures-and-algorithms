@@ -84,7 +84,7 @@ console.log(prices); // [1.99, 100.99, 15.99, 20.99, 3.99]
 // Sorted as strings: "1" comes before "2", so "100.99" comes before "20.99"!
 ```
 
-Sam shook his head. "No wonder my price sorting was all wrong. I need a way to tell JavaScript how to properly compare my records."
+Sam shook his head. "No wonder my sorting was all wrong. I need a way to tell JavaScript how to properly compare my records."
 
 ## Comparator Functions: Telling JavaScript How to Sort
 
@@ -120,33 +120,9 @@ Sam's eyes lit up. "So the comparator function is like giving JavaScript a set o
 
 "Oh, wow!" Sam said excitedly. "I can sort by any property of my records!"
 
-Alex helped Sam implement different sorting options for his store:
-
-```javascript
-// Sort by release year (newest first)
-function sortByYear(collection) {
-  //conveniently, the result of subtraction will be the positive, negative or zero value we need
-  return collection.sort((a, b) => b.releaseYear - a.releaseYear);
-}
-
-// Sort by artist name
-function sortByArtist(collection) {
-  //the string method localeCompare() is handy for typical alphabetical sorting, and facilitates internationalization
-  return collection.sort((a, b) => a.artist.localeCompare(b.artist));
-}
-
-// Sort by condition (custom order)
-function sortByCondition(collection) {
-  //we can define whatever logic we want to compare on whatever fields
-  const conditionOrder = { "mint": 1, "very good": 2, "good": 3, "fair": 4 };
-  return collection.sort((a, b) => conditionOrder[a.condition] - conditionOrder[b.condition]);
-}
-
-```
-
-"This is amazing!" Sam exclaimed. "Now customers can browse my collection however they want - by artist, by year, or by condition!"
-
 Maya smiled. "And notice how each comparator function follows the same pattern - it takes two items and returns a positive, negative or zero value that tells JavaScript how to put them in the correct order."
+
+See Exercise 1 and complete each of those three functions to sort by different properties
 
 ## Advanced Sorting: Multiple Criteria
 
@@ -201,11 +177,9 @@ sortByArtistThenYear(beatlesAlbums);
 
 "Perfect!" Sam said. "Now I can create sophisticated browsing experiences for the hardcore fans!"
 
-## Real-World Sorting Challenges at Groove Records
-
-As Sam's inventory system became more sophisticated, he encountered several real-world sorting challenges that taught Alex valuable lessons:
 
 ### Handling Missing Data
+
 ```javascript
 // Some records might not have complete information
 const incompleteRecords = [
@@ -224,33 +198,11 @@ function sortByYearSafely(collection) {
 }
 ```
 
-### Case-Insensitive Artist Sorting
-```javascript
-// Handle artists with different capitalization
-function sortByArtistIgnoreCase(collection) {
-  return collection.sort((a, b) =>
-    a.artist.toLowerCase().localeCompare(b.artist.toLowerCase())
-  );
-}
-```
-
-### Custom Business Logic
-```javascript
-// Sort by "popularity" - a combination of price and condition
-function sortByPopularity(collection) {
-  const conditionMultiplier = { "mint": 1.2, "very good": 1.0, "good": 0.8, "fair": 0.6 };
-  
-  return collection.sort((a, b) => {
-    const aScore = a.price * conditionMultiplier[a.condition];
-    const bScore = b.price * conditionMultiplier[b.condition];
-    return bScore - aScore; // Higher score first
-  });
-}
-```
-
-"These real-world complications taught me that sorting isn't just about algorithms," Alex reflected. "It's about understanding your data and your business requirements."
+"I guess sorting isn't just about algorithms," Alex reflected. "It's about understanding your data and your business requirements."
 
 Sam agreed. "Every sorting decision I make affects how customers experience my store. The right comparator function can make the difference between a frustrated customer and a happy sale!"
+
+Try out a couple more examples in Exercise 2.
 
 ## Stable vs. Unstable Sorting
 
@@ -276,7 +228,7 @@ console.log(items);
 // ]
 ```
 
-Note that id:2 comes before id:4, and id:1 comes before id:3. If this sort method didn't reliably maintain the original relative ordering between items that compare as equal, it would be considered **unstable**
+Note that id:2 always comes before id:4, and id:1 always comes before id:3. If this sort method didn't reliably maintain the original relative ordering between items that compare as equal, it would be considered **unstable**
 
 ## Performance Considerations
 

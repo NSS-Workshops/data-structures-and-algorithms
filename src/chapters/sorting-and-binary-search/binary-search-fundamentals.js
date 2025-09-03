@@ -1,4 +1,6 @@
 import content  from './text/binary-search-fundamentals-content.md?raw';
+import example from './text/binary-search-fundamentals-example.js?raw';
+import completed from './text/binary-search-fundamentals-completed.js?raw';
 
 export const binarySearchFundamentalsChapter = {
   id: 'binary-search-fundamentals',
@@ -6,5 +8,15 @@ export const binarySearchFundamentalsChapter = {
   sectionId: 'sorting-and-binary-search',
   previousChapterId: 'sort-method',
   content: content,
-  exercise: null
+  exercise: {
+      starterCode: example,
+      solution: completed,
+      question: `
+  # Exercise Question
+      `,
+      solution_explanation: `
+  # Solution Explanation
+  it goes like this
+      `
+    }
 };

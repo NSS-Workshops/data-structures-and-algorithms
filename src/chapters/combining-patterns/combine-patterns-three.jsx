@@ -2,163 +2,317 @@ import { TestResult } from "../../utils/test_utils";
 
 export const combinePatternsThree = {
   id: 'combine-patterns-three',
-  title: 'Survival Data Detective — Sled Loading (Two Pointers)',
+  title: 'Regional Evacuation Center',
   sectionId: 'combining-patterns',
   previousChapterId: 'combine-patterns-two',
   content: `
-## Sled Loading: Best Pair Within Capacity
+## ⏱️ Challenge: Regional Evacuation Center (Map of Queues)
 
-The survival team needs to load their sled efficiently. With limited capacity and critical supplies to transport, you must find the optimal pair of crates that maximizes weight while staying within the sled's capacity limits.
+In the Global Cooling emergency, each region has an evacuation center. Citizens line up in the order they arrive, and evacuations happen strictly first-come, first-served.
 
-## ⏱️ Challenge: bestPairAtMostCapacity
+We'll use:
+- A **Map** to track all regions
+- Each region's evacuees stored in a **Queue** (proper Queue class implementation)
 
-### 🎯 The Problem
-Given a **sorted** array of crate weights (non-negative integers) and a sled capacity \`C\`, pick **two distinct crates** whose total weight is **≤ C** and as large as possible. Return their **indices** \`[i, j]\`. If there's no valid pair, return \`null\`.
+### 🎯 Requirements
 
-### 🔄 Two-Pointers Strategy
-Since the array is **sorted**, we can use the two-pointers technique efficiently:
+Implement the following methods:
 
-1. **Initialize**: \`left = 0\` (lightest), \`right = length-1\` (heaviest)
-2. **Decision Logic**:
-   - If \`weights[left] + weights[right] > C\`: Too heavy → move \`right--\`
-   - If \`weights[left] + weights[right] ≤ C\`: Valid pair → check if it's the best, then \`left++\`
-3. **Optimization**: Always try to increase the sum by moving the left pointer when valid
+- \`arrive(region, name)\` → add the person to that region's queue
+- \`evacuate(region)\` → remove and return the first person from that region's queue, or null if none
+- \`nextInLine(region)\` → peek at the next person to be evacuated without removing them
+- \`isEmpty(region)\` → return true if that region's queue is empty
+
+### 🔄 Data Structure Strategy
+
+**Map + Queue Pattern:**
+1. **Queue Class**: Proper FIFO implementation with:
+   - \`enqueue(item)\` to add at the back
+   - \`dequeue()\` to remove from front (returns null if empty)
+   - \`peek()\` to look at front without removing (returns null if empty)
+   - \`isEmpty()\` to check if empty
+2. **Map**: Key = region name, Value = Queue instance
 
 ### 📊 Algorithm Steps
-1. Initialize \`left = 0\`, \`right = weights.length - 1\`
-2. Track \`bestSum = -1\` and \`bestPair = null\`
-3. While \`left < right\`:
-   - Calculate \`sum = weights[left] + weights[right]\`
-   - If \`sum > C\`: decrease right pointer
-   - If \`sum ≤ C\`:
-     - If \`sum > bestSum\`: update best pair
-     - Increase left pointer (try to find heavier combination)
-4. Return the best pair found
+
+1. **Queue Implementation**: Use the  Queue class
+2. **EvacuationCenter**:
+   - Use Map to store region → Queue mappings
+   - Create new Queue instances for new regions
+3. **Operations**:
+   - \`arrive()\`: Get or create region's queue, then enqueue person
+   - \`evacuate()\`: Dequeue from region's queue, return null if empty
+   - \`nextInLine()\`: Peek at region's queue front
+   - \`isEmpty()\`: Check if region's queue is empty
 
 ### 💡 Why This Works
-- **Sorted Array**: Allows us to make greedy decisions
-- **Two Pointers**: Eliminates need to check all O(n²) pairs
-- **Optimal Strategy**: When sum ≤ C, we move left to try increasing the sum
-- **Time Complexity**: O(n) - each element visited at most once
+- **Map**: O(1) lookup for any region
+- **Queue Class**: Clean abstraction with proper FIFO semantics
+- **Encapsulation**: Queue operations are clearly defined
+- **Scalable**: Can handle any number of regions
 
 ### 🧪 Example Walkthrough
+\`\`\`javascript
+const evac = new EvacuationCenter();
+evac.arrive("North", "Alice");
+evac.arrive("North", "Bob");
+evac.arrive("South", "Carlos");
+
+evac.nextInLine("North");   // "Alice"
+evac.evacuate("North");     // "Alice"
+evac.evacuate("North");     // "Bob"
+evac.evacuate("North");     // null (empty queue)
+evac.isEmpty("South");      // false
 \`\`\`
-weights = [1, 2, 3, 4, 6, 8], C = 9
 
-left=0, right=5: 1+8=9 ≤ 9 ✓ (best so far, indices [0,5])
-left=1, right=5: 2+8=10 > 9 ✗ (too heavy)
-left=1, right=4: 2+6=8 ≤ 9 ✓ (but 8 < 9, so keep [0,5])
-left=2, right=4: 3+6=9 ≤ 9 ✓ (equals best, but we keep first found)
-left=3, right=4: 4+6=10 > 9 ✗
-left=3, right=3: left >= right, stop
+**Implementation Notes**
+- A complete \`Queue\` class is provided for you to use
+- Focus on implementing the \`EvacuationCenter\` class using the Queue
+- Use \`Map\` for region tracking with Queue instances as values
+- Handle edge cases: non-existent regions, empty queues
 
-Result: [0, 5] (weights 1+8=9)
-\`\`\`
-
-**Return Format**
-- \`[i, j]\` where i and j are indices of the optimal pair
-- \`null\` if no valid pair exists
-
-**Constraints**
-- Use the **two-pointers** pattern (left/right)
-- Time: O(n), Space: O(1)
-- Input array is **sorted in ascending order**
-
-🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`bestPairAtMostCapacity(weights: number[], C: number)\` using two pointers.
+🔓 **Use the provided Queue class to implement EvacuationCenter below:**
 `,
   exercise: {
     starterCode: `
-// export so tests can access it
-export function bestPairAtMostCapacity(weights, C) {
-  // Assume weights is sorted ascending
-  let i = 0, j = weights.length - 1;
-  let best = null;
-  let bestSum = -1;
+class Queue {
+  constructor() {
+    this.items = [];
+  }
 
-  // TODO: classic two-pointers scan
-  return best;
+  enqueue(item) {
+    this.items.push(item);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.items.shift();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+}
+
+class EvacuationCenter {
+  constructor() {
+    this.regions = new Map(); // region -> Queue instance
+  }
+
+  arrive(region, name) {
+    // TODO: Get or create queue for region, then enqueue person
+  }
+
+  evacuate(region) {
+    // TODO: Dequeue from region's queue, return null if no queue or empty
+  }
+
+  nextInLine(region) {
+    // TODO: Peek at region's queue front
+  }
+
+  isEmpty(region) {
+    // TODO: Check if region's queue is empty
+  }
 }
 `,
     solution: `
 // Reference Solution
-export function bestPairAtMostCapacity(weights, C) {
-  let i = 0, j = weights.length - 1;
-  let best = null;
-  let bestSum = -1;
-
-  while (i < j) {
-    const sum = weights[i] + weights[j];
-    if (sum > C) {
-      j--;
-    } else {
-      if (sum > bestSum) {
-        bestSum = sum;
-        best = [i, j];
-      }
-      i++; // try to increase sum
-    }
+class Queue {
+  constructor() {
+    this.items = [];
   }
-  return best;
+
+  enqueue(item) {
+    this.items.push(item);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.items.shift();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+}
+
+class EvacuationCenter {
+  constructor() {
+    this.regions = new Map(); // region -> Queue instance
+  }
+
+  arrive(region, name) {
+    if (!this.regions.has(region)) {
+      this.regions.set(region, new Queue());
+    }
+    this.regions.get(region).enqueue(name);
+  }
+
+  evacuate(region) {
+    if (!this.regions.has(region)) {
+      return null;
+    }
+    return this.regions.get(region).dequeue();
+  }
+
+  nextInLine(region) {
+    if (!this.regions.has(region)) {
+      return null;
+    }
+    return this.regions.get(region).peek();
+  }
+
+  isEmpty(region) {
+    if (!this.regions.has(region)) {
+      return true;
+    }
+    return this.regions.get(region).isEmpty();
+  }
 }
 `,
     tests: [
       {
-        name: "Finds the best pair under or equal to capacity",
+        name: "Queue class implementation",
         test: (code) => {
           try {
             const testCode = code + `
-              const a = bestPairAtMostCapacity([1,2,3,4,6,8], 9);     // best is 1+8? Not present; 3+6=9
-              const b = bestPairAtMostCapacity([2,3,5,9], 7);          // best 2+5=7
-              const c = bestPairAtMostCapacity([3,4,5], 5);            // none (min pair 3+4=7)
-              const d = bestPairAtMostCapacity([0,1,1,2,3], 3);        // best 1+2=3 (indices [2,3] or [1,3])
+              const queue = new Queue();
+              
+              // Test empty queue
+              const emptyPeek = queue.peek();
+              const emptyDequeue = queue.dequeue();
+              const isEmpty1 = queue.isEmpty();
+              
+              // Test enqueue and operations
+              queue.enqueue("First");
+              queue.enqueue("Second");
+              
+              const peek1 = queue.peek();
+              const isEmpty2 = queue.isEmpty();
+              const dequeue1 = queue.dequeue();
+              const peek2 = queue.peek();
+              const dequeue2 = queue.dequeue();
+              const isEmpty3 = queue.isEmpty();
+              const dequeue3 = queue.dequeue();
 
-              return { a, b, c, d };
+              return { emptyPeek, emptyDequeue, isEmpty1, peek1, isEmpty2, dequeue1, peek2, dequeue2, isEmpty3, dequeue3 };
             `;
-            const { a, b, c, d } = new Function(testCode)();
+            const { emptyPeek, emptyDequeue, isEmpty1, peek1, isEmpty2, dequeue1, peek2, dequeue2, isEmpty3, dequeue3 } = new Function(testCode)();
 
-            // a should be indices summing to 9: 3(=4)+4(=6)
-            if (!a) return new TestResult({ passed: false, message: "Case a should find a valid pair" });
-            if (a[0] !== 3 || a[1] !== 4) {
-              return new TestResult({ passed: false, message: "Case a expected indices [3,4] (4+6=10?) Re-check: [2,4]=3+6=9 — but two-pointer settles on [2,4]. Let's accept either." });
-            }
-            // NOTE: Accept either [2,4] (3+6) or [3,3] invalid. We'll patch with tolerant check below.
-          } catch (e) {
-            // We'll rerun with tolerant checks to accept any correct pair.
-          }
-
-          try {
-            const testCode2 = `
-              ${code}
-              function sumByIdx(arr, idxPair) { return idxPair ? (arr[idxPair[0]] + arr[idxPair[1]]) : -1; }
-              const wa = [1,2,3,4,6,8];
-              const a = bestPairAtMostCapacity(wa, 9);
-              const wb = [2,3,5,9];
-              const b = bestPairAtMostCapacity(wb, 7);
-              const wc = [3,4,5];
-              const c = bestPairAtMostCapacity(wc, 5);
-              const wd = [0,1,1,2,3];
-              const d = bestPairAtMostCapacity(wd, 3);
-
-              const okA = a !== null && sumByIdx(wa, a) <= 9 && sumByIdx(wa, a) === 9;
-              const okB = b !== null && sumByIdx(wb, b) === 7;
-              const okC = c === null;
-              const okD = d !== null && sumByIdx(wd, d) === 3;
-
-              return { okA, okB, okC, okD };
-            `;
-            const { okA, okB, okC, okD } = new Function(testCode2)();
-            if (!okA) return new TestResult({ passed: false, message: "a) Must return a pair summing exactly to 9" });
-            if (!okB) return new TestResult({ passed: false, message: "b) Must return [2,5] sum 7" });
-            if (!okC) return new TestResult({ passed: false, message: "c) Should be null when no pair fits" });
-            if (!okD) return new TestResult({ passed: false, message: "d) Must return any pair summing to 3" });
+            if (emptyPeek !== null) return new TestResult({ passed: false, message: "peek() on empty queue should return null" });
+            if (emptyDequeue !== null) return new TestResult({ passed: false, message: "dequeue() on empty queue should return null" });
+            if (isEmpty1 !== true) return new TestResult({ passed: false, message: "isEmpty() should return true for empty queue" });
+            if (peek1 !== "First") return new TestResult({ passed: false, message: "peek() should return 'First' without removing it" });
+            if (isEmpty2 !== false) return new TestResult({ passed: false, message: "isEmpty() should return false when queue has items" });
+            if (dequeue1 !== "First") return new TestResult({ passed: false, message: "dequeue() should return 'First'" });
+            if (peek2 !== "Second") return new TestResult({ passed: false, message: "peek() should return 'Second' after dequeuing 'First'" });
+            if (dequeue2 !== "Second") return new TestResult({ passed: false, message: "dequeue() should return 'Second'" });
+            if (isEmpty3 !== true) return new TestResult({ passed: false, message: "isEmpty() should return true after dequeuing all items" });
+            if (dequeue3 !== null) return new TestResult({ passed: false, message: "dequeue() on empty queue should return null" });
 
             return new TestResult({ passed: true });
-          } catch (e2) {
-            return new TestResult({ passed: false, message: e2.message });
+          } catch (e) {
+            return new TestResult({ passed: false, message: e.message });
           }
         },
-        message: "Use two pointers to find the best feasible pair in O(n)."
+        message: "Test Queue class FIFO operations."
+      },
+      {
+        name: "EvacuationCenter with Queue integration",
+        test: (code) => {
+          try {
+            const testCode = code + `
+              const evac = new EvacuationCenter();
+              evac.arrive("North", "Alice");
+              evac.arrive("North", "Bob");
+              evac.arrive("South", "Carlos");
+
+              const nextNorth = evac.nextInLine("North");
+              const evacuatedFirst = evac.evacuate("North");
+              const evacuatedSecond = evac.evacuate("North");
+              const evacuatedThird = evac.evacuate("North");
+              const southEmpty = evac.isEmpty("South");
+              const northEmpty = evac.isEmpty("North");
+
+              return { nextNorth, evacuatedFirst, evacuatedSecond, evacuatedThird, southEmpty, northEmpty };
+            `;
+            const { nextNorth, evacuatedFirst, evacuatedSecond, evacuatedThird, southEmpty, northEmpty } = new Function(testCode)();
+
+            if (nextNorth !== "Alice") return new TestResult({ passed: false, message: "nextInLine should return 'Alice' for North region" });
+            if (evacuatedFirst !== "Alice") return new TestResult({ passed: false, message: "First evacuation should return 'Alice'" });
+            if (evacuatedSecond !== "Bob") return new TestResult({ passed: false, message: "Second evacuation should return 'Bob'" });
+            if (evacuatedThird !== null) return new TestResult({ passed: false, message: "Third evacuation should return null (empty queue)" });
+            if (southEmpty !== false) return new TestResult({ passed: false, message: "South region should not be empty (Carlos is there)" });
+            if (northEmpty !== true) return new TestResult({ passed: false, message: "North region should be empty after evacuating Alice and Bob" });
+
+            return new TestResult({ passed: true });
+          } catch (e) {
+            return new TestResult({ passed: false, message: e.message });
+          }
+        },
+        message: "Test EvacuationCenter with proper Queue instances."
+      },
+      {
+        name: "Edge cases and multiple regions",
+        test: (code) => {
+          try {
+            const testCode = code + `
+              const evac = new EvacuationCenter();
+              
+              // Test empty region
+              const emptyEvacuation = evac.evacuate("NonExistent");
+              const emptyNext = evac.nextInLine("NonExistent");
+              const emptyCheck = evac.isEmpty("NonExistent");
+              
+              // Test multiple regions
+              evac.arrive("East", "David");
+              evac.arrive("West", "Eve");
+              evac.arrive("East", "Frank");
+              
+              const eastNext = evac.nextInLine("East");
+              const westNext = evac.nextInLine("West");
+              const eastEvac = evac.evacuate("East");
+              const westEvac = evac.evacuate("West");
+              const eastAfter = evac.nextInLine("East");
+
+              return { emptyEvacuation, emptyNext, emptyCheck, eastNext, westNext, eastEvac, westEvac, eastAfter };
+            `;
+            const { emptyEvacuation, emptyNext, emptyCheck, eastNext, westNext, eastEvac, westEvac, eastAfter } = new Function(testCode)();
+
+            if (emptyEvacuation !== null) return new TestResult({ passed: false, message: "Evacuating from non-existent region should return null" });
+            if (emptyNext !== null) return new TestResult({ passed: false, message: "nextInLine for non-existent region should return null" });
+            if (emptyCheck !== true) return new TestResult({ passed: false, message: "Non-existent region should be considered empty" });
+            if (eastNext !== "David") return new TestResult({ passed: false, message: "East region next should be 'David'" });
+            if (westNext !== "Eve") return new TestResult({ passed: false, message: "West region next should be 'Eve'" });
+            if (eastEvac !== "David") return new TestResult({ passed: false, message: "East evacuation should return 'David'" });
+            if (westEvac !== "Eve") return new TestResult({ passed: false, message: "West evacuation should return 'Eve'" });
+            if (eastAfter !== "Frank") return new TestResult({ passed: false, message: "After evacuating David, Frank should be next in East" });
+
+            return new TestResult({ passed: true });
+          } catch (e) {
+            return new TestResult({ passed: false, message: e.message });
+          }
+        },
+        message: "Test edge cases and multiple region management."
       }
     ]
   },

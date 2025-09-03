@@ -2,12 +2,10 @@ import { TestResult } from "../../utils/test_utils";
 
 export const combinePatternsOne = {
   id: 'combine-patterns-one',
-  title: 'Survival Data Detective — Station Signals (Maps & Sets)',
+  title: 'Global Cooling Crisis',
   sectionId: 'combining-patterns',
   previousChapterId: 'combining-patterns-learning-objectives',
   content: `
-  ## The Global Cooling Crisis Challenge
-
 Dr. Maya Patel stood before the massive wall of monitors at the Global Climate Research Institute, her breath visible in the frigid air despite the building's struggling heating system. Outside, snow fell in July across most of North America. The screens showed a terrifying reality: global temperatures had dropped 8°C in just two years, crop failures were causing mass starvation, and entire cities were being abandoned as they became uninhabitable.
 
 "Every second, we receive over 50,000 data points," Maya explained to her new team of junior developers, all bundled in winter coats. "Temperature readings showing record lows, ice sheet expansion data, frozen ocean current measurements, and atmospheric particulate concentrations that are blocking sunlight. We're witnessing the fastest climate shift in human history — a new ice age is beginning, and we have maybe five years before most of the planet becomes uninhabitable."
@@ -19,7 +17,7 @@ She gestured to the screens showing red emergency alerts across continents.
 
 ## ⏱️ Challenge: WeatherPatternAnalyzer
 
-Global Cooling has made temperature swings dangerous for field teams. You need to build a system that tracks weather stations and flags any that show **significant temperature changes** (≥ 5° difference from their previous reading). This early warning system could save lives by alerting teams to dangerous weather patterns.
+Global Cooling has made temperature swings dangerous for field teams. You shall to build a system that tracks weather stations and flags any that show **significant temperature changes** (≥ 5° difference from their previous reading). This early warning system could save lives by alerting teams to dangerous weather patterns.
 
 ### 🎯 What You Need to Implement
 
@@ -84,8 +82,7 @@ console.log(analyzer.getSystemSummary()); // { stationCount: 2, significantCount
 // TODO: Implement WeatherPatternAnalyzer using Map and Set
 // A station experiences a "significant change" if |curr - prev| >= 5
 
-// export so tests can access it
-export class WeatherPatternAnalyzer {
+class WeatherPatternAnalyzer {
   constructor() {
     // this.stations: Map<string, { latestTemp: number, count: number }>
     // this.significant: Set<string>
@@ -120,7 +117,7 @@ export class WeatherPatternAnalyzer {
 `,
     solution: `
 // Reference Solution
-export class WeatherPatternAnalyzer {
+class WeatherPatternAnalyzer {
   constructor() {
     this.stations = new Map(); // id -> { latestTemp, count }
     this.significant = new Set();

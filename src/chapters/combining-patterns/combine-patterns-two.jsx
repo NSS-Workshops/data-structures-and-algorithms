@@ -2,128 +2,192 @@ import { TestResult } from "../../utils/test_utils";
 
 export const combinePatternsTwo = {
   id: 'combine-patterns-two',
-  title: 'Survival Data Detective — Long Cold Corridor (Sliding Window)',
+  title: 'Lost weather monitors',
   sectionId: 'combining-patterns',
   previousChapterId: 'combine-patterns-one',
   content: `
-## Long Cold Corridor: Sustained Risk Zones
 
-The convoy needs to traverse dangerous territory where wind chill can be deadly. You must find the longest route segment where the average wind chill meets the minimum safety threshold - this could mean the difference between life and death for the team.
+The convoy's weather monitoring system has failed! Lost weather monitors are scattered across the frozen wasteland. Navigate through a 2D grid to collect these critical devices. Use a stack to keep track of monitors in the order you find them - this will help prioritize which ones to repair first.
 
-## ⏱️ Challenge: longestColdStreakAvgAtLeast
+## ⏱️ Challenge: Collect Weather Monitors with a Stack
 
 ### 🎯 The Problem
-A convoy must choose a route segment where the **average wind chill** is at least a danger threshold \`T\`. Given an array of integers \`readings\` (wind chill values by day), return the **longest** contiguous window whose average is \`>= T\`. If multiple windows tie for longest, return the first one found.
+You're given a 2D grid with lost weather monitors (> 0) and empty areas (0).
 
-### 🔄 Sliding Window Strategy
-This is a perfect use case for the **sliding window pattern**:
+You start from a given (row, col) position.
 
-1. **Expand Phase**: Keep adding elements to the right to grow the window
-2. **Contract Phase**: When the average drops below threshold, shrink from the left
-3. **Track Best**: Keep track of the longest valid window found so far
+Follow the search moves (U, D, L, R).
+
+Every time you find a monitor, push its serial number onto a stack.
+
+At the end, return monitor serial numbers in the order you found them.
+
+### 🗺️ 2D Array + Stack Strategy
+This combines **2D array navigation** with **stack operations**:
+
+1. **Start at given position** in the 2D grid
+2. **Follow search commands** (U=up, D=down, L=left, R=right)
+3. **Check each location** for monitors (values > 0)
+4. **Push monitor serial numbers onto stack** as you find them
+5. **Return stack contents** (in the order found for processing)
 
 ### 📊 Algorithm Steps
-1. Initialize \`left = 0\`, \`sum = 0\`, and \`best = null\`
-2. For each \`right\` position:
-   - Add \`readings[right]\` to the sum
-   - While the current average < T:
-     - Remove \`readings[left]\` from sum
-     - Increment \`left\`
-   - If current window is valid and longer than best, update best
-3. Return the best window found
+1. Initialize \`stack = []\` and current position \`(row, col)\`
+2. For each move in the search pattern:
+   - Update position based on direction (U/D/L/R)
+   - Check bounds to ensure valid position
+   - If current location has monitor (> 0), push serial number to stack
+3. Return the stack (monitor serial numbers in the order found)
 
 ### 💡 Key Insights
-- **Average Calculation**: \`sum / (right - left + 1)\`
-- **Window Length**: \`right - left + 1\`
-- **Efficiency**: Each element is added once and removed at most once → O(n)
+- **2D navigation**: Update \`row\` and \`col\` based on direction
+- **Bounds checking**: Ensure \`0 <= row < rows\` and \`0 <= col < cols\`
+- **Stack operations**: \`push()\` to add monitor serial numbers
+- **Movement mapping**: U=row-1, D=row+1, L=col-1, R=col+1
 
 ### 🧪 Example Walkthrough
 \`\`\`
-readings = [2, 1, 3, 1, 3], T = 2.2
+grid = [
+  [0, 105, 0],
+  [203, 0, 307],
+  [0, 402, 0]
+]
+startRow = 1, startCol = 0
+moves = ['U', 'R', 'D', 'R']
 
-Step 1: [2] avg=2.0 < 2.2 (invalid)
-Step 2: [2,1] avg=1.5 < 2.2 (invalid, shrink)
-Step 3: [1] avg=1.0 < 2.2 (invalid)
-Step 4: [1,3] avg=2.0 < 2.2 (invalid)
-Step 5: [1,3,1] avg=1.67 < 2.2 (invalid, shrink)
-Step 6: [3,1] avg=2.0 < 2.2 (invalid)
-Step 7: [3,1,3] avg=2.33 >= 2.2 ✓ (length 3, indices 2-4)
+Step by step:
+- Start at (1,0): monitor serial=203, push 203 → stack=[203]
+- Move U to (0,0): empty=0, no monitor → stack=[203]
+- Move R to (0,1): monitor serial=105, push 105 → stack=[203,105]
+- Move D to (1,1): empty=0, no monitor → stack=[203,105]
+- Move R to (1,2): monitor serial=307, push 307 → stack=[203,105,307]
 
-Result: {start: 2, end: 4, length: 3, average: 2.3333}
+Result: [203,105,307] (monitors found in this order)
 \`\`\`
 
 **Return Format**
-- \`{ start: number, end: number, length: number, average: number }\` or \`null\` if none found.
+- Array of monitor serial numbers: \`[serial1, serial2, ...]\` (in the order found)
 
 **Constraints**
-- Use the **sliding window** pattern (expand right, shrink left while condition fails)
-- Time complexity: O(n), Space: O(1)
+- Use **2D array indexing** and **stack operations**
+- Handle **bounds checking** for invalid moves
+- Time complexity: O(m) where m is number of moves
+- Space complexity: O(t) where t is number of monitors found
 
 🔓 **Uncomment the below code section in the editor 👉:**
-- Implement \`longestColdStreakAvgAtLeast(readings: number[], T: number)\` using sliding window.
+- Implement \`collectWeatherMonitors(grid, startRow, startCol, moves)\` combining 2D arrays and stacks.
 `,
   exercise: {
     starterCode: `
-// export so tests can access it
-export function longestColdStreakAvgAtLeast(readings, T) {
-  // Sliding window: keep windowSum and (left, right)
-  if (!Array.isArray(readings) || readings.length === 0) return null;
+function collectWeatherMonitors(grid, startRow, startCol, moves) {
+  // 2D array + stack: navigate grid and collect weather monitors
+  if (!Array.isArray(grid) || grid.length === 0 || !Array.isArray(grid[0])) return [];
 
-  // TODO: implement O(n) sliding window to maintain avg >= T
-  // Tip: while (avg < T) shrink from left
-  return null;
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const stack = [];
+  let row = startRow;
+  let col = startCol;
+
+  // TODO: implement 2D navigation with stack operations
+  // Tip: check starting position first, then follow moves (U/D/L/R)
+  // Push monitor serial numbers onto stack as you find them
+  return stack;
 }
 `,
     solution: `
 // Reference Solution
-export function longestColdStreakAvgAtLeast(readings, T) {
-  if (!Array.isArray(readings) || readings.length === 0) return null;
+function collectWeatherMonitors(grid, startRow, startCol, moves) {
+  if (!Array.isArray(grid) || grid.length === 0 || !Array.isArray(grid[0])) return [];
 
-  let best = null;
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const stack = [];
+  const collected = new Set(); // Track collected positions to avoid duplicates
+  let row = startRow;
+  let col = startCol;
 
-  // Try all possible starting positions
-  for (let start = 0; start < readings.length; start++) {
-    let sum = 0;
-    
-    // Try all possible ending positions from this start
-    for (let end = start; end < readings.length; end++) {
-      sum += readings[end];
-      const len = end - start + 1;
-      const avg = sum / len;
-      
-      // If this window meets the threshold and is longer than current best
-      if (avg >= T) {
-        if (!best || len > best.length) {
-          best = { start, end, length: len, average: +avg.toFixed(4) };
-        }
-      }
-    }
+  // Check starting position for weather monitor
+  if (row >= 0 && row < rows && col >= 0 && col < cols && grid[row][col] > 0) {
+    stack.push(grid[row][col]);
+    collected.add(row + ',' + col); // Mark position as collected
   }
 
-  return best;
+  // Process each search move
+  for (const move of moves) {
+    // Update position based on move direction
+    switch (move) {
+      case 'U':
+        row--;
+        break;
+      case 'D':
+        row++;
+        break;
+      case 'L':
+        col--;
+        break;
+      case 'R':
+        col++;
+        break;
+    }
+
+    // Check bounds and collect monitor if present and not already collected
+    if (row >= 0 && row < rows && col >= 0 && col < cols) {
+      const posKey = row + ',' + col;
+      if (grid[row][col] > 0 && !collected.has(posKey)) {
+        stack.push(grid[row][col]); // Push monitor serial number onto stack
+        collected.add(posKey); // Mark position as collected
+      }
+    }
+    // If out of bounds, we just continue (ignore invalid moves)
+  }
+
+  return stack; // Returns monitor serial numbers in the order found
 }
 `,
     tests: [
       {
-        name: "Finds the longest qualifying window by average",
+        name: "Collects weather monitors using 2D navigation and stack operations",
         test: (code) => {
           try {
             const testCode = code + `
-              const out1 = longestColdStreakAvgAtLeast([2,1,3,1,3], 2.2);
-              const out2 = longestColdStreakAvgAtLeast([1,1,1,1], 1.5);
-              const out3 = longestColdStreakAvgAtLeast([5,5,1,5,5], 4.5);
+              const grid1 = [
+                [0, 105, 0],
+                [203, 0, 307],
+                [0, 402, 0]
+              ];
+              const out1 = collectWeatherMonitors(grid1, 1, 0, ['U', 'R', 'D', 'R']);
+              
+              const grid2 = [
+                [101, 102],
+                [103, 104]
+              ];
+              const out2 = collectWeatherMonitors(grid2, 0, 0, ['R', 'D', 'L']);
+              
+              const grid3 = [
+                [0, 0, 0],
+                [0, 999, 0],
+                [0, 0, 0]
+              ];
+              const out3 = collectWeatherMonitors(grid3, 1, 1, ['U', 'D', 'L', 'R']);
+              
               return { out1, out2, out3 };
             `;
             const { out1, out2, out3 } = new Function(testCode)();
 
-            if (!out1 || out1.length !== 3 || out1.start !== 2 || out1.end !== 4) {
-              return new TestResult({ passed: false, message: "Should find window [3,1,3] (idx 2..4) length 3" });
+            // Test 1: Should collect monitor serial numbers [203, 105, 307] in that order
+            if (!Array.isArray(out1) || JSON.stringify(out1) !== JSON.stringify([203, 105, 307])) {
+              return new TestResult({ passed: false, message: `Expected [203, 105, 307], got ${JSON.stringify(out1)}` });
             }
-            if (out2 !== null) {
-              return new TestResult({ passed: false, message: "No window avg >= 1.5 in [1,1,1,1]" });
+            
+            // Test 2: Should collect monitor serial numbers [101, 102, 104, 103] following the path
+            if (!Array.isArray(out2) || JSON.stringify(out2) !== JSON.stringify([101, 102, 104, 103])) {
+              return new TestResult({ passed: false, message: `Expected [101, 102, 104, 103], got ${JSON.stringify(out2)}` });
             }
-            if (!out3 || out3.length !== 2 || out3.start !== 0 || out3.end !== 1) {
-              return new TestResult({ passed: false, message: "Should pick first longest window avg>=4.5: [5,5] (idx 0..1)" });
+            
+            // Test 3: Should collect only the starting monitor serial number [999]
+            if (!Array.isArray(out3) || JSON.stringify(out3) !== JSON.stringify([999])) {
+              return new TestResult({ passed: false, message: `Expected [999], got ${JSON.stringify(out3)}` });
             }
 
             return new TestResult({ passed: true });
@@ -131,7 +195,7 @@ export function longestColdStreakAvgAtLeast(readings, T) {
             return new TestResult({ passed: false, message: e.message });
           }
         },
-        message: "Sliding window should expand/contract to maintain avg >= T and choose the longest segment."
+        message: "Should navigate 2D grid following search moves and collect weather monitor serial numbers using stack operations."
       }
     ]
   },

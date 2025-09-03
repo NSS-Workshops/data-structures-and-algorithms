@@ -2,9 +2,9 @@ import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
 
 export const combiningPatternsCheckpointChapter = {
   id: 'combining-patterns-checkpoint',
-  title: 'Final Self Assessment: Data Structures & Algorithms',
+  title: 'Final Self Assessment',
   sectionId: 'combining-patterns',
-  previousChapterId: 'solving-complex-problems',
+  previousChapterId: 'combine-patterns-four',
   content: null,
   quiz: {
     component: () => {
@@ -13,12 +13,6 @@ export const combiningPatternsCheckpointChapter = {
         
         return (
           <main>
-            <p className="assessment-intro">
-              This comprehensive assessment covers all major concepts from the course.
-              Take your time and demonstrate your understanding of data structures, algorithms,
-              and their real-world applications.
-            </p>
-            
             <form className="auto-graded-quiz">
               {/* Big O and Algorithmic Thinking */}
               <div className="question" data-answer="O(log n)">
@@ -65,16 +59,39 @@ export const combiningPatternsCheckpointChapter = {
               </div>
 
               {/* Sliding Window */}
-              <div className="question" data-answer="Sliding window maintains a subset of elements and efficiently updates as the window moves">
+              <div className="question" data-answer="windowSum">
                 <p>
-                  <strong>Sliding Window:</strong> Explain how the sliding window pattern works and why it&apos;s efficient for analyzing subarrays.
+                  <strong>Sliding Window:</strong> Complete this sliding window implementation to find the maximum sum subarray of size k:
                 </p>
-                <input type="text" required />
+                <pre><code>{`function maxSumSubarray(arr, k) {
+  let maxSum = 0;
+  let windowSum = 0;
+  let left = 0;
+  
+  for (let right = 0; right < arr.length; right++) {
+    windowSum += arr[right];
+    
+    if (right >= k - 1) {
+      maxSum = Math.max(maxSum, _____);
+      windowSum -= arr[left];
+      left++;
+    }
+  }
+  return maxSum;
+}`}</code></pre>
+                <p>What should be compared with maxSum?</p>
+                <select required>
+                  <option value="">Choose the correct variable...</option>
+                  <option value="windowSum">windowSum</option>
+                  <option value="arr[right]">arr[right]</option>
+                  <option value="left">left</option>
+                  <option value="right">right</option>
+                </select>
                 <span className="feedback" />
                 <div className="explanation">
                   Sliding window maintains a subset of elements (the &quot;window&quot;) and efficiently updates the window state
-                  as it moves through the array. Instead of recalculating everything for each position, it adds new elements
-                  and removes old ones, achieving O(n) time complexity for problems that would otherwise be O(n²).
+                  as it moves through the array. We compare maxSum with windowSum to track the maximum sum found so far.
+                  This achieves O(n) time complexity by avoiding recalculation.
                 </div>
               </div>
 
@@ -148,15 +165,29 @@ export const combiningPatternsCheckpointChapter = {
               </div>
 
               {/* Stacks and Queues */}
-              <div className="question" data-answer="Stack uses LIFO (Last In, First Out), Queue uses FIFO (First In, First Out)">
+              <div className="question" data-answer="pop,push,dequeue,enqueue">
                 <p>
-                  <strong>Stacks & Queues:</strong> What is the key difference between stack and queue data structures?
+                  <strong>Stacks & Queues:</strong> Complete the stack and queue implementations:
                 </p>
-                <input type="text" required />
+                <pre><code>{`class Stack {
+  constructor() { this.items = []; }
+  
+  _____() { return this.items.pop(); }      // Remove from top
+  _____(item) { this.items.push(item); }    // Add to top
+}
+
+class Queue {
+  constructor() { this.items = []; }
+  
+  _____() { return this.items.shift(); }    // Remove from front
+  _____(item) { this.items.push(item); }    // Add to back
+}`}</code></pre>
+                <p>Fill in the method names (comma-separated): <input type="text" placeholder="enqueue,pop,push,dequeue," required /></p>
                 <span className="feedback" />
                 <div className="explanation">
-                  Stacks follow LIFO (Last In, First Out) - the most recently added element is removed first, like a stack of plates.
-                  Queues follow FIFO (First In, First Out) - the first element added is the first removed, like a line of people waiting.
+                  Stacks follow LIFO (Last In, First Out) using pop() and push() methods.
+                  Queues follow FIFO (First In, First Out) using dequeue() and enqueue() methods.
+                  The correct answers are: pop, push, dequeue, enqueue.
                 </div>
               </div>
 
@@ -207,99 +238,135 @@ export const combiningPatternsCheckpointChapter = {
               </div>
 
               {/* Pattern Recognition */}
-              <div className="question" data-answer="Analyze the problem requirements and choose data structures that optimize for the most frequent operations">
+              <div className="question" data-answer="Map,Set,Array,LinkedList">
                 <p>
-                  <strong>Pattern Recognition:</strong> How do you choose the right data structure for a specific problem?
+                  <strong>Pattern Recognition:</strong> Choose the best data structure for each scenario:
                 </p>
-                <input type="text" required />
+                <pre><code>{`// Fast key-value lookups
+const userCache = new _____([
+  ['user1', {name: 'Alice'}],
+  ['user2', {name: 'Bob'}]
+]);
+
+// Unique items only
+const uniqueIds = new _____([1, 2, 2, 3, 3, 4]);
+
+// Indexed access needed
+const temperatures = new _____([20, 22, 19, 25]);
+
+// Frequent insertions/deletions from the front and back
+class _____ {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}`}</code></pre>
+                <p>Fill in the data structures (comma-separated): <input type="text" placeholder="LinkedList,Map,Set,Array" required /></p>
                 <span className="feedback" />
                 <div className="explanation">
-                  Choose data structures by analyzing the problem requirements: What operations will be performed most frequently?
-                  Do you need fast lookups (Maps), unique collections (Sets), ordered data (Arrays), or dynamic insertion/deletion (Linked Lists)?
-                  Optimize for your most common operations while considering trade-offs in time and space complexity.
+                  Choose data structures based on operations: Map for fast lookups, Set for uniqueness,
+                  Array for indexed access, LinkedList for dynamic insertion/deletion.
+                  The correct answers are: Map, Set, Array, LinkedList.
                 </div>
               </div>
 
               {/* Performance Trade-offs */}
-              <div className="question" data-answer="time-space">
+              <div className="question" data-answer="O(n)">
                 <p>
-                  <strong>Performance Trade-offs:</strong> What is the most common trade-off in algorithm and data structure design?
+                  <strong>Performance Trade-offs:</strong> Complete this example of time vs space trade-off:
                 </p>
-                <label>
-                  <input type="radio" name="tradeoff" value="time-space" required />
-                  Time complexity vs. Space complexity (speed vs. memory usage)
-                </label>
-                <br />
-                <label>
-                  <input type="radio" name="tradeoff" value="simplicity-performance" required />
-                  Code simplicity vs. Performance optimization
-                </label>
-                <br />
-                <label>
-                  <input type="radio" name="tradeoff" value="read-write" required />
-                  Read performance vs. Write performance
-                </label>
-                <br />
-                <label>
-                  <input type="radio" name="tradeoff" value="consistency-availability" required />
-                  Data consistency vs. System availability
-                </label>
+                <pre><code>{`
+function findDuplicates(arr) {
+  const duplicates = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j] && !duplicates.includes(arr[i])) {
+        duplicates.push(arr[i]);
+      }
+    }
+  }
+  return duplicates; // Time: O(n²), Space: _____
+}`}</code></pre>
+                <p>What is the space complexity?</p>
+                <select required>
+                  <option value="">Choose the correct complexity...</option>
+                  <option value="O(1)">O(1)</option>
+                  <option value="O(n)">O(n)</option>
+                  <option value="O(log n)">O(log n)</option>
+                  <option value="O(n²)">O(n²)</option>
+                </select>
                 <span className="feedback" />
                 <div className="explanation">
-                  The most fundamental trade-off is time vs. space complexity - you can often make algorithms faster by using more memory
-                  (like caching or precomputed results) or save memory by accepting slower performance. Understanding this trade-off
-                  is crucial for making informed design decisions.
+                  This uses O(n) extra space but O(n²) time with nested loops.
                 </div>
               </div>
 
-              {/* Climate AI Integration */}
-              <div className="question" data-answer="Multiple specialized algorithms working together, each optimized for specific tasks">
-                <p>
-                  <strong>System Integration:</strong> In the Global Cooling Intelligence Platform, what makes the system more powerful than using a single algorithm?
-                </p>
-                <input type="text" required />
+              <div className="question" data-answer="Map">
+                <pre><code>{`class CoolingIntelligencePlatform {
+  constructor() {
+    this.stationData = new _____();        // Fast station lookups
+    this.temperatureWindow = [];           // For sliding window analysis
+    this.alertCache = new Map();           // Cache recent alerts
+  }
+  
+  processTemperatureStream(readings) {
+    // 1. Fast lookup of station metadata
+    const station = this.stationData.get(readings.stationId);
+    
+    // 2. Sliding window for trend analysis
+    this.updateWindow(readings.temperatures);
+    
+    // 3. Sort for percentile calculations
+    const sorted = [...readings.temperatures].sort();
+    
+    // 4. Cache results to avoid recalculation
+    this.alertCache.set(readings.stationId, this.analyzePattern(sorted));
+  }
+}`}</code></pre>
+                <p>What data structure should be used for fast station lookups?</p>
+                <select required>
+                  <option value="">Choose the best data structure...</option>
+                  <option value="Map">Map</option>
+                  <option value="Array">Array</option>
+                  <option value="Set">Set</option>
+                  <option value="LinkedList">LinkedList</option>
+                </select>
                 <span className="feedback" />
                 <div className="explanation">
-                  Complex systems like GCIP use multiple specialized algorithms working together - sliding windows for real-time cooling analysis,
-                  hash tables for fast lookups, sorting for data organization, pattern recognition for cooling anomaly detection, and caching for performance.
-                  Each algorithm is optimized for its specific role, creating a system more powerful than any single approach.
+                  Complex systems combine multiple specialized algorithms: Map for fast O(1) lookups, sliding window for real-time analysis,
+                  sorting for data organization, and caching for performance. Each algorithm is optimized for its specific role.
                 </div>
               </div>
 
               {/* Real-world Impact */}
-              <div className="question" data-answers="Faster cooling predictions save lives,Better algorithms enable more accurate models,Efficient systems can process more data,Optimized performance supports global scale">
+              <div className="question" data-answer="divide-conquer">
                 <p>
-                  <strong>Real-world Impact:</strong> How do data structures and algorithms contribute to addressing global cooling challenges?
+                  <strong>Real-world Impact:</strong> Why is the optimal time complexity for comparison-based sorting O(n log n)?
                 </p>
                 <label>
-                  <input type="checkbox" value="Faster cooling predictions save lives" />
-                  ⚡ Faster cooling predictions enable earlier cold weather warnings and save lives
+                  <input type="radio" name="sort-complexity" value="divide-conquer" required />
+                  Divide-and-conquer algorithms split the problem into smaller subproblems, leading to O(n log n)
                 </label>
                 <br />
                 <label>
-                  <input type="checkbox" value="Better algorithms enable more accurate models" />
-                  🎯 Better algorithms enable more accurate cooling models and predictions
+                  <input type="radio" name="sort-complexity" value="nested-loops" required />
+                  Sorting requires nested loops, which always results in O(n log n) complexity
                 </label>
                 <br />
                 <label>
-                  <input type="checkbox" value="Efficient systems can process more data" />
-                  📊 Efficient systems can process more sensor data for comprehensive cooling monitoring
+                  <input type="radio" name="sort-complexity" value="memory-limitation" required />
+                  Memory limitations prevent faster sorting algorithms from being implemented
                 </label>
                 <br />
                 <label>
-                  <input type="checkbox" value="Optimized performance supports global scale" />
-                  🌍 Optimized performance supports global-scale cooling monitoring systems
+                  <input type="radio" name="sort-complexity" value="comparison-limit" required />
+                  The number of comparisons needed is limited by the hardware architecture
                 </label>
-                <br />
-                <label>
-                  <input type="checkbox" value="Algorithms automatically solve global cooling" />
-                  🤖 Algorithms automatically solve global cooling without human intervention
-                </label>
-                <div className="feedback"></div>
+                <span className="feedback" />
                 <div className="explanation">
-                  Data structures and algorithms are tools that amplify human efforts to address global cooling challenges. They enable faster,
-                  more accurate predictions, support processing of massive datasets, and allow global-scale monitoring systems.
-                  However, they are tools that support human decision-making rather than automatically solving complex problems.
+                  Efficient comparison-based sorting algorithms like merge sort and heap sort use divide-and-conquer strategies.
+                  They recursively split the problem into smaller subproblems (log n levels) and process each level in O(n) time,
+                  resulting in O(n log n) total complexity. This is mathematically proven to be optimal for comparison-based sorting.
                 </div>
               </div>
 

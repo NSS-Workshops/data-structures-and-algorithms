@@ -52,27 +52,6 @@ lo=4, hi=4, mid=4: thicknesses[4]=7 < 8 (unsafe!) → result=4, hi=3
 lo=4, hi=3: lo > hi, stop
 
 Result: 4 (first index where thickness < 8)
-\`\`\`
-
-### 🔧 Implementation Template
-\`\`\`javascript
-function findFirstBelowThreshold(thicknesses, minSafe) {
-  let lo = 0, hi = thicknesses.length - 1;
-  let result = -1;
-  
-  while (lo <= hi) {
-    const mid = lo + Math.floor((hi - lo) / 2);
-    if (thicknesses[mid] < minSafe) {
-      result = mid;        // Found candidate
-      hi = mid - 1;        // Look for earlier occurrence
-    } else {
-      lo = mid + 1;        // Still safe, go right
-    }
-  }
-  
-  return result;
-}
-\`\`\`
 
 **Return Value**
 - Index of first unsafe section, or \`-1\` if all are safe

@@ -10,6 +10,12 @@ export const codeExcerciseEightChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | 8 | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Real work is often sorting records by one or more fields.
 
 **Objectives:**
@@ -25,6 +31,13 @@ export const codeExcerciseEightChapter = {
 2. Then by earliest due date
 
 Task object format: \`{id: number, title: string, priority: number, due: string}\`
+
+**Examples:**
+   - Input: \`[{id:1, priority:2, due:'2025-09-10'}, {id:2, priority:1, due:'2025-09-15'}]\`
+   - Output: \`[{id:2, priority:1, due:'2025-09-15'}, {id:1, priority:2, due:'2025-09-10'}]\` (priority 1 first)
+   
+   - Input: \`[{id:3, priority:1, due:'2025-09-01'}, {id:4, priority:1, due:'2025-08-31'}]\`
+   - Output: \`[{id:4, priority:1, due:'2025-08-31'}, {id:3, priority:1, due:'2025-09-01'}]\` (earlier date first)
 
 ## Algorithm:
 1. Use Array.sort() with custom comparator
@@ -89,7 +102,7 @@ function sortTasks(tasks){
         name: "sortTasks works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return sortTasks;`)();
+            const func = new Function(`${code}; \n return sortTasks;`)();
             
             const tasks = [
               {id:1, title:'a', priority:2, due:'2025-09-10'},
@@ -122,7 +135,7 @@ function sortTasks(tasks){
         name: "Does not mutate original array",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return sortTasks;`)();
+            const func = new Function(`${code}; \n return sortTasks;`)();
             
             const tasks = [
               {id:1, title:'a', priority:2, due:'2025-09-10'},
@@ -157,7 +170,7 @@ function sortTasks(tasks){
         name: "Handles edge cases",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return sortTasks;`)();
+            const func = new Function(`${code}; \n return sortTasks;`)();
             
             // Empty array
             const result1 = func([]);

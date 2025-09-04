@@ -10,6 +10,12 @@ export const codeExcerciseFiveChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | 5 | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Hash-based structures unlock O(1) average lookups and fast membership tests.
 
 **Objectives:**
@@ -21,7 +27,14 @@ export const codeExcerciseFiveChapter = {
 ## Problems to Solve:
 
 1. **wordCount(text)** - Return a Map of word → count (case-insensitive, letters only)
+   - Example: \`wordCount('One fish two fish')\` → Map{'one' => 1, 'fish' => 2, 'two' => 1}
+   - Example: \`wordCount('Hello, World!')\` → Map{'hello' => 1, 'world' => 1}
+   - Example: \`wordCount('123 !@#')\` → Map{} (no letters)
+
 2. **hasDuplicate(arr)** - Return true if array has any duplicate value (use Set)
+   - Example: \`hasDuplicate([1, 2, 3, 2])\` → \`true\` (2 appears twice)
+   - Example: \`hasDuplicate([1, 2, 3])\` → \`false\` (all unique)
+   - Example: \`hasDuplicate([])\` → \`false\` (empty array)
 
 ## Big-O Analysis:
 - **Average O(1)** for Map/Set operations (.get/.set/.has)
@@ -90,7 +103,7 @@ function hasDuplicate(arr) {
         name: "wordCount works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { wordCount, hasDuplicate };`)();
+            const func = new Function(`${code}; \n return { wordCount, hasDuplicate };`)();
             const wc = func.wordCount('One fish two fish, red fish blue fish.');
             
             const fishCount = wc.get('fish');
@@ -117,7 +130,7 @@ function hasDuplicate(arr) {
         name: "hasDuplicate detects duplicates",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { wordCount, hasDuplicate };`)();
+            const func = new Function(`${code}; \n return { wordCount, hasDuplicate };`)();
             
             const result1 = func.hasDuplicate([1, 2, 3, 2]);
             const result2 = func.hasDuplicate([1, 2, 3]);
@@ -143,7 +156,7 @@ function hasDuplicate(arr) {
         name: "Handles edge cases",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { wordCount, hasDuplicate };`)();
+            const func = new Function(`${code}; \n return { wordCount, hasDuplicate };`)();
             
             // Empty text
             const wc1 = func.wordCount('');

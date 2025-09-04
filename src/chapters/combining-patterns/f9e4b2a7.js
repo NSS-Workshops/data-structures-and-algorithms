@@ -10,6 +10,12 @@ export const codeExcerciseSixChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | 6 | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Stacks model LIFO. Reversing with a stack demonstrates push/pop mechanics and O(1) operations without building the data structure yourself.
 
 **Objectives:**
@@ -22,7 +28,14 @@ export const codeExcerciseSixChapter = {
 ## Problems to Solve:
 
 1. **reverseStringWithStack(s)** - Use Stack to reverse and return a new string
+   - Example: \`reverseStringWithStack('abc')\` → \`'cba'\`
+   - Example: \`reverseStringWithStack('hello')\` → \`'olleh'\`
+   - Example: \`reverseStringWithStack('')\` → \`''\` (empty string)
+
 2. **reverseArrayWithStack(arr)** - Use Stack to return a NEW reversed array (do not mutate input)
+   - Example: \`reverseArrayWithStack([1, 2, 3])\` → \`[3, 2, 1]\`
+   - Example: \`reverseArrayWithStack(['a', 'b'])\` → \`['b', 'a']\`
+   - Example: \`reverseArrayWithStack([])\` → \`[]\` (empty array)
 
 ## Algorithm:
 1. Push all elements onto stack
@@ -123,7 +136,7 @@ function reverseArrayWithStack(arr){
         name: "reverseStringWithStack works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { reverseStringWithStack, reverseArrayWithStack };`)();
+            const func = new Function(`${code}; \n return { reverseStringWithStack, reverseArrayWithStack };`)();
             
             const result1 = func.reverseStringWithStack('abc');
             const result2 = func.reverseStringWithStack('');
@@ -149,7 +162,7 @@ function reverseArrayWithStack(arr){
         name: "reverseArrayWithStack works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { reverseStringWithStack, reverseArrayWithStack };`)();
+            const func = new Function(`${code}; \n return { reverseStringWithStack, reverseArrayWithStack };`)();
             
             const result1 = func.reverseArrayWithStack([1, 2, 3]);
             const result2 = func.reverseArrayWithStack([]);
@@ -178,7 +191,7 @@ function reverseArrayWithStack(arr){
         name: "Does not mutate input array",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { reverseStringWithStack, reverseArrayWithStack };`)();
+            const func = new Function(`${code}; \n return { reverseStringWithStack, reverseArrayWithStack };`)();
             
             const original = [1, 2, 3];
             const originalCopy = [...original];

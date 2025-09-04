@@ -10,6 +10,12 @@ export const codeExcerciseFourChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | [3](e8f1a5b3) | 4 | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Two pointers converts nested loops to linear time when data is ordered.
 
 **Objectives:**
@@ -21,6 +27,10 @@ export const codeExcerciseFourChapter = {
 ## Problem to Solve:
 
 **hasPairWithSum(sortedNums, target)** - Given a sorted array and target, return true if any pair sums to target
+   - Example: \`hasPairWithSum([1, 2, 4, 4], 8)\` → \`true\` (4 + 4 = 8)
+   - Example: \`hasPairWithSum([1, 2, 3, 9], 8)\` → \`false\` (no pair sums to 8)
+   - Example: \`hasPairWithSum([1, 2], 3)\` → \`true\` (1 + 2 = 3)
+   - Example: \`hasPairWithSum([5], 5)\` → \`false\` (single element, no pair)
 
 ## Algorithm:
 1. Use two pointers: left at start, right at end
@@ -85,7 +95,7 @@ function hasPairWithSum(sortedNums, target) {
         name: "Finds pair that sums to target",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return hasPairWithSum;`)();
+            const func = new Function(`${code}; \n return hasPairWithSum;`)();
             const result = func([1, 2, 4, 4], 8);
             
             if (result === true) {
@@ -109,7 +119,7 @@ function hasPairWithSum(sortedNums, target) {
         name: "Returns false when no pair exists",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return hasPairWithSum;`)();
+            const func = new Function(`${code}; \n return hasPairWithSum;`)();
             const result = func([1, 2, 3, 9], 8);
             
             if (result === false) {
@@ -133,7 +143,7 @@ function hasPairWithSum(sortedNums, target) {
         name: "Handles edge cases",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return hasPairWithSum;`)();
+            const func = new Function(`${code}; \n return hasPairWithSum;`)();
             
             const result1 = func([], 5); // Empty array
             const result2 = func([5], 5); // Single element

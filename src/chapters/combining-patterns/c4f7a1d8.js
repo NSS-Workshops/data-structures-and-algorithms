@@ -10,6 +10,12 @@ export const codeExcerciseNineChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | 9
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Sliding window replaces nested loops when aggregating over contiguous spans.
 
 **Objectives:**
@@ -21,6 +27,13 @@ export const codeExcerciseNineChapter = {
 ## Problem to Solve:
 
 **maxSumOfSizeK(nums, k)** - Return the maximum sum of any contiguous subarray of length k
+
+**Examples:**
+   - \`maxSumOfSizeK([2,1,5,1,3,2], 3)\` → \`9\` (subarray [5,1,3] = 5+1+3 = 9)
+   - \`maxSumOfSizeK([2,3,4,1,5], 2)\` → \`7\` (subarray [3,4] = 3+4 = 7)
+   - \`maxSumOfSizeK([1], 1)\` → \`1\` (single element)
+   - \`maxSumOfSizeK([1,2], 3)\` → \`null\` (k > array length)
+   - \`maxSumOfSizeK([-1,-2,-3,-4], 2)\` → \`-3\` (subarray [-1,-2] = -1+(-2) = -3)
 
 ## Algorithm:
 1. Calculate sum of first k elements (initial window)
@@ -94,7 +107,7 @@ function maxSumOfSizeK(nums, k){
         name: "maxSumOfSizeK works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return maxSumOfSizeK;`)();
+            const func = new Function(`${code}; \n return maxSumOfSizeK;`)();
             
             const result1 = func([2,1,5,1,3,2], 3); // 5+1+3 = 9
             const result2 = func([2,3,4,1,5], 2);   // 3+4 = 7
@@ -121,7 +134,7 @@ function maxSumOfSizeK(nums, k){
         name: "Handles edge cases",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return maxSumOfSizeK;`)();
+            const func = new Function(`${code}; \n return maxSumOfSizeK;`)();
             
             const result1 = func([1,2], 3);    // k > length
             const result2 = func([], 1);       // empty array
@@ -148,7 +161,7 @@ function maxSumOfSizeK(nums, k){
         name: "Works with negative numbers",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return maxSumOfSizeK;`)();
+            const func = new Function(`${code}; \n return maxSumOfSizeK;`)();
             
             const result1 = func([-1, -2, -3, -4], 2); // max of [-1,-2], [-2,-3], [-3,-4] = -3
             const result2 = func([1, -1, 0, 2], 2);    // max of [1,-1], [-1,0], [0,2] = 2

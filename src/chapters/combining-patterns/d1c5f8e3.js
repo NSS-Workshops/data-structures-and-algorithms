@@ -10,6 +10,12 @@ export const codeExcerciseSevenChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | 7 | [8](a7b2e9f6) | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Real-world systems (APIs, telemetry) often need to count events in a rolling window. A FIFO queue makes expiring old events O(1) amortized.
 
 **Objectives:**
@@ -25,6 +31,13 @@ export const codeExcerciseSevenChapter = {
 1. Adds timestamp t to the queue
 2. Removes timestamps < t-3000 (outside the window)
 3. Returns count of pings in window [t-3000, t]
+
+**Examples:**
+   - \`rc.ping(1)\` → \`1\` (window: [1], count: 1)
+   - \`rc.ping(100)\` → \`2\` (window: [1, 100], count: 2)
+   - \`rc.ping(3001)\` → \`3\` (window: [1, 100, 3001], count: 3)
+   - \`rc.ping(3002)\` → \`3\` (window: [100, 3001, 3002], count: 3, removed 1)
+   - \`rc.ping(7000)\` → \`1\` (window: [7000], count: 1, removed old pings)
 
 ## Algorithm:
 1. Enqueue the new timestamp
@@ -111,7 +124,7 @@ class RecentCounter{
         name: "RecentCounter basic functionality",
         test: (code) => {
           try {
-            const classes = new Function(`${code}; return { QNode, Queue, RecentCounter };`)();
+            const classes = new Function(`${code}; \n return { QNode, Queue, RecentCounter };`)();
             const rc = new classes.RecentCounter();
             
             const result1 = rc.ping(1);      // [1]
@@ -139,7 +152,7 @@ class RecentCounter{
         name: "RecentCounter removes old pings",
         test: (code) => {
           try {
-            const classes = new Function(`${code}; return { QNode, Queue, RecentCounter };`)();
+            const classes = new Function(`${code}; \n return { QNode, Queue, RecentCounter };`)();
             const rc = new classes.RecentCounter();
             
             rc.ping(1);      // [1]
@@ -168,7 +181,7 @@ class RecentCounter{
         name: "RecentCounter handles large time jumps",
         test: (code) => {
           try {
-            const classes = new Function(`${code}; return { QNode, Queue, RecentCounter };`)();
+            const classes = new Function(`${code}; \n return { QNode, Queue, RecentCounter };`)();
             const rc = new classes.RecentCounter();
             
             rc.ping(1);

@@ -10,6 +10,12 @@ export const codeExcerciseThreeChapter = {
 
 **Navigate:** [1](9b8a8427) | [2](a4b7c9d2) | 3 | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Linked lists train pointer thinking and reveal trade-offs vs arrays.
 
 **Objectives:**
@@ -22,10 +28,23 @@ export const codeExcerciseThreeChapter = {
 ## Problems to Solve:
 
 1. **Node class** - Basic node with value and next pointer
+   - Example: \`new Node(5)\` → Node with value=5, next=null
+   - Example: \`new Node(3, someNode)\` → Node with value=3, next=someNode
+
 2. **LinkedList class** - With head, tail, length tracking
+   - Example: \`new LinkedList()\` → Empty list with head=null, tail=null, length=0
+
 3. **append(value)** - O(1) with tail pointer
+   - Example: \`list.append(1); list.append(2)\` → List: 1 → 2, length=2
+   - Example: \`list.append('hello')\` → Adds 'hello' to end of list
+
 4. **remove(value)** - Remove first node with matching value; return true if removed
+   - Example: \`list.remove(2)\` → \`true\` (if 2 exists), removes first occurrence
+   - Example: \`list.remove(99)\` → \`false\` (if 99 doesn't exist)
+
 5. **forEach(fn)** - Call fn(value, index) for each node
+   - Example: \`list.forEach((val, i) => console.log(val, i))\` → Prints each value with index
+   - Example: \`list.forEach(val => sum += val)\` → Accumulates values
 
 ## Big-O Analysis:
 - **Index access requires walking nodes => O(n)**
@@ -149,7 +168,7 @@ class LinkedList {
         name: "LinkedList basic operations work",
         test: (code) => {
           try {
-            const classes = new Function(`${code}; return { Node, LinkedList };`)();
+            const classes = new Function(`${code}; \n return { Node, LinkedList };`)();
             const list = new classes.LinkedList();
             
             list.append(1);
@@ -180,7 +199,7 @@ class LinkedList {
         name: "Remove works correctly",
         test: (code) => {
           try {
-            const classes = new Function(`${code}; return { Node, LinkedList };`)();
+            const classes = new Function(`${code}; \n return { Node, LinkedList };`)();
             const list = new classes.LinkedList();
             
             list.append(1);
@@ -212,7 +231,7 @@ class LinkedList {
         name: "Remove returns false when element not found",
         test: (code) => {
           try {
-            const classes = new Function(`${code}; return { Node, LinkedList };`)();
+            const classes = new Function(`${code}; \n return { Node, LinkedList };`)();
             const list = new classes.LinkedList();
             
             list.append(1);

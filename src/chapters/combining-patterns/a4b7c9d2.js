@@ -10,6 +10,12 @@ export const codeExcerciseTwoChapter = {
 
 **Navigate:** [1](9b8a8427) | 2 | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 
+## 👥 Pair Programming Instructions
+
+**Work in pairs for this challenge!** One person should be the **Driver** (writing code) and the other the **Navigator** (reviewing and guiding). **Switch roles for each function** you implement.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jqGmL6Hf23k?si=qXmQcnQigfo1adTb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Why it matters:** Grid problems are everywhere (games, pathfinding, image processing). Neighbor logic is foundational.
 
 **Objectives:**
@@ -21,7 +27,12 @@ export const codeExcerciseTwoChapter = {
 ## Problems to Solve:
 
 1. **countNeighbors(grid, r, c, target)** - Count 8-direction neighbors that match a target value
+   - Example: \`countNeighbors([[1,1,0],[0,1,0],[0,0,1]], 0, 0, 1)\` → \`2\` (neighbors at (0,1) and (1,1))
+   - Example: \`countNeighbors([[1,0],[0,1]], 1, 1, 0)\` → \`2\` (neighbors at (0,1) and (1,0))
+
 2. **neighborCountGrid(grid, target)** - For each cell, set it to the number of matching neighbors (new grid)
+   - Example: \`neighborCountGrid([[1,0],[0,1]], 1)\` → \`[[1,2],[2,1]]\`
+   - Example: \`neighborCountGrid([[0,0],[0,0]], 1)\` → \`[[0,0],[0,0]]\`
 
 ## Big-O Analysis:
 - **Runtime: O(R*C)** since each cell looks at constant 8 neighbors
@@ -99,7 +110,7 @@ function neighborCountGrid(grid, target) {
         name: "countNeighbors works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { countNeighbors, neighborCountGrid };`)();
+            const func = new Function(`${code}; \n return { countNeighbors, neighborCountGrid };`)();
             const g = [
               [1,1,0],
               [0,1,0],
@@ -128,7 +139,7 @@ function neighborCountGrid(grid, target) {
         name: "neighborCountGrid works correctly",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { countNeighbors, neighborCountGrid };`)();
+            const func = new Function(`${code}; \n return { countNeighbors, neighborCountGrid };`)();
             const result = func.neighborCountGrid([[1,0],[0,1]], 1);
             const expected = [[1,2],[2,1]];
             
@@ -153,7 +164,7 @@ function neighborCountGrid(grid, target) {
         name: "Handles edge cases",
         test: (code) => {
           try {
-            const func = new Function(`${code}; return { countNeighbors, neighborCountGrid };`)();
+            const func = new Function(`${code}; \n return { countNeighbors, neighborCountGrid };`)();
             
             // Single cell grid
             const result1 = func.countNeighbors([[1]], 0, 0, 1);

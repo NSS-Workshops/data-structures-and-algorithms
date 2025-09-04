@@ -89,6 +89,8 @@ function bubbleSortAlbums(albums) {
 
 "This method works," Sam explained, "but it'll be really slow when you have a lot of records. I'll have to keep going through the entire collection again and again!"
 
+Here's an animated demonstration of bubble sort: https://csvistool.com/BubbleSort
+
 ## Selection Sort: The "Find the Next" Method
 
 "Here's another approach you can use," Maya continued, moving to a different section of unsorted records. "I call it the 'find the next' method. I look through all the remaining unsorted records to find the one that should come next alphabetically, then put it in the correct position."
@@ -125,6 +127,9 @@ Alex watched Maya demonstrate this method. "I can see this is more systematic th
 
 "True," Sam agreed. "But at least I only have to move each record once to its final position, unlike bubble sort where records usually get moved around a lot."
 
+Here's an animated demonstration of selection sort: https://csvistool.com/SelectionSort
+This one works top-down, but it's essentially doing the same thing.
+
 ## Merge Sort: The "Divide and Conquer" Strategy
 
 Maya stepped in with another suggestion. "Sam, what if you tried a divide-and-conquer approach? Instead of trying to sort your entire collection at once, what if you sorted smaller groups first, then combined them?"
@@ -134,25 +139,43 @@ Sam cocked his head. "...and that helps get it done faster?"
 "Yes. This approach is much more efficient for large collections," Maya explained. "Instead of comparing every album with every other album, you're breaking the problem down into smaller, manageable pieces."
 
 ```javascript
-// Merge sort for album titles
+
 function mergeSortAlbums(albums) {
   if (albums.length <= 1) {
     return albums;
   }
   
-  console.log(`Dividing collection of ${albums.length} albums...`);
+  // Create a copy to avoid modifying the original array
+  let result = [...albums];
+  const n = result.length;
   
-  // Divide the collection in half
-  const mid = Math.floor(albums.length / 2);
-  const left = albums.slice(0, mid);
-  const right = albums.slice(mid);
+  console.log(`Starting iterative merge sort of ${n} albums...`);
   
-  // Recursively sort both halves
-  const sortedLeft = mergeSortAlbums(left);
-  const sortedRight = mergeSortAlbums(right);
+  // Start with subarrays of size 1, then 2, 4, 8, etc.
+  for (let size = 1; size < n; size *= 2) {
+    console.log(`Merging subarrays of size ${size}...`);
+    
+    // Merge adjacent subarrays of current size
+    for (let start = 0; start < n; start += size * 2) {
+      const mid = Math.min(start + size, n);
+      const end = Math.min(start + size * 2, n);
+      
+      // Only merge if we have both left and right parts
+      if (mid < end) {
+        const left = result.slice(start, mid);
+        const right = result.slice(mid, end);
+        const merged = mergeAlbums(left, right);
+        
+        // Copy merged result back to the main array
+        for (let i = 0; i < merged.length; i++) {
+          result[start + i] = merged[i];
+        }
+      }
+    }
+  }
   
-  // Merge the sorted halves
-  return mergeAlbums(sortedLeft, sortedRight);
+  console.log("Iterative merge sort complete!");
+  return result;
 }
 
 function mergeAlbums(left, right) {
@@ -180,6 +203,19 @@ function mergeAlbums(left, right) {
   return result;
 }
 ```
+
+"This merge sort implementation works like organizing a messy pile of albums by using a divide-and-conquer strategy", said Maya, "Imagine you have 8 albums scattered on a table. Rather than trying to sort all 8 at once, we work in stages. First, we look at the albums in pairs and sorts each pair - so now we have 4 sorted pairs of 2 albums each. Then we those sorted pairs and merges them together to create 2 sorted groups of 4 albums each. Finally, we merge those two groups of 4 to get one perfectly sorted collection of all 8 albums. The key insight is that merging two already-sorted groups is much easier and faster than sorting a jumbled mess. Look at the mergeAlbums function. We just compare the first album from each group, pick the one that comes first alphabetically and put it in a result stack, then repeat until we've combined everything."
+
+"That's a lot of steps." mused Alex
+
+"Yes, but the steps are each quick, and each album gets moved exactly the right number of times."
+
+"But I have a lot more than 8 albums," sighed Sam, "Will this still work on a huge collection?"
+
+"Sure. This process can handle any size collection. We keep doubling the group size in each stage until everything is sorted."
+
+Here's an animated demonstration of selection sort: https://csvistool.com/MergeSort
+This example works top-down, but it's essentially doing the same thing.
 
 ## Real-World Sorting at Groove Records
 

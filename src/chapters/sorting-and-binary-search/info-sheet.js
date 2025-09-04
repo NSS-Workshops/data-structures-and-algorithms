@@ -19,15 +19,15 @@ export const sortingBinarySearchInfoSheetChapter = {
 
 ## Common Sorting Algorithms
 
-| **Algorithm**          | **Best Case**    | **Average Case** | **Worst Case**   | **Space**        |
-| ---------------------- | ---------------- | ---------------- | ---------------- | ---------------- |
-| **Bubble Sort**        | O(n)             | O(n²)            | O(n²)            | O(1)             |
-| **Selection Sort**     | O(n²)            | O(n²)            | O(n²)            | O(1)             |
-| **Insertion Sort**     | O(n)             | O(n²)            | O(n²)            | O(1)             |
-| **Merge Sort**         | O(n log n)       | O(n log n)       | O(n log n)       | O(n)             |
-| **Quick Sort**         | O(n log n)       | O(n log n)       | O(n²)            | O(log n)         |
-| **Heap Sort**          | O(n log n)       | O(n log n)       | O(n log n)       | O(1)             |
-| **JavaScript .sort()** | O(n log n)       | O(n log n)       | O(n log n)       | O(log n)         |
+| **Algorithm**          | **Best Case**    | **Average Case** | **Worst Case**   | **Space**        | **In Place?**    |
+| ---------------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| **Bubble Sort**        | O(n)             | O(n²)            | O(n²)            | O(1)             | Yes              |
+| **Selection Sort**     | O(n²)            | O(n²)            | O(n²)            | O(1)             | Yes              |
+| **Insertion Sort**     | O(n)             | O(n²)            | O(n²)            | O(1)             | Yes              |
+| **Merge Sort**         | O(n log n)       | O(n log n)       | O(n log n)       | O(n)             | No               |
+| **Quick Sort**         | O(n log n)       | O(n log n)       | O(n²)            | O(log n)         | Yes              |
+| **Heap Sort**          | O(n log n)       | O(n log n)       | O(n log n)       | O(1)             | Yes              |
+| **JavaScript .sort()** | O(n log n)       | O(n log n)       | O(n log n)       | O(log n)         | Yes              |
 
 ## Key Insights
 

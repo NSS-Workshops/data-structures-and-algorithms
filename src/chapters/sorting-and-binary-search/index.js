@@ -19,7 +19,6 @@ export const sortingAndBinarySearchChapters = [
   sortingBinarySearchInfoSheetChapter,
   supplementalMaterialsChapter,
   glossaryChapter,
-  sortingAndBinarySearchCheckpointChapter,
   codeExcerciseOneChapter,
   codeExcerciseTwoChapter
 ];

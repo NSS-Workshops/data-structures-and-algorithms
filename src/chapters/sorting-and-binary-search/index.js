@@ -1,8 +1,8 @@
 import { sortingAndBinarySearchLearningObjectivesChapter } from './learning-objectives';
-import { sortingApproachesChapter } from './sorting-approaches';
-import { sortMethodChapter } from './sort-method';
-import { binarySearchFundamentalsChapter } from './binary-search-fundamentals';
-import { binarySearchVariantsChapter } from './binary-search-variants';
+import { sortingApproachesChapter } from './sorting-approaches.jsx';
+import { sortMethodChapter } from './sort-method.jsx';
+import { binarySearchFundamentalsChapter } from './binary-search-fundamentals.jsx';
+import { binarySearchVariantsChapter } from './binary-search-variants.jsx';
 import { sortingBinarySearchInfoSheetChapter } from './info-sheet';
 import { supplementalMaterialsChapter } from './supplemental-materials';
 import { glossaryChapter } from './glossary';

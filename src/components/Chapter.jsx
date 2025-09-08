@@ -8,6 +8,7 @@ import CodeBlock from './CodeBlock'
 import MultiFileEditor from './MultiFileEditor'
 import HTMLCSSEditor from './HTMLCSSEditor'
 import ProtectedRoute from './ProtectedRoute'
+import CelebrateMessage from './CelebrateMessage'
 import * as ReactDOM from 'react-dom/client'
 import './Chapter.css'
 
@@ -422,12 +423,21 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
             dangerouslySetInnerHTML={{ __html: processedContent }}
             ref={contentRef => {
               if (contentRef) {
+                // Handle code blocks
                 contentRef.querySelectorAll('.code-block-wrapper').forEach(block => {
                   if (block.children.length === 0) {
                     const code = block.textContent || ''
                     block.textContent = ''
                     const root = ReactDOM.createRoot(block)
                     root.render(<CodeBlock code={code} />)
+                  }
+                })
+                
+                // Handle CelebrateMessage component
+                contentRef.querySelectorAll('.celebrate-component').forEach(element => {
+                  if (element.children.length === 0) {
+                    const root = ReactDOM.createRoot(element)
+                    root.render(<CelebrateMessage />)
                   }
                 })
               }

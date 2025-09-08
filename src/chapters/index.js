@@ -9,7 +9,6 @@ import { mapsAndSetsChapters } from './maps-and-sets';
 import { slidingWindowChapters } from './sliding-window';
 import { sortingAndBinarySearchChapters } from './sorting-and-binary-search';
 import { combiningPatternsChapters } from './combining-patterns';
-import { interviewReadinessChapters } from './interview-readiness';
 import { conclusionChapters } from './conclusion';
 
 export const chapters = [
@@ -24,7 +23,6 @@ export const chapters = [
   ...slidingWindowChapters,
   ...sortingAndBinarySearchChapters,
   ...combiningPatternsChapters,
-  ...interviewReadinessChapters,
   ...conclusionChapters
 ]
 

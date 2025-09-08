@@ -15,6 +15,7 @@
     "@monaco-editor/react": "^4.7.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
+    "canvas-confetti": "^1.9.3",
     "jest": "^29.7.0",
     "js-cookie": "^3.0.5",
     "marked": "^11.1.1",

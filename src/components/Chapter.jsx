@@ -11,6 +11,47 @@ import ProtectedRoute from './ProtectedRoute'
 import * as ReactDOM from 'react-dom/client'
 import './Chapter.css'
 
+// Utility function for formatting console values
+function formatConsoleValue(value) {
+  if (value === null) return "null";
+  if (value === undefined) return "undefined";
+  if (Number.isNaN(value)) return "NaN";
+  if (value === Infinity) return "Infinity";
+  if (value === -Infinity) return "-Infinity";
+  if (Object.is(value, -0)) return "-0";
+  if (typeof value === "bigint") return value.toString() + "n";
+  if (typeof value === "symbol") return value.toString();
+  if (typeof value === "function") {
+    return `[Function${value.name ? `: ${value.name}` : ""}]`;
+  }
+  if (typeof value === "string") return `"${value}"`;
+  if (typeof value === "object") {
+    // Handle Map objects
+    if (value instanceof Map) {
+      if (value.size === 0) return "Map(0) {}";
+      const entries = Array.from(value.entries())
+        .map(([k, v]) => `${formatConsoleValue(k)} => ${formatConsoleValue(v)}`)
+        .join(', ');
+      return `Map(${value.size}) { ${entries} }`;
+    }
+    // Handle Set objects
+    if (value instanceof Set) {
+      if (value.size === 0) return "Set(0) {}";
+      const values = Array.from(value)
+        .map(v => formatConsoleValue(v))
+        .join(', ');
+      return `Set(${value.size}) { ${values} }`;
+    }
+    // Handle regular objects
+    try {
+      return JSON.stringify(value, null, 2);
+    } catch {
+      return "[Object]";
+    }
+  }
+  return String(value);
+}
+
 const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, getPreviousChapter, getNextChapter }) => {
   const { chapterId } = useParams()
   const {
@@ -153,28 +194,6 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
     setFiles(updatedFiles);
   }
 
-  function formatConsoleValue(value) {
-    if (value === null) return "null";
-    if (value === undefined) return "undefined";
-    if (Number.isNaN(value)) return "NaN";
-    if (value === Infinity) return "Infinity";
-    if (value === -Infinity) return "-Infinity";
-    if (Object.is(value, -0)) return "-0";
-    if (typeof value === "bigint") return value.toString() + "n";
-    if (typeof value === "symbol") return value.toString();
-    if (typeof value === "function") {
-      return `[Function${value.name ? `: ${value.name}` : ""}]`;
-    }
-    if (typeof value === "string") return `"${value}"`;
-    if (typeof value === "object") {
-      try {
-        return JSON.stringify(value, null, 2);
-      } catch {
-        return "[Object]";
-      }
-    }
-    return String(value);
-  }
 
   const restoreInitialCode = () => {
     // Create a new files object with the starter code
@@ -242,7 +261,7 @@ const ChapterContent = ({ currentChapter, chapterContent, onPrevious, onNext, ge
         // Only include files that are not solution files
         const userFiles = Object.entries(files)
           .filter(([filename]) => !filename.includes('solution'))
-          .map(([_, code]) => code);
+          .map(([, code]) => code);
 
         const userCode = userFiles.join('\n');
         new Function(userCode)();
@@ -663,4 +682,5 @@ function Chapter() {
   )
 }
 
+export { formatConsoleValue }
 export default Chapter

@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 
 const questionJsx3 = <><p>Which of these methods performs better as <code>n</code> gets large?</p>
           <pre>{`public int addUpToFirst(int n) {

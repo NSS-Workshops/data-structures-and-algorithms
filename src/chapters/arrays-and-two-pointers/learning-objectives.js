@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Data Structure Arrays", module: "2", name: "Implement code to iterate over the elements of a Array to perform an operation on each element", level: "Apply"},

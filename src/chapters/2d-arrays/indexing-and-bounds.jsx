@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 import content  from './text/indexing-content.md?raw';
 import example from './text/indexing-example.js?raw';
 import completed from './text/indexing-completed.js?raw';

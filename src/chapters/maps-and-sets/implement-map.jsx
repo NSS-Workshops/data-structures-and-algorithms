@@ -1,5 +1,5 @@
-import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
-import { TestResult } from "../../utils/test_utils";
+import { useAutoGradeQuiz } from "@nss-workshops/nss-core";
+import { TestResult } from "@nss-workshops/nss-core";
 
 export const implementMapChapter = {
   id: 'implement-map',

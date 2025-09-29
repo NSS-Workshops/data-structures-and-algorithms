@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 import content  from './text/neighbors-content.md?raw';
 import example from './text/neighbors-example.js?raw';
 import completed from './text/neighbors-completed.js?raw';

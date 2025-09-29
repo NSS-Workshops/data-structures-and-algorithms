@@ -1,4 +1,4 @@
-import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { useAutoGradeQuiz } from "@nss-workshops/nss-core";
 
 export const arraysAndTwoPointersCheckpointChapter = {
   id: 'arrays-and-two-pointers-checkpoint',

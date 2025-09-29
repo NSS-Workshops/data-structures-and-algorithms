@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Data Structure Linked List", module: "4", name: "Implement code to iterate over the elements of a Linked List to perform an operation on each element", level: "Apply"},

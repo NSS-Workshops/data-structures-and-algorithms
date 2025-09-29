@@ -1,4 +1,4 @@
-import { formatGlossary } from "../../utils/format_utils";
+import { formatGlossary } from "@nss-workshops/nss-core";
 
 const data = [
   // Core Sliding Window Concepts

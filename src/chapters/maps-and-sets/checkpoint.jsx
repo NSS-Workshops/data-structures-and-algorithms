@@ -1,4 +1,4 @@
-import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { useAutoGradeQuiz } from "@nss-workshops/nss-core";
 
 export const mapsAndSetsCheckpointChapter = {
   id: 'maps-and-sets-checkpoint',

@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 
 const questions = [
   // ✅ SCENARIO 1

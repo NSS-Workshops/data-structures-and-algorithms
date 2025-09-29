@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 import content  from './text/2d-arrays-intro-content.md?raw';
 import example from './text/2d-arrays-intro-example.js?raw';
 import completed from './text/2d-arrays-intro-completed.js?raw';

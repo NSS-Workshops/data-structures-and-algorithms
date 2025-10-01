@@ -7,16 +7,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   console.log('OAuth env variables loaded:', {
-    clientId: env.VITE_OAUTH_CLIENT_ID ? 'Present' : 'Missing',
-    proxyDomain: env.VITE_PROXY_DOMAIN ? 'Present' : 'Missing',
     lmsDomain: env.VITE_LEARNING_PLATFORM_API ? 'Present' : 'Missing',
   });
-
-  // Make sure we have the required environment variables
-  if (!env.VITE_OAUTH_CLIENT_ID || !env.VITE_PROXY_DOMAIN) {
-    console.warn('WARNING: Missing environment variables. OAuth authentication may not work properly.');
-    console.warn('Make sure you have VITE_OAUTH_CLIENT_ID and VITE_PROXY_DOMAIN in your .env.local file');
-  }
 
   return {
     base: '/data-structures-and-algorithms/',
@@ -24,7 +16,9 @@ export default defineConfig(({ mode }) => {
       react({
         jsxImportSource: '@emotion/react',
         babel: {
-          plugins: ['@emotion/babel-plugin']
+          plugins: ['@emotion/babel-plugin'],
+          exclude: [/node_modules/, /dist/, /deps/],   // ← don’t transpile built files
+          compact: true
         }
       })
       // GitHub OAuth plugin has been removed

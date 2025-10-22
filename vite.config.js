@@ -18,7 +18,10 @@ export default defineConfig(({ mode }) => {
 
   // Read config.js to get courseName and doAuth
   let courseName = 'Data Structures and Algorithms'; // fallback
-  let courseUrl = 'data-structures-and-algorithms'; // fallback
+  
+  let baseUrl = env.BASE_URL ? env.BASE_URL : 'data-structures-and-algorithms';
+  console.log("baseUrl: ",baseUrl);
+
   let doAuth = false; // fallback
   try {
     const configPath = path.resolve(process.cwd(), 'src/config.js');
@@ -28,7 +31,7 @@ export default defineConfig(({ mode }) => {
     if (courseNameMatch) {
       courseName = courseNameMatch[1];
       // Transform courseName to URL-friendly format
-      courseUrl = courseName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
     }
 
     const doAuthMatch = configContent.match(/doAuth:\s*(true|false)/);
@@ -49,7 +52,7 @@ export default defineConfig(({ mode }) => {
     transformIndexHtml(html) {
       return html
         .replace(/%COURSE_NAME%/g, courseName)
-        .replace(/%COURSE_URL%/g, courseUrl);
+        .replace(/%COURSE_URL%/g, baseUrl);
     }
   };
 
@@ -88,7 +91,7 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    base: `/${courseUrl}/`,
+    base: `/${baseUrl}/`,
     plugins,
     // Make env variables available to client-side code
     ...(doAuth && {

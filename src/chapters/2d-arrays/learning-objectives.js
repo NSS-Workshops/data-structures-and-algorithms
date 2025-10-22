@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Data Structure Arrays", module: 3, name: "Implement code to update values stored in a two-dimensional array and know its runtime characteristics", level: "Apply"},

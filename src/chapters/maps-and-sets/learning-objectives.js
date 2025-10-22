@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Data Structure Map", module: "7", name: "Implement code to add a key-value pair to a Map", level: "Apply"},

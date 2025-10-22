@@ -1,4 +1,4 @@
-import { TestResult } from "../../utils/test_utils";
+import { TestResult } from "@nss-workshops/nss-core";
 
 export const codeExcerciseEightChapter = {
   id: 'a7b2e9f6',

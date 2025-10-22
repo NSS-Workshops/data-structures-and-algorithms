@@ -1,4 +1,4 @@
-import { useAutoGradeQuiz } from "../../components/useAutoGradeQuiz";
+import { useAutoGradeQuiz } from "@nss-workshops/nss-core";
 export const implementationTradeoffsChapter = {
   id: "implementation-tradeoffs",
   title: "Implementation Tradeoffs - Choosing the Right System",

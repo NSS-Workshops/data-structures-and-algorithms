@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "BigO", module: "1", name: "Define and Describe Big O Notation", level: "Remember, Understand"},

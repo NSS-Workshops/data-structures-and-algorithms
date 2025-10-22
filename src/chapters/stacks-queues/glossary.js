@@ -1,4 +1,4 @@
-import { formatGlossary } from "../../utils/format_utils";
+import { formatGlossary } from "@nss-workshops/nss-core";
 
 const data = [
   { term: "Algorithm", definition: "A step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem.", week: "1"},

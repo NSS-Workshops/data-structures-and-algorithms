@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 import content from './text/binary-search-variants-content.md?raw';
 import example from './text/binary-search-variants-example.js?raw';
 import completed from './text/binary-search-variants-completed.js?raw';

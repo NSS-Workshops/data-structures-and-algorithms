@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Algorithms Sliding Window", module: "7", name: "Explain what the sliding window technique is and identify when it's appropriate to use it", level: "Remember, Understand"},

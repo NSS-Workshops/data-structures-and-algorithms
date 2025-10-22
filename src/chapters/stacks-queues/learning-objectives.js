@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Data Structure Stack", module: "5", name: "Implement code to push a value onto a Stack and know it's runtime", level: "Apply"},

@@ -1,4 +1,4 @@
-import Checkpoint, { QUESTION_TYPES } from "../../components/Checkpoint";
+import { Checkpoint, QUESTION_TYPES } from "@nss-workshops/nss-core";
 import image1 from "./images/f7a9c2d4-question-2.png";
 import image2 from "./images/f7a9c2d4-question-5.png";
 

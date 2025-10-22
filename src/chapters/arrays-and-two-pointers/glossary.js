@@ -1,4 +1,4 @@
-import { formatGlossary } from "../../utils/format_utils";
+import { formatGlossary } from "@nss-workshops/nss-core";
 
 const data = [
 { term:"Anagram", definition:"A word made by rearranging the letters of another word", week:"2"},

@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Pattern Recognition", module: "9", name: "Recognize common patterns in problem statements and identify appropriate data structures and algorithms", level: "Remember, Understand"},

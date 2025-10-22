@@ -1,4 +1,4 @@
-import { formatObjectives } from "../../utils/format_utils";
+import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
   {category: "Sort", module: "8", name: "Use a pre-existing sort implementation to sort a collection of objects according to their natural ordering vs custom order and understand why the sort algoritms runtime is O(n log n)", level: "Apply"},

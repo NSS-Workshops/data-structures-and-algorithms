@@ -41,11 +41,11 @@ const data = [
   { term: "2D Array", definition: "An array of arrays, creating a matrix-like structure with rows and columns.", week: "3" }
 ];
 
-export const glossaryChapter = {
-  id: 'stacks-queues-glossary',
+export default {
+  id: 'stacks-glossary',
   title: 'Glossary: Stacks and Queues',
-  sectionId: 'stacks-queues',
-  previousChapterId: 'stacks-queues-supplemental-materials',
+  previousChapterId: 'stacks-supplemental',
+  nextChapterId: "stacks-checkpoint",
   content: `## Glossary: Stacks and Queues
 
 This glossary contains important terms and concepts related to stacks and queues. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.

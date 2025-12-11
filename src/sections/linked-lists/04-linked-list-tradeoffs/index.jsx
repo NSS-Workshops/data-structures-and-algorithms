@@ -5,12 +5,12 @@ import { tests } from './tests.js';
 import questions from './checkpoint.jsx';
 import { Checkpoint } from '@nss-workshops/nss-core';
 
-
+console.log(questions);
 export default {
-  id: "linked-intro",
-  title: "Introduction to Linked Lists",
-  previousChapterId: "linked-objectives",
-  nextChapterId: "linked-types",
+  id: "linked-tradeoffs",
+  title: "Playlist Performance: Arrays vs Linked Lists",
+  previousChapterId: "linked-types",
+  nextChapterId: "linked-traversal",
   content: contentMd,
   exercises: [{
     starterCode,

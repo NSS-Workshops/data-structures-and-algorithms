@@ -11,10 +11,10 @@ export default {
   previousChapterId: "linked-intro",
   nextChapterId: "linked-tradeoffs",
   content: contentMd,
-  exercise: {
+  exercises: [{
     starterCode,
     solution,
     tests
-  },
+  }],
     quiz: {component: () => <Checkpoint questions={questions}/> }
 };

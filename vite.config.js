@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
   // Read config.js to get courseName and doAuth
   const env = loadEnv(mode, process.cwd(), '');
 
-  let courseName = env.VITE_COURSE_NAME || 'System Explorer';
+  let courseName = env.VITE_COURSE_NAME || 'DSA';
   let doAuth = env.VITE_REQUIRES_GITHUB_AUTHENTICATION === 'true';
   let baseUrl = env.BASE_URL || courseName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 

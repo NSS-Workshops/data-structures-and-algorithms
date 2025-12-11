@@ -1,21 +1,14 @@
-import { Checkpoint } from '@nss-workshops/nss-core';
 import content from "./index.md?raw";
 import example from "./example.js?raw";
-import questions from "./checkpoint.jsx";
 
 export default {
-    id: "introduction",
+    id: "introduction_intro",
     title: "Introduction",
     description: "Introduction to the course and fundamental concepts.",
     previousChapterId: null,
-    nextChapterId: null,
+    nextChapterId: "introduction_checkpoint",
     content,
     exercises: [
-      {},
       { starterCode:example },
-    ],
-    quiz: {component: () => <>
-      <h1>Checkpoint</h1>
-      <Checkpoint questions={questions}/>
-    </>}
+    ]
 }

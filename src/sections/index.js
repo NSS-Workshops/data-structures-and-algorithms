@@ -18,12 +18,12 @@ const sections = []
 const chapters = []
 
 Object.values(sectionModules)
-  .sort((a, b) => (a.config.order || 999) - (b.config.order || 999))
+  .sort((a, b) => (a.config?.order || 999) - (b.config?.order || 999))
   .forEach(section => {
     sections.push(section.config)
 
     // Process each chapter's content to handle relative image paths
-    const processedChapters = section.chapters.map(chapter => ({
+    const processedChapters = section?.chapters?.map(chapter => ({
       ...chapter,
       content: processMarkdownContent(chapter.content)
     }));

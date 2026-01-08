@@ -13,8 +13,6 @@ deps
 dist/
 dist-ssr/
 
-public/
-
 # Logs
 *.log
 npm-debug.log*

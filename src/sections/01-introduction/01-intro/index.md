@@ -129,7 +129,7 @@ You’ll receive all prep details ahead of time, including the problem (for the 
 
 
 ### Asynchronous Self-Study
-Your time to become curios about material and we encourages you to engage with material on your own schedule before applying it during live sessions. This approach allows for:
+Your time to become curious about material and we encourages you to engage with material on your own schedule before applying it during live sessions. This approach allows for:
 - **Flexible pacing** that accommodates your schedule
 - **Deep engagement** with concepts before group discussions
 - **Prepared participation** in collaborative activities
@@ -199,10 +199,7 @@ Integrating multiple techniques and putting it all together for technical interv
 ## 🚀 How to Approach the Course
 
 ### Sequential Learning
-Work through the modules in order. Each chapter builds on concepts from previous ones, so skipping ahead or moving ahead 
-may leave gaps in your understanding. If you finish the prescribed material look for the supplemental material provided to more deeply engage 
-with the content. Find practice problem on the internet let your favorite LLM quiz you or give you extra practice problems 
-for the given module theme. 
+Work through the modules in order. Each chapter builds on concepts from previous ones, so skipping ahead or moving ahead may leave gaps in your understanding. If you finish the prescribed material look for the supplemental material provided to more deeply engage with the content. Find practice problem on the internet let your favorite LLM quiz you or give you extra practice problems for the given module theme. 
 
 ### Active Engagement
 To get the most out of this course, don’t just passively read, actively engage with the material. Take notes as you go to process and retain key ideas. Work through each example step by step, making sure you understand not just what the code does, but why it works. Complete every exercise before moving on, even if it feels tough, that’s where the learning happens. And don’t be afraid to experiment with the code. Tweak it, break it, fix it. The more you interact with it, the deeper your understanding will grow.

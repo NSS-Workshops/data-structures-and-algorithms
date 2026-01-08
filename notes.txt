@@ -1,0 +1,9 @@
+
+Introduction
+	introduction
+		no context for example in right panel. 
+
+Just enough math
+	Polynomials - 
+		figure 2 with stick figures?
+		question 3 is tricky and semantic (is the definition important enough?)

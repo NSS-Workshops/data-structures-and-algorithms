@@ -7,7 +7,7 @@
 
 Imagine you and a coworker are preparing two equally sized rooms for a team party. Your coworker is covering the floor of one room with a single area rug, while you are covering the floor of the second room with several smaller carpets, as shown in Figure 1 below.
 
-<img width=700 src="assets/image1.png"/>
+<img width=700 src="assets/rugs1.png"/>
 
 **Figure 1:** Laying out rugs in two equally-sized rooms. One room contains a single large rug, while the other contains four thin carpets.
 
@@ -25,7 +25,7 @@ Polynomials are among the most common tools we use to discuss and compare growth
 
 Recall our carpet example. Figure 1 shows that a single area rug decorates the same space as four thin carpets. If the rooms were twice as large, we would need two large area rugs and eight thin carpets. And if the rooms were four times as large, we would need four area rugs and 16 thin carpets, as shown in Figure 2.
 
-<img width=700 src="assets/image2.png"/>
+<img width=700 src="assets/rugs2.png"/>
 
 **Figure 2:** Laying out rugs in two equally sized rooms. The first room requires four area rugs, while the second room requires 16 thin carpets.
 
@@ -43,7 +43,7 @@ As another example, consider the polynomial 2x. This polynomial always evaluates
 
 Let's look at another polynomial and identify its key parts:
 
-<img width=700 src="assets/image3a.png"/>
+<img width=700 src="assets/polynomial.png"/>
 
 **Figure 3:** The polynomial 2x + 5. Arrows indicate the variable, operator, and coefficients in the expression.
 
@@ -101,13 +101,13 @@ So far we have looked at polynomials that grow relatively slowly. Our carpeting 
 
 Imagine you have a one foot by one foot square of fabric, as shown in Figure 4 below:
 
-<img width=300 src="assets/image3.png"/>
+<img width=300 src="assets/degrees1.png"/>
 
 **Figure 4:** One square foot of fabric. Each side of the square measures one foot.
 
 The area of this square is one square foot, calculated by multiplying the length of each side: 1 × 1 = 1 square foot. Let's increase the length of each side to two feet, as shown in Figure 5 below:
 
-<img width=300 src="assets/image4.png"/>
+<img width=300 src="assets/degrees2.png"/>
 
 **Figure 5:** Four square feet of fabric. Each side of the square measures two feet.
 
@@ -149,7 +149,7 @@ A = s²
 
 The result will be in square feet. If the length of each side is three feet, the area is 3² = 3 × 3 = 9 square feet. If the length is four feet, the area is 4² = 4 × 4 = 16 square feet.
 
-<img width=300 src="assets/image5.png"/>
+<img width=300 src="assets/degrees3.png"/>
 
 **Figure 6:** A nine square feet room. The room contains nine one square foot tiles.
 
@@ -183,7 +183,7 @@ Writing out and evaluating polynomials is not the only way to determine how quic
 
 The equation y = x is represented by the graph in Figure 7.
 
-<img width=700 src="assets/image7.png"/>
+<img width=700 src="assets/linear-curve.png"/>
 
 **Figure 7:** Graph of the equation y = x. The graph is a straight line that intersects the x and y axes at 0.
 
@@ -193,7 +193,7 @@ The vertical line represents the values of y (rising from bottom to top), while 
 
 The graph in Figure 8 represents the polynomial y = x².
 
-<img width=700 src="assets/image8.png"/>
+<img width=700 src="assets/exponential-curve.png"/>
 
 **Figure 8:** Graph of y = x². The graph is an arc that meets the x and y axes at 0 and slopes upward.
 
@@ -201,7 +201,7 @@ This graph is more complicated than y = x. If we pay attention only to the value
 
 Figure 9 shows a graph of the tile-counting polynomial from before: y = 2x².
 
-<img width=700 src="assets/image10.png"/>
+<img width=700 src="assets/exponential-curve2.png"/>
 
 **Figure 9:** Graph of y = 2x². The graph is a narrow arc that meets both axes at 0 and slopes upwards.
 
@@ -235,7 +235,7 @@ m = 4x + 1
 
 Figure 10 presents the graph of this polynomial. Note how by adding 1, we shift the entire line up by one minute. This is because no matter how many team members need help, it will always take one minute to walk back to the desk.
 
-<img width=700 src="assets/image12.png"/>
+<img width=700 src="assets/linear-curve2.png"/>
 
 **Figure 10:** Graph of m = 4x + 1. The graph slopes upward and shows that m = 9 when x = 2.
 

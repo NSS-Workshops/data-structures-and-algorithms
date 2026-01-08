@@ -5,7 +5,6 @@ import { tests } from './tests.js';
 import questions from './checkpoint.jsx';
 import { Checkpoint } from '@nss-workshops/nss-core';
 
-console.log(questions);
 export default {
   id: "linked-tradeoffs",
   title: "Playlist Performance: Arrays vs Linked Lists",

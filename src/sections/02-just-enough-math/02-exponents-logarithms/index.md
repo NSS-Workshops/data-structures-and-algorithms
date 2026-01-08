@@ -6,7 +6,7 @@
 
 Imagine you are working as a software development engineer when your manager asks you to find the contact information of an employee named Alejandro Rosalez in the company directory. Away from your computer, you flip open a copy of the printed directory and…what next? How do you find Alejandro Rosalez in this book? You know that the directory is ordered alphabetically by last name (Rosalez) followed by first name (Alejandro). You could start at the very beginning and work your way through each page in sequence, but it could take ages to find Alejandro's information. Instead, you open the book close to center, as shown in Figure 1.
 
-<img width=700 src="assets/image1.png"/>
+<img width=700 src="assets/book1.png"/>
 
 *Figure 1: Book open at the middle page. The pages on the left represent names that begin with A through M, while the pages on the right represent names beginning with N through Z.*
 
@@ -14,7 +14,7 @@ Because the book is alphabetized by last name, the pages to your left contain in
 
 You flip to the middle of the N–Z section of the directory to continue your search, as shown in Figure 2 below. You end up in the section containing last names beginning with the letter T.
 
-<img width=700 src="assets/image2.png"/>
+<img width=700 src="assets/book2.png"/>
 
 *Figure 2: Book open to a page close to names beginning with T. The pages on the left represent names that begin with A through S, while the pages on the right represent names beginning with T through Z.*
 
@@ -79,7 +79,7 @@ Imagine you're writing an algorithm to list all teams of developers. If there ar
 - Team of 1 (two ways)
 - Team of 2
 
-<img width=700 src="assets/image3.png"/>
+<img width=700 src="assets/teams1.png"/>
 
 *Figure 3: The four possible teams of two developers.*
 
@@ -87,7 +87,7 @@ Now add one more developer:
 
 - Total teams = 8
 
-<img width=700 src="assets/image4.png"/>
+<img width=700 src="assets/teams2.png"/>
 
 *Figure 4: The eight possible teams of three developers.*
 
@@ -167,7 +167,7 @@ Compare:
 
 After a few doublings, exponential growth skyrockets.
 
-<img width=700 src="assets/image5.png"/>
+<img width=700 src="assets/log-vs-exp.png"/>
 
 *Figure 5: Graph of logarithmic and exponential growth.*
 

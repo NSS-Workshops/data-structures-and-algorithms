@@ -7,7 +7,7 @@
 
 You are a member of a team of eight developers who frequently pair up to collaborate. Figure 1 below shows one possible arrangement of pairings:
 
-<img width=700 src="assets/image1.png"/>
+<img width=700 src="assets/teams3.png"/>
 
 **Figure 1:** Four pairs of developers. There are eight developers in total, labeled A through H.
 
@@ -17,7 +17,7 @@ To make this initiative easier, your manager asks you to write a program that wi
 
 Remember that there are two distinct pairs for each set of developers, because only one developer can drive at a time. For example, if Developer A is the driver and Developer B is a navigator, that's one pair. If Developer B is the driver and Developer A is the navigator, that's an entirely separate pair as shown by Figure 2 below:
 
-<img width=400 src="assets/image2.png"/>
+<img width=400 src="assets/pair.png"/>
 
 **Figure 2:** Two separate pairs of developers. In the first pair, Developer A is the driver and Developer B is the navigator. In the second pair, Developer B is the driver and Developer A is the navigator.
 
@@ -37,13 +37,13 @@ A **permutation** is an arrangement of items in which the order of the items mat
 
 We can start by placing each marble in a line, as shown in Figure 3:
 
-<img width=500 src="assets/image3.png"/>
+<img width=500 src="assets/marbles1.png"/>
 
 **Figure 3** Three marbles in a line. The marbles are red, blue, and green.
 
 Then, by changing the order of the marbles, we can count out all the unique orderings of three, as shown in Figure 4:
 
-<img width=400 src="assets/image4.png"/>
+<img width=400 src="assets/marbles2.png"/>
 
 **Figure 4** All six permutations of three colored marbles.
 
@@ -145,7 +145,7 @@ When we arrange a group of items such that the ordering doesn't matter, we say w
 Recall the three marbles from earlier, as shown in Figure 5. How many combinations of three are there?
 
 
-<img width=700 src="assets/image5.png"/>
+<img width=700 src="assets/marbles3.png"/>
 
 **Figure 5** Three marbles arranged in a line. The marbles are red, blue, and green.
 
@@ -195,7 +195,7 @@ So, the number of ways we can pick three objects from a group of five without re
 
 We see that there are 10 possible combinations of three, given five marbles. Figure 6 below shows every possible combination of red, blue, green, purple, and yellow marbles:
 
-<img width=400 src="assets/image6.png"/>
+<img width=400 src="assets/marbles4.png"/>
 
 **Figure 6** All possible three-marble combinations of five total marbles. The marbles are colored red, blue, green, purple, and yellow.
 

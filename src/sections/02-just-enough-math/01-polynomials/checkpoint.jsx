@@ -14,7 +14,7 @@ export default [
   },
   {
     type: QUESTION_TYPES.RADIO,
-    questionJsx: <p>Consider the following graph: Graph of a polynomial. From left to right, the graph slopes down until it reaches 4 on the X axis, then slopes back up. Which of the following polynomial degree's is represented by the graph above?<br/><img width={700} src="assets/f7a9c2d4-question-2.png" /></p>,
+    questionJsx: <p>Consider the following graph: Graph of a polynomial. From left to right, the graph slopes down until it reaches 4 on the X axis, then slopes back up. Which of the following polynomial degree's is represented by the graph above?<br/><img width={700} src="assets/polynomials-question-2.png" /></p>,
     answers: [
       "Second degree polynomial",
       "First degree polynomial", 
@@ -47,7 +47,7 @@ export default [
   },
   {
     type: QUESTION_TYPES.RADIO,
-    questionJsx: <p>Consider the following graph: Graph of a polynomial. The graph is a straight line sloping upwards from left to right. The line intersects the Y axis at -4 and the X axis at 2. Which of the following polynomials is represented by the graph above?<br/><img width={700} src="assets/f7a9c2d4-question-5.png" /></p>,
+    questionJsx: <p>Consider the following graph: Graph of a polynomial. The graph is a straight line sloping upwards from left to right. The line intersects the Y axis at -4 and the X axis at 2. Which of the following polynomials is represented by the graph above?<br/><img width={700} src="assets/polynomials-question-5.png" /></p>,
     answers: [
       "2x - 4",
       "2x² - 4",

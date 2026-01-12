@@ -1,5 +1,3 @@
-# Arrays - Operations & Complexity Info Sheet
-
 ## Common Array Operations
 
 | **Operation**          | **Description**                       | **Big O (Time)** |

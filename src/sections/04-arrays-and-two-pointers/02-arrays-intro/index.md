@@ -121,7 +121,7 @@ console.log(rushOrders);
 
 "But here's the important part, Maya," Sarah continues seriously. "When we insert an order in the middle, something interesting happens behind the scenes."
 
-*[Visual: Array elements shifting right to make room for the new order]*
+<img width="100%" src="assets/splice.png"/>
 
 "Every order from position 2 onwards has to **shift to the right** to make room. This is why inserting in the middle takes **O(n) time complexity** - in the worst case, if we insert at the very beginning, we have to shift ALL the orders."
 

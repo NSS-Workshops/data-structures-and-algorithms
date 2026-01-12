@@ -1,4 +1,3 @@
-## Binary Search Fundamentals
 
 Binary search is a highly efficient algorithm for finding an element in a sorted array. It works by repeatedly dividing the search interval in half, making it significantly faster than linear search for large datasets.
 

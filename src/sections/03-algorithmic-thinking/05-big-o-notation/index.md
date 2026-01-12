@@ -128,7 +128,7 @@ function reverseInPlace(arr) {
     right--;
   }
 
-  return arr;
+  return arr; 
 }
 ```
 

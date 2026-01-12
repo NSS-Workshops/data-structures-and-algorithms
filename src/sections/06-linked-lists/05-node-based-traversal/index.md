@@ -1,4 +1,3 @@
-# Playlist Traversal and Song Manipulation
 
 ## Alex's Advanced Playlist Operations
 

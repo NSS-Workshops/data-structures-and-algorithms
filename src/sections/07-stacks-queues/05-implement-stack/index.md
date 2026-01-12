@@ -1,5 +1,3 @@
-# Implement a Stack Class - Building the Book Cart System
-
 ## Alex's Third Day: From Concept to Code
 
 Monday morning found Alex at Willowbrook Library with a new sense of purpose. After learning about stacks and queues through the book return cart and hold request systems, they were eager to take the next step.

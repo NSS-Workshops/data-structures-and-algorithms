@@ -8,7 +8,7 @@ import { Checkpoint } from '@nss-workshops/nss-core';
 
 export default {
   id: "linked-intro",
-  title: "Introduction to Linked Lists",
+  title: "Introduction to Linked Lists - Building the Perfect Playlist",
   previousChapterId: "linked-objectives",
   nextChapterId: "linked-types",
   content: contentMd,

@@ -1,4 +1,3 @@
-# Playlist Performance: Arrays vs Linked Lists
 
 ## The Great Playlist Performance Debate
 

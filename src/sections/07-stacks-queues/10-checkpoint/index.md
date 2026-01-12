@@ -1,3 +1,1 @@
-# Quiz: Stacks and Queues
-
 Test your understanding of stacks and queues data structures, their operations, and when to use each one.

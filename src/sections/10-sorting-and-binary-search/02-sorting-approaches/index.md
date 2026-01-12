@@ -1,4 +1,3 @@
-## Common Sorting Approaches
 
 Sorting is a fundamental operation in computer science that arranges elements in a specific order. This chapter provides an overview of common sorting algorithms, focusing on bubble sort, selection sort, and merge sort.
 

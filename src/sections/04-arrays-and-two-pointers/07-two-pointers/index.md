@@ -1,4 +1,3 @@
-# Two-Pointer Logic for Pairwise Traversal
 
 Meet Eleanor, the head librarian at the Grand Metropolitan Library. With over 50,000 books to organize, catalog, and maintain, Eleanor has discovered that the secret to efficient library management lies in a powerful technique: using two bookmarks to navigate through collections simultaneously. What she doesn't realize yet is that she's mastering one of programming's most elegant problem-solving patterns.
 

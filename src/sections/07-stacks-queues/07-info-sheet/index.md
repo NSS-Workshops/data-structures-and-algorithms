@@ -1,5 +1,3 @@
-# Stacks & Queues - Operations & Complexity Info Sheet
-
 ## Stack Operations (LIFO - Last In, First Out)
 
 | **Operation**          | **Description**                       | **Big O (Time)** |

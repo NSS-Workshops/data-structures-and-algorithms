@@ -1,5 +1,3 @@
-# Introduction to Linked Lists - Building the Perfect Playlist
-
 ## ⚠️ A Quick Detour before We Dive Into Linked Lists
 Before we build or manipulate linked lists in JavaScript, we need to take a quick detour to understand how references work. 
 

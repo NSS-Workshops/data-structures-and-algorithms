@@ -1,5 +1,3 @@
-# Final Self Assessment
-
 This checkpoint tests your understanding of combining multiple data structures and algorithmic patterns to solve complex problems. You'll be assessed on pattern recognition, data structure selection, algorithm integration, and performance analysis.
 
 The assessment covers:

@@ -5,6 +5,7 @@ By the end of this course, the 5 problem-solving steps below should feel second 
 You'll also get very familiar with the form below, as you'll use it while acting as the interviewer during your pair programming sessions:
 
 🔗 [Pairing Feedback Form](https://forms.gle/wTQYosJis3WizHRn9)
+
 (just read the form no need for anything else at this point).
 Your instructors will walk you through exactly how to use the 5-step problem-solving process by doing a behavior modeling session. They'll tackle a DSA problem live, thinking out loud and following each step to a T. The session will be recorded so you can revisit it anytime. This demo will show you what it looks like to apply the steps in a real coding scenario, helping you build the habit of approaching every problem systematically.
 

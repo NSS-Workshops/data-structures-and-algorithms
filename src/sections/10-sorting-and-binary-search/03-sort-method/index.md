@@ -1,5 +1,3 @@
-## Using .sort() with Comparators
-
 JavaScript provides a built-in `Array.prototype.sort()` method that makes sorting arrays convenient. This chapter explores how to use this method effectively, particularly with custom comparator functions.
 
 ## From Simple Strings to Complex Records

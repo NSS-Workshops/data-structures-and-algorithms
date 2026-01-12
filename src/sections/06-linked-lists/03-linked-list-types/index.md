@@ -1,5 +1,3 @@
-# Playlist Types: Singly, Doubly, and Circular Linked Lists
-
 ## Jordan's Playlist Evolution
 
 The next morning, Jordan Kim burst into the library with even more excitement than the day before. They had spent the entire evening experimenting with the basic linked list playlist system Alex had helped them build, and now they had new ideas brewing.

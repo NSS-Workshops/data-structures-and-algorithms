@@ -1,5 +1,3 @@
-# Implement a Queue Class - Digitizing the Hold System
-
 ## Alex's Fourth Day: The Queue Challenge
 
 Tuesday morning at Willowbrook Library brought a new challenge. Alex arrived to find Maya and Sam huddled around a computer, looking at what appeared to be a system design diagram.

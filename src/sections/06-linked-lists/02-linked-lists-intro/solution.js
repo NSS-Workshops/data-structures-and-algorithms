@@ -1,15 +1,13 @@
-// Linked Lists Introduction - Playlist Management System
-// Complete solutions for the playlist management functions
-
+// 🎵 Simple Song Node class - represents a song in our playlist
 class SongNode {
   constructor(title, artist) {
     this.title = title;
     this.artist = artist;
-    this.next = null; // Points to the next song
+    this.next = null; // Points to the next song in the playlist
   }
   
   toString() {
-    return `${this.title} - ${this.artist}`;
+    return \`\${this.title} - \${this.artist}\`;
   }
 }
 
@@ -49,7 +47,7 @@ function playNextSong(playlist, targetSong) {
 function removeSong(playlist, targetTitle) {
   // Handle case where first song should be removed
   if (playlist && playlist.title === targetTitle) {
-    console.log(`🗑️ Removed first song: ${playlist.toString()}`);
+    console.log(\`🗑️ Removed first song: \${playlist.toString()}\`);
     return playlist.next;
   }
   
@@ -59,13 +57,13 @@ function removeSong(playlist, targetTitle) {
     if (currentSong.next.title === targetTitle) {
       const removedSong = currentSong.next;
       currentSong.next = removedSong.next;
-      console.log(`🗑️ Removed song: ${removedSong.toString()}`);
+      console.log(\`🗑️ Removed song: \${removedSong.toString()}\`);
       return playlist;
     }
     currentSong = currentSong.next;
   }
   
-  console.log(`🎵 Song "${targetTitle}" not found in playlist`);
+  console.log(\`🎵 Song "\${targetTitle}" not found in playlist\`);
   return playlist;
 }
 
@@ -78,25 +76,6 @@ function countSongs(playlist) {
     currentSong = currentSong.next;
   }
   
-  console.log(`📊 Total songs in playlist: ${count}`);
+  console.log(\`📊 Total songs in playlist: \${count}\`);
   return count;
 }
-
-// Test the functions
-console.log("=== Testing playNextSong ===");
-console.log(playNextSong(song1, "Hotel California - Eagles"));
-console.log(playNextSong(song1, "Sweet Child O' Mine - Guns N' Roses"));
-console.log(playNextSong(song1, "Nonexistent Song - Unknown"));
-
-console.log("\n=== Testing removeSong ===");
-let modifiedPlaylist = removeSong(song1, "Hotel California");
-console.log("After removing Hotel California:");
-let current = modifiedPlaylist;
-while (current) {
-  console.log(current.toString());
-  current = current.next;
-}
-
-console.log("\n=== Testing countSongs ===");
-console.log("Total songs:", countSongs(song1));
-console.log("Empty playlist count:", countSongs(null));

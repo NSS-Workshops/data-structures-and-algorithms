@@ -1,11 +1,9 @@
-// Linked Lists Introduction - Playlist Management System
-// Complete the functions below to work with a linked list playlist
-
+// 🎵 Simple Song Node class - represents a song in our playlist
 class SongNode {
   constructor(title, artist) {
     this.title = title;
     this.artist = artist;
-    this.next = null; // Points to the next song
+    this.next = null; // Points to the next song in the playlist
   }
   
   toString() {
@@ -25,51 +23,60 @@ song2.next = song3;
 song3.next = song4;
 // song4.next is null (end of playlist)
 
-// Challenge 1: Find a song and play the next song in the playlist
-// Uncomment and complete this function
+// ⏱️ Alex's First Playlist Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
 /*
 function playNextSong(playlist, targetSong) {
   // Find the target song and play the song that comes after it
-  // Your code here
+  // targetsong parameter is a string with "Tile - Band" ex. "Hotel California - Eagles"
+  // Return the next song's string representation, or "End of playlist" if no next song
+  
+  let currentSong = playlist;
+  
+  // TODO: Traverse the playlist to find the target song
+  // Hint: Use a while loop and check currentSong.toString()
+  
+  return "End of playlist";
 }
 */
 
-// Challenge 2: Remove a song from the playlist
-// Uncomment and complete this function
+// ⏱️ Alex's Second Playlist Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
 /*
 function removeSong(playlist, targetTitle) {
-  // Remove the song with the given title from the playlist
+  // Remove a song from the playlist by title
   // Return the new head of the playlist
-  // Your code here
+  
+  // Handle case where first song should be removed
+  if (playlist && playlist.title === targetTitle) {
+    return playlist.next;
+  }
+  
+  let currentSong = playlist;
+  
+  // TODO: Find the song before the one to remove
+  // Hint: Check if currentSong.next exists and if its title matches
+  
+  return playlist; // Return original head if song not found
 }
 */
 
-// Challenge 3: Count the total number of songs in the playlist
-// Uncomment and complete this function
+// ⏱️ Alex's Third Playlist Challenge!
+// 🔓 Uncomment the below code section and implement the required logic:
+
 /*
 function countSongs(playlist) {
-  // Count and return the total number of songs in the playlist
-  // Your code here
+  // Count the total number of songs in the playlist
+  // Return the count as a number
+  
+  let count = 0;
+  let currentSong = playlist;
+  
+  // TODO: Traverse the entire playlist and count songs
+  // Hint: Use a while loop and increment count for each song
+  
+  return count;
 }
-*/
-
-// Test your functions (uncomment to test)
-/*
-console.log("=== Testing playNextSong ===");
-console.log(playNextSong(song1, "Hotel California - Eagles"));
-console.log(playNextSong(song1, "Sweet Child O' Mine - Guns N' Roses"));
-console.log(playNextSong(song1, "Nonexistent Song - Unknown"));
-
-console.log("\n=== Testing removeSong ===");
-let modifiedPlaylist = removeSong(song1, "Hotel California");
-console.log("After removing Hotel California:");
-let current = modifiedPlaylist;
-while (current) {
-  console.log(current.toString());
-  current = current.next;
-}
-
-console.log("\n=== Testing countSongs ===");
-console.log("Total songs:", countSongs(song1));
-console.log("Empty playlist count:", countSongs(null));
 */

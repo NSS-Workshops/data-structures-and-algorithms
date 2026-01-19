@@ -1,4 +1,6 @@
 import content from './index.md?raw';
+import questions  from './checkpoint.jsx';
+import { Checkpoint } from '@nss-workshops/nss-core';
 
 export default {
   id: "stacks-tradeoffs",
@@ -7,4 +9,5 @@ export default {
   nextChapterId: "stacks-implement-stack",
   content: content,
   exercises: [],
+  quiz: {component: () => <Checkpoint questions={questions}/>}
 };

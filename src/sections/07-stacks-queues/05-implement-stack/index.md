@@ -274,6 +274,162 @@ This would be O(n) - slow!
 
 "That's why stacks only allow access to the top," Maya concluded. "It keeps all operations fast."
 
+## Real-World Applications in the Library
+
+"Now that you understand how to implement a stack," Maya said, "let's see where else we use this pattern in our library systems."
+
+### 1. Catalog Undo System
+
+Maya opened the library's catalog system. "Remember when I made a mistake updating a book record and used Ctrl+Z to undo it? That's a stack!"
+
+```javascript
+class CatalogEditor {
+  constructor() {
+    this.undoStack = new BookCart(); // Reusing our BookCart as a stack!
+    this.currentRecord = "";
+  }
+  
+  updateRecord(newContent) {
+    // Save current state before making changes
+    this.undoStack.addBook(this.currentRecord);
+    this.currentRecord = newContent;
+    console.log(`Updated record to: "\${newContent}"`);
+  }
+  
+  undo() {
+    if (this.undoStack.isEmpty()) {
+      console.log("Nothing to undo!");
+      return;
+    }
+    
+    const previousState = this.undoStack.processNextBook();
+    console.log(`Undoing... restored to: "\${previousState}"`);
+    this.currentRecord = previousState;
+  }
+}
+
+// Test the undo system
+const editor = new CatalogEditor();
+editor.updateRecord("Title: The Great Gatsby");
+editor.updateRecord("Title: The Great Gatsby, Author: F. Scott Fitzgerald");
+editor.updateRecord("Title: The Great Gatsby, Author: F. Scott Fitzgerald, Year: 1925");
+
+console.log("Current record:", editor.currentRecord);
+editor.undo(); // Goes back to previous version
+editor.undo(); // Goes back further
+```
+
+### 2. Browser History Simulation
+
+"And here's how a simplified browser history might work," Maya continued:
+
+```javascript
+class LibraryBrowserHistory {
+  constructor() {
+    this.historyStack = new BookCart();
+    this.currentPage = "Library Home";
+  }
+  
+  visitPage(pageName) {
+    // Save current page before navigating
+    this.historyStack.addBook(this.currentPage);
+    this.currentPage = pageName;
+    console.log(`Navigated to: \${pageName}`);
+  }
+  
+  goBack() {
+    if (this.historyStack.isEmpty()) {
+      console.log("No previous page to go back to!");
+      return;
+    }
+    
+    const previousPage = this.historyStack.processNextBook();
+    console.log(`Going back to: \${previousPage}`);
+    this.currentPage = previousPage;
+  }
+}
+
+// Test browser history
+const browser = new LibraryBrowserHistory();
+browser.visitPage("Catalog Search");
+browser.visitPage("Book Details: 1984");
+browser.visitPage("Author: George Orwell");
+
+console.log("Current page:", browser.currentPage);
+browser.goBack(); // Back to Book Details
+browser.goBack(); // Back to Catalog Search
+```
+
+## Error Handling and Edge Cases
+
+"One important aspect of good programming," Maya said, "is handling edge cases. What happens if someone tries to process a book from an empty cart?"
+
+Alex looked at their code. "We check if the cart is empty first, and return null if it is."
+
+"Exactly! Let's test that:"
+
+```javascript
+// Test edge cases
+const emptyCart = new BookCart();
+
+console.log("=== Testing Empty Cart ===");
+emptyCart.peekAtTopBook();     // Should handle gracefully
+emptyCart.processNextBook();   // Should handle gracefully
+console.log("Is empty?", emptyCart.isEmpty()); // Should be true
+console.log("Book count:", emptyCart.getBookCount()); // Should be 0
+```
+
+Output:
+```
+📚 New book cart created!
+=== Testing Empty Cart ===
+👀 Cart is empty - nothing to peek at
+❌ Cannot process book - cart is empty!
+Is empty? true
+Book count: 0
+```
+
+"Perfect error handling!" Maya said. "The system doesn't crash - it gives helpful feedback instead."
+
+## Comparing with Physical Operations
+
+Sam had been quietly thinking. "You know what's cool? Our code operations match exactly with what we do physically."
+
+Maya nodded. "Let's make that comparison explicit:"
+
+| Physical Action | Code Method | Time Complexity |
+|----------------|-------------|-----------------|
+| Place book on top of cart | `addBook(book)` | O(1) |
+| Take book from top of cart | `processNextBook()` | O(1) |
+| Look at top book | `peekAtTopBook()` | O(1) |
+| Check if cart is empty | `isEmpty()` | O(1) |
+| Count books in cart | `getBookCount()` | O(1) |
+
+"The beauty of this implementation," Maya explained, "is that it's both intuitive and efficient. The code does exactly what you'd expect, and it does it fast."
+
+## Key Insights About Stack Implementation
+
+As their coding session wrapped up, Maya summarized the key points:
+
+### Why Arrays Work Well for Stacks
+- **Natural LIFO behavior**: Adding/removing from the end is natural
+- **Efficient operations**: All stack operations are O(1)
+- **Simple implementation**: JavaScript arrays have built-in push/pop methods
+- **Memory efficient**: No extra pointers or complex structures needed
+
+### Best Practices
+- **Always check for empty stack** before popping or peeking
+- **Provide clear error messages** for edge cases
+- **Use descriptive method names** that match the domain (addBook vs push)
+- **Include helpful logging** for debugging and understanding
+
+### When to Use This Implementation
+- **Known maximum size**: When you have a rough idea of how big the stack will get
+- **Memory efficiency matters**: Arrays use less memory than linked structures
+- **Simple operations**: When you only need basic stack functionality
+
+
+
 ## 💻 Alex's Implementation Challenge!
 
 "Now comes the exciting part," Maya said, pulling out her laptop. "Alex, you've seen how stacks work conceptually and you've used them to solve problems. But now I want you to build your own Stack class from scratch!"

@@ -145,6 +145,274 @@ The input array is modified in place, and no extra memory is allocated for outpu
 
 In this reading, we introduced Big O notation and its use for analyzing code. Big O notation provides us with the terminology to objectively discuss what makes algorithms better or worse than others. We also discussed the concepts of time and space complexity as well as how they can affect performance.
 
+
+# How To Determine Big O
+
+## Polynomial complexity
+
+In the last reading, we discussed `O(1)` and `O(n)`. `O(1)` is also known as *constant*, because the time/space complexity is always the same and independent from the size of n. `O(n)` is also known as *linear*, because the time/space complexity is proportional to the size of `n`. This causes a linear relationship between the size of `n` and the time/memory taken by the algorithm. The other important notation to discuss is polynomial, which is denoted as `O(n^c)`.
+
+> **NOTE:** It's common to write exponents with a `^` character. This means 5<sup>2</sup> would be written as 5^2.
+
+A polynomial is a type of mathematical expression comprised of variables, numbers, and operations. In algebra, we see polynomial expressions all the time, such as `4x + 2y`. Another common polynomial is an exponent such as `x^2` ("x squared" or "x to the 2nd power"), which is equivalent to `x * x` (x times x). An exponent is really just a shortened way to write out a polynomial that multiplies the same number multiple times. `x^8` is a much quicker (and neater) way to write: "`x * x * x * x * x * x * x * x`" or "x times x times x times x times x times x times x times x".
+
+When we're talking about polynomial time/space complexity, we mean an algorithm that runs to the order of `n^c`, where `n` is still our input size and `c` is some number. 
+
+> **Note:** while 'n' is universally used to stand in for the size of the input, the variable used to stand in for the exponent in polynomial complexity varies. We use 'c' in this lesson, but you may also see 'k' or other letters.
+
+It's important to understand that polynomial complexity is just a
+general term for any time/space complexity where `n` is raised to any power. Common polynomial complexities are `O(n^2)` (pronounced "Big O of n squared") and `O(n^3)` (pronounced "Big O of n to the third *or* n cubed).
+
+But what does it actually mean for an algorithm to have a polynomial time complexity? 
+
+Let's start by looking at `O(n^2)`. If we write this out in its full form, it's: `n * n` (n times n). This means that the time complexity it takes to run the algorithm is the input value squared. If our input is 10, then it takes 100 steps to complete the algorithm because 10 * 10 is 100. Similarly, if we're talking about space complexity, then `O(n^2)` means that the amount of memory
+taken by the algorithm is equal to the input value squared. If we have a complexity of `O(n^3)`, the complexity is the input value cubed, etc.
+
+## How to determine Big O
+
+We've discussed the usefulness of Big O notation. Now, how do we apply it to actually determine what the time/space complexity for an algorithm is? There are a few steps to determining Big O for both time and space complexity.
+
+First, we identify which part of our code we want to analyze. This could be a whole class, but generally we're looking at a specific method or maybe even just part of a method. Maybe there's a certain loop inside a method where our code gets hung up and we want to understand why it's taking so long or running out of memory.
+
+Once we've identified the code that we're analyzing, we need to determine what `n` is. In our bean counting example, `n` was the beans. In the packaging example above, `n` was the packages. To determine what `n` is, think about what the input data is for our code. 
+
+Finally, we need to count the *steps* in a typical run.
+
+What's a step? Well, there's no clear unit of measurement for Big O, so we think in terms of steps. Steps are very vague because it doesn't actually matter what a step is! When we're talking about Big O, we're looking at how the time or memory grows as n is increased. So, what a step is may change between different algorithms, but what's important is that a step remains consistent within the same algorithm, so we can see how the steps increase relative to n.
+
+When determining the number of steps in an algorithm, we only need to keep the most **significant** part in the expression. For example, if we determine the number of steps is '`n + 3`', we can throw out the `+ 3` and say that `O(n)`.
+
+Why? Well, we want to know what Big O is when `n` gets really large and when `n` is really large, we don't care about that `+ 3`. That `+ 3` may matter when `n` is 10, but when `n` is a billion, it's completely overshadowed.
+
+What if we determine we have '`3n`' steps? Once again, we can throw out the '3' and just say `O(n)`. When determining Big O, we always want to throw out any lower coefficients and just keep the biggest. So, if our algorithm has '`n^2 + n^3`' we would say the algorithm has `O(n^3)`. 
+
+Note that this is *not* true for exponents that are multiplied. If your algorithm is '`n^2 * n^3`' (n squared times n cubed), this algorithm has `O(n^5)`. This is easier to see if we replace n with a number (let's say 2), and then write out the full expression: `(2 * 2) * (2 * 2 * 2)`.  The first set of parentheses represents `2^2` and the second set represents `2^3`. It's easier to see now that we could write the above expression as `2^5`.
+
+In the last reading we saw that `O(1)` is better than `O(n)`, but by how much? How do polynomial complexities fit in there? The best way to visualize the differences between complexities is with a graph.
+
+<img width=700 src="${image1}"/>
+[Figure 1]
+
+*Figure 1: Graph displaying the complexities for `O(n^n)`, `O(n^3)`, `O(n^2)`, `O(n)`, `O(log n)`, and `O(1)`.*
+
+*Figure 1* shows the time complexity for `O(n^n)`, `O(n^3)`, `O(n^2)`, `O(n)`, `O(log n)`, and `O(1)`. On the x-axis (horizontal axis) the data input (n) is increasing. On the y-axis (vertical axis) the time is increasing. (You could replace time with space and the graph would remain the same.) 
+
+> **NOTE:** We haven't talked about `O(n^n)` or `O(log n)` so don't worry about those as much. 
+
+In the graph we notice a few things. First, when `n` is really small, `O(1)` actually takes the most time, but as `n` gets larger, this quickly changes to `O(1)` taking the least amount of time (by a lot). Similarly, the polynomial complexities (`O(n^2)` and `O(n^3)`) take less time than `O(n)` when `n` is small, but as n gets larger, the time for the polynomial expressions also gets far greater.
+
+It may seem odd to you that there are no units of measurement on the graph. Remember that the steps used to determine Big O don't matter. Calculating Big O is all about the general trend of time or space complexity as n gets larger. It doesn't matter if this graph starts at 0 or 100 and ends at 10 or a billion. It simply represents the general trend of the time complexity as n gets larger.
+
+Something that's important to understand about Big O notation, is that there are a few different cases we may want to measure.
+
+For example, let's say we're at the post office and there's a long table filled with 100 packages. The packages are in random order all addressed to different people. We need to find our package, so we would start at one end of the table and check each package to see if it had our name on it. If it does, we're done! If it doesn't, we move on to the next package. It's possible that we'll get lucky and our package will be the first package on the table. It might even be one of the first five. However, it's just as likely that our package is the *last* package, meaning that we have to check all 100 packages on the table before we find ours. This package sorting exercise has a _worst-case_ time complexity of `O(n)`, because the most amount of time we can take is looking at every package.
+
+Instead of the worst case, sometimes we want to talk about the *best* case or the *average* case. It all depends on how we're using our algorithm and how likely we are to reach a certain case.
+
+## Summary
+
+In this reading, we discussed polynomial complexity and how it applies to Big O notation. We also discussed some guidelines for determining Big O, such as 'steps' in code and throwing out less significant coefficients. We also demonstrated how different complexities compare to each other with a visual representation.
+
+
+---
+Determining Big O In Code
+---
+
+In the last reading, we covered more details about determining Big O, but we have yet to see it in action. This reading will focus on determining Big O from actual code examples! 
+
+One thing to remember is that Big O is **vague on purpose**. We're not talking about the runtime or memory of code directly, but instead we're using Big O notation to talk about how the runtime/memory *grows* as n does.
+
+Also keep in mind that generally when we discuss Big O, we're concerned about what's happening in the *worst* case. Think back on the graph we showed in the last reading. The time was relatively similar when `n` was small. It's when `n` gets very large that we start to see significant differences in performance.
+
+## Time complexity
+
+There are a few shortcuts we can use when calculating the time complexity for code. First, arithmetic operations are constant. 
+
+Let's look at the following line of code:
+
+```java
+double sum = (8 * 4) / 3 + 9;
+```
+
+All we're doing in this line of code are arithmetic operations, all of which are constant. So, the above line of code has `O(1)`. If we have multiple lines with `O(1)`, the overall Big O is still `O(1)`. 
+
+For example:
+
+```java
+double num1 = 8 * 4;
+double num2 = num1 / 3;
+double sum = num2 + 9;
+```
+
+The above code yields the same result as the previous line of code, just separated into three different lines. Each line is an arithmetic operation, so each line is `O(1)`. If all our lines of code are `O(1)`, then the code snippet is `O(1)`.
+
+Variable assignment is also constant. In the previous snippets of code, both the arithmetic operations and the variable assignment was constant. As we said previously, we can do _any number_ of constant operations in code, and it will still have a time complexity of `O(1)`.
+
+Accessing elements in an array (by index) or object (by key) is also constant!
+
+Let's look at the following code snippet:
+
+```java
+int[] numArray = new int[]{4, 5, 6, 7};
+
+int num1 = numArray[0];
+```
+
+The code snippet initializes an array, `numArray`, and then assigns the value in index 0 to an `int`, `num1`. This is constant because we're giving the code the index and telling it exactly where to go. The code sees that we're telling it to go to index 0 and it goes right there. This is true no matter what index we give---we're telling it exactly where to look. Since the only other things we're doing in the code snippet are assigning variables, the code snippet has a time complexity of `O(1)`.
+
+In a loop, however, the time complexity is the length of the loop times the complexity of whatever happens in the loop.
+
+Let's look at some examples:
+
+```java
+for(int = 0; i < numArray.length; i++) {
+    System.out.println(numArray[i]);
+}
+```
+
+Looking at this loop, we see that `n` is the `numArray`. Now, there are two steps to finding the time complexity of the loop. First, we determine the length of the loop and determine the complexity of what's happening in the loop. Since the length of the loop is the length of `numArray`, the length of the loop is `n`.
+
+Next, we look at what's happening in the loop. All we do in the loop is print out the value of the array. We already know that accessing an element in an array is constant, but what about the print statement? The complexity is all dependent on the expression's interaction with `n`. Since the print statement takes the same amount of time no matter what the value of `n` is, the print statement is also constant. Inside the loop therefore has a constant time complexity, or a complexity of 1.
+
+So, the length of the loop is `n` and the complexity inside the loop is 1. If we multiply those two values together: `n * 1` (n times 1), we get `n`! Therefore, the time complexity of the above code snippet is `O(n)`.
+
+Let's look at another loop:
+
+```java
+for (int firstItem : items) {
+    for (int secondItem : items) {
+        System.out.println(firstItem + ", " + secondItem);
+    }
+}
+```
+
+In the above code, we're nesting two loops. Let's start by determining the length of the first loop. The first loop is iterating through `items`, meaning that the length is `n`. But, inside that loop is another loop!
+
+To determine the complexity of the inner loop, we once again calculate the length of the loop times the complexity of what's happening inside the loop. The second loop is also iterating through `items`, so it has a length of `n`. Inside the second loop, it's printing out `firstItem` and `secondItem`. As we discussed in the previous example, print statements are constant. The complexity of the second loop is therefore `n * 1` (n times 1), which equals `n`. 
+
+To find Big O for the code snippet, we now multiply the length of the first loop (n) by the complexity inside the loop, which we just determined is also n: `n * n` (n times n) equals `n^2`. The above code snippet has a time complexity of `O(n^2)`!
+
+So, if the array has 10 items, we end up with 100 print statements. If the array has 1,000 items, we end up with 1,000,000 print statements!
+
+Let's look at some more examples and assess their time complexity!
+
+Assess the time complexity of the following method:
+
+```java
+public void printItemsTwice(int[] items) {
+    for (int item : items) {
+        System.out.println(item);
+    }
+
+    for (int i = 0; i < items.length; i++) {
+        System.out.println(item);
+    }
+}
+```
+
+The above method has two separate loops. There's for-each loop that prints out all the numbers in `items` and a for loop that also prints out all the numbers in `items`. The `n` is items. Therefore, the first loop has a length of `n`, and the complexity inside the loop is constant. Our first loop has a time complexity of `n`. But we want to know the time complexity of the entire method---not just the first loop. 
+
+Let's look at the time complexity for our second loop. Once
+again, the length of the loop is `n` and the complexity inside is constant. (These loops do the same exact thing!) The second loop has a time complexity of `n`. 
+
+To determine the complexity of the entire method, we add the complexities of the loops together: `n + n` (n plus n), which equals `2n`. As we discussed in the last reading, we can always throw out constants. They don't matter when n gets really large.  If we throw out the 2, we're left with n. So, the time complexity for this method is `O(n)`!
+
+Let's look at one more example:
+
+```java
+public static void printAllNumbersThenAllPairSums(int[] numbers) {
+    System.out.println("these are the numbers.");
+    for (int number : numbers) {
+        System.out.println(number);
+    }
+
+    System.out.println("and these are their sums.");
+    for (int firstNumber : numbers) {
+        for (int secondNumber : numbers) {
+            System.out.println(firstNumber + secondNumber);
+        }
+
+    }
+}
+```
+
+In the above method, we have two separate loops. Let's start by figuring out the time complexity for the first one:
+
+```java
+System.out.println("these are the numbers.");
+for (int number : numbers) {
+    System.out.println(number);
+}
+```
+
+The print statement outside of the loop has a constant time complexity. The loop has a length of `n` and the internal complexity is constant. The loop therefore has a time complexity of `n * 1` (n times 1), which equals `n`. Since the print statement outside the loop is constant, this first section has a time complexity of `n`.
+
+Let's figure out the time complexity for the second loop:
+
+```java
+System.out.println("and these are their sums.");
+for (int firstNumber : numbers) {
+    for (int secondNumber : numbers) {
+        System.out.println(firstNumber + secondNumber);
+    }
+}
+```
+
+The print statement outside the loop has a constant time complexity. The loop has a length of `n` and the internal complexity is another loop. The internal loop has a length of `n` and a constant internal complexity.  So, the inner loop has a complexity of `n`. We multiply the length of the first loop and its inner complexity: n * n `(n times n)`, which equals `n^2`.
+
+Okay, so the first loop in our method has a time complexity of `n` and the second loop in our method has a time complexity of `n^2`. Since these two loops are independent from each other, we would add the two values together: `n + n^2`. As we discussed in the last reading, we're only interested in the most significant terms.  We can throw out the less significant terms. This means that we can get rid of the `n` and we're left with `n^2`. The time complexity for this method is `O(n^2)`.
+
+## Space complexity
+
+The previous examples were all about time complexity, but what about determining the space complexity of code?  Determining space complexity functions very similarly to time complexity, but we're looking at the total size of any new variables we're allocating. It's important to remember that when we're talking about space complexity, we're interested in how the memory usage changes as `n` does.
+
+Let's look at an example:
+
+```javascript
+function sayHiNTimes(n) {
+    for (let i = 0; i < n; i++) {
+        console.log("hi");
+    }
+}
+```
+
+The above code has a loop that prints out "hi" a given number of times. Even though we have a loop, we're just printing out a statement. We're not allocating any additional memory. No matter what the size of n is, we're using the same amount of memory. Since the amount of space being used is independent of `n`, the above method has a constant space complexity: `O(1)`.
+
+Other times, the amount of space used is directly dependent on `n`. 
+
+Let's look at the following example:
+
+```javascript
+function arrayOfHiNTimes(n) {
+    let hiArray = new array[n];
+    for (let i = 0; i < n; i++) {
+        hiArray[i] = "hi";
+    }
+    return hiArray;
+}
+```
+
+In the above example, we're creating an array the size of `n`, setting the value of each index in the array to "hi", and then returning the array. The important line to look at here is the array initialization. The array's size is determined by `n`. This means that the memory used in this method is directly dependent upon the size of `n`. If we look at the rest of the method, there's nothing else that takes up any additional space.  (The loop is just setting the value of each index to "hi".) The space complexity for the above method is `O(n)`.
+
+Let's consider one last example:
+
+```javascript
+function getLargestItem(items) {
+    let largest = Number.MIN_SAFE_INTEGER;
+    for (let item of items) {
+        if (item > largest) {
+            largest = item;
+        }
+    }
+
+    return largest;
+}
+```
+
+The above method finds and returns the largest value in an `int` array. The first line of the method uses the `Integer.MIN_VALUE` method to set a minimum value for largest as a default value. Next, we have a for loop that processes all the values in the `items` array and compares each value to the current largest number. Whichever number is largest at the end is returned.
+
+It's important to understand that when we talk about space complexity, we're talking about *additional* space that's affected by our input. Even though the length of the loop is affected by the size of n, we're not allocating any additional space in the loop. We're just (potentially) changing the value of one variable, `largest`. The singular variable in the method is not affected by the size of `n`. It's constant. This method has a space complexity of `O(1)`.
+
 ## Common trade-offs
 
 When considering Big O, there are sometimes trade-offs we must make. Sometimes we must decide between having a better optimized time complexity *or* a better optimized space complexity. There's no right answer for which is more important. It really depends on our code and its usage.

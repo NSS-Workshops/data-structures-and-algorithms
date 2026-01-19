@@ -494,61 +494,66 @@ console.log("Rock songs available:", rockSongs.map(song => song.title));
 Inspired by the evening's requests, Alex creates a comprehensive song-finding system:
 
 ```javascript
-class SmartSongFinder {
+class SongFinder {
     constructor(repertoire) {
-        this.songs = repertoire;
+        this.repertoire = repertoire;
     }
     
-    // Find songs by exact title match
+    // Find song by exact title (O(n))
     findByTitle(title) {
-        return this.songs.filter(song => 
-            song.title.toLowerCase().includes(title.toLowerCase())
+        const index = this.repertoire.findIndex(song => 
+            song.title.toLowerCase() === title.toLowerCase()
+        );
+        return index !== -1 ? { song: this.repertoire[index], position: index } : null;
+    }
+    
+    // Find songs by genre (O(n))
+    findByGenre(genre) {
+        return this.repertoire.filter(song => 
+            song.genre.toLowerCase() === genre.toLowerCase()
         );
     }
     
-    // Find songs by multiple criteria
-    findByCharacteristics(criteria) {
-        return this.songs.filter(song => {
+    // Find songs by mood (O(n))
+    findByMood(mood) {
+        return this.repertoire.filter(song => 
+            song.mood.toLowerCase() === mood.toLowerCase()
+        );
+    }
+    
+    // Smart search - find songs matching multiple criteria (O(n))
+    smartSearch(criteria) {
+        return this.repertoire.filter(song => {
             return Object.keys(criteria).every(key => 
-                song[key] === criteria[key]
+                song[key] && song[key].toLowerCase() === criteria[key].toLowerCase()
             );
         });
     }
     
-    // Get random song for when Alex can't decide
+    // Get random song for inspiration (O(1))
     getRandomSong() {
-        const randomIndex = Math.floor(Math.random() * this.songs.length);
-        return this.songs[randomIndex];
-    }
-    
-    // Get songs suitable for specific moments
-    getSongsForMoment(moment) {
-        const momentMap = {
-            'opening': { tempo: 'fast', mood: 'energetic' },
-            'slow_dance': { tempo: 'slow', mood: 'romantic' },
-            'emotional': { tempo: 'slow', mood: 'emotional' },
-            'party': { tempo: 'fast', genre: 'rock' }
-        };
-        
-        const criteria = momentMap[moment];
-        return criteria ? this.findByCharacteristics(criteria) : [];
+        const randomIndex = Math.floor(Math.random() * this.repertoire.length);
+        return this.repertoire[randomIndex];
     }
 }
 
-// Alex puts their smart finder to work
-const songFinder = new SmartSongFinder(detailedRepertoire);
+// Alex uses their new song finder
+const alexsFinder = new SongFinder(detailedRepertoire);
 
-console.log("Songs for opening:", songFinder.getSongsForMoment('opening'));
-console.log("Songs for slow dance:", songFinder.getSongsForMoment('slow_dance'));
-console.log("Random song suggestion:", songFinder.getRandomSong().title);
+// Handle various requests efficiently
+console.log("Looking for Wonderwall:", alexsFinder.findByTitle("wonderwall"));
+console.log("All ballads:", alexsFinder.findByGenre("ballad"));
+console.log("Energetic songs:", alexsFinder.findByMood("energetic"));
+console.log("Slow rock songs:", alexsFinder.smartSearch({ genre: "rock", tempo: "slow" }));
+console.log("Random inspiration:", alexsFinder.getRandomSong());
 ```
 
 ---
-## ⏱️ **Alex's Finale Challenge!** 
+## ⏱️ **Alex's Encore Challenge!** 
  - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
 ```js
 // ==============================
-// Exercise 5: Help Alex Build a Smart Song Finder
+// Exercise 5: Help Alex Find Songs for Requests
 // ============================== 
 ```
 
@@ -558,35 +563,66 @@ console.log("Random song suggestion:", songFinder.getRandomSong().title);
 
 ---
 
-## Alex's Mastery: The Four Pillars of Array Operations
+## Alex's Musical Mastery: The Four Core Operations
 
-As the night winds down and the last customer leaves The Blue Note, Alex reflects on the evening's lessons. Managing a dynamic setlist has taught them the four fundamental array operations that power countless algorithms:
+As the night winds down and Alex packs up their guitar, they reflect on how managing a setlist taught them the fundamental array operations that every programmer needs to master.
 
-### 1. **Access (O(1))** - The Foundation
-- Direct access by index is lightning fast
-- Forms the basis for all other operations
-- Essential for random access patterns
+### 🎯 **The Four Pillars of Array Mastery**
 
-### 2. **Update (O(1))** - The Refinement  
-- Instant modification of existing elements
-- Preserves array structure and size
-- Perfect for in-place transformations
+#### 1. **Access by Index** - The Instant Lookup (O(1))
+"When someone asks for 'the third song,' I can find it instantly."
+```javascript
+const song = setlist[2]; // Always instant, regardless of setlist size
+```
 
-### 3. **Addition (O(1) to O(n))** - The Growth
-- Adding to end: O(1) - always efficient
-- Adding to beginning/middle: O(n) - use strategically
-- Choose insertion point based on performance needs
+#### 2. **Update Elements** - The Perfect Substitution (O(1))
+"Swapping one song for another in a specific position is lightning-fast."
+```javascript
+setlist[2] = "New Song"; // Instant replacement, no shifting required
+```
 
-### 4. **Removal (O(1) to O(n))** - The Curation
-- Removing from end: O(1) - always efficient  
-- Removing from beginning/middle: O(n) - sometimes necessary
-- Balance performance with functionality
+#### 3. **Add Elements** - The Strategic Expansion
+- **To End (O(1))**: "Adding encore songs is always fast"
+- **To Beginning/Middle (O(n))**: "Powerful but requires shifting other songs"
+```javascript
+setlist.push("Encore");           // Fast addition
+setlist.unshift("New Opener");    // Slower but sometimes necessary
+setlist.splice(2, 0, "Interlude"); // Strategic insertion
+```
 
-### 5. **Search (O(n))** - The Discovery
-- Linear search through elements
-- Can be optimized with sorting and binary search
-- Essential for dynamic content management
+#### 4. **Remove Elements** - The Artistic Edit
+- **From End (O(1))**: "Dropping the last song is effortless"
+- **From Beginning/Middle (O(n))**: "Sometimes needed for better flow"
+```javascript
+setlist.pop();              // Quick removal
+setlist.shift();            // Slower but improves opening
+setlist.splice(2, 1);       // Strategic removal for better flow
+```
 
-"Tonight taught me that arrays aren't just storage containers," Alex says, packing up their guitar. "They're dynamic performance tools. Understanding when each operation is efficient helps me build better algorithms, just like understanding when each song works helps me build better setlists."
+#### 5. **Find Elements** - The Request Handler (O(n))
+"Searching through my repertoire to fulfill audience requests."
+```javascript
+const position = setlist.indexOf("Wonderwall");     // Find by exact match
+const song = setlist.find(s => s.mood === "romantic"); // Find by criteria
+```
 
-*Ready for the next challenge? Let's see how Alex applies these core operations to solve more complex problems with advanced array techniques...*
+### 🎸 **Alex's Performance Philosophy**
+
+"Tonight taught me that managing a setlist is just like managing any collection of data," Alex muses while coiling their guitar cable. "The key is understanding when to use each operation:"
+
+1. **Use O(1) operations** (access, update, end additions/removals) **during busy performances** when speed matters most
+2. **Use O(n) operations** (beginning/middle modifications, searching) **strategically** when the artistic benefit outweighs the performance cost
+3. **Design your setlist structure** to favor the operations you'll use most frequently
+4. **Batch similar operations** when possible to minimize disruption
+
+### 🌟 **From Street Musician to Array Expert**
+
+Alex started the evening as a talented musician with a disorganized approach to setlist management. By the end of the night, they've not only delivered an amazing performance but also mastered the four core array operations that form the foundation of efficient programming.
+
+"The beautiful thing," Alex tells Marcus while settling up for the night, "is that these same principles apply whether you're managing songs, customer orders, inventory items, or any other collection of data. Once you understand access, update, add, and remove operations - and their performance characteristics - you can efficiently manage any array-based system."
+
+Marcus nods approvingly, "Same time next week?"
+
+Alex grins, slinging their guitar over their shoulder, "Absolutely. I've got some new songs to add to my repertoire - and I know exactly where to put them in my setlist for maximum impact!"
+
+*Ready for the next challenge? Let's see how Alex uses these core operations to master advanced array methods and create even more sophisticated musical experiences...*

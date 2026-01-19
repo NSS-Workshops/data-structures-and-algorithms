@@ -349,6 +349,123 @@ Linked List: 7.4/10
 
 "Based on this analysis," Maya concluded, "I recommend the circular array approach for our hold request system, while keeping our current array-based stack for book returns."
 
+## Board Questions and Discussion
+
+Board member Mr. Chen raised his hand. "What about maintenance? Who will understand this more complex code when you're not here?"
+
+Maya smiled. "That's exactly why we've been training Alex and Sam. Alex, can you explain how you'd teach someone else about circular queues?"
+
+Alex thought for a moment. "I'd start with the physical analogy - imagine the array as a circular table where people sit. When someone leaves from the front, we don't move everyone around the table. We just remember where the 'front' and 'back' positions are. The modular arithmetic is just a way to wrap around when we reach the end of the table."
+
+"And," Sam added, "the performance difference is so obvious when you see it in action. Once you experience a slow system, you really appreciate the fast one."
+
+Ms. Rodriguez asked, "What about the cost of implementation? How much developer time are we talking about?"
+
+Maya had prepared for this question. "Based on our experience this week, the additional complexity adds about 2-3 days of development time. But the performance benefits will save us much more time in operations, and prevent patron frustration during busy periods."
+
+## The Technical Deep Dive
+
+Dr. Harper asked for more technical details. Maya turned to the implementation comparison:
+
+### Array-Based Stack (Recommended for Book Returns)
+
+```javascript
+// Perfect for book returns - simple and fast
+class BookReturnStack {
+  constructor() {
+    this.books = [];
+  }
+  
+  addReturn(book) {
+    this.books.push(book);           // O(1)
+  }
+  
+  processNext() {
+    return this.books.pop();         // O(1)
+  }
+  
+  // Why this works well:
+  // - LIFO matches physical book stacking
+  // - All operations are O(1)
+  // - Simple to implement and maintain
+  // - Natural behavior for staff
+}
+```
+
+### Circular Array Queue (Recommended for Hold Requests)
+
+```javascript
+// Optimal for hold requests - fast and fair
+class HoldRequestQueue {
+  constructor(capacity = 100) {
+    this.requests = new Array(capacity);
+    this.front = 0;
+    this.rear = 0;
+    this.size = 0;
+    this.capacity = capacity;
+  }
+  
+  addRequest(request) {
+    if (this.isFull()) this.resize();
+    this.requests[this.rear] = request;
+    this.rear = (this.rear + 1) % this.capacity;  // O(1)
+    this.size++;
+  }
+  
+  processNext() {
+    if (this.isEmpty()) return null;
+    const request = this.requests[this.front];
+    this.requests[this.front] = null;
+    this.front = (this.front + 1) % this.capacity; // O(1)
+    this.size--;
+    return request;
+  }
+  
+  // Why this works well:
+  // - FIFO ensures fairness
+  // - All operations are O(1)
+  // - Scales well with volume
+  // - Memory efficient
+}
+```
+
+### Alternative: Linked List Queue
+
+```javascript
+// Alternative approach - dynamic sizing
+class LinkedListQueue {
+  constructor() {
+    this.front = null;
+    this.rear = null;
+    this.size = 0;
+  }
+  
+  addRequest(request) {
+    const node = { data: request, next: null };
+    if (this.isEmpty()) {
+      this.front = node;
+    } else {
+      this.rear.next = node;
+    }
+    this.rear = node;
+    this.size++;                     // O(1)
+  }
+  
+  processNext() {
+    if (this.isEmpty()) return null;
+    const request = this.front.data;
+    this.front = this.front.next;
+    if (!this.front) this.rear = null;
+    this.size--;
+    return request;                  // O(1)
+  }
+  
+  // Pros: Dynamic sizing, no capacity limits
+  // Cons: More memory overhead, pointer management
+}
+```
+
+
 ## The Final Recommendation
 
 Maya concluded her presentation with a clear recommendation:

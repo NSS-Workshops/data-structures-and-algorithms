@@ -1,6 +1,5 @@
 ## What is a Set in JavaScript
-
-A Set in JavaScript is a data structure a collection of unique values—no duplicates are allowed—and values can be of any type. It preserves insertion order and offers methods like .add(), .has(), and .delete(), making it useful for tasks like removing duplicates from arrays or quickly checking membership, with typical operations running in O(1) time.
+A Set in JavaScript is a data structure a collection of unique values—no duplicates are allowed—and values can be of any type. It preserves insertion order and offers methods like .add(), .has(), and .delete(), making it useful for tasks like removing duplicates from arrays or quickly checking membership, with typical operations running in O(1) time. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4pRkrVwpLQo?si=rh-Scfd2POlAOVQT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -88,6 +87,67 @@ Marcus demonstrated:
 
 "The beautiful thing about Sets," Marcus explained, "is that trying to delete something that doesn't exist won't cause an error - it just does nothing."
 
+## ⏱️ Sarah's First Challenge!
+
+Marcus pulled out his tablet and opened a coding environment. "Sarah, I want you to try managing our allergy tracking system. I've created a simplified version using JavaScript's built-in Set class."
+
+"I get to work with the actual allergy system?" Sarah's eyes lit up with excitement.
+
+"Absolutely! But remember - you don't need to build the Set from scratch. JavaScript provides a built-in Set class. Your job is to **use** the Set operations to solve real patient safety problems."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `addAllergy()` and `checkAllergy()` to record new patient allergies
+- Use `allergySet.add()` and `allergySet.has()` operations
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This first challenge simulates what Elena just showed us," Marcus explained. "You need to add allergies to a patient's record and then check for specific allergies before medication administration."
+
+## The Power of Unique Values
+
+After Sarah completed the first challenge, Elena smiled approvingly. "Excellent work! Now you've experienced firsthand how Set operations work for patient safety. Let's reflect on what you've learned."
+
+"So Sarah, why do you think our allergy tracking system works so well as a Set?" Elena asked.
+
+Sarah thought for a moment. "Well, each allergy should only be listed once - we don't want duplicates cluttering up the system. And we need to quickly check if a patient has a specific allergy before giving them medication."
+
+"Perfect understanding," Marcus said. "And what would happen if we used a regular array instead of a Set?"
+
+"Oh!" Sarah realized. "We might accidentally add the same allergy multiple times, making the list confusing. And checking for allergies would be slower because we'd have to search through the entire list."
+
+"Exactly. Sets automatically prevent duplicates and provide instant membership checking."
+
+## ⏱️ Sarah's Second Challenge!
+
+"Now let's try something more complex," Elena said, pulling up another coding challenge. "Sometimes we need to find patients who share common allergies, or identify patients who are allergic to any ingredient in a complex medication."
+
+"How do we handle multiple allergies at once?" Sarah asked, intrigued.
+
+"Great question! Sets provide powerful operations for comparing and combining allergy lists. We can find intersections, unions, and differences between different patients' allergy sets."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `findCommonAllergies()` to find allergies shared between patients
+- The 2 arguments to findCommonAllergies are both sets!
+- Use Set iteration and comparison methods
+- Return a new Set containing only shared allergies
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This challenge teaches you how to work with multiple Sets together," Elena explained.
+
+## ⏱️ Sarah's Third Challenge!
+
+"One more challenge," Marcus said with a smile. "Sometimes we need to check if a medication is safe for a patient by ensuring they're not allergic to any of its ingredients."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `isMedicationSafe()` to check if a patient can safely take a medication
+- Compare the patient's allergies with the medication's ingredients
+- Return true if safe, false if any ingredient matches an allergy
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"Excellent work, Sarah!" Elena said as Sarah completed the challenges. "You've now experienced how to use Sets to solve real-world patient safety problems."
+
 ## Real-World Set Applications in Healthcare
 
 Elena pulled out her laptop and opened several hospital systems. "Let me show you some other places where we use Sets in our hospital," she said.
@@ -134,7 +194,36 @@ class MedicationSafety {
     
     return { safe: true };
   }
+  
+  findAlternativeMedications(patientAllergies) {
+    const safeMedications = [];
+    
+    for (const [medName, ingredients] of this.medications) {
+      let isSafe = true;
+      for (const ingredient of ingredients) {
+        if (patientAllergies.has(ingredient)) {
+          isSafe = false;
+          break;
+        }
+      }
+      if (isSafe) {
+        safeMedications.push(medName);
+      }
+    }
+    
+    return safeMedications;
+  }
 }
+
+// Test the medication safety system
+const medSafety = new MedicationSafety();
+const patientAllergies = new Set(['Penicillin', 'Latex']);
+
+const amoxicillinCheck = medSafety.checkMedicationSafety('Amoxicillin', patientAllergies);
+console.log('Amoxicillin safety:', amoxicillinCheck);
+
+const safeAlternatives = medSafety.findAlternativeMedications(patientAllergies);
+console.log('Safe alternatives:', safeAlternatives);
 ```
 
 ### 2. Procedure Completion Tracking
@@ -171,67 +260,302 @@ class ProcedureTracker {
     
     return remaining;
   }
+  
+  getProcedureCompletion(patientId, requiredProcedures) {
+    const completed = this.patientProcedures.get(patientId) || new Set();
+    const completedCount = requiredProcedures.filter(proc => completed.has(proc)).length;
+    
+    return {
+      completed: completedCount,
+      total: requiredProcedures.length,
+      percentage: Math.round((completedCount / requiredProcedures.length) * 100)
+    };
+  }
 }
+
+// Test procedure tracking
+const tracker = new ProcedureTracker();
+tracker.addCompletedProcedure('P-001', 'Blood Test');
+tracker.addCompletedProcedure('P-001', 'X-Ray');
+tracker.addCompletedProcedure('P-001', 'EKG');
+
+const requiredProcedures = ['Blood Test', 'X-Ray', 'EKG', 'MRI', 'CT Scan'];
+const remaining = tracker.getRequiredProcedures('P-001', requiredProcedures);
+console.log('Remaining procedures:', remaining);
+
+const completion = tracker.getProcedureCompletion('P-001', requiredProcedures);
+console.log('Completion status:', completion);
 ```
 
-## Set Mathematical Operations
+## Understanding Set Values and Data Types
 
-"Sets also support powerful mathematical operations," Marcus explained, opening a new demonstration. "These are incredibly useful for comparing patient data."
+"Before we talk about performance," Elena said, "let's understand something crucial about Set values. Sarah, what types of data can we store in JavaScript Sets?"
 
-### Intersection: Finding Common Allergies
+Sarah thought for a moment. "Well, we've been using strings like 'Penicillin' for allergies..."
+
+"Good start! But Sets are much more flexible," Elena explained, opening a demonstration:
 
 ```javascript
-function findCommonAllergies(patient1Allergies, patient2Allergies) {
-  const commonAllergies = new Set();
-  
-  for (const allergy of patient1Allergies) {
-    if (patient2Allergies.has(allergy)) {
-      commonAllergies.add(allergy);
-    }
+// Sets can store ANY data type as values!
+const patientAllergies = new Set();
+
+// String values (most common for allergies)
+patientAllergies.add('Penicillin');
+patientAllergies.add('Latex');
+
+// Number values
+const vitalSigns = new Set();
+vitalSigns.add(120); // Systolic BP
+vitalSigns.add(80);  // Diastolic BP
+vitalSigns.add(72);  // Heart rate
+
+// Object values
+const procedureSet = new Set();
+const procedure1 = { name: 'Blood Test', completed: true, date: '2024-01-15' };
+const procedure2 = { name: 'X-Ray', completed: false, date: null };
+procedureSet.add(procedure1);
+procedureSet.add(procedure2);
+
+// Even function values!
+const alertFunctions = new Set();
+alertFunctions.add(function() { return 'Allergy Alert!'; });
+alertFunctions.add(() => 'Critical Patient!');
+
+console.log('Allergy count:', patientAllergies.size);
+console.log('Has Penicillin:', patientAllergies.has('Penicillin'));
+```
+
+"The key insight," Elena continued, "is how JavaScript compares these different value types in Sets:"
+
+### Value Comparison Rules in Sets
+
+```javascript
+const comparisonDemo = new Set();
+
+// Primitive values (strings, numbers, booleans) are compared by VALUE
+comparisonDemo.add('Penicillin');
+comparisonDemo.add('Penicillin'); // Duplicate - ignored!
+console.log(comparisonDemo.size); // 1
+
+// Objects are compared by REFERENCE, not content
+const allergy1 = { name: 'Penicillin', severity: 'High' };
+const allergy2 = { name: 'Penicillin', severity: 'High' }; // Same content, different object
+
+comparisonDemo.add(allergy1);
+comparisonDemo.add(allergy2); // Different references - both stored!
+
+console.log(comparisonDemo.size); // 3 total values
+console.log(comparisonDemo.has(allergy1)); // true
+console.log(comparisonDemo.has(allergy2)); // true
+
+// Special case: NaN is treated as equal to itself in Sets
+comparisonDemo.add(NaN);
+comparisonDemo.add(NaN); // Duplicate - ignored!
+console.log(comparisonDemo.has(NaN)); // true
+```
+
+When working with Sets in JavaScript, it's crucial to understand how they determine if two values are "equal" and should be treated as duplicates. 
+For primitive values like strings, numbers, and booleans, Sets compare by value - meaning 'Penicillin' and 'Penicillin' are considered identical and only one will be stored. 
+However, for objects and arrays, Sets compare by reference (memory location) rather than content. 
+This means two objects with identical properties like {name: 'Penicillin', severity: 'High'} and {name: 'Penicillin', severity: 'High'} are treated as completely 
+different values because they exist at different memory locations. 
+
+## Set Uniqueness and No Duplicates
+
+This brings us to a critical Set concept,” Elena said seriously. “Sets enforce uniqueness—but with a catch: primitives are unique by value, while reference types (objects, arrays, functions) are unique by reference aka memory address. 
+So two objects that look the same can both be in a Set unless they’re the exact same reference , like we saw above with allergy1 and allergy2. 
+
+```javascript
+// Demonstrating uniqueness in allergy tracking
+const allergyTracking = new Set();
+
+// Adding allergies
+allergyTracking.add('Penicillin');
+allergyTracking.add('Latex');
+allergyTracking.add('Shellfish');
+
+console.log('Initial allergies:', [...allergyTracking]); // ['Penicillin', 'Latex', 'Shellfish']
+console.log('Count:', allergyTracking.size); // 3
+
+// Attempting to add duplicates
+allergyTracking.add('Penicillin'); // Ignored - already exists
+allergyTracking.add('PENICILLIN'); // Added - different case!
+allergyTracking.add('Latex');      // Ignored - already exists
+
+console.log('After duplicates:', [...allergyTracking]); // ['Penicillin', 'Latex', 'Shellfish', 'PENICILLIN']
+console.log('Count:', allergyTracking.size); // 4 (case-sensitive!)
+```
+
+"Notice something important," Elena pointed out. "Sets are **case-sensitive** for strings. 'Penicillin' and 'PENICILLIN' are treated as different values."
+
+### Safe Allergy Management Pattern
+
+"In healthcare, we need to be careful about case sensitivity and data consistency. Here's a safer pattern:"
+
+```javascript
+function addAllergyToPatient(allergySet, allergy) {
+  // Defensive programming - check inputs
+  if (!allergy || typeof allergy !== 'string') {
+    console.error('Invalid allergy: must be a non-empty string');
+    return false;
   }
   
-  return commonAllergies;
+  // Normalize the allergy name (consistent casing and trimming)
+  const normalizedAllergy = allergy.trim().toLowerCase();
+  
+  if (normalizedAllergy === '') {
+    console.error('Invalid allergy: cannot be empty after trimming');
+    return false;
+  }
+  
+  // Add to set (duplicates automatically ignored)
+  const sizeBefore = allergySet.size;
+  allergySet.add(normalizedAllergy);
+  const sizeAfter = allergySet.size;
+  
+  if (sizeAfter > sizeBefore) {
+    console.log(`Added new allergy: \${normalizedAllergy}`);
+    return true;
+  } else {
+    console.log(`Allergy already exists: \${normalizedAllergy}`);
+    return false; // Was already present
+  }
 }
 
-// Example: Family members with shared allergies
-const johnAllergies = new Set(['Penicillin', 'Shellfish', 'Peanuts']);
-const maryAllergies = new Set(['Penicillin', 'Latex', 'Peanuts']);
-
-const sharedAllergies = findCommonAllergies(johnAllergies, maryAllergies);
-console.log(sharedAllergies); // Set(['Penicillin', 'Peanuts'])
+// Usage example
+const patientAllergies = new Set();
+addAllergyToPatient(patientAllergies, 'Penicillin');   // Added
+addAllergyToPatient(patientAllergies, 'PENICILLIN');   // Already exists (normalized)
+addAllergyToPatient(patientAllergies, '  Latex  ');    // Added (trimmed)
+addAllergyToPatient(patientAllergies, '');             // Error - empty
+addAllergyToPatient(patientAllergies, null);           // Error - invalid type
 ```
 
-### Union: Combining Allergy Lists
+## Understanding Set Performance
+
+"Now, here's something important to understand," Elena said, pulling up a performance chart. "All of these Set operations are **O(1)** - constant time. Do you know what that means for patient safety?"
+
+Sarah thought about it. "It means that whether a patient has 5 allergies or 50 allergies, checking for a specific allergy takes the same amount of time?"
+
+"Exactly! And in emergency situations, that speed can be the difference between life and death."
+
+Marcus added, "When a patient is having an allergic reaction and we need to quickly identify safe alternative medications, we can't afford to wait for slow searches through long lists."
+
+## Set Operations Summary
+
+Elena pulled out a notepad and sketched out the key operations they'd learned:
+
+### Core Set Operations
+
+**Add (Recording new allergies)**
+- Adds a value to the Set (ignores duplicates)
+- Time Complexity: O(1) - always fast, no matter how many allergies
+- Example: Adding "Ibuprofen" to patient's allergy set
+
+**Has (Checking for specific allergies)**
+- Checks if a value exists in the Set
+- Time Complexity: O(1) - instant verification
+- Example: Checking if patient is allergic to "Penicillin"
+
+**Delete (Removing outdated allergies)**
+- Removes a value from the Set
+- Time Complexity: O(1) - fast removal
+- Example: Removing "Latex" after successful desensitization
+
+**Size (Counting total allergies)**
+- Returns the number of values in the Set
+- Time Complexity: O(1) - instant count
+- Example: Getting total number of patient allergies
+
+**Clear (Removing all allergies)**
+- Removes all values from the Set
+- Time Complexity: O(n) - proportional to number of allergies
+- Example: Clearing allergy record (rarely used)
+
+## Set vs Array for Allergy Tracking
+
+"Let me show you why Sets are better than arrays for allergy tracking," Marcus said, drawing a comparison:
+
+| Requirement | Set Solution | Array Problem |
+|-------------|--------------|---------------|
+| No duplicate allergies | Automatically prevents duplicates | Must manually check for duplicates |
+| Fast allergy checking | O(1) has() operation | O(n) search through entire array |
+| Easy allergy removal | O(1) delete() operation | O(n) find and remove operation |
+| Memory efficient | Stores each allergy once | Could store duplicates |
+| Clear intent | Designed for unique values | General-purpose, allows duplicates |
+
+## Mathematical Set Operations in Healthcare
+
+"Sets also support mathematical operations that are useful in healthcare," Elena explained:
 
 ```javascript
-function combineAllergies(patient1Allergies, patient2Allergies) {
+// Union: All allergies from multiple patients (for family history)
+function getAllFamilyAllergies(patient1Allergies, patient2Allergies) {
   const allAllergies = new Set(patient1Allergies);
-  
   for (const allergy of patient2Allergies) {
     allAllergies.add(allergy);
   }
-  
   return allAllergies;
 }
 
-// Example: Creating family allergy history
-const familyAllergies = combineAllergies(johnAllergies, maryAllergies);
-console.log(familyAllergies); // Set(['Penicillin', 'Shellfish', 'Peanuts', 'Latex'])
+// Intersection: Common allergies between patients
+function findCommonAllergies(patient1Allergies, patient2Allergies) {
+  const common = new Set();
+  for (const allergy of patient1Allergies) {
+    if (patient2Allergies.has(allergy)) {
+      common.add(allergy);
+    }
+  }
+  return common;
+}
+
+// Difference: Allergies unique to one patient
+function findUniqueAllergies(patient1Allergies, patient2Allergies) {
+  const unique = new Set();
+  for (const allergy of patient1Allergies) {
+    if (!patient2Allergies.has(allergy)) {
+      unique.add(allergy);
+    }
+  }
+  return unique;
+}
+
+// Example usage
+const patient1 = new Set(['Penicillin', 'Latex', 'Shellfish']);
+const patient2 = new Set(['Penicillin', 'Ibuprofen', 'Peanuts']);
+
+console.log('All family allergies:', [...getAllFamilyAllergies(patient1, patient2)]);
+console.log('Common allergies:', [...findCommonAllergies(patient1, patient2)]);
+console.log('Patient 1 unique:', [...findUniqueAllergies(patient1, patient2)]);
 ```
+
+## Why Sets Are Perfect for Healthcare Safety
+
+"Here's something important to understand," Elena said, tapping her pen on the notepad. "Sets are ideal for healthcare safety because they solve the fundamental problem of **unique membership**."
+
+"What do you mean?" Sarah asked.
+
+"In healthcare, we often need to track whether something **is** or **isn't** present, without caring about quantities or relationships. Does this patient have this allergy? Has this procedure been completed? Is this medication contraindicated?"
+
+| Healthcare Safety Need | Set Solution | Benefit |
+|----------------------|--------------|---------|
+| Prevent duplicate allergies | Automatic uniqueness | Clean, accurate records |
+| Instant allergy checking | O(1) membership testing | Fast emergency response |
+| Track completed procedures | Boolean membership | Clear completion status |
+| Medication safety screening | Ingredient intersection | Prevent adverse reactions |
+| Family history tracking | Set union operations | Comprehensive risk assessment |
 
 ## Key Takeaways
 
 By the end of their second day, Sarah had learned that:
 
-- **Sets store unique values** - perfect for allergy lists where duplicates are meaningless
-- **Set operations are O(1)** - instant membership checking for patient safety
-- **Sets prevent duplicates automatically** - no need to check before adding
-- **Mathematical operations** - intersection and union for comparing patient data
-- **Real-world applications** - medication safety, procedure tracking, ingredient checking
-- **Sets complement Maps** - use Sets for membership, Maps for relationships
-- **Patient safety critical** - Sets enable instant allergy checking that saves lives
-- **Flexible value types** - Sets can store any type of data
-- **Iteration support** - can loop through all values when needed
-- **Healthcare efficiency** - Sets make complex safety checks simple and fast
+- **Sets store unique values only** - perfect for allergy tracking without duplicates
+- **Set operations are all O(1)** - fast and efficient for safety-critical applications
+- **Using Sets effectively** requires understanding add, has, delete, size, and clear operations
+- **Sets prevent duplicates automatically** - no need for manual duplicate checking
+- **Set iteration enables complex operations** - finding intersections, unions, and differences
+- **Sets are perfect for membership testing** - instant yes/no answers for safety questions
+- **Real-world applications include** allergy tracking, procedure completion, and ingredient checking
+- **Healthcare safety requires instant responses** - Sets provide the speed needed for emergency situations
 
-Ready to practice using Sets for patient safety? Let's dive into the exercises!
+Through hands-on coding challenges, Sarah discovered that understanding how to **use** data structures for specific problems is crucial for building safe, efficient healthcare systems. The simple act of tracking patient allergies had revealed another of computer science's most fundamental and useful data structures. And this was just the beginning of understanding how different data structures work together to create comprehensive healthcare information systems.`,

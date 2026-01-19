@@ -1,10 +1,7 @@
-01
-introduction
-	no context for example in right panel. 
+
 
 02
-Polynomials  
-	question 3 is tricky and semantic (is the definition important enough?)
+Polynomials - commented out new checkpoint
 
 03
 what is a data structure

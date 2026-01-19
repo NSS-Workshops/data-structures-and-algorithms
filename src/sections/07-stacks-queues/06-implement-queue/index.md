@@ -258,6 +258,168 @@ When they ran the code, the output showed:
 
 "Right," Maya replied. "It works, but every time we process a request, we're shifting all remaining requests. With hundreds of requests, that becomes very slow."
 
+## The Efficient Solution: Circular Queue
+
+"So how do we fix this?" Sam asked.
+
+Maya smiled. "We use a clever technique called a circular queue. Instead of always keeping the front at index 0, we use pointers to track where the front and back are."
+
+She drew another diagram:
+
+```
+Circular Queue Concept:
+
+[    ][Dr.W][Sarah][Mr.R][    ][    ]
+       ↑              ↑
+     front          rear
+
+After dequeue:
+[    ][    ][Sarah][Mr.R][    ][    ]
+              ↑        ↑
+            front    rear
+
+No shifting needed! Just move the front pointer.
+```
+
+"Let's implement this more efficient version," Maya said.
+
+```javascript
+class EfficientHoldRequestQueue {
+  constructor(initialCapacity = 10) {
+    this.capacity = initialCapacity;
+    this.requests = new Array(this.capacity);
+    this.front = 0;
+    this.rear = 0;
+    this.size = 0;
+    console.log(`📋 Efficient hold request queue created (capacity: \${this.capacity})!`);
+  }
+  
+  /**
+   * Add a hold request to the back of the queue
+   * @param {string} patronName - Name of the patron
+   * @param {string} bookTitle - Title of the requested book
+   * @returns {boolean} True if request was added successfully
+   */
+  addHoldRequest(patronName, bookTitle) {
+    if (this.isFull()) {
+      this.resize();
+    }
+    
+    const request = new HoldRequest(patronName, bookTitle);
+    this.requests[this.rear] = request;
+    this.rear = (this.rear + 1) % this.capacity; // Circular increment
+    this.size++;
+    
+    console.log(`📝 Added request: \${request.toString()}`);
+    return true;
+  }
+  
+  /**
+   * Process the next hold request (remove from front)
+   * @returns {HoldRequest|null} The processed request, or null if queue is empty
+   */
+  processNextRequest() {
+    if (this.isEmpty()) {
+      console.log("❌ No requests to process - queue is empty!");
+      return null;
+    }
+    
+    const request = this.requests[this.front];
+    this.requests[this.front] = null; // Clear the slot
+    this.front = (this.front + 1) % this.capacity; // Circular increment
+    this.size--;
+    
+    console.log(`✅ Processed request: \${request.toString()}`);
+    return request;
+  }
+  
+  /**
+   * Check who's next without processing the request
+   * @returns {HoldRequest|null} The next request, or null if queue is empty
+   */
+  peekNextRequest() {
+    if (this.isEmpty()) {
+      console.log("👀 Queue is empty - no requests to peek at");
+      return null;
+    }
+    
+    const nextRequest = this.requests[this.front];
+    console.log(`👀 Next request: \${nextRequest.toString()}`);
+    return nextRequest;
+  }
+  
+  /**
+   * Check if the queue is empty
+   * @returns {boolean} True if queue is empty, false otherwise
+   */
+  isEmpty() {
+    return this.size === 0;
+  }
+  
+  /**
+   * Check if the queue is full
+   * @returns {boolean} True if queue is full, false otherwise
+   */
+  isFull() {
+    return this.size === this.capacity;
+  }
+  
+  /**
+   * Get the number of requests in the queue
+   * @returns {number} The number of pending requests
+   */
+  getRequestCount() {
+    return this.size;
+  }
+  
+  /**
+   * Resize the queue when it becomes full
+   * @private
+   */
+  resize() {
+    const newCapacity = this.capacity * 2;
+    const newRequests = new Array(newCapacity);
+    
+    // Copy existing requests to new array in order
+    for (let i = 0; i < this.size; i++) {
+      const index = (this.front + i) % this.capacity;
+      newRequests[i] = this.requests[index];
+    }
+    
+    this.requests = newRequests;
+    this.front = 0;
+    this.rear = this.size;
+    this.capacity = newCapacity;
+    
+    console.log(`📈 Queue resized to capacity: \${this.capacity}`);
+  }
+  
+  /**
+   * Display the current state of the queue
+   * @returns {string} A visual representation of the queue
+   */
+  displayQueue() {
+    if (this.isEmpty()) {
+      return "📋 Hold Request Queue: [Empty]";
+    }
+    
+    let display = "📋 Hold Request Queue:\\n";
+    for (let i = 0; i < this.size; i++) {
+      const index = (this.front + i) % this.capacity;
+      const request = this.requests[index];
+      const position = i === 0 ? "🔜" : `\${i + 1}.`;
+      display += `  \${position} \${request.toString()}\\n`;
+    }
+    return display;
+  }
+}
+```
+
+"Wow," Alex said, studying the code. "This is more complex, but I can see how it's more efficient. No shifting required!"
+
+"Exactly!" Maya replied. "All operations are now O(1) - constant time, regardless of how many requests are in the queue."
+
+
 ## Understanding the Performance Difference
 
 Maya pulled up a performance comparison:
@@ -281,6 +443,214 @@ With 1000 requests:
 ```
 
 "The difference becomes huge with large queues," Maya explained. "Imagine if we had hundreds of hold requests!"
+
+
+## Testing the Efficient Implementation
+
+"Let's test our efficient queue," Maya said.
+
+```javascript
+// Create an efficient hold request queue
+const efficientQueue = new EfficientHoldRequestQueue(5); // Small capacity to test resizing
+
+console.log("=== Testing Efficient Queue ===");
+
+// Add requests to test normal operation
+efficientQueue.addHoldRequest("Alice Johnson", "Dune");
+efficientQueue.addHoldRequest("Bob Smith", "Foundation");
+efficientQueue.addHoldRequest("Carol Davis", "Neuromancer");
+
+console.log(efficientQueue.displayQueue());
+
+// Add more requests to trigger resizing
+efficientQueue.addHoldRequest("David Wilson", "Snow Crash");
+efficientQueue.addHoldRequest("Emma Brown", "The Martian");
+efficientQueue.addHoldRequest("Frank Miller", "Ready Player One"); // This should trigger resize
+
+console.log(efficientQueue.displayQueue());
+
+// Process some requests
+console.log("\\n=== Processing Requests ===");
+efficientQueue.processNextRequest();
+efficientQueue.processNextRequest();
+
+console.log(efficientQueue.displayQueue());
+```
+
+## Real-World Applications in the Library
+
+"Now that we have an efficient queue," Maya said, "let's see how we can use it for other library systems."
+
+### 1. Computer Reservation System
+
+```javascript
+class ComputerReservationQueue {
+  constructor() {
+    this.waitingQueue = new EfficientHoldRequestQueue();
+    this.availableComputers = 5;
+  }
+  
+  addToWaitingList(patronName) {
+    if (this.availableComputers > 0) {
+      console.log(`💻 Computer available for \${patronName} immediately!`);
+      this.availableComputers--;
+      return true;
+    } else {
+      this.waitingQueue.addHoldRequest(patronName, "Computer Access");
+      console.log(`⏳ \${patronName} added to waiting list. Position: \${this.waitingQueue.getRequestCount()}`);
+      return false;
+    }
+  }
+  
+  computerBecameAvailable() {
+    if (!this.waitingQueue.isEmpty()) {
+      const nextRequest = this.waitingQueue.processNextRequest();
+      console.log(`💻 Computer now available for \${nextRequest.patronName}!`);
+    } else {
+      this.availableComputers++;
+      console.log("💻 Computer available - no one waiting");
+    }
+  }
+  
+  checkWaitingList() {
+    if (this.waitingQueue.isEmpty()) {
+      console.log("📋 No one waiting for computers");
+    } else {
+      console.log(`📋 \${this.waitingQueue.getRequestCount()} people waiting for computers`);
+      this.waitingQueue.peekNextRequest();
+    }
+  }
+}
+
+// Test the computer reservation system
+const computerQueue = new ComputerReservationQueue();
+computerQueue.addToWaitingList("Student A");
+computerQueue.addToWaitingList("Student B");
+computerQueue.addToWaitingList("Student C");
+computerQueue.addToWaitingList("Student D");
+computerQueue.addToWaitingList("Student E");
+computerQueue.addToWaitingList("Student F"); // Should go to waiting list
+
+computerQueue.checkWaitingList();
+computerQueue.computerBecameAvailable(); // Student F gets computer
+computerQueue.checkWaitingList();
+```
+
+### 2. Event Registration Queue
+
+```javascript
+class EventRegistrationQueue {
+  constructor(eventName, maxCapacity) {
+    this.eventName = eventName;
+    this.maxCapacity = maxCapacity;
+    this.registeredCount = 0;
+    this.waitingList = new EfficientHoldRequestQueue();
+  }
+  
+  registerForEvent(patronName, email) {
+    if (this.registeredCount < this.maxCapacity) {
+      this.registeredCount++;
+      console.log(`🎉 \${patronName} registered for "\${this.eventName}"! Spot \${this.registeredCount}/\${this.maxCapacity}`);
+      return true;
+    } else {
+      this.waitingList.addHoldRequest(patronName, `\${this.eventName} - \${email}`);
+      console.log(`⏳ \${patronName} added to waiting list for "\${this.eventName}". Position: \${this.waitingList.getRequestCount()}`);
+      return false;
+    }
+  }
+  
+  cancelRegistration() {
+    if (this.registeredCount > 0) {
+      this.registeredCount--;
+      
+      if (!this.waitingList.isEmpty()) {
+        const nextRequest = this.waitingList.processNextRequest();
+        this.registeredCount++;
+        console.log(`🎉 \${nextRequest.patronName} moved from waiting list to registered for "\${this.eventName}"!`);
+      } else {
+        console.log(`📉 Spot opened in "\${this.eventName}" - no one on waiting list`);
+      }
+    }
+  }
+  
+  getEventStatus() {
+    console.log(`📊 "\${this.eventName}" Status:`);
+    console.log(`   Registered: \${this.registeredCount}/\${this.maxCapacity}`);
+    console.log(`   Waiting List: \${this.waitingList.getRequestCount()} people`);
+    
+    if (!this.waitingList.isEmpty()) {
+      console.log("   Next in line:");
+      this.waitingList.peekNextRequest();
+    }
+  }
+}
+
+// Test event registration
+const bookClub = new EventRegistrationQueue("Mystery Book Club", 3);
+bookClub.registerForEvent("Alice", "alice@email.com");
+bookClub.registerForEvent("Bob", "bob@email.com");
+bookClub.registerForEvent("Carol", "carol@email.com");
+bookClub.registerForEvent("David", "david@email.com"); // Should go to waiting list
+bookClub.registerForEvent("Emma", "emma@email.com");   // Should go to waiting list
+
+bookClub.getEventStatus();
+bookClub.cancelRegistration(); // David should get the spot
+bookClub.getEventStatus();
+```
+
+## Comparing Queue Implementations
+
+As their session wrapped up, Maya created a comparison chart:
+
+```
+Queue Implementation Comparison:
+
+Simple Array Queue:
+✅ Easy to understand and implement
+✅ Good for small queues
+❌ O(n) dequeue operation (slow for large queues)
+❌ Inefficient memory usage
+
+Circular Array Queue:
+✅ O(1) all operations (fast)
+✅ Memory efficient
+✅ Good for large queues
+❌ More complex to implement
+❌ Fixed capacity (though we can resize)
+
+Linked List Queue (not implemented today):
+✅ O(1) all operations
+✅ Dynamic size (no capacity limits)
+❌ Extra memory overhead for pointers
+❌ More complex memory management
+```
+
+## Key Insights About Queue Implementation
+
+"What have we learned today?" Maya asked as they prepared to wrap up.
+
+Alex thought for a moment. "Queues are trickier than stacks because we need to efficiently handle both ends. The simple approach works but can be slow. The circular array approach is much faster but more complex."
+
+"And the real-world applications are everywhere," Sam added. "Computer reservations, event registration, hold requests - anywhere fairness matters."
+
+"Exactly!" Maya said. "The key insights are:"
+
+### Why Queues Are Challenging
+- **Two-ended access**: Unlike stacks, we need efficient operations at both ends
+- **Performance trade-offs**: Simple implementations can be slow
+- **Memory management**: Efficient implementations require careful pointer management
+
+### When to Use Different Implementations
+- **Simple array queue**: Small queues, educational purposes, prototyping
+- **Circular array queue**: Large queues, performance-critical applications
+- **Linked list queue**: When dynamic sizing is crucial, memory is abundant
+
+### Best Practices
+- **Always consider performance**: O(n) operations can become bottlenecks
+- **Plan for growth**: Implement resizing or use dynamic structures
+- **Test edge cases**: Empty queues, full queues, single-element queues
+- **Use descriptive names**: Method names should reflect the domain (addHoldRequest vs enqueue)
+
 
 ## 💻 Alex's Queue Implementation Challenge!
 

@@ -1,6 +1,5 @@
 ## What is a Map?
-
-In JavaScript, a Map is a data structure, a collection of key–value pairs where keys can be of any type (including objects, functions, or primitives), unlike plain objects which only allow strings or symbols as keys. In Javascript the Maps insertion order is preserved, has a built-in .size property, and provides convenient methods like .set(), .get(), .has(), and .delete() for efficient O(1) lookups and updates.
+In JavaScript, a Map is a data structure , a collection of key–value pairs where keys can be of any type (including objects, functions, or primitives), unlike plain objects which only allow strings or symbols as keys. In Javascript the Maps insertion order is preserved, has a built-in .size property, and provides convenient methods like .set(), .get(), .has(), and .delete() for efficient O(1) lookups and updates.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QtLbuFUI1I4?si=Avi0keGWunmUFrSf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -77,11 +76,11 @@ Sarah was impressed. "So the system doesn't have to search through every patient
 
 "Exactly! The Map structure allows **O(1)** lookup time - that means constant time, regardless of how many patients we have in the system."
 
-get() returns undefined when the key isn't in the Map. We could use that to test membership, but it's brittle.
+get() returns undefined when the key isn’t in the Map. We could use that to test membership, but it’s brittle.
 If you ever store undefined (or other falsy values like 0), the check can lie. 
 The canonical way to test membership is has(), which will examine in the next section.
 
-```javascript
+```
 // Patient record context: patientID -> allergy count
 const patientAllergyCounts = new Map();
 patientAllergyCounts.set("PT-101", 2);
@@ -142,19 +141,19 @@ patientMap.set('P-2024-003', { name: 'David Lee', room: '302A', condition: 'Reco
 // Method 1: Destructuring entries (most common and efficient)
 console.log('=== All Patient Records ===');
 for (const [patientId, patientInfo] of patientMap) {
-  console.log(`Patient ${patientId}: ${patientInfo.name} in ${patientInfo.room} - ${patientInfo.condition}`);
+  console.log(`Patient \${patientId}: \${patientInfo.name} in \${patientInfo.room} - \${patientInfo.condition}`);
 }
 
 // Method 2: Iterating over keys only
-console.log('\n=== Patient IDs Only ===');
+console.log('\\n=== Patient IDs Only ===');
 for (const patientId of patientMap.keys()) {
-  console.log(`Patient ID: ${patientId}`);
+  console.log(`Patient ID: \${patientId}`);
 }
 
 // Method 3: Iterating over values only
-console.log('\n=== Patient Info Only ===');
+console.log('\\n=== Patient Info Only ===');
 for (const patientInfo of patientMap.values()) {
-  console.log(`${patientInfo.name} - ${patientInfo.condition}`);
+  console.log(`\${patientInfo.name} - \${patientInfo.condition}`);
 }
 ```
 
@@ -169,13 +168,185 @@ Sarah looked intrigued. "So instead of getting some complex object, we immediate
 for (const entry of patientMap) {
   const patientId = entry[0];        // Get the key
   const patientInfo = entry[1];      // Get the value
-  console.log(`Patient ${patientId}: ${patientInfo.name}`);
+  console.log(`Patient \${patientId}: \${patientInfo.name}`);
 }
 
 // With destructuring (clean and readable)
 for (const [patientId, patientInfo] of patientMap) {
-  console.log(`Patient ${patientId}: ${patientInfo.name}`);
+  console.log(`Patient \${patientId}: \${patientInfo.name}`);
 }
+```
+
+## ⏱️ Sarah's First Challenge!
+
+Marcus pulled out a tablet and opened a coding environment. "Sarah, I want you to try something. I've created a simplified version of our patient records system using a Map. Let's see if you can use the Map operations we just learned about."
+
+"You mean... I get to actually code with Maps?" Sarah's eyes lit up with excitement.
+
+"Absolutely! But here's the thing - you don't need to build the Map from scratch. JavaScript provides a built-in Map class for you. Your job is to **use** the Map operations to solve real hospital problems."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `addPatient()` and `getPatientInfo()`to insert/retrieve patients
+- Use `patientMap.set()` and `patientMap.get()` operations
+- **Click Run Tests**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This first challenge simulates what we just did manually," Marcus explained. "You need to add patients to our records system and then retrieve their information when needed."
+
+## The Power of Key-Value Relationships
+
+After Sarah completed the first challenge, Marcus smiled approvingly. "Excellent work! Now you've experienced firsthand how Map operations work. Let's reflect on what you've learned."
+
+"So Sarah, why do you think our patient records system works so well as a Map?" Marcus asked.
+
+Sarah thought for a moment. "Well, every patient has a unique ID, and we need to quickly access their complete medical information. The Map creates a direct connection between the ID and the data."
+
+"Perfect understanding," Marcus said. "And what makes this better than, say, keeping all patient records in a simple list?"
+
+"Oh!" Sarah realized. "With a list, we'd have to search through every patient record until we found the right one. That could take forever with thousands of patients. But with a Map, we go directly to the right record."
+
+"Exactly. That's why Maps are essential in healthcare systems where speed can literally save lives."
+
+## ⏱️ Sarah's Second Challenge!
+
+"Now let's try something more complex," Marcus said, pulling up another coding challenge. "Sometimes we need to update patient information - maybe their room number changes, or we need to add new medication information."
+
+"How do we handle updates?" Sarah asked, intrigued.
+
+"Great question! The beautiful thing about Maps is that if you set a key that already exists, it updates the value instead of creating a duplicate. This makes updating patient records very straightforward."
+
+Structure of Patient Information:
+```json
+{
+  name: String
+  room: String
+  age: Number
+  allergies: String
+  current_meds: String
+}
+  ```
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `updatePatientRoom()` to change a patient's room assignment
+- Use `patientMap.has()` to check if patient exists before updating
+- Use `patientMap.set()` to update the patient's information
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This challenge teaches you that Maps handle both creation and updates seamlessly," Marcus explained.
+
+## ⏱️ Sarah's Third Challenge!
+
+"One more challenge," Marcus said with a smile. "Sometimes we need to find all patients who meet certain criteria - like all patients in the ICU, or all patients with specific allergies."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `findPatientsByRoom()` to find all patients in a specific ward
+- Use Map iteration methods to search through all patient records
+- Return an array of patient IDs that match the criteria
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"Excellent work, Sarah!" Marcus said as Sarah completed the challenges. "You've now experienced how to use Maps to solve real-world healthcare problems."
+
+## Real-World Map Applications in Healthcare
+
+Marcus pulled out his laptop and opened several hospital systems. "Let me show you some other places where we use Maps in our hospital," he said.
+
+### 1. Medication Lookup System
+
+Marcus opened the pharmacy system. "See this medication database? When a doctor prescribes 'Lisinopril', the system instantly shows dosage information, side effects, and drug interactions."
+
+```javascript
+class MedicationDatabase {
+  constructor() {
+    this.medicationMap = new Map();
+    this.initializeMedications();
+  }
+  
+  initializeMedications() {
+    this.medicationMap.set('Lisinopril', {
+      type: 'ACE Inhibitor',
+      commonDosage: '10-40mg daily',
+      sideEffects: ['Dry cough', 'Dizziness', 'Hyperkalemia'],
+      interactions: ['NSAIDs', 'Potassium supplements']
+    });
+    
+    this.medicationMap.set('Metformin', {
+      type: 'Biguanide',
+      commonDosage: '500-2000mg daily',
+      sideEffects: ['Nausea', 'Diarrhea', 'Lactic acidosis'],
+      interactions: ['Alcohol', 'Contrast dye']
+    });
+  }
+  
+  getMedicationInfo(drugName) {
+    if (this.medicationMap.has(drugName)) {
+      return this.medicationMap.get(drugName);
+    }
+    return null;
+  }
+  
+  checkDrugInteraction(drug1, drug2) {
+    const med1 = this.getMedicationInfo(drug1);
+    const med2 = this.getMedicationInfo(drug2);
+    
+    if (med1 && med2) {
+      return med1.interactions.includes(drug2) || med2.interactions.includes(drug1);
+    }
+    return false;
+  }
+}
+
+// Test the medication system
+const medDB = new MedicationDatabase();
+const lisinoprilInfo = medDB.getMedicationInfo('Lisinopril');
+console.log('Lisinopril info:', lisinoprilInfo);
+
+const hasInteraction = medDB.checkDrugInteraction('Lisinopril', 'NSAIDs');
+console.log('Drug interaction detected:', hasInteraction);
+```
+
+### 2. Doctor Schedule Management
+
+"And here's how we manage doctor schedules," Marcus continued:
+
+```javascript
+class DoctorSchedule {
+  constructor() {
+    this.scheduleMap = new Map();
+  }
+  
+  addShift(doctorId, shift) {
+    if (!this.scheduleMap.has(doctorId)) {
+      this.scheduleMap.set(doctorId, []);
+    }
+    this.scheduleMap.get(doctorId).push(shift);
+  }
+  
+  getDoctorSchedule(doctorId) {
+    return this.scheduleMap.get(doctorId) || [];
+  }
+  
+  findAvailableDoctor(timeSlot) {
+    for (const [doctorId, shifts] of this.scheduleMap) {
+      const isAvailable = shifts.some(shift => 
+        shift.start <= timeSlot && timeSlot <= shift.end && !shift.occupied
+      );
+      if (isAvailable) {
+        return doctorId;
+      }
+    }
+    return null;
+  }
+}
+
+// Test doctor scheduling
+const schedule = new DoctorSchedule();
+schedule.addShift('DR001', { start: 8, end: 16, occupied: false });
+schedule.addShift('DR002', { start: 16, end: 24, occupied: false });
+
+const availableDoctor = schedule.findAvailableDoctor(10);
+console.log('Available doctor at 10 AM:', availableDoctor);
 ```
 
 ## Maps vs Objects: What You Already Know
@@ -189,6 +360,7 @@ Sarah nodded. "Yes, I've used objects plenty of times. They're like containers t
 "So Maps aren't replacing objects?" Sarah asked.
 
 "Not at all! Objects and Maps serve different purposes. Think of it this way: objects are perfect when you know your property names ahead of time - like a patient record template with fixed fields. But Maps shine when you're dealing with dynamic keys - like patient IDs that you won't know until runtime."
+
 
 ### The Object Approach (What You Already Know)
 
@@ -294,7 +466,7 @@ patientMap.set('P-002', { name: 'Jane' });
 console.log(patientMap.size); // 2 (exact count, no inherited properties)
 ```
 
-#### 4. Iteration Order Guarantees
+#### 4. Iteration Order Guarantees (JavaScript preserves insertion order of a Map, other languages may not!)
 
 ```javascript
 // Objects: Iteration order is complex and can be unpredictable
@@ -324,6 +496,37 @@ for (const [key, value] of patientMap) {
 }
 ```
 
+### Real Healthcare Scenario: Why This Matters
+
+"Let me show you a real scenario where these differences matter," Marcus said, pulling up a complex example:
+
+```javascript
+// Scenario: Multi-department patient tracking
+// We need to track patients across different departments using various ID types
+
+// Using Objects (problematic)
+const departmentRecords = {};
+
+// Different departments use different ID formats
+departmentRecords[12345] = { dept: 'Cardiology', patient: 'John Doe' };     // Numeric ID
+departmentRecords['12345'] = { dept: 'Radiology', patient: 'Jane Smith' };  // String ID (OVERWRITES!)
+departmentRecords['ER-001'] = { dept: 'Emergency', patient: 'Bob Johnson' };
+
+console.log('Object records:', Object.keys(departmentRecords));
+// Only ["12345", "ER-001"] - lost the Cardiology record!
+
+// Using Maps (correct)
+const departmentMap = new Map();
+
+departmentMap.set(12345, { dept: 'Cardiology', patient: 'John Doe' });      // Numeric ID
+departmentMap.set('12345', { dept: 'Radiology', patient: 'Jane Smith' });   // String ID (separate!)
+departmentMap.set('ER-001', { dept: 'Emergency', patient: 'Bob Johnson' });
+
+console.log('Map size:', departmentMap.size); // 3 - all records preserved!
+console.log('Cardiology patient:', departmentMap.get(12345));
+console.log('Radiology patient:', departmentMap.get('12345'));
+```
+
 ### When to Use Objects vs Maps
 
 Marcus created a comparison table on the whiteboard:
@@ -332,12 +535,39 @@ Marcus created a comparison table on the whiteboard:
 |----------|------------|---------|-----|
 | **Configuration/Settings** | ✅ | ❌ | Objects are perfect for known, fixed properties |
 | **JSON Data** | ✅ | ❌ | JSON naturally maps to objects |
-| **Record/Entity Storage** | ❌ | ✅ | Maps handle dynamic keys better, because that's what they're built for. |
+| **Record/Entity Storage** | ❌ | ✅ | Maps handle dynamic keys better, because that’s what they’re built for. |
 | **Frequent Additions/Deletions** | ❌ | ✅ | Maps are optimized for this |
 | **Non-string Keys** | ❌ | ✅ | Objects convert all keys to strings |
 | **Size Tracking** | ❌ | ✅ | Maps provide instant size |
-| **Guaranteed Iteration Order** | ❌ | ✅ | Maps maintain insertion order in JS |
+| **Guaranteed Iteration Order** | ❌ | ✅ | Maps maintain insertion order in JS (This isn’t universal across languages. For example, in Java's Map doesn’t guarantee insertion order. Always check your language’s data-structure documentation.)|
 | **Prototype-free Storage** | ❌ | ✅ | Maps don't inherit properties |
+
+### Migration Strategy: Objects to Maps
+
+"If you're working with existing object-based code," Marcus said, "here's how you can migrate to Maps when appropriate:"
+
+```javascript
+// Converting existing object-based patient records to Maps
+function migrateToMap(patientObject) {
+  const patientMap = new Map();
+  
+  // Convert object entries to Map entries
+  for (const [patientId, patientInfo] of Object.entries(patientObject)) {
+    patientMap.set(patientId, patientInfo);
+  }
+  
+  return patientMap;
+}
+
+// Example migration
+const legacyPatients = {
+  'P-001': { name: 'John', room: '302A' },
+  'P-002': { name: 'Jane', room: '205B' }
+};
+
+const modernPatients = migrateToMap(legacyPatients);
+console.log(modernPatients.get('P-001')); // { name: 'John', room: '302A' }
+```
 
 ### Key Takeaways: Objects vs Maps
 
@@ -359,6 +589,7 @@ Marcus pulled up a summary slide. "Let's consolidate what we've learned about wh
 - You need an accurate count of entries
 
 #### **[This MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map#objects_vs._maps) article goes into more detail about when to use objects vs Maps**
+
 
 ## Understanding Map Keys and Data Types
 
@@ -467,7 +698,7 @@ function updatePatientRoom(patientMap, patientId, newRoom) {
   
   // Check if patient exists
   if (!patientMap.has(patientId)) {
-    console.error(`Patient ${patientId} not found`);
+    console.error(`Patient \${patientId} not found`);
     return false;
   }
   
@@ -499,5 +730,3 @@ By the end of their first day, Sarah had learned that:
 - **Key type flexibility** - Maps accept any data type as keys, unlike objects which convert to strings
 - **Real-world applications include** patient records, medication databases, and doctor schedules
 - **Healthcare systems require instant access** - Maps provide the speed needed for emergency situations
-
-Ready to practice using Maps? Let's dive into the exercises!

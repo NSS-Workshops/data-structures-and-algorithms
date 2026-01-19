@@ -1,16 +1,16 @@
 import { formatObjectives } from "@nss-workshops/nss-core";
 
 const data = [
-  {category: "BigO", module: "1", name: "Define and Describe Big O Notation", level: "Remember, Understand"},
-  {category: "BigO", module: "1", name: "Know the difference between Time and Space complexity", level: "Remember, Understand"},
-  {category: "BigO", module: "1", name: "Know what constants are and why we can drop them from Big O notation", level: "Remember, Understand"},
-  {category: "BigO", module: "1", name: "Analyze simple code snippets and determine their time and space complexity using Big O", level: "Apply"},
-  {category: "BigO", module: "1", name: "Order common complexities from best to worst O(1) < O(log n) < O(n) < O(n log n) < O(n²)", level: "Remember, Understand"},
-  {category: "BigO", module: "1", name: "Choose or write more efficient code based on Big O trade-offs", level: "Apply"},
-  {category: "BigO", module: "1", name: "Explain the time complexity of common operations (insert, lookup, delete) on Arrays, Lists Maps, Stacks, Queues and Sets", level: "Apply"},
-  {category: "Problem Solving", module: "1", name: "Recall the 5 steps of the Algorithm solving guide: Clarify > Plan > Implement > Test > Optimize", level: "Remember, Understand"},
-  {category: "Problem Solving", module: "1", name: "Solve a problem using the 5 steps of the Algorithm solving guide: Clarify > Plan > Implement > Test > Optimize", level: "Apply"},
+  {category: "Data Structure Arrays", module: "2", name: "Implement code to iterate over the elements of a Array to perform an operation on each element", level: "Apply"},
+  {category: "Data Structure Arrays", module: "2", name: "Implement code to add an object to an Array", level: "Apply"},
+  {category: "Data Structure Arrays", module: "2", name: "Implement code to remove an object from an Array", level: "Apply"},
+  {category: "Data Structure Arrays", module: "2", name: "Explain why inserting or removing a value by index in an Array runs in linear O(n) time", level: "Remember, Understand"},
+  {category: "Data Structure Arrays", module: "2", name: "Explain BigO runtime of popular array methods .push .pop .shift .unshift .map .filter", level: "Remember, Understand"},
+  {category: "Algorithms Two Pointer", module: "2", name: "Explain what the two pointer technique is and identify when it's appropriate to use it", level: "Remember, Understand"},
+  {category: "Algorithms Two Pointer", module: "2", name: "Solve a problem using a two pointers technique", level: "Apply"},
+  {category: "Algorithms Two Pointer", module: "2", name: "Evaluate and compare the efficiency of a two pointer solution against a naive nested loop version", level: "Apply"},
 ];
+
 
 export default {
   id: "arrays-and-two-pointers-learning-objectives",
@@ -20,7 +20,7 @@ export default {
   nextChapterId: "arrays-intro",
   content: `## 🎯 What You Will Learn
 
-This section covers the fundamental concepts of algorithmic thinking and performance analysis. By the end of this section, you will have mastered the core skills needed to analyze and optimize code.
+This section covers arrays as a fundamental data structure and the two-pointer technique for efficient problem solving. By the end of this section, you will understand how to work with arrays effectively and apply the two-pointer pattern to optimize solutions.
 
 ${formatObjectives(data)}
 `,

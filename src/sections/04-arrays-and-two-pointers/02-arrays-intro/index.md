@@ -92,6 +92,21 @@ console.log(mayasOrders.length); // 3
 
 ---
 
+---
+## ⏱️ **Maya's First Challenge!** 
+ - 🔓 Uncomment the below code section in the editor 👉:
+```js
+// ==============================
+// Exercise 1: Help Maya Add Multiple Orders
+// ============================== 
+```
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
+
+---
+
 ## Part 3: The Morning Rush - Handling Priority Orders
 
 Just as Maya gets comfortable, the morning rush hits. A regular customer, Mr. Johnson, approaches looking frazzled.
@@ -138,6 +153,19 @@ orders.splice(0, 0, "Priority Order"); // Potentially slow with many orders
 ```
 
 "That's why," Sarah explains, "we try to add most orders to the end when possible, and only use priority insertion when absolutely necessary."
+
+---
+## ⏱️ **Maya's Rush Hour Challenge!** 
+ - 🔓 Uncomment the below code section in the editor 👉:
+```js
+// ==============================
+// Exercise 2: Handle Priority Orders During Rush
+// ============================== 
+```
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
 
 ---
 
@@ -204,6 +232,21 @@ console.log(orders); // ["Second"]
 
 ---
 
+## ⏱️ **Maya's Error Recovery Challenge!** 
+ - 🔓 Uncomment the below code section in the editor 👉:
+
+```js
+// ==============================
+// Exercise 3: Fix Multiple Order Mistakes
+// ============================== 
+```
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
+
+---
+
 ## Part 5: Finding Her Rhythm - Processing Orders Efficiently
 
 By midday, Maya has found her groove. She's learned that the key to success is processing orders systematically.
@@ -265,6 +308,20 @@ processOrderQueue(mayasQueue);
 ```
 
 "The beautiful thing about iteration," Sarah explains, "is that it's **O(n) time complexity** - it scales linearly with the number of orders. Process 10 orders, it takes 10 units of time. Process 100 orders, it takes 100 units of time. Very predictable!"
+
+
+---
+## ⏱️ **Maya's Efficiency Challenge!** 
+ - 🔓 Uncomment the below code section in the editor 👉:
+```js
+// ==============================
+// Exercise 4: Create an Efficient Order Processing System
+// ============================== 
+```
+
+- Implement the required logic
+ - Click \`Run Code\` 
+ - Inspect \`📋 Console Output\` window for correctness!
 
 ---
 

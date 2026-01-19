@@ -76,6 +76,24 @@ Halfway through processing, Maya paused and pointed to the current top book with
 
 "Great question! Sometimes you need to know what's next without actually processing it yet. Maybe I want to check if we have any overdue books in the stack, or see if there are any books that need special handling. Peek lets me look ahead without disturbing the stack's order."
 
+
+## ⏱️ Alex's First Challenge!
+
+Maya pulled out a tablet and opened a coding environment. "Alex, I want you to try something. I've created a digital version of our book return system using a stack. Let's see if you can use the stack operations we just learned about."
+
+"You mean... I get to actually code with stacks?" Alex's eyes lit up.
+
+"Exactly! But here's the thing - you don't need to build the stack from scratch. I've already created one for you. Your job is to **use** the stack operations to solve real library problems."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `processAllReturns()` to process all books in a return cart
+- Use `stack.pop()` and `stack.isEmpty()` operations
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This first challenge simulates what we just did manually," Maya explained. "You need to process all the books in the return cart, one by one, until it's empty."
+
+
 ## The Power of LIFO
 
 After Alex completed the first challenge, Maya smiled approvingly. "Great work! Now you've experienced firsthand how stack operations work. Let's reflect on what you've learned."
@@ -89,6 +107,36 @@ Alex thought for a moment. "Well, it's natural - books pile up, and the top one 
 "Oh no!" Alex laughed. "The person who just arrived would get helped first, while the person who'd been waiting longest would be last. That wouldn't be fair at all."
 
 "Exactly. That's why we use different data structures for different problems. Stacks are perfect when the order doesn't matter or when you specifically want LIFO behavior."
+
+
+## ⏱️ Alex's Second Challenge!
+
+"Now let's try something more complex," Maya said, pulling up another coding challenge. "Sometimes we need to search through our return cart to see if a specific book is there, but we can't just dump all the books out."
+
+"How do we do that?" Alex asked, intrigued.
+
+"Great question! We need to temporarily move books to another stack while we search, then put them all back. This preserves the original order while letting us peek at every book."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `findSpecialBook()` to search for a book without permanently removing books
+- Use `stack.pop()`, `stack.push()`, and a temporary stack
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"This challenge teaches you that sometimes you need to use multiple stacks together to solve a problem," Maya explained.
+
+## ⏱️ Alex's Third Challenge!
+
+"One more challenge," Maya said with a smile. "Sometimes we only want to process books until we find a specific one. Maybe there's a book with special handling instructions, and we want to stop when we reach it."
+
+🔓 **Uncomment the below code section in the editor 👉:**
+- Implement `processUntilTarget()` to process books until finding a target book
+- Use `stack.pop()` and `stack.isEmpty()` with conditional logic
+- **Click Run Code**
+- **Inspect 📋 Console Output window and run test to check for correctness!**
+
+"Excellent work, Alex!" Maya said as Alex completed the challenges. "You've now experienced how to use stacks to solve real-world problems."
+
 
 ## Real-World Stack Applications
 

@@ -47,6 +47,7 @@ jobs:
           echo "VITE_COURSE_NAME=${{secrets.WORKSHOP_NAME}}" >> .env
           echo "VITE_GLOBAL_PROGRESS_BAR=false" >> .env
           echo "VITE_REQUIRES_GITHUB_AUTHENTICATION=false" >> .env
+          echo "BASE_URL=pr-${{ secrets.WORKSHOP_BASE_URL }}" >> .env
 
       - name: Install dependencies
         run: npm ci

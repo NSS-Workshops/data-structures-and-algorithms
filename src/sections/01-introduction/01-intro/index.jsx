@@ -1,5 +1,4 @@
 import content from "./index.md?raw";
-import example from "./example.js?raw";
 
 export default {
     id: "introduction_intro",
@@ -8,7 +7,4 @@ export default {
     previousChapterId: null,
     nextChapterId: "introduction_checkpoint",
     content,
-    exercises: [
-      { starterCode:example },
-    ]
 }

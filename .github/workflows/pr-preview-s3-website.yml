@@ -40,6 +40,10 @@ jobs:
           echo "VITE_PROXY_DOMAIN=https://authproxy.nss.team" >> .env
           echo "VITE_LEARNING_PLATFORM_API=https://learningapi.nss.team" >> .env
           echo "BASE_URL=pr-${{ github.event.pull_request.number }}" >> .env
+          echo "VITE_COURSE_NAME=${{secrets.WORKSHOP_NAME}}" >> .env
+          echo "VITE_GLOBAL_PROGRESS_BAR=false" >> .env
+          echo "VITE_REQUIRES_GITHUB_AUTHENTICATION=false" >> .env
+
       - name: Install dependencies
         run: npm ci
         env:

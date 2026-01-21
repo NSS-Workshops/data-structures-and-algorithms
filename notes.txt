@@ -1,0 +1,75 @@
+
+
+02
+Polynomials - commented out new checkpoint
+
+03
+what is a data structure
+	types could be more descriptive, not just a list
+big o
+	removed section on how to determine
+
+04
+objectives
+	content is all wrong
+core operations
+	content at the end is different
+array methods
+	content at the end
+
+06 
+all
+	checkpoints aren't being styled right
+playlist performance
+	extra content at the end
+
+07
+stacks introduction	
+	alex's first challenge and other content
+implementation tradeoffs
+	board questions & discussion, etc
+	checkpoint
+implement a stack class
+	Real-World Applications in the Library and more
+implement queue class
+	efficient solution... etc
+glossary
+	different terms/content
+
+08
+intro maps
+	content different
+intro sets
+	content different
+real world 
+	content different
+building foundation
+	content different
+building custom
+	content different
+info sheet
+	content different
+info sheet
+	content different
+checkpoint
+	formatting is messed up
+
+
+materials 
+	extra content
+
+
+
+	
+
+
+
+
+
+... do the code exercises still work with links?
+
+2d arrays - make content more narrative to match others
+
+<img width="100%" src="assets/splice.png"/>
+
+

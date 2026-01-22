@@ -104,6 +104,6 @@ export default [
         "every Monday morning by email",
         "during your self-study time, in a GitHub issue"
       ],
-      correctAnswer: 0
+      correctAnswer: 1
   },
 ];

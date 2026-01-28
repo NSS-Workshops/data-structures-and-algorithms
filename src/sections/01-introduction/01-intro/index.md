@@ -78,7 +78,7 @@ By the end, you won’t just be picking solutions that feel right, you’ll be a
 
 ~~**First class on zoom starts on January 26th Monday 2pm**~~
 ~~**Last class will be April 1sh Wednesday 2pm**~~
-** Due to the 2026 winter storms the start and edn dates are pushed back by one week:** 
+** Due to the 2026 winter storm the start and end dates are pushed back by one week:** 
 **First class on zoom starts on February 2nd Monday 2pm**
 **Last class will be April 8th Wednesday 2pm**
 

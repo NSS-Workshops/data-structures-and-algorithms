@@ -76,10 +76,12 @@ By the end, you won’t just be picking solutions that feel right, you’ll be a
 
 **Class times on zoom Mondays 2-4pm and Wednesdays 2-4pm**
 
-**First class on zoom starts on July 14th Monday 2pm**
-**Last class will be Sept 17th Wednesday 2pm**
+~~**First class on zoom starts on January 26th Monday 2pm**~~
+~~**Last class will be April 1sh Wednesday 2pm**~~
+** Due to the 2026 winter storm the start and end dates are pushed back by one week:** 
+**First class on zoom starts on February 2nd Monday 2pm**
+**Last class will be April 8th Wednesday 2pm**
 
-**(Sept 1 Labor Day class will move to Sept 2 Tuesday, 2-4pm)**
 
 ## Attendance
 

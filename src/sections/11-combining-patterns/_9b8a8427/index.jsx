@@ -6,7 +6,6 @@ export default {
   sectionId: 'combining-patterns',
   previousChapterId: null,
   content: `
-# Challenge 1: Arrays — iterate, add, remove
 
 **Navigate:** 1 | [2](a4b7c9d2) | [3](e8f1a5b3) | [4](c6d9e2f4) | [5](b3a8d7c1) | [6](f9e4b2a7) | [7](d1c5f8e3) | [8](a7b2e9f6) | [9](c4f7a1d8)
 

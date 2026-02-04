@@ -6,9 +6,9 @@ import tests from './tests.js';
 export default {
   title: 'Longest Substring Without Repeating Characters',
   content,
-  exercise: {
+  exercises: [{
     starterCode,
     solution,
     tests
-  }
+  }]
 };

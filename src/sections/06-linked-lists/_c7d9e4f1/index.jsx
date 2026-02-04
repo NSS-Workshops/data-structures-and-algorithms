@@ -53,7 +53,7 @@ This exercise will guide you through building a complete linked list implementat
       }
 
 Each phase builds upon the previous ones, creating a fully functional linked list with comprehensive test coverage and performance analysis.`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Building a Linked List from Scratch
 
@@ -680,5 +680,5 @@ function createLinkedList() {
         message: "All methods should work together correctly in a complete linked list."
       }
     ]
-  }
+  }]
 };

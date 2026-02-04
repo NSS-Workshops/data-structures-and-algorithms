@@ -49,7 +49,7 @@ An input string is valid if:
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you handle different types of brackets?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Valid Parentheses
 
@@ -232,5 +232,5 @@ function isValid(s) {
         message: "Function should handle complex nested bracket combinations."
       }
     ]
-  }
+  }]
 };

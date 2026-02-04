@@ -46,7 +46,7 @@ You may assume the string contains only lowercase English letters.
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you solve this with only one pass through the string?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: First Unique Character
 
@@ -218,5 +218,5 @@ function firstUniqChar(s) {
         message: "Function should handle complex cases with multiple patterns."
       }
     ]
-  }
+  }]
 };

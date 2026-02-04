@@ -48,7 +48,7 @@ export default {
 - **Time: O(n)** - each element added and removed once
 - **Space: O(1)** - only storing window sum and max`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 9: Sliding Window — max sum of size k
 
@@ -183,5 +183,5 @@ function maxSumOfSizeK(nums, k){
         message: "Function should work with negative numbers."
       }
     ]
-  }
+  }]
 };

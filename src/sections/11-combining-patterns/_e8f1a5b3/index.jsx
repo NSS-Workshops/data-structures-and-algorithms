@@ -50,7 +50,7 @@ export default {
 - **Insert/remove at known node => O(1)**
 - **Append with tail pointer => O(1)**`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 3: Linked List — build, iterate, add, remove
 
@@ -256,5 +256,5 @@ class LinkedList {
         message: "Remove should return false when element not found."
       }
     ]
-  }
+  }]
 };

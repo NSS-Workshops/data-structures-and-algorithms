@@ -45,7 +45,7 @@ export default {
 - **Stack ops are O(1)** - push and pop are constant time
 - **Each element is pushed and popped once => O(n) time, O(n) space**`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 6: Stack — use it to reverse
 
@@ -217,5 +217,5 @@ function reverseArrayWithStack(arr){
         message: "Function should not mutate input array."
       }
     ]
-  }
+  }]
 };

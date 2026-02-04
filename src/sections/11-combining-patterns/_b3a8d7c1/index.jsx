@@ -40,7 +40,7 @@ export default {
 - **Worst-case degrades with collisions** but rare in practice
 - **Space: O(n)** for storing unique elements`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 5: Map & Set — frequency & dedup
 
@@ -187,5 +187,5 @@ function hasDuplicate(arr) {
         message: "Function should handle edge cases correctly."
       }
     ]
-  }
+  }]
 };

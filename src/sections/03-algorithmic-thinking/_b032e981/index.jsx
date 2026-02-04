@@ -39,7 +39,7 @@ Best of luck, and enjoy the practice! 🚀
 ## Problem: Reverse Array In-Place
 
 Write a function that reverses an array in-place without using any built-in reverse methods or creating a new array.`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Reverse Array In-Place
 
@@ -220,5 +220,5 @@ function reverseArray(arr) {
         message: "Function should modify the array in-place."
       }
     ]
-  }
+  }]
 };

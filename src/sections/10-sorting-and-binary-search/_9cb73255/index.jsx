@@ -46,7 +46,7 @@ You must write an algorithm with O(log n) runtime complexity.
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you find the first/last occurrence of the target if there are duplicates?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Binary Search
 
@@ -237,5 +237,5 @@ function search(nums, target) {
         message: "Function should work efficiently with larger arrays."
       }
     ]
-  }
+  }]
 };

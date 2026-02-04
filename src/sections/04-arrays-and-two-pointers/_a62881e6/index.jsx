@@ -39,7 +39,7 @@ Best of luck, and enjoy the practice! 🚀
 ## Problem: Remove Duplicates from Sorted Array
 
 Given a sorted array, remove duplicates in-place and return the new length. You must modify the array in-place with O(1) extra space.`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Remove Duplicates from Sorted Array
 
@@ -241,5 +241,5 @@ function removeDuplicates(nums) {
         message: "Function should handle arrays with no duplicates and maintain proper array length."
       }
     ]
-  }
+  }]
 };

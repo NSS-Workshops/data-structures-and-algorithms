@@ -47,7 +47,7 @@ export default {
 - **Each ping enqueues once and dequeues expired times once overall => O(1) amortized per ping**
 - **Space: O(k)** where k is max pings in any 3000ms window`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 7: Queue — use it to build a RecentCounter
 
@@ -207,5 +207,5 @@ class RecentCounter{
         message: "RecentCounter should handle large time jumps correctly."
       }
     ]
-  }
+  }]
 };

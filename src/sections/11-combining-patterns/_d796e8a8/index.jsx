@@ -29,7 +29,7 @@ export default {
 - **push/pop are O(1)**: They operate at the end, no shifting needed  
 - **shift/unshift are O(n)**: They operate at the beginning, requiring all elements to shift`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 1: Arrays — iterate, add, remove
 
@@ -164,5 +164,5 @@ function removeAt(arr, index) {
         message: "Function should remove elements at correct positions."
       }
     ]
-  }
+  }]
 };

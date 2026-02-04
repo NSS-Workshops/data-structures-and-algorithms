@@ -28,7 +28,7 @@ Given an array of integers and a number \`k\`, find the maximum sum of any conti
 - What is the time complexity of your initial (brute-force) solution?
 - What is the time complexity after refactoring to sliding window?
 - What is the space complexity in both cases?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Maximum Sum Subarray of Size K (Fixed Window)
 
@@ -145,6 +145,6 @@ function maxSumSubarray(arr, k) {
         message: "Function should work efficiently with larger arrays."
       }
     ]
-  }
+  }]
 };
 

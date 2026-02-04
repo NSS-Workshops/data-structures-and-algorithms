@@ -6,7 +6,7 @@ import { tests } from './tests.js';
 export default {
   title: 'Module 4 - Code Exercise 1',
   content,
-  exercise: {
+  exercises: [{
     starterCode,
     solution,
     tests,
@@ -25,5 +25,5 @@ Implement the \`incrementNeighbors\` function that:
 - What is the space complexity? O(1) - only uses constant extra space
 - How would diagonal neighbors change this? Would check 8 directions instead of 4
     `
-  }
+  }]
 };

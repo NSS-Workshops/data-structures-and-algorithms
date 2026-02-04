@@ -39,7 +39,7 @@ Best of luck, and enjoy the practice! 🚀
 ## Problem: Move Zeros to End
 
 Write a function that moves all zeros in an array to the end while maintaining the relative order of non-zero elements.`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Move Zeros to End
 
@@ -217,5 +217,5 @@ function moveZeroes(nums) {
         message: "Function should handle single element arrays."
       }
     ]
-  }
+  }]
 };

@@ -44,7 +44,7 @@ Given a string, find the length of the longest substring without repeating chara
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you return the actual substring instead of just the length?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Longest Substring Without Repeating Characters
 
@@ -218,5 +218,5 @@ function lengthOfLongestSubstring(s) {
         message: "Function should handle complex repeating patterns."
       }
     ]
-  }
+  }]
 };

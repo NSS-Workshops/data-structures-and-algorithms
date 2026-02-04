@@ -45,7 +45,7 @@ You must reverse the list in-place using only constant extra space.
 ### Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Reverse Linked List
 
@@ -306,5 +306,5 @@ function reverseList(head) {
         message: "Function should reverse longer linked lists correctly."
       }
     ]
-  }
+  }]
 };

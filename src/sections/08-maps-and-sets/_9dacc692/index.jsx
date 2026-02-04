@@ -46,7 +46,7 @@ The function should count all characters including spaces and special characters
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you find the most/least frequent character?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Character Frequency Count
 
@@ -232,5 +232,5 @@ function characterFrequency(str) {
         message: "Function should return a Map instance with proper Map methods."
       }
     ]
-  }
+  }]
 };

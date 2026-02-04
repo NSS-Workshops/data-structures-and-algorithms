@@ -6,9 +6,9 @@ import tests from './tests.js';
 export default {
   title: 'Maximum Sum Subarray of Size K',
   content,
-  exercise: {
+  exercises: [{
     starterCode,
     solution,
     tests
-  }
+  }]
 };

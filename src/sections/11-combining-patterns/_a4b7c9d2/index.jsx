@@ -37,7 +37,7 @@ export default {
 - **Runtime: O(R*C)** since each cell looks at constant 8 neighbors
 - **Space: O(R*C)** for the output grid`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 2: 2D Arrays — neighbors & updates
 
@@ -190,5 +190,5 @@ function neighborCountGrid(grid, target) {
         message: "Function should handle edge cases correctly."
       }
     ]
-  }
+  }]
 };

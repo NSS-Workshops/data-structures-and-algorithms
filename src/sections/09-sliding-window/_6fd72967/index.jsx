@@ -44,7 +44,7 @@ Given an array of integers and a number k, find the maximum sum of any contiguou
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How does this compare to the brute force approach?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Maximum Sum Subarray of Size K
 
@@ -225,5 +225,5 @@ function maxSumSubarray(arr, k) {
         message: "Function should work efficiently with larger arrays."
       }
     ]
-  }
+  }]
 };

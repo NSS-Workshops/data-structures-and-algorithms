@@ -42,7 +42,7 @@ export default {
 - **Time: O(n)** vs naive O(n²)
 - **Space: O(1)** - only using two pointers`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 4: Two Pointers — pair sum in sorted array
 
@@ -166,5 +166,5 @@ function hasPairWithSum(sortedNums, target) {
         message: "Function should handle edge cases correctly."
       }
     ]
-  }
+  }]
 };

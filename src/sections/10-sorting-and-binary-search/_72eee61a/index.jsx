@@ -46,7 +46,7 @@ You must write an algorithm with O(log n) runtime complexity.
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you modify this to find the last occurrence instead?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Find First Occurrence (Binary Search Variant)
 
@@ -267,5 +267,5 @@ function searchFirst(nums, target) {
         message: "Function should work efficiently with larger arrays containing duplicates."
       }
     ]
-  }
+  }]
 };

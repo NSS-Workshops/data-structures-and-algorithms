@@ -45,7 +45,7 @@ The input matrix should be updated in-place.
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would this change if diagonal neighbors were included?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*Problem: Increment All Neighbors
 
 Given a 2D array (matrix) of numbers and a target cell (row, col), increment all **immediate neighbors** (up, down, left, right) of that cell by 1.
@@ -124,5 +124,5 @@ function incrementNeighbors(matrix, row, col) {
         message: "Should handle edge case for top edge cell"
       }
     ]
-  }
+  }]
 };

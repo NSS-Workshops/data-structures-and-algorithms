@@ -45,7 +45,7 @@ Follow-up Questions:
 - What is the space complexity?
 - How would this change if we needed to preserve order?`,
 
-exercise: {
+exercises: [{
   starterCode:`
 /*
 Problem: Remove Element
@@ -190,5 +190,5 @@ function removeElement(nums, val) {
         message: "Function should not modify array if val is not found."
       }
     ]
-  }
+  }]
 };

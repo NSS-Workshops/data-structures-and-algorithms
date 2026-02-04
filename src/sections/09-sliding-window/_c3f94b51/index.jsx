@@ -27,7 +27,7 @@ Given an array of **positive integers** \`arr\` and a \`target\`, find the **len
 ### Follow-up Questions
 - Why does sliding window work particularly well when all numbers are non-negative?
 - What would change if negatives were allowed?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Smallest Subarray With Sum >= Target (Variable Window)
 
@@ -150,5 +150,5 @@ function minSubarrayLenAtLeastTarget(target, arr) {
         message: "Works efficiently on larger arrays."
       }
     ]
-  }
+  }]
 };

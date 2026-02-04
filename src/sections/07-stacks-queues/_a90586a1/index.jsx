@@ -50,7 +50,7 @@ Implement the MyQueue constructor function:
 - What are the time complexities of each operation?
 - What is the space complexity?
 - How does this compare to a queue implemented with a linked list?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Implement Queue using Two Stacks
 
@@ -301,5 +301,5 @@ MyQueue.prototype.empty = function() {
         message: "Peek should return front element without removing it."
       }
     ]
-  }
+  }]
 };

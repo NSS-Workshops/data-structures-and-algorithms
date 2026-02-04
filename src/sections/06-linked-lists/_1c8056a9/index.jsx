@@ -48,7 +48,7 @@ Use the two-pointer technique (tortoise and hare) to solve this in one pass.
 - What is the time complexity of your solution?
 - What is the space complexity?
 - How would you find the node at 1/3 position?`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Find Middle Node of Linked List
 
@@ -343,5 +343,5 @@ function findMiddleNode(head) {
         message: "Function should handle two-node list correctly."
       }
     ]
-  }
+  }]
 };

@@ -23,7 +23,7 @@ Hi team — the currently provided code passes the tests but is inefficient and 
 Given an array of purchase objects with \`id\` and \`qty\` properties, aggregate the total quantity for each product ID.
 
 The function should return an array of objects in the same format: \`[{id, qty}]\`.`,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Aggregate Purchase Quantities
 
@@ -222,5 +222,5 @@ function aggregateQuantities(items) {
         message: "Function should return array of objects with correct {id, qty} structure."
       }
     ]
-  }
+  }]
 };

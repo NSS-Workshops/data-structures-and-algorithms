@@ -43,7 +43,7 @@ Write a function \`getNeighbors\` that returns an array of the values of all val
 - What edge cases need to be considered?
 - How would this change if diagonal neighbors were allowed?
 `,
-  exercise: {
+  exercises: [{
     starterCode:`
     /*
 Problem: Return Neighbor Values
@@ -116,5 +116,5 @@ Problem: Return Neighbor Values
         message: "Should return neighbors of center cell"
       }
     ]
-  }
+  }]
 };

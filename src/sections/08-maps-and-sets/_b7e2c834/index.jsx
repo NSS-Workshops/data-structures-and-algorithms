@@ -24,7 +24,7 @@ Given an array of player names and an array of banned player names, return an ar
 
 The function should exclude banned players and remove duplicates while preserving the first occurrence order.
 `,
-  exercise: {
+  exercises: [{
     starterCode:`/*
 Problem: Filter Allowed Players
 
@@ -229,5 +229,5 @@ function allowedPlayers(all, bannedList) {
         message: "Function should handle case-sensitive player name matching."
       }
     ]
-  }
+  }]
 };

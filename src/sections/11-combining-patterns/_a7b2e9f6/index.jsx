@@ -48,7 +48,7 @@ Task object format: \`{id: number, title: string, priority: number, due: string}
 - **Typical O(n log n)** due to sort algorithm
 - **Comparator is O(1)** per comparison`,
 
-  exercise: {
+  exercises: [{
     starterCode: `/*
 Challenge 8: Sorting — built-in compare & O(n log n)
 
@@ -205,5 +205,5 @@ function sortTasks(tasks){
         message: "Function should handle edge cases correctly."
       }
     ]
-  }
+  }]
 };

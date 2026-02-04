@@ -64,11 +64,11 @@ Chapters are individual lessons within a section:
   previousChapterId: null,
   nextChapterId: 'arrays-indices',
   content: `## Arrays (a.k.a. collections of things)...`,
-  exercise: {
+  exercises: [{
     starterCode: `// Example starter code...`,
     solution: `// Example solution...`,
     tests: [/* tests */]
-  }
+  }]
 }
 ```
 
@@ -354,11 +354,11 @@ The application will be available at http://localhost:5173/data-structures-and-a
      previousChapterId: 'previous-chapter',
      nextChapterId: 'next-chapter',
      content: `## Markdown Content...`,
-     exercise: {
+     exercises: [{
        starterCode: `// Starter code...`,
        solution: `// Solution...`,
        tests: [/* tests */]
-     }
+     }]
    }
    ```
 

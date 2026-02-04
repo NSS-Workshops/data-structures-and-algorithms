@@ -6,7 +6,7 @@ import { tests } from './tests.js';
 export default {
   title: 'Module 4 - Code Exercise 2',
   content,
-  exercise: {
+  exercises: [{
     starterCode,
     solution,
     tests,
@@ -29,5 +29,5 @@ Implement the \`getNeighbors\` function that:
 - What edge cases need to be considered? Bounds checking for grid boundaries
 - How would diagonal neighbors change this? Would check 8 directions and return up to 8 values
     `
-  }
+  }]
 };

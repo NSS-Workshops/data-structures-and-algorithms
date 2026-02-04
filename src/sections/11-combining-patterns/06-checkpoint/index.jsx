@@ -6,7 +6,7 @@ export default {
     id: "combining-checkpoint",
     title: "Checkpoint: Combining Patterns",
     previousChapterId: "combining-survival",
-    nextChapterId: null,
+    nextChapterId: "module-feedback",
     content: content,
     quiz: {component: () => <Checkpoint questions={questions}/>}
 }

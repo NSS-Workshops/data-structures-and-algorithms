@@ -27,7 +27,7 @@ export default {
     id: "just-enough-math-glossary",
     title: "Glossary",
     previousChapterId: "combinations-permutations",
-    nextChapterId: null,
+    nextChapterId: "module-feedback",
     content: `${formatGlossary(data)}`,
     exercises: [],
     quiz: null

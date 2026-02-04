@@ -7,7 +7,7 @@ export default {
     title: "Checkpoint: Sliding Window",
     description: "Test your understanding of the sliding window technique.",
     previousChapterId: "sliding-window-glossary",
-    nextChapterId: null,
+    nextChapterId: "module-feedback",
     content,
     exercises: [],
     quiz: {component: () => <Checkpoint questions={questions}/>}

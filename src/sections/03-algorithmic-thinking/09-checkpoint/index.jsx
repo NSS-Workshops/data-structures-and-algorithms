@@ -6,7 +6,7 @@ export default {
     title: "Checkpoint: Algorithmic Thinking",
     description: "Test your understanding of Big O notation and algorithmic thinking concepts.",
     previousChapterId: "algorithmic-thinking-glossary",
-    nextChapterId: null,
+    nextChapterId: "module-feedback",
     content: `Test your understanding of Big O notation and algorithmic thinking concepts.`,
     exercises: [],
     quiz: {component: () => <>

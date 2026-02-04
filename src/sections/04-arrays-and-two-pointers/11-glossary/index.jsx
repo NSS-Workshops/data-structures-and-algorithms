@@ -37,6 +37,7 @@ export default {
  title: 'Glossary: Arrays and Two Pointers',
  sectionId: 'arrays-and-two-pointers',
  previousChapterId: 'arrays-and-two-pointers-supplemental-materials',
+ nextChapterId:"module-feedback",
  content: `This glossary contains important terms and concepts related to arrays and two pointers. Understanding these terms will help you communicate effectively about algorithms and data structures during interviews and technical discussions.
 
 ${formatGlossary(data)}

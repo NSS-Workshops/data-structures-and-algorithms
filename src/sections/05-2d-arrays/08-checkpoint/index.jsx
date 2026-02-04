@@ -5,7 +5,7 @@ export default {
   id: "2d-arrays-checkpoint",
   title: 'Checkpoint: 2D Arrays',
   previousChapterId: "2d-arrays-glossary",
-  nextChapterId: null,
+  nextChapterId: "module-feedback",
   content: `Test your understanding of 2D Arrays and working with them.`,
   exercises: [],
     quiz: {component: () =>  <Checkpoint questions={questions}/>}

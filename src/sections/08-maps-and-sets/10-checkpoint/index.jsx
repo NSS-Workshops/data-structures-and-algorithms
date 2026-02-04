@@ -6,7 +6,7 @@ export default {
     id: "mapssets-checkpoint",
     title: "Checkpoint: Maps and Sets",
     previousChapterId: "mapssets-glossary",
-    nextChapterId: null,
+    nextChapterId: "module-feedback",
     content: content,
     quiz: {component: () => <Checkpoint questions={questions}/>}
 }

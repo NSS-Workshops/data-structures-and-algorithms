@@ -6,7 +6,7 @@ export default {
   id: "stacks-checkpoint",
   title: "Checkpoint: Stacks & Queues",
   previousChapterId: "stacks-glossary",
-  nextChapterId: null,
+  nextChapterId: "module-feedback",
   content: contentMd,
   exercises: [],
   quiz: {component: () => <Checkpoint questions={questions}/> }

@@ -6,7 +6,7 @@ export default {
   id: "linked-checkpoint",
   title: "Checkpoint: Linked Lists",
   previousChapterId: "linked-glossary",
-  nextChapterId: "linked-reverse",
+  nextChapterId: "module-feedback",
   content: contentMd,
   exercises: [],
   quiz: {component: () => <Checkpoint questions={questions}/> }

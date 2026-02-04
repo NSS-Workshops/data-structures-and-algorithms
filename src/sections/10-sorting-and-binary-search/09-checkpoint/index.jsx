@@ -6,7 +6,7 @@ export default {
     id: "sort-checkpoint",
     title: "Checkpoint",
     previousChapterId: "sort-glossary",
-    nextChapterId: null,
+    nextChapterId: "module-feedback",
     content,
     exercises: [],
     quiz: {component: () => <Checkpoint questions={questions}/>}

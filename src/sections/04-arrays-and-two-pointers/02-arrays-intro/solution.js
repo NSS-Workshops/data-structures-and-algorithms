@@ -43,6 +43,7 @@ console.log("Fixed orders:", mistakeOrders);
 function processOrders(orders) {
   // Use a for...of loop or traditional for loop
   // Print each order with format: "Making order X of Y: [order name]"
+  // X is current index + 1, Y is total length
   for (let i = 0; i < orders.length; i++) {
     const orderNumber = i + 1;
     const totalOrders = orders.length;

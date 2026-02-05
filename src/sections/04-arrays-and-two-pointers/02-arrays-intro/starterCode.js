@@ -53,6 +53,7 @@
 // function processOrders(orders) {
 //   // Use a for...of loop or traditional for loop
 //   // Print each order with format: "Making order X of Y: [order name]"
+//   // X is current index + 1, Y is total length
 // }
 
 // let afternoonOrders = ["Cappuccino", "Iced Latte", "Americano", "Mocha"];

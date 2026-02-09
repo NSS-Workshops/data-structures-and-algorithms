@@ -33,21 +33,6 @@ let mixedInfo = ["Latte", 5, "Table 3", true]; // order, quantity, location, rus
 let morningOrders = ["Americano", "Cappuccino", "Flat White"];
 ```
 
-### Arrays vs Other Ways of Organizing
-
-"But why arrays?" Maya asks. "Couldn't we use something else?"
-
-Sarah pulls out a comparison chart:
-
-| Organization Method | Strengths | Weaknesses | Coffee Shop Example |
-|-------------------|-----------|------------|-------------------|
-| **Arrays** | Lightning-fast access by position, simple to understand | Slow to insert orders in the middle | Perfect for order queues |
-| **Lists (Linked)** | Easy to insert priority orders | Slow to find "What's the 5th order?" | Good for constantly changing menus |
-| **Hash Tables** | Super fast to find specific orders | No natural ordering | Great for customer preferences |
-| **Trees** | Great for hierarchical data | Complex to manage | Useful for menu categories |
-
-"For order management," Sarah concludes, "arrays are our best friend because we need both fast access and natural ordering."
-
 ---
 
 ## Part 2: Maya's First Orders - Learning to Add and Access
@@ -189,7 +174,7 @@ console.log(removedOrders); // ["Large Latter"] - splice returns what was remove
 
 "Just like insertion," Sarah explains, "removal causes shifting, but this time to the left."
 
-*[Visual: Array elements shifting left to fill the gap after removal]*
+<img width="100%" src="assets/delete.png"/>
 
 "When we remove the order at index 1, all the orders after it shift left to fill the gap. This is also **O(n) time complexity** because we might need to shift many elements."
 

@@ -43,10 +43,7 @@ export const tests = [
       try {
         const testCode = code + `
         // Test priority order insertion
-        let testQueue = ["Americano", "Latte", "Mocha", "Espresso"];
-        testQueue.splice(0, 0, "VIP: Affogato");
-        testQueue.splice(1, 0, "VIP: Cortado");
-        return { result: testQueue, length: testQueue.length };
+        return { result: rushQueue, length: rushQueue.length };
         `;
         
         const testResult = new Function(testCode)();
@@ -75,13 +72,8 @@ export const tests = [
     test: (code) => {
       try {
         const testCode = code + `
-        // Test fixing order mistakes
-        let testOrders = ["Large Latter", "Cappuccino", "Wrong Order 1", "Wrong Order 2", "Espresso"];
-        testOrders[0] = "Large Latte";
-        testOrders.splice(2, 2);
-        return { result: testOrders, length: testOrders.length };
+        return { result: mistakeOrders, length: mistakeOrders.length };
         `;
-        
         const testResult = new Function(testCode)();
         
         if (testResult.length !== 3) {

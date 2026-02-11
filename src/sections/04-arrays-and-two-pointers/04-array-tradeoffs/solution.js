@@ -1,8 +1,9 @@
 // ==============================
 // Exercise 1: Measure the Impact of Scale
 // ==============================
+// No changes are needed—just run the code and the tests, and observe the differences in timing.
 function measureInsertionScale() {
-  const sizes = [10, 100, 1000];
+  const sizes = [10, 10_000, 1_000_000];
 
   sizes.forEach(size => {
     // Create an array of the specified size

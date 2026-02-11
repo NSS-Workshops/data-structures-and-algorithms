@@ -33,17 +33,17 @@ export const tests = [
         
         // Verify that output was generated for different array sizes
         const hasSize10 = testResult.logOutput.some(line => line.includes('10 orders'));
-        const hasSize100 = testResult.logOutput.some(line => line.includes('100 orders'));
-        const hasSize1000 = testResult.logOutput.some(line => line.includes('1000 orders'));
+        const hasSize10000 = testResult.logOutput.some(line => line.includes('10000 orders'));
+        const hasSize1000000 = testResult.logOutput.some(line => line.includes('1000000 orders'));
         
         if (!hasSize10) {
           return { passed: false, message: "Should test with 10 orders" };
         }
-        if (!hasSize100) {
-          return { passed: false, message: "Should test with 100 orders" };
+        if (!hasSize10000) {
+          return { passed: false, message: "Should test with 10,000 orders" };
         }
-        if (!hasSize1000) {
-          return { passed: false, message: "Should test with 1000 orders" };
+        if (!hasSize1000000) {
+          return { passed: false, message: "Should test with 1,000,000 orders" };
         }
         
         // Verify timing information is included

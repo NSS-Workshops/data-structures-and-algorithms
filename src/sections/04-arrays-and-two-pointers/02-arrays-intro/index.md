@@ -86,9 +86,12 @@ console.log(mayasOrders.length); // 3
 // ============================== 
 ```
 
-- Implement the required logic
- - Click \`Run Code\` 
- - Inspect \`📋 Console Output\` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -148,9 +151,12 @@ orders.splice(0, 0, "Priority Order"); // Potentially slow with many orders
 // ============================== 
 ```
 
-- Implement the required logic
- - Click \`Run Code\` 
- - Inspect \`📋 Console Output\` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -226,9 +232,12 @@ console.log(orders); // ["Second"]
 // ============================== 
 ```
 
-- Implement the required logic
- - Click \`Run Code\` 
- - Inspect \`📋 Console Output\` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -304,9 +313,12 @@ processOrderQueue(mayasQueue);
 // ============================== 
 ```
 
-- Implement the required logic
- - Click \`Run Code\` 
- - Inspect \`📋 Console Output\` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 

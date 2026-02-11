@@ -87,11 +87,12 @@ Alex adjusts their guitar strap, "That's because these operations are **O(n) tim
 // Exercise 1: Help Alex Manage Multiple Venue Setlists
 // ==============================
 ```
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
-
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 ---
 
 ## Part 2: The Collaboration Coordinator - Transforming Data with map() and filter()
@@ -208,16 +209,18 @@ rockFestivalSetlist.forEach(song => console.log(`- ${song.title}`));
 
 ---
 ## ⏱️ **Alex's Collaboration Challenge!** 
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 ```js
 // ==============================
 // Exercise 2: Help Alex Transform and Filter Song Collections
 // ==============================
 ```
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -400,16 +403,19 @@ Jordan nods approvingly, "So \`slice()\` lets you extract exactly the data you n
 
 ---
 ## ⏱️ **Alex's Data Analysis Challenge!** 
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 \`\`\`js
 // ==============================
 // Exercise 3: Help Alex Analyze Performance Data
 // ============================== 
 \`\`\`
 
-- Implement the required logic
- - Click \`Run Code\` 
- - Inspect \`📋 Console Output\` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -588,17 +594,18 @@ Maya looks amazed, "So you can filter, transform, sort, and calculate all in one
 
 ---
 ## ⏱️ **Alex's Festival Curation Challenge!**
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 \`\`\`js
 // ==============================
 // Exercise 4: Help Alex Master Method Chaining and Advanced Array Operations
 // ==============================
 \`\`\`
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click \`Run Code\`
- - Inspect \`📋 Console Output\` window for correctness!
-
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 ---
 
 ## Alex's Array Mastery: From Street Musician to Data Wizard

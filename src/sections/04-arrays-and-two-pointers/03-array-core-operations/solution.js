@@ -4,6 +4,7 @@
 function getSongAtPosition(setlist, position) {
   // Return the song at the given position
   // Handle invalid positions gracefully
+  // Return the string "Position out of bounds" if position is invalid
   if (position < 0 || position >= setlist.length) {
     return "Position out of bounds";
   }

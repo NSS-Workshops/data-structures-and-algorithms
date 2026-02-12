@@ -93,6 +93,7 @@ Alex adjusts their guitar strap, "That's because these operations are **O(n) tim
  - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
 🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
+
 ---
 
 ## Part 2: The Collaboration Coordinator - Transforming Data with map() and filter()
@@ -593,19 +594,24 @@ Maya looks amazed, "So you can filter, transform, sort, and calculate all in one
 "Exactly! Each method returns an array, so I can immediately call the next method on the result. It's **O(n) time complexity** for each method in the chain, but the code reads like a story - filter the songs I want, transform them how I need, sort by importance, and extract exactly what I need."
 
 ---
+
 ## ⏱️ **Alex's Festival Curation Challenge!**
- - 🔓 Uncomment the below code section in the editor 👉:
+- 🔓 Uncomment the below code section in the editor 👉:
 \`\`\`js
 // ==============================
 // Exercise 4: Help Alex Master Method Chaining and Advanced Array Operations
 // ==============================
 \`\`\`
- - Read the requirements written as comments in the code.
- - Implement the required logic.
- - Click `Run Code` and inspect `📋 Console Output` window for correctness!
- - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+- Read the requirements written as comments in the code.
+- Implement the required logic.
+- Click `Run Code` and inspect `📋 Console Output` window for correctness!
+- Click `Run Tests`and ensure that test(s) related to this specific exercise are passing 
+<span class="mtk8"> Passing test will show in green text.</span>
 
-🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
+
+*Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass. *
+
+
 ---
 
 ## Alex's Array Mastery: From Street Musician to Data Wizard

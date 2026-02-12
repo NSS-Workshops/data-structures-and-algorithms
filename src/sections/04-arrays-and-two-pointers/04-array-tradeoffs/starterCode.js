@@ -1,23 +1,21 @@
 // ==============================
 // Exercise 1: Measure the Impact of Scale
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
-// Task: Create a function that demonstrates how insertion performance changes with array size
-// Test insertion at the beginning with arrays of size 10, 100, and 1000
+// No changes are needed—just run the code and the tests, and observe the differences in timing.
 
 function measureInsertionScale() {
-  const sizes = [10, 100, 1000];
-
+  const sizes = [10, 10_000, 1_000_000];
+  
   sizes.forEach(size => {
     // Create an array of the specified size
     let testArray = Array.from({length: size}, (_, i) => `Order ${i + 1}`);
-
+    
     // Measure performance by tracking operations
     const startTime = performance.now();
     testArray.splice(0, 0, "Priority Order");
     const endTime = performance.now();
     const duration = (endTime - startTime).toFixed(3);
-
+    
     console.log(`Insert at beginning - ${size} orders: ${duration}ms`);
     console.log(`Array size after insertion: ${testArray.length}`);
     console.log(`Elements that had to shift: ${size}`);
@@ -25,18 +23,16 @@ function measureInsertionScale() {
   });
 }
 
-// measureInsertionScale();
+measureInsertionScale();
 
 // ==============================
 // Exercise 2: Analyze Deletion Performance Patterns
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
-// Task: Create a function that shows how deletion position affects performance
-// Delete from positions 0 (beginning), middle, and end of a 100-item array
+// No changes are needed—just run the code and the tests, and observe the differences in timing.
 
 function analyzeDeletionPatterns() {
-  const arraySize = 100;
-
+  const arraySize = 1_000_000;
+  
   // Test deletion from beginning
   let array1 = Array.from({length: arraySize}, (_, i) => `Item ${i + 1}`);
   const elementsToShiftBeginning = arraySize - 1;
@@ -47,7 +43,7 @@ function analyzeDeletionPatterns() {
   console.log(`Elements shifted: ${elementsToShiftBeginning}`);
   console.log(`Remaining items: ${array1.length}`);
   console.log("---");
-
+  
   // Test deletion from middle
   let array2 = Array.from({length: arraySize}, (_, i) => `Item ${i + 1}`);
   const middleIndex = Math.floor(arraySize / 2);
@@ -59,7 +55,7 @@ function analyzeDeletionPatterns() {
   console.log(`Elements shifted: ${elementsToShiftMiddle}`);
   console.log(`Remaining items: ${array2.length}`);
   console.log("---");
-
+  
   // Test deletion from end
   let array3 = Array.from({length: arraySize}, (_, i) => `Item ${i + 1}`);
   const startTime3 = performance.now();
@@ -70,14 +66,14 @@ function analyzeDeletionPatterns() {
   console.log(`Remaining items: ${array3.length}`);
 }
 
-// analyzeDeletionPatterns();
+analyzeDeletionPatterns();
 
 // ==============================
 // Exercise 3: Build an Efficient Order Management System
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
-// Task: Create a class that manages orders efficiently using Maya's strategies
-// Implement methods for adding regular orders, priority orders, and processing orders
+// No changes are needed—just run the code and the tests, 
+// , make sure you understand how the code works, 
+// comment out the driver (calling code) at the bottom 
 
 class EfficientOrderManager {
   constructor() {
@@ -157,7 +153,6 @@ class EfficientOrderManager {
 // ==============================
 // Exercise 4: Design a Performance-Optimized System
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Compare the performance of different approaches to handling 1000 orders
 // Measure the time difference between naive and optimized approaches
 

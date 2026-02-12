@@ -1,7 +1,6 @@
 // ==============================
 // Exercise 1: Help Eleanor Find Book Pairs
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Find two books whose publication years sum to a target year
 
 // function findBookPairForTargetYear(bookYears, targetYear) {
@@ -16,7 +15,6 @@
 // ==============================
 // Exercise 2: Help Eleanor Detect Patterns
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Find the middle book in a reading list and detect if a list has cycles
 
 // function findMiddleBookInList(bookList) {
@@ -37,7 +35,6 @@
 // ==============================
 // Exercise 3: Help Eleanor Analyze Book Sequences
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Find the best consecutive sequence of books based on popularity scores
 
 // function findBestBookSequence(popularityScores, sequenceLength) {
@@ -57,7 +54,6 @@
 // ==============================
 // Exercise 4: Help Eleanor Solve Palindrome Mysteries
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Check if book titles are palindromes and find the longest palindromic substring
 
 // function isPalindrome(text) {

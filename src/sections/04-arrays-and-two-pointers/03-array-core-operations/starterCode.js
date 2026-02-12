@@ -1,12 +1,12 @@
 // ==============================
 // Exercise 1: Help Alex Access Songs by Position
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create a function that helps Alex quickly access songs from their setlist
 
 // function getSongAtPosition(setlist, position) {
 //   // Return the song at the given position
 //   // Handle invalid positions gracefully
+//   // Return the string "Position out of bounds" if position is invalid
 // }
 
 // const alexsSetlist = ["Wonderwall", "Hotel California", "Blackbird", "Free Bird"];
@@ -16,12 +16,12 @@
 // ==============================
 // Exercise 2: Help Alex Update Their Setlist
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create a function that updates multiple songs based on audience feedback
 
 // function updateSetlistBasedOnFeedback(setlist, updates) {
 //   // updates is an object like { 0: "New Song", 2: "Another Song" }
 //   // Update the setlist at the specified positions
+//   // Hint 1: Object keys are always returned as strings 
 //   return setlist;
 // }
 
@@ -33,7 +33,6 @@
 // ==============================
 // Exercise 3: Help Alex Add Songs Strategically
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create a function that adds songs using the most efficient method based on position
 
 // function addSongStrategically(setlist, song, position) {
@@ -52,7 +51,6 @@
 // ==============================
 // Exercise 4: Help Alex Remove Songs Strategically
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create a function that removes songs using the most efficient method
 
 // function removeSongStrategically(setlist, position) {
@@ -71,7 +69,6 @@
 // ==============================
 // Exercise 5: Help Alex Find Songs for Requests
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create a function that finds songs matching specific criteria
 
 // function findSongsForRequest(repertoire, criteria) {

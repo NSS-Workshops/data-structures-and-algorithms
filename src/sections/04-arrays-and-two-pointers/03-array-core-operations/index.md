@@ -65,10 +65,13 @@ function findSongByTitle(setlist, title) {
 // Exercise 1: Help Alex Access Songs by Position
 // ============================== 
 ```
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
+
 
 ---
 
@@ -142,16 +145,19 @@ console.log(customSet);
 
 ---
 ## ⏱️ **Alex's Rehearsal Challenge!** 
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 ```js
 // ==============================
 // Exercise 2: Help Alex Update Their Setlist
 // ============================== 
 ```
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -268,16 +274,18 @@ function carefulSongManagement() {
 
 ---
 ## ⏱️ **Alex's Performance Challenge!** 
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 ```js
 // ==============================
 // Exercise 3: Help Alex Add Songs Strategically
 // ============================== 
 ```
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -398,16 +406,19 @@ console.log("Quick edits for efficiency, careful edits for artistry!");
 
 ---
 ## ⏱️ **Alex's Late Night Challenge!** 
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 ```js
 // ==============================
 // Exercise 4: Help Alex Remove Songs Strategically
 // ============================== 
 ```
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -550,16 +561,18 @@ console.log("Random inspiration:", alexsFinder.getRandomSong());
 
 ---
 ## ⏱️ **Alex's Encore Challenge!** 
- - 🔓 Uncomment this block and click "Run Code" to complete the exercise:
+ - 🔓 Uncomment the below code section in the editor 👉:
 ```js
 // ==============================
 // Exercise 5: Help Alex Find Songs for Requests
 // ============================== 
 ```
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -614,15 +627,5 @@ const song = setlist.find(s => s.mood === "romantic"); // Find by criteria
 2. **Use O(n) operations** (beginning/middle modifications, searching) **strategically** when the artistic benefit outweighs the performance cost
 3. **Design your setlist structure** to favor the operations you'll use most frequently
 4. **Batch similar operations** when possible to minimize disruption
-
-### 🌟 **From Street Musician to Array Expert**
-
-Alex started the evening as a talented musician with a disorganized approach to setlist management. By the end of the night, they've not only delivered an amazing performance but also mastered the four core array operations that form the foundation of efficient programming.
-
-"The beautiful thing," Alex tells Marcus while settling up for the night, "is that these same principles apply whether you're managing songs, customer orders, inventory items, or any other collection of data. Once you understand access, update, add, and remove operations - and their performance characteristics - you can efficiently manage any array-based system."
-
-Marcus nods approvingly, "Same time next week?"
-
-Alex grins, slinging their guitar over their shoulder, "Absolutely. I've got some new songs to add to my repertoire - and I know exactly where to put them in my setlist for maximum impact!"
 
 *Ready for the next challenge? Let's see how Alex uses these core operations to master advanced array methods and create even more sophisticated musical experiences...*

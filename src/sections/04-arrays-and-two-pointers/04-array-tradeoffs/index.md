@@ -94,10 +94,12 @@ visualizePriorityInsertion([...largeQueue], "VIP Order");
 // Exercise 1: Measure the Impact of Scale
 // ==============================
 ```
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 
@@ -200,7 +202,7 @@ Maya studies the output. "Yes! The closer to the beginning we delete, the more o
 "Exactly! This is why we call it **O(n) time complexity** - the time it takes grows linearly with the number of elements that need to shift."
 
 ---
-## ⏱️ **Maya's Deletion Detective Challenge!** 
+## ⏱️ **Maya's Deletion Detective Challenge!**
  - 🔓 Uncomment the below code section in the editor 👉:
 ```js
 // ==============================
@@ -208,9 +210,13 @@ Maya studies the output. "Yes! The closer to the beginning we delete, the more o
 // ==============================
 ```
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
+
 
 ---
 
@@ -296,9 +302,13 @@ class SmartCoffeeQueue {
 // ==============================
 ```
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
+
 
 ---
 
@@ -400,9 +410,12 @@ PerformanceTester.compareStrategies();
 // ==============================
 ```
 
-- Implement the required logic
- - Click `Run Code` 
- - Inspect `📋 Console Output` window for correctness!
+ - Read the requirements written as comments in the code.
+ - Implement the required logic.
+ - Click `Run Code` and inspect `📋 Console Output` window for correctness!
+ - Click `Run Tests`and ensure that test(s) related to this specific exercise are passing <span class="mtk8"> Passing test will show in green text.</span>
+
+🚧 *Some tests for future exercises may fail at first — that’s expected. As you complete each exercise, those tests will start passing. By the time you finish the final exercise, all tests in the test suite should pass.*
 
 ---
 

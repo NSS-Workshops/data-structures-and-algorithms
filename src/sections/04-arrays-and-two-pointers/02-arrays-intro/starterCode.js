@@ -2,7 +2,6 @@
 // ==============================
 // Exercise 1: Help Maya Add Multiple Orders
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Create a function \`addOrders\` that helps Maya add multiple orders to her array
 // The function should add: "Flat White", "Cold Brew", "Double Espresso"
 
@@ -18,7 +17,6 @@
 // ==============================
 // Exercise 2: Handle Priority Orders During Rush
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Help Maya insert two VIP orders at the front of her queue
 // Insert "VIP: Affogato" and "VIP: Cortado" at positions 0 and 1
 
@@ -32,7 +30,6 @@
 // ==============================
 // Exercise 3: Fix Multiple Order Mistakes
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Maya made some mistakes! Help her fix them:
 // 1. Remove the two incorrect orders at indices 2 and 3
 // 2. Update the first order from "Latter" to "Latte"
@@ -46,7 +43,6 @@
 // ==============================
 // Exercise 4: Create an Efficient Order Processing System
 // ==============================
-// Uncomment this block and click "Run Code" to complete the exercise
 // Task: Help Maya create a function that processes orders and shows progress
 // The function should loop through all orders and print each one with its position
 

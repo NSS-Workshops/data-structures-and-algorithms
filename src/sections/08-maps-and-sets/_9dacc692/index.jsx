@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: '9dacc692',
-  title: 'Module 7 - Code Excercise 1',
+  title: 'Module 7 - Code Exercise 1',
   sectionId: 'maps-and-sets',
   previousChapterId: null,
   content: `

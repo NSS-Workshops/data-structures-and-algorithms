@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: 'e49003dd',
-  title: 'Module 8 - Code Excercise 2',
+  title: 'Module 8 - Code Exercise 2',
   sectionId: 'sliding-window',
   previousChapterId: null,
   content: `

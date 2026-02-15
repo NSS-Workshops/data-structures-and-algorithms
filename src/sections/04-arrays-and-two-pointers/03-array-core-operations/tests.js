@@ -128,7 +128,7 @@ export const tests = [
           return { passed: false, message: "removeSongStrategically function not found. Make sure to uncomment and implement it." };
         }
         
-        const expectedArray = [];
+        const expectedArray = ["C"];
         const expectedRemoved = ["D", "A", "B"];
         
         if (JSON.stringify(testResult.result) !== JSON.stringify(expectedArray)) {

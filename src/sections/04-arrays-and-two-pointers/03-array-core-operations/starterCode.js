@@ -45,7 +45,7 @@
 // let strategicSet = ["Hotel California", "Sweet Child O' Mine"];
 // addSongStrategically(strategicSet, "Thunderstruck", "beginning");
 // addSongStrategically(strategicSet, "Free Bird", "end");
-// addSongStrategically(strategicSet, 2, "Wonderwall");
+// addSongStrategically(strategicSet, "Wonderwall", 2);
 // console.log("Strategic setlist:", strategicSet);
 
 // ==============================

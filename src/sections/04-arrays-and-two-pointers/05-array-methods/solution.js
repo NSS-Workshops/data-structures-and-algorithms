@@ -17,9 +17,7 @@ function managePerformanceQueue(initialLineup, newOpeners, finishedActs) {
   let lineup = [...initialLineup];
   
   // Add new opening acts to the beginning
-  newOpeners.forEach(opener => {
-    lineup.unshift(opener);
-  });
+  lineup.unshift(...newOpeners);
   
   // Remove finished acts from the beginning
   for (let i = 0; i < finishedActs; i++) {

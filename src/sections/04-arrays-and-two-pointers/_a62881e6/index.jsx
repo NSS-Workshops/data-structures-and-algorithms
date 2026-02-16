@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: 'a62881e6',
-  title: 'Module 3 - Code Excercise 2',
+  title: 'Module 3 - Code Exercise 2',
   sectionId: 'arrays-and-two-pointers',
   previousChapterId: null,
   content: `

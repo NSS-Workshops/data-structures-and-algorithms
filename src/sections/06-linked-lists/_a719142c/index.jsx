@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: 'a719142c',
-  title: 'Module 5 - Code Excercise 1',
+  title: 'Module 5 - Code Exercise 1',
   sectionId: 'linked-lists',
   previousChapterId: null,
   content: `

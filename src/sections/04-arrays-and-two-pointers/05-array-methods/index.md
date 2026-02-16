@@ -233,7 +233,7 @@ Alex's musical career has evolved into a small business. They now need to analyz
 
 "I need to analyze last month's performances," Alex tells their business partner, Jordan, while reviewing their performance logs.
 
-\`\`\`javascript
+```javascript
 // Alex's performance data from last month
 const lastMonthPerformances = [
     { venue: "The Blue Note", date: "2024-01-05", audience: 85, revenue: 450, songs: ["Thunderstruck", "Hotel California"] },
@@ -250,14 +250,14 @@ lastMonthPerformances.forEach((performance, index) => {
     const revenuePerPerson = (performance.revenue / performance.audience).toFixed(2);
     const songsPerformed = performance.songs.length;
     
-    console.log(\`Performance #\${index + 1}:\`);
-    console.log(\`  Venue: \${performance.venue}\`);
-    console.log(\`  Date: \${performance.date}\`);
-    console.log(\`  Audience: \${performance.audience} people\`);
-    console.log(\`  Revenue: $\${performance.revenue}\`);
-    console.log(\`  Revenue per person: $\${revenuePerPerson}\`);
-    console.log(\`  Songs performed: \${songsPerformed}\`);
-    console.log(\`  Song list: \${performance.songs.join(", ")}\`);
+    console.log(`Performance #${index + 1}:`);
+    console.log(`  Venue: ${performance.venue}`);
+    console.log(`  Date: ${performance.date}`);
+    console.log(`  Audience: ${performance.audience} people`);
+    console.log(`  Revenue: $${performance.revenue}`);
+    console.log(`  Revenue per person: $${revenuePerPerson}`);
+    console.log(`  Songs performed: ${songsPerformed}`);
+    console.log(`  Song list: ${performance.songs.join(", ")}`);
     console.log("-".repeat(30));
 });
 
@@ -268,48 +268,48 @@ const performanceAlerts = [];
 lastMonthPerformances.forEach(performance => {
     // Check for high-revenue performances
     if (performance.revenue > 500) {
-        performanceAlerts.push(\`🎉 Excellent revenue at \${performance.venue}: $\${performance.revenue}\`);
+        performanceAlerts.push(`🎉 Excellent revenue at ${performance.venue}: $${performance.revenue}`);
         totalNotifications++;
     }
     
     // Check for large audiences
     if (performance.audience > 100) {
-        performanceAlerts.push(\`👥 Large audience at \${performance.venue}: \${performance.audience} people\`);
+        performanceAlerts.push(`👥 Large audience at ${performance.venue}: ${performance.audience} people`);
         totalNotifications++;
     }
 });
 
-console.log("\\nPerformance Alerts:");
+console.log("\nPerformance Alerts:");
 performanceAlerts.forEach(alert => console.log(alert));
-console.log(\`\\nTotal alerts generated: \${totalNotifications}\`);
-\`\`\`
+console.log(`\nTotal alerts generated: ${totalNotifications}`);
+```
 
-"The \`forEach()\` method is perfect when I need to do something with each performance but don't need to create a new array," Alex explains. "It's **O(n) time complexity** and is ideal for side effects like logging, updating databases, or generating reports."
+"The `forEach()` method is perfect when I need to do something with each performance but don't need to create a new array," Alex explains. "It's **O(n) time complexity** and is ideal for side effects like logging, updating databases, or generating reports."
 
 ### Calculating Business Metrics with reduce() - The Accumulator
 
 Jordan looks at the performance data, "Can you calculate our total revenue and average audience size?"
 
-"Absolutely! This is where \`reduce()\` shines," Alex says, pulling up their laptop.
+"Absolutely! This is where `reduce()` shines," Alex says, pulling up their laptop.
 
-\`\`\`javascript
+```javascript
 // Calculate total revenue using reduce()
 const totalRevenue = lastMonthPerformances.reduce((accumulator, performance) => {
     return accumulator + performance.revenue;
 }, 0); // Start with 0
 
-console.log(\`Total revenue last month: $\${totalRevenue}\`);
+console.log(`Total revenue last month: $${totalRevenue}`);
 
 // Calculate total audience using reduce()
 const totalAudience = lastMonthPerformances.reduce((sum, performance) => {
     return sum + performance.audience;
 }, 0);
 
-console.log(\`Total audience last month: \${totalAudience} people\`);
+console.log(`Total audience last month: ${totalAudience} people`);
 
 // Calculate average audience size
 const averageAudience = (totalAudience / lastMonthPerformances.length).toFixed(1);
-console.log(\`Average audience size: \${averageAudience} people\`);
+console.log(`Average audience size: ${averageAudience} people`);
 
 // More complex reduce - find the best performing venue
 const venueStats = lastMonthPerformances.reduce((stats, performance) => {
@@ -326,17 +326,17 @@ const venueStats = lastMonthPerformances.reduce((stats, performance) => {
     return stats;
 }, {});
 
-console.log("\\nVenue Performance Statistics:");
+console.log("\nVenue Performance Statistics:");
 Object.keys(venueStats).forEach(venue => {
     const stats = venueStats[venue];
     const avgRevenue = (stats.totalRevenue / stats.performances).toFixed(2);
     const avgAudience = (stats.totalAudience / stats.performances).toFixed(1);
     
-    console.log(\`\${venue}:\`);
-    console.log(\`  Performances: \${stats.performances}\`);
-    console.log(\`  Total Revenue: $\${stats.totalRevenue}\`);
-    console.log(\`  Average Revenue: $\${avgRevenue}\`);
-    console.log(\`  Average Audience: \${avgAudience} people\`);
+    console.log(`${venue}:`);
+    console.log(`  Performances: ${stats.performances}`);
+    console.log(`  Total Revenue: $${stats.totalRevenue}`);
+    console.log(`  Average Revenue: $${avgRevenue}`);
+    console.log(`  Average Audience: ${avgAudience} people`);
 });
 
 // Find most popular songs using reduce
@@ -347,69 +347,69 @@ const songPopularity = lastMonthPerformances.reduce((popularity, performance) =>
     return popularity;
 }, {});
 
-console.log("\\nSong Popularity (times performed):");
+console.log("\nSong Popularity (times performed):");
 Object.entries(songPopularity)
     .sort(([,a], [,b]) => b - a)  // Sort by popularity
     .forEach(([song, count]) => {
-        console.log(\`  \${song}: \${count} times\`);
+        console.log(`  ${song}: ${count} times`);
     });
-\`\`\`
+```
 
-"The \`reduce()\` method is like having a super-powered calculator," Alex explains enthusiastically. "It takes all my performance data and 'reduces' it down to a single value - whether that's a total, an average, or even a complex object with statistics. It's **O(n) time complexity** and incredibly versatile."
+"The `reduce()` method is like having a super-powered calculator," Alex explains enthusiastically. "It takes all my performance data and 'reduces' it down to a single value - whether that's a total, an average, or even a complex object with statistics. It's **O(n) time complexity** and incredibly versatile."
 
 ### Extracting Specific Data with slice() - The Precision Extractor
 
 "I need to analyze just the last two performances for this week's planning," Alex mentions while preparing for a venue meeting.
 
-\`\`\`javascript
+```javascript
 // Extract the last two performances using slice()
 const recentPerformances = lastMonthPerformances.slice(-2);
 console.log("Most recent performances:");
 recentPerformances.forEach(performance => {
-    console.log(\`- \${performance.venue} on \${performance.date}: \${performance.audience} people, $\${performance.revenue}\`);
+    console.log(`- ${performance.venue} on ${performance.date}: ${performance.audience} people, $${performance.revenue}`);
 });
 
 // Extract the first half of the month's performances
 const firstHalf = lastMonthPerformances.slice(0, 2);
-console.log("\\nFirst half of month:");
+console.log("\nFirst half of month:");
 firstHalf.forEach(performance => {
-    console.log(\`- \${performance.venue} on \${performance.date}\`);
+    console.log(`- ${performance.venue} on ${performance.date}`);
 });
 
 // Extract middle performances (excluding first and last)
 const middlePerformances = lastMonthPerformances.slice(1, -1);
-console.log("\\nMiddle performances:");
+console.log("\nMiddle performances:");
 middlePerformances.forEach(performance => {
-    console.log(\`- \${performance.venue} on \${performance.date}\`);
+    console.log(`- ${performance.venue} on ${performance.date}`);
 });
 
 // Create a copy of all performances for backup
 const performanceBackup = lastMonthPerformances.slice();
-console.log(\`\\nCreated backup of \${performanceBackup.length} performances\`);
+console.log(`\nCreated backup of ${performanceBackup.length} performances`);
 
 // Demonstrate that slice doesn't modify the original
-console.log(\`Original array still has \${lastMonthPerformances.length} performances\`);
+console.log(`Original array still has ${lastMonthPerformances.length} performances`);
 
 // Extract specific range for quarterly report
 const quarterlyData = lastMonthPerformances.slice(1, 3);
-console.log("\\nQuarterly report data:");
+console.log("\nQuarterly report data:");
 quarterlyData.forEach(performance => {
-    console.log(\`- \${performance.venue}: $\${performance.revenue} revenue\`);
+    console.log(`- ${performance.venue}: $${performance.revenue} revenue`);
 });
-\`\`\`
+```
 
-Jordan nods approvingly, "So \`slice()\` lets you extract exactly the data you need without changing the original?"
+Jordan nods approvingly, "So `slice()` lets you extract exactly the data you need without changing the original?"
 
-"Exactly!" Alex confirms. "The \`slice()\` method is **O(k) time complexity**, where k is the number of elements I'm extracting. It's perfect for getting specific ranges of data, creating backups, or extracting samples for analysis. The original data stays completely untouched."
+"Exactly!" Alex confirms. "The `slice()` method is **O(k) time complexity**, where k is the number of elements I'm extracting. It's perfect for getting specific ranges of data, creating backups, or extracting samples for analysis. The original data stays completely untouched."
 
 ---
 ## ⏱️ **Alex's Data Analysis Challenge!** 
  - 🔓 Uncomment the below code section in the editor 👉:
-\`\`\`js
+```js
 // ==============================
 // Exercise 3: Help Alex Analyze Performance Data
 // ============================== 
-\`\`\`
+```
 
  - Read the requirements written as comments in the code.
  - Implement the required logic.
@@ -428,7 +428,7 @@ Alex's reputation has grown to the point where they're now curating music festiv
 
 "The festival director wants me to completely restructure the lineup," Alex explains to their team while reviewing the three-day festival schedule.
 
-\`\`\`javascript
+```javascript
 // Day 1 of the music festival lineup
 let day1Lineup = [
     "Opening Ceremony",
@@ -466,7 +466,7 @@ let day2Lineup = [
     "Evening Headliner"
 ];
 
-console.log("\\nOriginal Day 2 lineup:", day2Lineup);
+console.log("\nOriginal Day 2 lineup:", day2Lineup);
 
 // Remove three weak acts (positions 1, 2, 4) and replace with strong lineup
 let removedWeak = day2Lineup.splice(1, 2, "Rising Star Band", "Veteran Musician");
@@ -476,15 +476,15 @@ console.log("Improved lineup:", day2Lineup);
 // Remove another weak act and insert multiple strong acts
 day2Lineup.splice(4, 1, "Special Guest", "Surprise Collaboration", "Alex's Electronic Set");
 console.log("Final Day 2 lineup:", day2Lineup);
-\`\`\`
+```
 
-"The \`splice()\` method is like a Swiss Army knife," Alex explains to the festival team. "It can remove elements, add elements, or do both at the same time. It's **O(n) time complexity** because elements after the splice point need to shift, but it gives me surgical precision for complex lineup changes."
+"The `splice()` method is like a Swiss Army knife," Alex explains to the festival team. "It can remove elements, add elements, or do both at the same time. It's **O(n) time complexity** because elements after the splice point need to shift, but it gives me surgical precision for complex lineup changes."
 
 ### The Art of Method Chaining - Elegant Data Pipelines
 
 "Now for the real magic," Alex says, opening their laptop to show the team how to create sophisticated data processing pipelines.
 
-\`\`\`javascript
+```javascript
 // Alex's complete song database with rich metadata
 const masterSongDatabase = [
     { title: "Thunderstruck", genre: "rock", mood: "energetic", duration: 4.8, difficulty: "medium", year: 1990, popularity: 95 },
@@ -507,13 +507,13 @@ const weddingSetlist = masterSongDatabase
         title: song.title,
         duration: song.duration,
         arrangement: "acoustic guitar and vocals",
-        specialNote: \`Perfect for \${song.mood} moments\`
+        specialNote: `Perfect for ${song.mood} moments`
     }))
     .slice(0, 4);  // Limit to 4 songs for intimate ceremony
 
 console.log("Perfect Wedding Setlist:");
 weddingSetlist.forEach((song, index) => {
-    console.log(\`\${index + 1}. \${song.title} (\${song.duration}min) - \${song.specialNote}\`);
+    console.log(`${index + 1}. ${song.title} (${song.duration}min) - ${song.specialNote}`);
 });
 
 // Create a rock festival setlist with popularity scoring
@@ -528,9 +528,9 @@ const rockFestivalSetlist = masterSongDatabase
     .sort((a, b) => b.festivalScore - a.festivalScore)  // Sort by festival score
     .slice(0, 5);  // Top 5 songs
 
-console.log("\\nRock Festival Setlist (by crowd impact):");
+console.log("\nRock Festival Setlist (by crowd impact):");
 rockFestivalSetlist.forEach((song, index) => {
-    console.log(\`\${index + 1}. \${song.title} (Score: \${song.festivalScore}, Response: \${song.expectedCrowdResponse})\`);
+    console.log(`${index + 1}. ${song.title} (Score: ${song.festivalScore}, Response: ${song.expectedCrowdResponse})`);
 });
 
 // Calculate total performance statistics using chaining
@@ -547,10 +547,10 @@ const performanceStats = masterSongDatabase
 // Finalize the statistics
 performanceStats.averagePopularity = (performanceStats.averagePopularity / performanceStats.songCount).toFixed(1);
 
-console.log("\\nPerformance Statistics for Manageable Songs:");
-console.log(\`Total Duration: \${performanceStats.totalDuration.toFixed(1)} minutes\`);
-console.log(\`Average Popularity: \${performanceStats.averagePopularity}%\`);
-console.log(\`Song Count: \${performanceStats.songCount}\`);
+console.log("\nPerformance Statistics for Manageable Songs:");
+console.log(`Total Duration: ${performanceStats.totalDuration.toFixed(1)} minutes`);
+console.log(`Average Popularity: ${performanceStats.averagePopularity}%`);
+console.log(`Song Count: ${performanceStats.songCount}`);
 console.log("Genre Distribution:", performanceStats.genres);
 
 // Create a dynamic setlist based on time constraints
@@ -581,11 +581,11 @@ thirtyMinuteSet.forEach(song => {
     song.cumulativeTime = runningTime.toFixed(1);
 });
 
-console.log("\\n30-Minute Energetic Set:");
+console.log("\n30-Minute Energetic Set:");
 thirtyMinuteSet.forEach(song => {
-    console.log(\`\${song.position}. \${song.title} (\${song.duration}min) - Running total: \${song.cumulativeTime}min\`);
+    console.log(`${song.position}. ${song.title} (${song.duration}min) - Running total: ${song.cumulativeTime}min`);
 });
-\`\`\`
+```
 
 "Method chaining is like conducting an orchestra," Alex explains with enthusiasm. "Each method is like a different section of musicians, and when you chain them together, you create a beautiful, complex performance from simple individual parts."
 
@@ -597,11 +597,11 @@ Maya looks amazed, "So you can filter, transform, sort, and calculate all in one
 
 ## ⏱️ **Alex's Festival Curation Challenge!**
 - 🔓 Uncomment the below code section in the editor 👉:
-\`\`\`js
+```js
 // ==============================
 // Exercise 4: Help Alex Master Method Chaining and Advanced Array Operations
 // ==============================
-\`\`\`
+```
 - Read the requirements written as comments in the code.
 - Implement the required logic.
 - Click `Run Code` and inspect `📋 Console Output` window for correctness!
@@ -621,28 +621,28 @@ As Alex packs up after another successful festival, they reflect on how far they
 ### 🎯 **The Complete Array Methods Toolkit**
 
 #### **Core Modification Methods - The Foundation**
-- **\`push()\`** (O(1)): "Adding songs to the end of my setlist - always fast"
-- **\`pop()\`** (O(1)): "Removing the last song when time runs short - instant"
-- **\`unshift()\`** (O(n)): "Adding opening acts - powerful but requires shifting"
-- **\`shift()\`** (O(n)): "Removing finished acts - necessary but slower"
+- **`push()`** (O(1)): "Adding songs to the end of my setlist - always fast"
+- **`pop()`** (O(1)): "Removing the last song when time runs short - instant"
+- **`unshift()`** (O(n)): "Adding opening acts - powerful but requires shifting"
+- **`shift()`** (O(n)): "Removing finished acts - necessary but slower"
 
 #### **Transformation Methods - The Creative Tools**
-- **\`map()\`** (O(n)): "Creating venue-specific versions of every song"
-- **\`filter()\`** (O(n)): "Selecting perfect songs for each occasion"
+- **`map()`** (O(n)): "Creating venue-specific versions of every song"
+- **`filter()`** (O(n)): "Selecting perfect songs for each occasion"
 
 #### **Analysis Methods - The Business Intelligence**
-- **\`forEach()\`** (O(n)): "Processing each performance for reports and alerts"
-- **\`reduce()\`** (O(n)): "Calculating totals, averages, and complex statistics"
-- **\`slice()\`** (O(k)): "Extracting specific data ranges without changing originals"
+- **`forEach()`** (O(n)): "Processing each performance for reports and alerts"
+- **`reduce()`** (O(n)): "Calculating totals, averages, and complex statistics"
+- **`slice()`** (O(k)): "Extracting specific data ranges without changing originals"
 
 #### **Advanced Manipulation - The Precision Tools**
-- **\`splice()\`** (O(n)): "Surgical editing of festival lineups and complex arrangements"
+- **`splice()`** (O(n)): "Surgical editing of festival lineups and complex arrangements"
 
 ### 🎸 **Alex's Method Selection Philosophy**
 
 "Tonight taught me that choosing the right array method is like choosing the right instrument for a song," Alex muses while reviewing their performance analytics. "Each method has its perfect use case:"
 
-\`\`\`javascript
+```javascript
 // Alex's decision framework for array methods
 class ArrayMethodSelector {
     static chooseMethod(task, dataSize, performanceNeeds) {
@@ -694,9 +694,9 @@ const optimizationTips = [
 
 console.log("Alex's Array Method Mastery Guidelines:");
 optimizationTips.forEach((tip, index) => {
-    console.log(\`\${index + 1}. \${tip}\`);
+    console.log(`${index + 1}. ${tip}`);
 });
-\`\`\`
+```
 
 ### 🌟 **From Basic Operations to Advanced Data Processing**
 

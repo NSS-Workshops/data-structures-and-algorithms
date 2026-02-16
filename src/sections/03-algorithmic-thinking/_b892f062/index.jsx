@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: 'b892f062',
-  title: 'Module 2 - Code Excercise 2',
+  title: 'Module 2 - Code Exercise 2',
   sectionId: 'algorithmic-thinking',
   previousChapterId: null,
   content: `

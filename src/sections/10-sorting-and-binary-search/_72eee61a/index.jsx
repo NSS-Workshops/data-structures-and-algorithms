@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: '72eee61a',
-  title: 'Module 9 - Code Excercise 2',
+  title: 'Module 9 - Code Exercise 2',
   sectionId: 'sorting-and-binary-search',
   previousChapterId: null,
   content: `

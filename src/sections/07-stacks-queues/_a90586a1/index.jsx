@@ -2,7 +2,7 @@ import { TestResult } from "@nss-workshops/nss-core";
 
 export default {
   id: 'a90586a1',
-  title: 'Module 6 - Code Excercise 2',
+  title: 'Module 6 - Code Exercise 2',
   sectionId: 'stacks-queues',
   previousChapterId: null,
   content: `

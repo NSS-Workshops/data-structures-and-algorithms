@@ -55,27 +55,6 @@ function navigatePlaylist(currentSong, direction, steps = 1) {
   return current;
 }
 
-function detectLoop(playlist) {
-  // Floyd's cycle detection algorithm (tortoise and hare)
-  if (!playlist) return false;
-  
-  let slow = playlist;
-  let fast = playlist;
-  
-  while (fast && fast.next) {
-    slow = slow.next;        // Move one step
-    fast = fast.next.next;   // Move two steps
-    
-    if (slow === fast) {
-      console.log("🔄 Loop detected in playlist!");
-      return true;
-    }
-  }
-  
-  console.log("✅ No loop detected - playlist is linear");
-  return false;
-}
-
 // Helper function to create a test circular playlist
 function createCircularPlaylist() {
   const songA = new DoublySongNode("Song A", "Artist A");
@@ -94,8 +73,3 @@ console.log("=== Testing navigatePlaylist ===");
 console.log("Forward 1 step from Hotel California:", navigatePlaylist(song2, "forward", 1)?.title);
 console.log("Backward 1 step from Stairway to Heaven:", navigatePlaylist(song3, "backward", 1)?.title);
 console.log("Forward 2 steps from Bohemian Rhapsody:", navigatePlaylist(song1, "forward", 2)?.title);
-
-console.log("\n=== Testing detectLoop ===");
-console.log("Linear playlist has loop:", detectLoop(song1));
-const circularPlaylist = createCircularPlaylist();
-console.log("Circular playlist has loop:", detectLoop(circularPlaylist));

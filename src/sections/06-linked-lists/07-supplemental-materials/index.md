@@ -1,5 +1,3 @@
-# Supplemental Materials: Linked Lists & Pointer Manipulation
-
 ### Recommended Podcast Episode
 
 **[Linked Lists in Your Apartment](https://www.codenewbie.org/basecs/7)**

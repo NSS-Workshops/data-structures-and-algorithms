@@ -7,7 +7,7 @@ class SongNode {
   }
   
   toString() {
-    return \`\${this.title} - \${this.artist}\`;
+    return `${this.title} - ${this.artist}`;
   }
 }
 
@@ -47,7 +47,7 @@ function playNextSong(playlist, targetSong) {
 function removeSong(playlist, targetTitle) {
   // Handle case where first song should be removed
   if (playlist && playlist.title === targetTitle) {
-    console.log(\`🗑️ Removed first song: \${playlist.toString()}\`);
+    console.log(`🗑️ Removed first song: ${playlist.toString()}`);
     return playlist.next;
   }
   
@@ -57,13 +57,13 @@ function removeSong(playlist, targetTitle) {
     if (currentSong.next.title === targetTitle) {
       const removedSong = currentSong.next;
       currentSong.next = removedSong.next;
-      console.log(\`🗑️ Removed song: \${removedSong.toString()}\`);
+      console.log(`🗑️ Removed song: ${removedSong.toString()}`);
       return playlist;
     }
     currentSong = currentSong.next;
   }
   
-  console.log(\`🎵 Song "\${targetTitle}" not found in playlist\`);
+  console.log(`🎵 Song "${targetTitle}" not found in playlist`);
   return playlist;
 }
 
@@ -76,6 +76,6 @@ function countSongs(playlist) {
     currentSong = currentSong.next;
   }
   
-  console.log(\`📊 Total songs in playlist: \${count}\`);
+  console.log(`📊 Total songs in playlist: ${count}`);
   return count;
 }

@@ -1,32 +1,6 @@
 import { QUESTION_TYPES } from '@nss-workshops/nss-core';
 
 export default [
-  // ✅ SCENARIO 1
-  {
-    type: QUESTION_TYPES.RADIO,
-    questionJsx: "You're building a ride-share app where users are matched in the order they request a ride. Which data structure would best model this?",
-    answers: [
-      "Stack – LIFO for faster access",
-      "Linked List – Flexible insert/delete",
-      "Queue – FIFO to serve in order",
-      "Hash Map – Match by request ID"
-    ],
-    correctAnswer: 2
-  },
-
-  // ✅ SCENARIO 2
-  {
-    type: QUESTION_TYPES.RADIO,
-    questionJsx: "You're building a browser navigation feature. Users should be able to move backward and forward through visited pages. Which structure fits best?",
-    answers: [
-      "Singly Linked List",
-      "Queue",
-      "Doubly Linked List",
-      "Stack"
-    ],
-    correctAnswer: 2
-  },
-
   // ✅ BIG O 1
   {
     type: QUESTION_TYPES.RADIO,
@@ -56,7 +30,16 @@ export default [
   // ✅ CODE SNIPPET 1
   {
     type: QUESTION_TYPES.RADIO,
-    questionJsx: "Fill in the blanks to iterate through a singly linked list:\n\n```\nlet current = head;\nwhile (__________) {\n  console.log(current.value);\n  current = __________;\n}\n```",
+    questionJsx: <div>
+  <p>Fill in the blanks to iterate through a singly linked list:</p>
+  <pre>
+{`let current = head;
+while (_________) {
+  console.log(current.value);
+  current = __________;
+}`}
+  </pre>
+</div>,
     answers: [
       "`current !== null`, `current.next`",
       "`head !== null`, `head.next`",
@@ -69,7 +52,17 @@ export default [
   // ✅ CODE SNIPPET 2
   {
     type: QUESTION_TYPES.RADIO,
-    questionJsx: "What code correctly adds a node with value `val` to the head of a singly linked list?\n\n```\nlet newNode = new Node(val);\nnewNode.next = ____________;\nhead = ____________;\n```",
+    questionJsx: <div>
+  <p>
+    What code correctly adds a node with value <code>val</code> to the head of a singly linked list?
+  </p>
+  <pre>
+{`let newNode = new Node(val);
+newNode.next = ____________;
+head = ____________;
+`}
+  </pre>
+</div>,
     answers: [
       "`null`, `newNode`",
       "`head`, `newNode`",

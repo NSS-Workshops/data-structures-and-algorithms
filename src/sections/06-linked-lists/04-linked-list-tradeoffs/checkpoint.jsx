@@ -10,22 +10,22 @@ export default [
       "Arrays require shifting elements for middle insertions",
       "Linked lists provide O(1) random access",
       "Arrays and linked lists have identical performance",
-      "Linked lists use less memory than arrays"
     ],
     correctAnswers: [0,1,2],
-    // explanation: {
-    //   "Arrays provide O(1) random access": "✅ Correct — Arrays can access any element by index in O(1) time.",
-    //   "Linked lists provide O(1) insertion at beginning": "✅ Correct — Just update head pointer in O(1) time.",
-    //   "Arrays require shifting elements for middle insertions": "✅ Correct — Elements after insertion point must shift.",
-    //   "Linked lists provide O(1) random access": "❌ Incorrect — Must traverse from head, O(n) time.",
-    //   "Arrays and linked lists have identical performance": "❌ Incorrect — They have different strengths and weaknesses.",
-    //   "Linked lists use less memory than arrays": "❌ Incorrect — Extra pointers increase memory usage."
-    // }
+    explanation: (
+    <ul>
+      <li>Arrays provide O(1) random access — ✅ Correct: Arrays can access any element by index in O(1) time.</li>
+      <li>Linked lists provide O(1) insertion at beginning — ✅ Correct: Just update the head pointer in O(1) time.</li>
+      <li>Arrays require shifting elements for middle insertions — ✅ Correct: Elements after the insertion point must shift.</li>
+      <li>Linked lists provide O(1) random access — ❌ Incorrect: You must traverse from the head, which takes O(n) time.</li>
+      <li>Arrays and linked lists have identical performance — ❌ Incorrect: They have different strengths and weaknesses.</li>
+    </ul>
+    )
   },
   {
     type: QUESTION_TYPES.TEXT,
     questionJsx: "What is the time complexity for accessing the 50th element in a linked list?",
     correctAnswer: "O(n)",
-    // explanation: "Accessing the 50th element requires traversing from the head through 49 nodes, making it **O(n)** time complexity, where n is the position of the element."
+    explanation: ("Accessing the 50th element requires traversing from the head through 49 nodes, making it **O(n)** time complexity, where n is the position of the element.")
   }
 ]

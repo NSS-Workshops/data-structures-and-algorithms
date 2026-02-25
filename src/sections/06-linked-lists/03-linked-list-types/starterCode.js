@@ -46,27 +46,6 @@ function navigatePlaylist(currentSong, direction, steps = 1) {
 }
 */
 
-// ⏱️ Alex's Circular Playlist Challenge!
-// 🔓 Uncomment the below code section and implement the required logic:
-
-/*
-function detectLoop(playlist) {
-  // Detect if a playlist has a circular connection (Floyd's cycle detection)
-  // Return true if loop exists, false otherwise
-  
-  if (!playlist) return false;
-  
-  let slow = playlist;
-  let fast = playlist;
-  
-  // TODO: Implement the tortoise and hare algorithm
-  // Hint: Move slow pointer one step, fast pointer two steps
-  // If they meet, there's a loop
-  
-  return false;
-}
-*/
-
 // Helper function to create a test circular playlist
 function createCircularPlaylist() {
   const songA = new DoublySongNode("Song A", "Artist A");
@@ -86,9 +65,4 @@ console.log("=== Testing navigatePlaylist ===");
 console.log("Forward 1 step from Hotel California:", navigatePlaylist(song2, "forward", 1)?.title);
 console.log("Backward 1 step from Stairway to Heaven:", navigatePlaylist(song3, "backward", 1)?.title);
 console.log("Forward 2 steps from Bohemian Rhapsody:", navigatePlaylist(song1, "forward", 2)?.title);
-
-console.log("\n=== Testing detectLoop ===");
-console.log("Linear playlist has loop:", detectLoop(song1));
-const circularPlaylist = createCircularPlaylist();
-console.log("Circular playlist has loop:", detectLoop(circularPlaylist));
 */

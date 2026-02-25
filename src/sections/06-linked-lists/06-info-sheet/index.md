@@ -1,4 +1,3 @@
-# Linked Lists - Operations & Complexity Info Sheet
 
 ## Common Linked List Operations
 

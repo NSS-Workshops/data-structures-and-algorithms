@@ -121,18 +121,6 @@ const questions = [
   return head;
 }`}
         </pre>
-      </div>,
-      <div key="d">
-        <strong>D)</strong>
-        <pre style={{backgroundColor: '#f8f9fa', padding: '12px', borderRadius: '6px', border: '1px solid #e9ecef', fontSize: '13px', lineHeight: '1.4', margin: '8px 0', overflow: 'auto', fontFamily: 'Monaco, Consolas, "Courier New", monospace'}}>
-{`function buildAndDouble(arr) {
-  let nodes = arr.map(val => new Node(val * 2));
-  for (let i = 0; i < nodes.length - 1; i++) {
-    nodes[i].next = nodes[i + 1];
-  }
-  return nodes[0];
-}`}
-        </pre>
       </div>
     ],
     correctAnswer: 0,
@@ -197,21 +185,6 @@ const questions = [
           <li>Only creates two nodes total (head and one next node)</li>
           <li>Overwrites head.next instead of properly chaining all nodes</li>
         </ul>
-        
-        <p><strong>D. Incorrect - Uses Built-in Methods</strong></p>
-        <pre style={{backgroundColor: '#ffe6e6', padding: '10px', borderRadius: '5px', fontSize: '13px'}}>
-{`function buildAndDouble(arr) {
-  let nodes = arr.map(val => new Node(val * 2));  // Built-in method
-  for (let i = 0; i < nodes.length - 1; i++) {
-    nodes[i].next = nodes[i + 1];
-  }
-  return nodes[0];
-}`}
-        </pre>
-        <ul>
-          <li>Uses array.map() which violates &quot;without built-in libraries&quot; requirement</li>
-          <li>Doesn&apos;t demonstrate manual iteration through the linked list</li>
-        </ul>
       </div>
     )
   },
@@ -270,7 +243,7 @@ const questions = [
         <ul>
           <li><strong>Scenario A:</strong> Browser history (back/forward navigation)</li>
           <li><strong>Scenario B:</strong> Round-robin task scheduler</li>
-          <li><strong>Scenario C:</strong> Simple queue (FIFO)</li>
+          <li><strong>Scenario C:</strong> Automatic Book Page Feeder into Scanner</li>
         </ul>
       </div>
     ),
@@ -302,11 +275,11 @@ const questions = [
           <li>Perfect for repeating, cyclical processes</li>
         </ul>
 
-        <p><strong>Scenario C - Simple Queue (FIFO): Singly Linked List ✅</strong></p>
+        <p><strong>Scenario C - Automatic Book Page Feeder into Scanner: Singly Linked List ✅</strong></p>
         <ul>
           <li>Only need to add at tail and remove from head</li>
           <li>No backward traversal needed</li>
-          <li>Minimal memory overhead (no prev pointers)</li>
+          <li>Minimal memory overhead (no <code>prev</code> pointers)</li>
           <li>Simple and efficient for unidirectional processing</li>
         </ul>
 

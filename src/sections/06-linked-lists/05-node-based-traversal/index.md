@@ -113,7 +113,7 @@ Alex studied the patterns. "I see! Each search function uses the same basic trav
 
 "Exactly," Maya said. "The traversal pattern is consistent, but the logic inside the loop changes based on what we need to accomplish."
 
-## ⏱️ Alex's First Traversal Challenge!
+## ⏱️ Alex's Traversal Challenge!
 
 Maya pulled out her tablet. "Alex, let's put this into practice. I want you to implement a function that can calculate the total duration of a playlist."
 
@@ -126,89 +126,6 @@ Jordan nodded enthusiastically. "This would be really useful for our library's m
 - **Inspect 📋 Console Output window and run test to check for correctness!**
 
 "This challenge reinforces the fundamental traversal pattern while solving a practical problem," Maya explained.
-
-## Advanced Traversal: Two-Pointer Techniques
-
-After Alex completed the first challenge, Maya introduced a more sophisticated concept:
-
-"Sometimes we need to use multiple pointers to solve complex problems. Let me show you a classic example - finding the middle song of a playlist without knowing its length."
-
-```javascript
-function findMiddleSong(head) {
-  if (!head) {
-    console.log("📭 Playlist is empty");
-    return null;
-  }
-  
-  let slow = head;  // Moves one step at a time
-  let fast = head;  // Moves two steps at a time
-  
-  // When fast reaches the end, slow will be at the middle
-  while (fast !== null && fast.next !== null) {
-    slow = slow.next;
-    fast = fast.next.next;
-  }
-  
-  console.log(`🎯 Middle song: ${slow.toString()}`);
-  return slow;
-}
-```
-
-Alex was fascinated. "How does that work?"
-
-Maya drew a diagram on the whiteboard:
-
-```
-Step 1: [A] → [B] → [C] → [D] → [E] → null
-        ↑     ↑
-       slow  fast
-
-Step 2: [A] → [B] → [C] → [D] → [E] → null
-              ↑           ↑
-             slow        fast
-
-Step 3: [A] → [B] → [C] → [D] → [E] → null
-                    ↑                 ↑
-                   slow              fast (null)
-
-Result: slow is at the middle!
-```
-
-"The fast pointer moves twice as fast as the slow pointer," Maya explained. "When the fast pointer reaches the end, the slow pointer is exactly at the middle."
-
-Jordan was amazed. "That's brilliant! We can find the middle without counting the total length first."
-
-## ⏱️ Alex's Second Traversal Challenge!
-
-"Now for a more complex challenge," Maya said. "Jordan wants to implement a feature that can remove songs from the playlist."
-
-Jordan explained: "Sometimes users want to remove songs they don't like, or we need to remove duplicates. But removing from a linked list is trickier than inserting."
-
-🔓 **Uncomment the below code section in the editor 👉:**
-- Implement `removeSongByTitle()` to remove a song from the playlist
-- Handle the special case of removing the first song
-- **Click Run Code**
-- **Inspect 📋 Console Output window and run test to check for correctness!**
-
-"This challenge teaches you about the careful pointer manipulation needed for safe removal," Maya explained.
-
-## ⏱️ Alex's Advanced Traversal Challenge!
-
-"For your final challenge," Maya said with a smile, "I want you to implement a function that can reverse a playlist - make it play backwards!"
-
-Jordan's eyes lit up. "That would be amazing for creating 'reverse chronology' playlists!"
-
-🔓 **Uncomment the below code section in the editor 👉:**
-- Implement `reversePlaylist()` to reverse the order of songs
-- Use three pointers: previous, current, and next
-- **Click Run Code**
-- **Inspect 📋 Console Output window and run test to check for correctness!**
-
-"This challenge teaches you about complex pointer manipulation and is a classic computer science problem," Maya explained.
-
-## Common Traversal Pitfalls and Solutions
-
-Maya then showed them common mistakes and how to avoid them:
 
 ### Pitfall 1: Losing the Head Reference
 ```javascript
@@ -248,40 +165,3 @@ function goodAccess(head) {
   }
 }
 ```
-
-## Real-World Applications of Traversal Patterns
-
-Maya showed them how these patterns apply beyond music:
-
-### Web Scraping
-"Web crawlers use similar traversal patterns to follow links between web pages."
-
-### File System Navigation
-"File explorers traverse directory structures using these same principles."
-
-### Game Development
-"Game engines traverse scene graphs to render objects in the correct order."
-
-### Database Systems
-"Database engines use traversal algorithms to execute queries efficiently."
-
-## Key Insights from Playlist Traversal
-
-By the end of their session, Alex had mastered several important concepts:
-
-- **Basic traversal** is the foundation for all linked list operations
-- **Search patterns** use traversal with conditional logic
-- **Two-pointer techniques** solve complex problems efficiently
-- **Insertion and deletion** require careful pointer manipulation
-- **Common pitfalls** can be avoided with proper null checking
-- **Real-world applications** exist across many domains
-
-Jordan was already implementing these patterns in their playlist system. "I can't believe how much more powerful the system is now! Users can search, analyze, and manipulate playlists in ways I never thought possible."
-
-"That's the beauty of understanding fundamental algorithms," Maya said. "Once you master the basic patterns, you can solve increasingly complex problems."
-
-As they packed up, Alex reflected on the journey. "It's amazing how something as simple as following pointers can enable such sophisticated operations."
-
-Maya smiled. "Tomorrow, we'll explore how to implement a complete playlist system from scratch, bringing together everything you've learned about linked lists."
-
-The mastery of traversal patterns had opened up a world of possibilities, transforming simple song chains into powerful, dynamic playlist systems.

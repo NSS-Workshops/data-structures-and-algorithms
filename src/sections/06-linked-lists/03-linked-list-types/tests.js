@@ -99,48 +99,7 @@ const tests = [
       }
     },
     message: "navigatePlaylist should handle forward, backward, and multi-step navigation."
-  },
-  {
-    name: "Test detectLoop function",
-    test: (code) => {
-      try {
-        const testCode = code + `
-        let linearResult = false;
-        let circularResult = false;
-        
-        if (typeof detectLoop === 'function') {
-          // Test with linear playlist
-          linearResult = detectLoop(song1);
-          
-          // Test with circular playlist
-          const circularPlaylist = createCircularPlaylist();
-          circularResult = detectLoop(circularPlaylist);
-        }
-        
-        return ({ linearResult, circularResult });
-        `;
-        
-        const testResult = new Function(testCode)();
-        
-        if (typeof testResult.linearResult === 'undefined') {
-          return new TestResult({ passed: false, message: "detectLoop function not found. Make sure to uncomment and implement it." });
-        }
-        
-        if (testResult.linearResult !== false) {
-          return new TestResult({ passed: false, message: "detectLoop should return false for linear playlists" });
-        }
-        
-        if (testResult.circularResult !== true) {
-          return new TestResult({ passed: false, message: "detectLoop should return true for circular playlists" });
-        }
-        
-        return new TestResult({ passed: true });
-      } catch (error) {
-        return new TestResult({ passed: false, message: error.message });
-      }
-    },
-    message: "detectLoop should correctly identify circular vs linear playlists using Floyd's algorithm."
-  },
+  }
 ];
 
 export { tests, TestResult };

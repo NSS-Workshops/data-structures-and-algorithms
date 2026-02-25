@@ -333,66 +333,6 @@ class SmartCircularPlaylist extends CircularPlaylist {
 }
 ```
 
-## Real-World Applications of Different List Types
-
-Maya used the whiteboard to show how different linked list types solve different real-world problems:
-
-### Singly Linked Lists
-- **Music streaming**: Basic playlist playback
-- **Browser history**: Forward navigation only
-- **Undo systems**: Simple action history
-- **RSS feeds**: Chronological article lists
-
-### Doubly Linked Lists
-- **Media players**: Forward and backward navigation
-- **Text editors**: Cursor movement in documents
-- **Browser tabs**: Navigate between open tabs
-- **Photo galleries**: Previous/next image viewing
-
-### Circular Linked Lists
-- **Round-robin scheduling**: CPU task scheduling
-- **Multiplayer games**: Turn-based player rotation
-- **Carousel displays**: Infinite image rotation
-- **Background music**: Continuous playlist looping
-
-## ⏱️ Alex's Circular Playlist Challenge!
-
-"Now for the advanced challenge," Maya said with a smile. "Jordan wants to implement a feature that can detect if a playlist has accidentally become circular when it shouldn't be."
-
-Jordan explained: "Sometimes when building playlists programmatically, you might accidentally create a loop. We need a way to detect this."
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/S5TcPmTl6ww?si=82xnZM_NhIV7CVqH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-🔓 **Uncomment the below code section in the editor 👉:**
-- Implement `detectLoop()` to check if a playlist has an unintended circular connection
-- Use the "tortoise and hare" algorithm (two pointers at different speeds)
-- **Click Run Code**
-- **Inspect 📋 Console Output window and run test to check for correctness!**
-
-"This challenge teaches you about cycle detection - a classic computer science problem," Maya explained.
-
-## Choosing the Right Playlist Type
-
-As their session continued, Maya helped Alex and Jordan understand when to use each type:
-
-### Use Singly Linked Lists When:
-- **Memory is limited**: Only one pointer per node
-- **Simple forward navigation**: No need to go backward
-- **Implementation simplicity**: Easier to code and debug
-- **Append-heavy operations**: Frequently adding to the end
-
-### Use Doubly Linked Lists When:
-- **Bidirectional navigation**: Need to move forward and backward
-- **Frequent deletions**: Easier to remove nodes when you have previous pointer
-- **LRU caches**: Need to move items to front/back efficiently
-- **Text editing**: Cursor can move in both directions
-
-### Use Circular Linked Lists When:
-- **Continuous cycling**: Round-robin or infinite loops needed
-- **No clear start/end**: Data naturally forms a cycle
-- **Resource sharing**: CPU scheduling, printer queues
-- **Game mechanics**: Turn-based systems, circular menus
-
 ## Performance Comparison
 
 Jordan had prepared a comparison table:
@@ -408,37 +348,3 @@ Jordan had prepared a comparison table:
 | **Cycle detection** | Not applicable | Not applicable | Built-in |
 
 *With tail pointer
-
-## Looking Ahead: Advanced Playlist Features
-
-As their session wound down, Jordan was already thinking about even more advanced features:
-
-"What if we combined these concepts? Like a doubly linked circular playlist for a DJ system where you can go forward, backward, and it loops forever?"
-
-Maya's eyes twinkled. "That's absolutely possible! You could create a doubly circular linked list. Each node would have both next and previous pointers, and the first and last nodes would connect to each other."
-
-Alex was amazed. "So you can mix and match these concepts?"
-
-"Exactly," Maya said. "Data structures are tools, and like any tools, you can combine them creatively to solve complex problems."
-
-## Key Insights from Playlist Types
-
-By the end of their session, Alex had learned:
-
-- **Singly linked lists** provide simple, memory-efficient forward navigation
-- **Doubly linked lists** enable bidirectional navigation at the cost of more memory
-- **Circular linked lists** create infinite loops perfect for continuous operations
-- **Each type solves different problems** and has different trade-offs
-- **Real-world applications** exist for all three types
-- **Performance characteristics** vary significantly between types
-- **Creative combinations** are possible for complex requirements
-
-Jordan was already sketching ideas for their next features. "I want to build a smart DJ system that can seamlessly switch between different playlist types based on the situation!"
-
-"That sounds like an excellent project," Maya said. "Understanding these fundamental variations gives you the building blocks to create sophisticated systems."
-
-As they packed up, Alex reflected on how much their understanding had grown. "It's amazing how something as simple as changing the connections between nodes can create completely different behaviors."
-
-Maya smiled. "That's the beauty of data structures, Alex. Small changes in structure can lead to dramatically different capabilities. Tomorrow, we'll explore how to traverse and manipulate these different playlist types efficiently."
-
-The journey into linked list variations had opened up a world of possibilities, each type offering unique advantages for different musical and programming challenges.

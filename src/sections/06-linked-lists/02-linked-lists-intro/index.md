@@ -71,7 +71,7 @@ Jordan pulled out a piece of paper and started sketching. "I've been reading abo
 They drew a simple diagram:
 
 ```
-🎵 "Bohemian Rhapsody" → 🎵 "Hotel California" → 🎵 "Stairway to Heaven" → 🎵 "Sweet Child O' Mine" → 🎵 "Imagine" → null
+<start> → 🎵 "Bohemian Rhapsody" → 🎵 "Hotel California" → 🎵 "Stairway to Heaven" → 🎵 "Sweet Child O' Mine" → 🎵 "Imagine" → null
 ```
 
 "See?" Jordan continued excitedly. "Each song is connected to the next song, like links in a chain. If I want to add 'Thunderstruck' after 'Hotel California', I just need to:"

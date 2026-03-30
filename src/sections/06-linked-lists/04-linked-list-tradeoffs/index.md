@@ -177,16 +177,3 @@ Inserting at beginning:
    new head
 Just change two pointers! O(1)
 ```
-
-## ⏱️ Alex's Performance Analysis Challenge!
-
-Maya pulled out her tablet. "Alex, let's put this theory to the test. I want you to implement a function that compares the performance characteristics of both approaches."
-
-Jordan nodded enthusiastically. "This would help me understand exactly when to use each approach!"
-
-🔓 **Uncomment the below code section in the editor 👉:**
-- Implement `comparePerformance()` to fill in different operations time complexity in big O notation
-- **Click Run Code**
-- **Inspect 📋 Console Output window and run test to check for correctness!**
-
-"This challenge will help you understand the practical implications of these performance differences," Maya explained.

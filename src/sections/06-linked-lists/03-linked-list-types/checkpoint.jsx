@@ -12,15 +12,16 @@ export default [
       "🚫 Circular linked lists cannot be traversed",
       "📈 Doubly linked lists require more memory than singly linked lists"
     ],
-    correctAnswers: [0,1,2],
-    // explanation: {
-    //   "⟷ Doubly linked lists enable bidirectional navigation": "✅ Correct — Doubly linked lists have both next and prev pointers.",
-    //   "🔄 Circular linked lists create infinite loops": "✅ Correct — Circular lists loop back to the beginning.",
-    //   "💾 Singly linked lists use less memory per node": "✅ Correct — Singly linked lists only need one pointer per node.",
-    //   "⚡ All linked list types have the same performance characteristics": "❌ Incorrect — Different types have different performance characteristics.",
-    //   "🚫 Circular linked lists cannot be traversed": "❌ Incorrect — Circular lists can be traversed with proper loop detection.",
-    //   "📈 Doubly linked lists require more memory than singly linked lists": "✅ Correct — Two pointers per node vs one."
-    // }
+    correctAnswers: [0,1,2,5],
+    explanation: 
+    (<ul>
+  <li>⟷ Doubly linked lists enable bidirectional navigation — ✅ Correct: Doubly linked lists have both <code>next</code> and <code>prev</code> pointers.</li>
+  <li>🔄 Circular linked lists create infinite loops — ✅ Correct: Circular lists loop back to the beginning.</li>
+  <li>💾 Singly linked lists use less memory per node — ✅ Correct: Singly linked lists only need one pointer per node.</li>
+  <li>⚡ All linked list types have the same performance characteristics — ❌ Incorrect: Different types have different performance characteristics.</li>
+  <li>🚫 Circular linked lists cannot be traversed — ❌ Incorrect: Circular lists can be traversed with proper loop detection.</li>
+  <li>📈 Doubly linked lists require more memory than singly linked lists — ✅ Correct: Two pointers per node vs one.</li>
+</ul>)
   },
   {
     type: QUESTION_TYPES.TEXT,

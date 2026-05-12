@@ -74,10 +74,10 @@ By the end, you won’t just be picking solutions that feel right, you’ll be a
 **Course Duration:** 10 weeks
 **Total Course Hours:** ~100 hours
 
-**Class times on zoom Mondays 2-4pm and Wednesdays 2-4pm**
+**Class times on zoom Mondays and Wednesdays 5:30-7:30pm**
 
-~~**First class on zoom starts on January 26th Monday 2pm**~~
-~~**Last class will be April 1sh Wednesday 2pm**~~
+~~**First class on zoom starts on May 18th**~~
+~~**Last class will be Wednesday, July 22**~~
 ** Due to the 2026 winter storm the start and end dates are pushed back by one week:** 
 **First class on zoom starts on February 2nd Monday 2pm**
 **Last class will be April 8th Wednesday 2pm**
@@ -109,9 +109,9 @@ Look for: #dsa-{your cohort number} — for example, Cohort One = #dsa-01
 - **Full 2 hours** Instructor-led walkthroughs, quizzes, discussions, live demonstrations, reviews, and collaborative group work.
 
 #### Day 2
-- **45 minutes:** Weekly Pair programming practice in breakout rooms (pair coding / mock interview).
+- **45 minutes:** Weekly tech interview practice in breakout rooms.
 - **5 minutes:** Break
-- **45 minutes:** Weekly Pair programming practice in breakout rooms (switch interviewer / interviewee role).
+- **45 minutes:** Weekly tech interview practice in breakout rooms (switch roles).
 - **5 minutes:** Break
 - **20 minutes:** Review/discuss the problems as a group
 
@@ -122,7 +122,7 @@ A key part of your asynchronous time should be spent reading, working the coding
 ###  How to reach us
 Got a question? The \`#help\` channel on Slack is the perfect place to ask!
 
-### 🧪 What to Expect from Pair Programming Practice
+### 🧪 What to Expect from Paired Practice
 Each week, starting with week two, you’ll team up with a classmate to practice a mock coding interview. You’ll take turns being the interviewer and the interviewee, working through a problem together in a breakout room. Don’t worry—this isn’t about getting everything right. It’s a safe space to mess up, try things, struggle a bit, and learn by doing. The key is to show up, stay engaged, and lean into the challenge. Even if you don’t solve the problem, just working through it will help you get more comfortable, build confidence, and make the eventual solution stick. This time is meant to help you grow, so use it well!
 - The goal is to practice thinking out loud and solving problems under pressure
 - Build confidence giving and receiving feedback
@@ -226,7 +226,7 @@ Included in the Data Structures modules, the Info Sheet serves as a quick-refere
 
 - Get a high-level overview of how different operations perform
 - Compare the efficiency of different data structures
-- Refresh your memory before pair programming or interviews
+- Refresh your memory before paired practice interviews
 
 #### 4. Supplemental Materials
 

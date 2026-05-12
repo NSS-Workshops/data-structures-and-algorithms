@@ -76,11 +76,8 @@ By the end, you won’t just be picking solutions that feel right, you’ll be a
 
 **Class times on zoom Mondays and Wednesdays 5:30-7:30pm**
 
-~~**First class on zoom starts on May 18th**~~
-~~**Last class will be Wednesday, July 22**~~
-** Due to the 2026 winter storm the start and end dates are pushed back by one week:** 
-**First class on zoom starts on February 2nd Monday 2pm**
-**Last class will be April 8th Wednesday 2pm**
+**First class on zoom starts on May 18th**
+**Last class will be Wednesday, July 22**
 
 
 ## Attendance

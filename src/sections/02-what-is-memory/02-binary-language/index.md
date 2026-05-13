@@ -11,6 +11,8 @@ The physical technology changed dramatically across those decades. What never ch
 
 With 8 bits you can represent 256 different combinations (2⁸) — enough to encode a letter, a small number, or a color value.
 
+[Here is a podcast episode that covers this concept](https://www.codenewbie.org/basecs/3)
+
 ## Units of Measurement
 
 You will encounter these units constantly throughout this course and your career:

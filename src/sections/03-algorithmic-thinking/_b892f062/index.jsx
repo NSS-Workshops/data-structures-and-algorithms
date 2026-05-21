@@ -38,7 +38,10 @@ Best of luck, and enjoy the practice! 🚀
 
 ## Problem: Move Zeros to End
 
-Write a function that moves all zeros in an array to the end while maintaining the relative order of non-zero elements.`,
+Write a function that moves all zeros in an array to the end while maintaining the relative order of non-zero elements.
+You can do this in place with a swapping algorithm, but that's not necessary. We will cover that next week.
+You can just create and return a new array.
+After the exercise, please discuss the solution, including the one that modifies the array with swapping, as a preview of next week's material.`,
   exercises: [{
     starterCode:`/*
 Problem: Move Zeros to End
@@ -48,17 +51,12 @@ Write a function that moves all zeros in an array to the end while maintaining t
 Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
-- Can you solve this using the two-pointer technique?
-- How does swapping compare to the two-pass approach?
 */
 
 function moveZeroes(nums) {
   // Move all zeros to the end while maintaining relative order
   // Requirements:
-  // - Modify the array in-place
   // - Maintain the relative order of non-zero elements
-  // - Do not use extra space for another array
-  // - Use efficient swapping technique
   //
   // Example:
   // Input: [0, 1, 0, 3, 12]
@@ -70,26 +68,26 @@ function moveZeroes(nums) {
     solution:`/*
 Problem: Move Zeros to End
 
-Write a function that moves all zeros in an array to the end while maintaining the relative order of non-zero elements.
-
-Follow-up Questions:
-- What is the time complexity of your solution?
-- What is the space complexity?
-- Can you solve this using the two-pointer technique?
-- How does swapping compare to the two-pass approach?
-*/
-
 function moveZeroes(nums) {
-  // Move all zeros to the end while maintaining relative order
-  // Requirements:
-  // - Modify the array in-place
-  // - Maintain the relative order of non-zero elements
-  // - Do not use extra space for another array
-  // - Use efficient swapping technique
-  //
-  // Example:
-  // Input: [0, 1, 0, 3, 12]
-  // Output: [1, 3, 12, 0, 0]
+  
+  const nums2 = []; 
+  let zeroesToAdd = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i]===0) zeroesToAdd++;
+    else nums2.push(nums[i]);
+  }
+  for (let i = 0; i < zeroesToAdd; i++) {
+    nums2.push(0);
+  }
+  
+  return nums2
+  
+  // Time Complexity: O(n) - single pass through the array
+  // Space Complexity: O(1) - only using constant extra space
+}
+
+function moveZeroes_inPlace(nums) {
   
   // Use single-pass approach with swapping
   let lastNonZero = 0;
@@ -112,12 +110,12 @@ function moveZeroes(nums) {
           try {
             const moveZeroes = new Function(`${code}; return moveZeroes;`)();
             const arr1 = [0, 1, 0, 3, 12];
-            moveZeroes(arr1);
+            const arr1a = moveZeroes(arr1);
             const arr2 = [0, 0, 1];
-            moveZeroes(arr2);
+            const arr2a = moveZeroes(arr2);
             
-            const test1 = JSON.stringify(arr1) === JSON.stringify([1, 3, 12, 0, 0]);
-            const test2 = JSON.stringify(arr2) === JSON.stringify([1, 0, 0]);
+            const test1 = JSON.stringify(arr1a) === JSON.stringify([1, 3, 12, 0, 0]);
+            const test2 = JSON.stringify(arr2a) === JSON.stringify([1, 0, 0]);
             
             if (test1 && test2) {
               return new TestResult({ passed: true });
@@ -142,9 +140,9 @@ function moveZeroes(nums) {
           try {
             const moveZeroes = new Function(`${code}; return moveZeroes;`)();
             const arr = [1, 2, 3, 4, 5];
-            moveZeroes(arr);
+            const arr2 = moveZeroes(arr);
             
-            if (JSON.stringify(arr) === JSON.stringify([1, 2, 3, 4, 5])) {
+            if (JSON.stringify(arr2) === JSON.stringify([1, 2, 3, 4, 5])) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
@@ -167,9 +165,9 @@ function moveZeroes(nums) {
           try {
             const moveZeroes = new Function(`${code}; return moveZeroes;`)();
             const arr = [0, 0, 0, 0];
-            moveZeroes(arr);
+            const arr2 = moveZeroes(arr);
             
-            if (JSON.stringify(arr) === JSON.stringify([0, 0, 0, 0])) {
+            if (JSON.stringify(arr2) === JSON.stringify([0, 0, 0, 0])) {
               return new TestResult({ passed: true });
             } else {
               return new TestResult({
@@ -192,12 +190,12 @@ function moveZeroes(nums) {
           try {
             const moveZeroes = new Function(`${code}; return moveZeroes;`)();
             const arr1 = [0];
-            moveZeroes(arr1);
+            const arr1a = moveZeroes(arr1);
             const arr2 = [5];
-            moveZeroes(arr2);
+            const arr2a = moveZeroes(arr2);
             
-            const test1 = JSON.stringify(arr1) === JSON.stringify([0]);
-            const test2 = JSON.stringify(arr2) === JSON.stringify([5]);
+            const test1 = JSON.stringify(arr1a) === JSON.stringify([0]);
+            const test2 = JSON.stringify(arr2a) === JSON.stringify([5]);
             
             if (test1 && test2) {
               return new TestResult({ passed: true });

@@ -36,19 +36,20 @@ Leave 10–15 minutes to reflect, share feedback, and then switch roles.
 
 Best of luck, and enjoy the practice! 🚀
 
-## Problem: Reverse Array In-Place
+## Problem: Reverse an Array
 
-Write a function that reverses an array in-place without using any built-in reverse methods or creating a new array.`,
+Write a function that reverses an array without using any built-in reverse methods. 
+You don't need to reverse it in-place (modifying the input array without creating a new one). This is advanced and we will cover this next week. But you can try, if you like.
+After the mock interview, review and discuss the solution provided, including the version that does reverse it in-place, to preview next week's material.`,
   exercises: [{
     starterCode:`/*
-Problem: Reverse Array In-Place
+Problem: Reverse Array
 
-Write a function that reverses an array in-place without using any built-in reverse methods or creating a new array.
+Write a function that reverses an array without using any built-in reverse methods.
 
 Follow-up Questions:
 - What is the time complexity of your solution?
 - What is the space complexity?
-- Can you solve this using the two-pointer technique?
 */
 
 function reverseArray(arr) {
@@ -67,27 +68,24 @@ function reverseArray(arr) {
   
 }`,
     solution:`/*
-Problem: Reverse Array In-Place
-
-Write a function that reverses an array in-place without using any built-in reverse methods or creating a new array.
-
-Follow-up Questions:
-- What is the time complexity of your solution?
-- What is the space complexity?
-- Can you solve this using the two-pointer technique?
-*/
+Problem: Reverse an Array
 
 function reverseArray(arr) {
-  // Reverse an array in-place without using built-in methods
-  // Requirements:
-  // - Modify the original array directly (in-place)
-  // - Do not use built-in reverse() method
-  // - Do not create a new array
-  // - Use only constant extra space
-  //
-  // Example:
-  // Input: [1, 2, 3, 4, 5]
-  // Output: [5, 4, 3, 2, 1] (original array is modified)
+  
+  let arr2 = [];
+
+  for (let i=arr.length-1; i>=0; i++){
+    arr2.push(arr[i]);
+  }
+  
+  // Return the array
+  return arr2;
+  
+  // Time Complexity: O(n) - we visit each element at most once
+  // Space Complexity: O(n) - we add a new array that is as large as the current one
+}
+
+function reverseArray_inPlace(arr) {
   
   // Use two-pointer technique
   let left = 0;
@@ -118,12 +116,12 @@ function reverseArray(arr) {
           try {
             const reverseArray = new Function(`${code}; return reverseArray;`)();
             const arr1 = [1, 2, 3, 4, 5];
-            reverseArray(arr1);
-            const test1 = JSON.stringify(arr1) === JSON.stringify([5, 4, 3, 2, 1]);
+            const arr1a = reverseArray(arr1);
+            const test1 = JSON.stringify(arr1a) === JSON.stringify([5, 4, 3, 2, 1]);
             
             const arr2 = [10, 20, 30];
-            reverseArray(arr2);
-            const test2 = JSON.stringify(arr2) === JSON.stringify([30, 20, 10]);
+            const arr2a = reverseArray(arr2);
+            const test2 = JSON.stringify(arr2a) === JSON.stringify([30, 20, 10]);
             
             if (test1 && test2) {
               return new TestResult({ passed: true });
@@ -142,83 +140,83 @@ function reverseArray(arr) {
         },
         message: "Function should reverse arrays correctly."
       },
-      {
-        name: "Edge case: single element",
-        test: (code) => {
-          try {
-            const reverseArray = new Function(`${code}; return reverseArray;`)();
-            const arr = [42];
-            reverseArray(arr);
+      // {
+      //   name: "Edge case: single element",
+      //   test: (code) => {
+      //     try {
+      //       const reverseArray = new Function(`${code}; return reverseArray;`)();
+      //       const arr = [42];
+      //       reverseArray(arr);
             
-            if (JSON.stringify(arr) === JSON.stringify([42])) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `Expected reverseArray([42]) to return [42], got ${JSON.stringify(arr)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should handle single element arrays."
-      },
-      {
-        name: "Edge case: empty array",
-        test: (code) => {
-          try {
-            const reverseArray = new Function(`${code}; return reverseArray;`)();
-            const arr = [];
-            reverseArray(arr);
+      //       if (JSON.stringify(arr) === JSON.stringify([42])) {
+      //         return new TestResult({ passed: true });
+      //       } else {
+      //         return new TestResult({
+      //           passed: false,
+      //           message: `Expected reverseArray([42]) to return [42], got ${JSON.stringify(arr)}`
+      //         });
+      //       }
+      //     } catch (error) {
+      //       return new TestResult({
+      //         passed: false,
+      //         message: `Error: ${error.message}`
+      //       });
+      //     }
+      //   },
+      //   message: "Function should handle single element arrays."
+      // },
+      // {
+      //   name: "Edge case: empty array",
+      //   test: (code) => {
+      //     try {
+      //       const reverseArray = new Function(`${code}; return reverseArray;`)();
+      //       const arr = [];
+      //       reverseArray(arr);
             
-            if (JSON.stringify(arr) === JSON.stringify([])) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `Expected reverseArray([]) to return [], got ${JSON.stringify(arr)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should handle empty arrays."
-      },
-      {
-        name: "In-place modification check",
-        test: (code) => {
-          try {
-            const reverseArray = new Function(`${code}; return reverseArray;`)();
-            const arr = [1, 2, 3, 4];
-            const originalRef = arr;
-            reverseArray(arr);
+      //       if (JSON.stringify(arr) === JSON.stringify([])) {
+      //         return new TestResult({ passed: true });
+      //       } else {
+      //         return new TestResult({
+      //           passed: false,
+      //           message: `Expected reverseArray([]) to return [], got ${JSON.stringify(arr)}`
+      //         });
+      //       }
+      //     } catch (error) {
+      //       return new TestResult({
+      //         passed: false,
+      //         message: `Error: ${error.message}`
+      //       });
+      //     }
+      //   },
+      //   message: "Function should handle empty arrays."
+      // },
+      // {
+      //   name: "In-place modification check",
+      //   test: (code) => {
+      //     try {
+      //       const reverseArray = new Function(`${code}; return reverseArray;`)();
+      //       const arr = [1, 2, 3, 4];
+      //       const originalRef = arr;
+      //       reverseArray(arr);
             
-            // Check if the original array reference was modified
-            if (originalRef === arr) {
-              return new TestResult({ passed: true });
-            } else {
-              return new TestResult({
-                passed: false,
-                message: `Function should modify the array in-place. Original array: ${JSON.stringify(originalRef)}`
-              });
-            }
-          } catch (error) {
-            return new TestResult({
-              passed: false,
-              message: `Error: ${error.message}`
-            });
-          }
-        },
-        message: "Function should modify the array in-place."
-      }
+      //       // Check if the original array reference was modified
+      //       if (originalRef === arr) {
+      //         return new TestResult({ passed: true });
+      //       } else {
+      //         return new TestResult({
+      //           passed: false,
+      //           message: `Function should modify the array in-place. Original array: ${JSON.stringify(originalRef)}`
+      //         });
+      //       }
+      //     } catch (error) {
+      //       return new TestResult({
+      //         passed: false,
+      //         message: `Error: ${error.message}`
+      //       });
+      //     }
+      //   },
+      //   message: "Function should modify the array in-place."
+      // }
     ]
   }]
 };

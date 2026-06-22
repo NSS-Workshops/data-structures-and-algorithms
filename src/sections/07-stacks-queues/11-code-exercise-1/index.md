@@ -1,5 +1,3 @@
-# Code Exercise 1: Valid Parentheses
-
 Practice using stacks to solve a classic programming problem involving balanced parentheses.
 
 ## Problem: Valid Parentheses

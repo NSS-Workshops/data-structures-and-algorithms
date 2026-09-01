@@ -1,4 +1,4 @@
-# Welcome to the Data Structures and Algorithms course!
+# Welcome to the Data Structures and Algorithms course
 
 This course is here to help you circle back and solidify your foundations, whether you're preparing for interviews or leveling up your software skills. Each week, you'll get hands-on practice solving problems, sharpening your analytical thinking, and exploring how different data structures work and when to use them. You'll also learn how to evaluate the efficiency of algorithms and tackle some classic ones that will hone your logic and creativity—all in a realistic, interview-style setting.
 

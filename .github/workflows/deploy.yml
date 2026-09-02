@@ -48,6 +48,10 @@ jobs:
           echo "VITE_GLOBAL_PROGRESS_BAR=false" >> .env
           echo "VITE_REQUIRES_GITHUB_AUTHENTICATION=false" >> .env
           echo "BASE_URL=${{ secrets.WORKSHOP_BASE_URL }}" >> .env
+          echo "VITE_BUILD_ID=${{ github.sha }}" >> .env
+
+      - name: Write version file
+        run: echo '{"build":"${{ github.sha }}"}' > public/version.json
 
       - name: Install dependencies
         run: npm ci
